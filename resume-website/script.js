@@ -1,0 +1,441 @@
+// 等待 DOM 載入完成
+document.addEventListener('DOMContentLoaded', function() {
+    initNavigation();
+    initScrollAnimations();
+    initProjectFilter();
+    initContactForm();
+    initSkillBars();
+    initSmoothScrolling();
+    initParallaxEffects();
+});
+
+// 導航選單功能
+function initNavigation() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // 漢堡選單切換
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // 點擊導航連結後關閉選單
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // 滾動時改變導航欄樣式
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // 高亮當前頁面區塊
+    window.addEventListener('scroll', highlightCurrentSection);
+}
+
+// 滾動動畫
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // 觀察所有需要動畫的元素
+    const animatedElements = document.querySelectorAll(
+        '.fade-in, .slide-in-left, .slide-in-right, .about-item, .skill-item, .project-card, .timeline-item'
+    );
+
+    animatedElements.forEach(el => {
+        el.classList.add('fade-in');
+        observer.observe(el);
+    });
+}
+
+// 專案篩選功能
+function initProjectFilter() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+
+            // 更新按鈕狀態
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            // 篩選專案卡片
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                
+                if (filter === 'all' || category.includes(filter)) {
+                    card.classList.remove('hidden');
+                    card.classList.add('visible');
+                } else {
+                    card.classList.add('hidden');
+                    card.classList.remove('visible');
+                }
+            });
+        });
+    });
+}
+
+// 聯絡表單功能
+function initContactForm() {
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // 取得表單資料
+        const formData = new FormData(contactForm);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const subject = formData.get('subject');
+        const message = formData.get('message');
+
+        // 簡單驗證
+        if (!name || !email || !subject || !message) {
+            showNotification('請填寫所有必填欄位', 'error');
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            showNotification('請輸入有效的信箱地址', 'error');
+            return;
+        }
+
+        // 模擬發送訊息
+        showNotification('訊息發送中...', 'info');
+        
+        setTimeout(() => {
+            showNotification('訊息已成功發送！我會盡快回覆您', 'success');
+            contactForm.reset();
+        }, 1500);
+    });
+}
+
+// 技能條動畫
+function initSkillBars() {
+    const skillBars = document.querySelectorAll('.level-fill');
+    
+    const skillObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 200);
+                
+                skillObserver.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    skillBars.forEach(bar => skillObserver.observe(bar));
+}
+
+// 平滑滾動
+function initSmoothScrolling() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const offsetTop = targetElement.offsetTop - 70; // 考慮導航欄高度
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// 視差效果
+function initParallaxEffects() {
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        
+        // Hero 背景視差
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.style.transform = `translateY(${rate}px)`;
+        }
+        
+        // 浮動卡片效果
+        const profileCard = document.querySelector('.profile-card');
+        if (profileCard && scrolled < window.innerHeight) {
+            const cardRate = scrolled * 0.1;
+            profileCard.style.transform = `perspective(1000px) rotateX(${5 + cardRate}deg) rotateY(${-5 + cardRate}deg)`;
+        }
+    });
+}
+
+// 高亮當前頁面區塊
+function highlightCurrentSection() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let currentSection = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// 工具函數
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function showNotification(message, type = 'info') {
+    // 創建通知元素
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span class="notification-icon">
+                ${type === 'success' ? '✓' : type === 'error' ? '✗' : 'ℹ'}
+            </span>
+            <span class="notification-message">${message}</span>
+        </div>
+    `;
+
+    // 添加樣式
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        z-index: 10000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        max-width: 300px;
+        font-family: 'Noto Sans TC', sans-serif;
+    `;
+
+    // 添加到頁面
+    document.body.appendChild(notification);
+
+    // 顯示動畫
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+
+    // 自動移除
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
+
+// 數字計數動畫
+function animateNumbers() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    statNumbers.forEach(number => {
+        const finalNumber = parseInt(number.textContent);
+        const duration = 2000; // 2秒
+        const increment = finalNumber / (duration / 16); // 60fps
+        let currentNumber = 0;
+        
+        const timer = setInterval(() => {
+            currentNumber += increment;
+            if (currentNumber >= finalNumber) {
+                number.textContent = finalNumber + (number.textContent.includes('+') ? '+' : number.textContent.includes('%') ? '%' : '');
+                clearInterval(timer);
+            } else {
+                number.textContent = Math.floor(currentNumber);
+            }
+        }, 16);
+    });
+}
+
+// 觀察統計數字區塊，觸發計數動畫
+const statsObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateNumbers();
+            statsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+// 在 DOM 載入後觀察統計區塊
+document.addEventListener('DOMContentLoaded', function() {
+    const statsSection = document.querySelector('.about-stats');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
+});
+
+// 打字機效果（用於 Hero 標題）
+function typewriter(element, text, speed = 100) {
+    let i = 0;
+    element.textContent = '';
+    
+    function type() {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    
+    type();
+}
+
+// 在頁面載入時啟動打字機效果
+window.addEventListener('load', function() {
+    const nameElement = document.querySelector('.name');
+    if (nameElement) {
+        const originalText = nameElement.textContent;
+        setTimeout(() => {
+            typewriter(nameElement, originalText, 150);
+        }, 1000);
+    }
+});
+
+// 滑鼠追蹤效果（可選）
+document.addEventListener('mousemove', function(e) {
+    const cursor = document.querySelector('.cursor');
+    if (cursor) {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    }
+});
+
+// 載入動畫
+window.addEventListener('load', function() {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500);
+    }
+    
+    // 開始頁面動畫
+    document.body.classList.add('loaded');
+});
+
+// 主題切換功能（深色/淺色模式）
+function initThemeToggle() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
+}
+
+// 響應式圖片載入
+function initLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// 頁面效能優化 - 防抖函數
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// 滾動效能優化
+const debouncedScroll = debounce(function() {
+    highlightCurrentSection();
+}, 10);
+
+window.addEventListener('scroll', debouncedScroll);
+
+// 錯誤處理
+window.addEventListener('error', function(e) {
+    console.error('頁面發生錯誤:', e.error);
+    // 可以在這裡添加錯誤回報功能
+});
+
+// Service Worker 註冊（PWA 支援）
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('./sw.js')
+            .then(function(registration) {
+                console.log('SW 註冊成功:', registration.scope);
+            })
+            .catch(function(registrationError) {
+                console.log('SW 註冊失敗:', registrationError);
+            });
+    });
+}
