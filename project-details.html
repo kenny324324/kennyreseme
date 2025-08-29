@@ -6,65 +6,68 @@
     <title>專案詳細資訊 - 余亮廷 Kenny Yu</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text">Kenny Yu</span>
-                <span class="logo-subtitle">UI/UX Engineer</span>
-            </div>
-            <div class="nav-actions">
-                <a href="index.html" class="download-btn">
+                <a href="index.html" class="back-btn" style="display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 500; background: #f8f9fa; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease;">
                     <i class="fas fa-arrow-left"></i>
                     <span>返回首頁</span>
                 </a>
             </div>
+            <div class="nav-logo" style="margin-left: auto;">
+                <span class="logo-text">專案詳細資訊</span>
+            </div>
         </div>
     </nav>
 
-    <!-- Project Details Section -->
-    <section class="project-details">
-        <div class="container">
+    <div class="container" style="margin-top: 120px;">
+        <section class="project-details">
             <div class="section-header">
                 <h1 class="section-title" id="projectTitle">專案標題</h1>
-                <span class="project-category" id="projectCategory">專案類別</span>
+                <span class="project-category" id="projectCategory" style="display: inline-block; background: #f8f9fa !important; color: #333 !important; padding: 8px 20px; border-radius: 6px; font-size: 0.9rem; margin-top: 15px; border: 1px solid #e9ecef !important; box-shadow: none !important;">專案類別</span>
             </div>
             
-            <div class="project-content">
-                <div class="project-image-section">
-                    <div class="project-image" id="projectImage">
+            <div class="project-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin: 60px 0;">
+                <div class="project-image-section" style="text-align: center;">
+                    <div class="project-image" id="projectImage" style="width: 100%; max-width: 400px; height: 300px; background: #f8f9fa !important; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #666 !important; font-size: 4rem; margin: 0 auto 20px; border: 1px solid #e9ecef !important; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;">
                         <i class="fas fa-project-diagram"></i>
                     </div>
                 </div>
                 
                 <div class="project-info">
-                    <div class="project-description" id="projectDescription">
+                    <div class="project-description" id="projectDescription" style="font-size: 1.1rem; line-height: 1.7; color: #555; margin-bottom: 40px; background: #f8f9fa !important; padding: 25px !important; border-radius: 15px !important; border-left: 4px solid #e9ecef !important;">
                         專案描述將在這裡顯示...
                     </div>
                     
-                    <div class="project-tech-stack">
-                        <h3 class="category-title">技術棧</h3>
-                        <div class="tech-tags" id="techTags">
+                    <div class="project-tech-stack" style="margin-bottom: 40px;">
+                        <h3 class="category-title" style="position: relative;">技術棧
+                            <span style="position: absolute; left: -40px; top: 50%; transform: translateY(-50%); width: 30px; height: 3px; background: #e9ecef !important; border-radius: 2px;"></span>
+                        </h3>
+                        <div class="tech-tags" id="techTags" style="display: flex; flex-wrap: wrap; gap: 12px;">
                             <!-- 技術標籤將在這裡動態生成 -->
                         </div>
                     </div>
                     
-                    <div class="project-features">
-                        <h3 class="category-title">主要功能</h3>
-                        <ul class="features-list" id="featuresList">
+                    <div class="project-features" style="margin-bottom: 40px;">
+                        <h3 class="category-title" style="position: relative;">主要功能
+                            <span style="position: absolute; left: -40px; top: 50%; transform: translateY(-50%); width: 30px; height: 3px; background: #e9ecef !important; border-radius: 2px;"></span>
+                        </h3>
+                        <ul class="features-list" id="featuresList" style="list-style: none; padding: 0;">
                             <!-- 功能列表將在這裡動態生成 -->
                         </ul>
                     </div>
                 </div>
             </div>
             
-            <div class="project-links" id="projectLinks">
+            <div class="project-links" id="projectLinks" style="text-align: center; margin: 60px 0; padding: 40px;">
                 <!-- 專案連結將在這裡動態生成 -->
             </div>
             
-            <div class="about-stats">
+            <div class="about-stats" style="margin-top: 60px; padding: 40px 0;">
                 <div class="stat-item">
                     <div class="stat-number">100%</div>
                     <div class="stat-label">完成度</div>
@@ -78,10 +81,20 @@
                     <div class="stat-label">下載次數</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <script>
+        // 導航欄滾動效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
         // 專案資料庫
         const projectDatabase = {
             '跳蛙APP': {
@@ -211,7 +224,12 @@
             document.getElementById('projectTitle').textContent = projectName;
             
             // 更新專案類別
-            document.getElementById('projectCategory').textContent = project.category;
+            const categoryElement = document.getElementById('projectCategory');
+            categoryElement.textContent = project.category;
+            categoryElement.style.background = '#f8f9fa !important';
+            categoryElement.style.color = '#333 !important';
+            categoryElement.style.border = '1px solid #e9ecef !important';
+            categoryElement.style.boxShadow = 'none !important';
             
             // 更新專案描述
             document.getElementById('projectDescription').textContent = project.description;
@@ -219,17 +237,21 @@
             // 更新專案圖示
             const projectImage = document.getElementById('projectImage');
             projectImage.innerHTML = `<i class="${project.icon}"></i>`;
+            projectImage.style.background = '#f8f9fa !important';
+            projectImage.style.color = '#666 !important';
+            projectImage.style.border = '1px solid #e9ecef !important';
+            projectImage.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1) !important';
             
             // 更新技術標籤
             const techTags = document.getElementById('techTags');
             techTags.innerHTML = project.techStack.map(tech => 
-                `<span class="tech-tag">${tech}</span>`
+                `<span style="background: #f8f9fa !important; color: #333 !important; padding: 12px 24px; border-radius: 30px; font-size: 0.95rem; font-weight: 600; border: 1px solid #e9ecef !important; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;">${tech}</span>`
             ).join('');
             
             // 更新功能列表
             const featuresList = document.getElementById('featuresList');
             featuresList.innerHTML = project.features.map(feature => 
-                `<li>${feature}</li>`
+                `<li style="padding: 20px; color: #555; position: relative; padding-left: 45px; background: #f8f9fa; border-radius: 10px; margin-bottom: 10px; border-bottom: 1px solid #e9ecef;">${feature}</li>`
             ).join('');
             
             // 更新專案連結
