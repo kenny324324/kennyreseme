@@ -4,14 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initScrollAnimations();
     initProjectFilter();
-    initContactForm();
     initSkillBars();
     initSmoothScrolling();
     initParallaxEffects();
     initProjectModals(); // 新增：專案詳細資訊模態框功能
-    initThemeToggle();
-    initLazyLoading();
-    registerServiceWorker(); // 新增 Service Worker 註冊
     console.log('所有功能初始化完成');
 });
 
@@ -104,46 +100,7 @@ function initProjectFilter() {
     });
 }
 
-// 聯絡表單功能
-function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    
-    // 安全檢查：如果找不到表單，則不執行
-    if (!contactForm) {
-        console.warn('找不到聯絡表單，跳過初始化');
-        return;
-    }
 
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // 取得表單資料
-        const formData = new FormData(contactForm);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const subject = formData.get('subject');
-        const message = formData.get('message');
-
-        // 簡單驗證
-        if (!name || !email || !subject || !message) {
-            showNotification('請填寫所有必填欄位', 'error');
-            return;
-        }
-
-        if (!isValidEmail(email)) {
-            showNotification('請輸入有效的信箱地址', 'error');
-            return;
-        }
-
-        // 模擬發送訊息
-        showNotification('訊息發送中...', 'info');
-        
-        setTimeout(() => {
-            showNotification('訊息已成功發送！我會盡快回覆您', 'success');
-            contactForm.reset();
-        }, 1500);
-    });
-}
 
 // 技能條動畫
 function initSkillBars() {
@@ -203,11 +160,11 @@ function initParallaxEffects() {
             hero.style.transform = `translateY(${rate}px)`;
         }
         
-        // 浮動卡片效果
+        // 移除浮動卡片的 3D 旋轉效果，保持固定角度
         const profileCard = document.querySelector('.profile-card');
-        if (profileCard && scrolled < window.innerHeight) {
-            const cardRate = scrolled * 0.1;
-            profileCard.style.transform = `perspective(1000px) rotateX(${5 + cardRate}deg) rotateY(${-5 + cardRate}deg)`;
+        if (profileCard) {
+            // 只保留輕微的傾斜角度，不隨滾動變化
+            profileCard.style.transform = 'perspective(1000px) rotateX(5deg) rotateY(-5deg)';
         }
     });
 }
@@ -236,11 +193,7 @@ function highlightCurrentSection() {
     });
 }
 
-// 工具函數
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
+
 
 function showNotification(message, type = 'info') {
     // 創建通知元素
@@ -439,21 +392,7 @@ window.addEventListener('error', function(e) {
     // 可以在這裡添加錯誤回報功能
 });
 
-// Service Worker 註冊（PWA 支援）
-function registerServiceWorker() {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js')
-            .then(function(registration) {
-                console.log('SW 註冊成功:', registration.scope);
-            })
-            .catch(function(registrationError) {
-                console.warn('SW 註冊失敗:', registrationError);
-                // 如果找不到 sw.js，不要拋出錯誤
-            });
-    } else {
-        console.log('瀏覽器不支援 Service Worker');
-    }
-}
+
 
 // 專案詳細資訊模態框功能
 function initProjectModals() {
@@ -463,15 +402,6 @@ function initProjectModals() {
     setTimeout(() => {
         const learnMoreBtns = document.querySelectorAll('.learn-more-btn');
         console.log('找到', learnMoreBtns.length, '個了解更多按鈕');
-        
-        // 額外除錯：檢查每個按鈕的可見性和樣式
-        learnMoreBtns.forEach((btn, index) => {
-            console.log(`按鈕 ${index + 1} 詳細資訊：`);
-            console.log('- 文字內容:', btn.textContent);
-            console.log('- 是否可見:', btn.offsetParent !== null);
-            console.log('- 計算樣式:', window.getComputedStyle(btn));
-            console.log('- 是否有點擊事件:', btn.onclick !== null);
-        });
         
         if (learnMoreBtns.length === 0) {
             console.error('沒有找到任何了解更多按鈕！');
@@ -486,6 +416,10 @@ function initProjectModals() {
             
             // 添加新的事件監聽器
             btn.addEventListener('click', handleLearnMoreClick);
+            
+            // 測試按鈕是否可以被點擊
+            console.log(`按鈕 ${index + 1} 樣式:`, window.getComputedStyle(btn));
+            console.log(`按鈕 ${index + 1} 是否可見:`, btn.offsetParent !== null);
         });
         
         console.log('所有按鈕事件監聽器已添加完成');
@@ -515,7 +449,9 @@ function handleLearnMoreClick(e) {
     const title = projectTitle.textContent;
     console.log('專案標題:', title);
     
-    showProjectModal(title);
+    // 跳轉到新頁面，傳遞專案標題作為參數
+    const projectPageUrl = `project-details.html?project=${encodeURIComponent(title)}`;
+    window.location.href = projectPageUrl;
 }
 
 function showProjectModal(title) {
