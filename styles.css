@@ -39,6 +39,99 @@ body {
     box-shadow: none;
 }
 
+/* Hover effects for devices with mouse */
+@media (hover: hover) {
+    .nav-link:hover {
+        color: #1a1a1a;
+        transform: translateY(-2px);
+    }
+
+    .download-btn:hover {
+        background: #1a1a1a;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(26, 26, 26, 0.3);
+    }
+
+    .btn-primary:hover {
+        background: #1a1a1a;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(26, 26, 26, 0.3);
+    }
+
+    .btn-outline:hover {
+        background: #1a1a1a;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(26, 26, 26, 0.3);
+    }
+
+    .profile-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .profile-photo:hover {
+        transform: scale(1.05);
+    }
+
+    .about-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .stat-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .skill-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        border-color: #d1d5db;
+    }
+
+    .skill-item:hover .skill-icon {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(26, 26, 26, 0.3);
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-card:hover .project-overlay {
+        opacity: 1;
+    }
+
+    .project-link:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+    }
+
+    .learn-more-btn:hover {
+        background: #333;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(26, 26, 26, 0.3);
+    }
+
+    .timeline-content:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .social-link:hover {
+        background: #1a1a1a;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .lang-option:not(.active):hover {
+        background: #f1f5f9;
+        color: #1a1a1a;
+    }
+}
+
 .navbar.scrolled {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     transform: translateX(-50%) scale(1.02);
@@ -130,11 +223,7 @@ body {
     border: none;
 }
 
-.download-btn:hover {
-    background: #e2e8f0;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
+
 
 .download-btn i {
     font-size: 12px;
@@ -160,6 +249,8 @@ body {
     transition: all 0.3s ease;
     border-radius: 1px;
     transform-origin: center;
+    position: relative;
+    backface-visibility: hidden;
 }
 
 /* Hero Section */
@@ -530,8 +621,10 @@ section {
 
 .about-stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .stat-item {
@@ -829,6 +922,34 @@ section {
     margin-bottom: 20px;
 }
 
+.project-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.learn-more-btn {
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(26, 26, 26, 0.2);
+}
+
+.learn-more-btn:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(26, 26, 26, 0.3);
+}
+
+.learn-more-btn:active {
+    transform: translateY(0);
+}
+
 .tech-tag {
     background: #f1f5f9;
     color: #333;
@@ -1040,6 +1161,7 @@ section {
     .navbar {
         width: calc(100% - 20px);
         top: 10px;
+        border-radius: 20px;
     }
 
     .nav-container {
@@ -1101,11 +1223,13 @@ section {
     }
 
     .hamburger.active span:nth-child(1) {
-        transform: translateY(5px) rotate(45deg);
+        transform: translateY(5px) rotate(44deg);
+        transform-origin: center;
     }
 
     .hamburger.active span:nth-child(3) {
-        transform: translateY(-5px) rotate(-45deg);
+        transform: translateY(-5px) rotate(-44deg);
+        transform-origin: center;
     }
 
     .hero-content {
@@ -1140,6 +1264,7 @@ section {
     .about-stats {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
+        max-width: 500px;
     }
 
     .skills-grid {
@@ -1182,6 +1307,10 @@ section {
 }
 
 @media (max-width: 480px) {
+    .navbar {
+        border-radius: 15px;
+    }
+    
     .container {
         padding: 0 15px;
     }
@@ -1221,7 +1350,13 @@ section {
 
 
     .about-stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        max-width: 400px;
+    }
+
+    .stat-item {
+        padding: 25px 15px;
     }
 }
 
@@ -1230,6 +1365,51 @@ section {
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.6s ease;
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Enhanced touch feedback for mobile devices */
+    .project-card:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    .learn-more-btn:active {
+        transform: scale(0.95);
+        background: #333;
+        transition: transform 0.1s ease;
+    }
+    
+    .btn:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+    
+    .skill-item:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    .about-item:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    .stat-item:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    /* Show project overlay on touch devices */
+    .project-overlay {
+        opacity: 0.1;
+        transition: opacity 0.3s ease;
+    }
+    
+    .project-card:active .project-overlay {
+        opacity: 0.8;
+    }
 }
 
 .fade-in.visible {
