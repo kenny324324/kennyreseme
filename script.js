@@ -1,5 +1,6 @@
 // 等待 DOM 載入完成
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM 載入完成，開始初始化...');
     initNavigation();
     initScrollAnimations();
     initProjectFilter();
@@ -7,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initSkillBars();
     initSmoothScrolling();
     initParallaxEffects();
+    initProjectModals(); // 新增：專案詳細資訊模態框功能
+    initThemeToggle();
+    initLazyLoading();
+    registerServiceWorker(); // 新增 Service Worker 註冊
+    console.log('所有功能初始化完成');
 });
 
 // 導航選單功能
@@ -101,6 +107,12 @@ function initProjectFilter() {
 // 聯絡表單功能
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
+    
+    // 安全檢查：如果找不到表單，則不執行
+    if (!contactForm) {
+        console.warn('找不到聯絡表單，跳過初始化');
+        return;
+    }
 
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -428,14 +440,137 @@ window.addEventListener('error', function(e) {
 });
 
 // Service Worker 註冊（PWA 支援）
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
+function registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js')
             .then(function(registration) {
                 console.log('SW 註冊成功:', registration.scope);
             })
             .catch(function(registrationError) {
-                console.log('SW 註冊失敗:', registrationError);
+                console.warn('SW 註冊失敗:', registrationError);
+                // 如果找不到 sw.js，不要拋出錯誤
             });
+    } else {
+        console.log('瀏覽器不支援 Service Worker');
+    }
+}
+
+// 專案詳細資訊模態框功能
+function initProjectModals() {
+    console.log('初始化專案模態框功能...');
+    
+    // 等待一下確保 DOM 完全載入
+    setTimeout(() => {
+        const learnMoreBtns = document.querySelectorAll('.learn-more-btn');
+        console.log('找到', learnMoreBtns.length, '個了解更多按鈕');
+        
+        // 額外除錯：檢查每個按鈕的可見性和樣式
+        learnMoreBtns.forEach((btn, index) => {
+            console.log(`按鈕 ${index + 1} 詳細資訊：`);
+            console.log('- 文字內容:', btn.textContent);
+            console.log('- 是否可見:', btn.offsetParent !== null);
+            console.log('- 計算樣式:', window.getComputedStyle(btn));
+            console.log('- 是否有點擊事件:', btn.onclick !== null);
+        });
+        
+        if (learnMoreBtns.length === 0) {
+            console.error('沒有找到任何了解更多按鈕！');
+            return;
+        }
+        
+        learnMoreBtns.forEach((btn, index) => {
+            console.log(`為第 ${index + 1} 個按鈕添加點擊事件，按鈕文字:`, btn.textContent);
+            
+            // 移除舊的事件監聽器（如果有的話）
+            btn.removeEventListener('click', handleLearnMoreClick);
+            
+            // 添加新的事件監聽器
+            btn.addEventListener('click', handleLearnMoreClick);
+        });
+        
+        console.log('所有按鈕事件監聽器已添加完成');
+    }, 100);
+}
+
+// 統一的點擊處理函數
+function handleLearnMoreClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('了解更多按鈕被點擊！');
+    console.log('事件對象:', e);
+    console.log('按鈕元素:', this);
+    
+    const projectCard = this.closest('.project-card');
+    if (!projectCard) {
+        console.error('找不到專案卡片！');
+        return;
+    }
+    
+    const projectTitle = projectCard.querySelector('.project-title');
+    if (!projectTitle) {
+        console.error('找不到專案標題！');
+        return;
+    }
+    
+    const title = projectTitle.textContent;
+    console.log('專案標題:', title);
+    
+    showProjectModal(title);
+}
+
+function showProjectModal(title) {
+    console.log('顯示模態框:', title);
+    // 創建模態框
+    const modal = document.createElement('div');
+    modal.className = 'project-modal';
+    modal.innerHTML = `
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>${title}</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="project-details">
+                    <!-- 內容區域先留空 -->
+                    <p>專案詳細內容將在這裡顯示...</p>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // 添加到頁面
+    document.body.appendChild(modal);
+    console.log('模態框已添加到頁面');
+    
+    // 關閉模態框
+    const closeBtn = modal.querySelector('.modal-close');
+    const overlay = modal.querySelector('.modal-overlay');
+    
+    closeBtn.addEventListener('click', () => closeModal(modal));
+    overlay.addEventListener('click', () => closeModal(modal));
+    
+    // ESC 鍵關閉
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal(modal);
+        }
     });
+    
+    // 顯示動畫
+    setTimeout(() => {
+        modal.classList.add('show');
+        console.log('模態框顯示動畫完成');
+    }, 10);
+}
+
+function closeModal(modal) {
+    console.log('關閉模態框');
+    modal.classList.remove('show');
+    setTimeout(() => {
+        if (modal.parentNode) {
+            modal.parentNode.removeChild(modal);
+            console.log('模態框已從頁面移除');
+        }
+    }, 300);
 }
