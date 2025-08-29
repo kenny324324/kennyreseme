@@ -6,7 +6,6 @@
     <title>專案詳細資訊 - 余亮廷 Kenny Yu</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-
 </head>
 <body>
     <!-- Navigation -->
@@ -19,70 +18,10 @@
                 </a>
             </div>
             <div class="nav-logo" style="margin-left: auto;">
-                <span class="logo-text">專案詳細資訊</span>
+                <span class="logo-text" id="projectTitle">專案詳細資訊</span>
             </div>
         </div>
     </nav>
-
-    <div class="container" style="margin-top: 120px;">
-        <section class="project-details">
-            <div class="section-header">
-                <h1 class="section-title" id="projectTitle">專案標題</h1>
-                <span class="project-category" id="projectCategory" style="display: inline-block; background: #f8f9fa !important; color: #333 !important; padding: 8px 20px; border-radius: 6px; font-size: 0.9rem; margin-top: 15px; border: 1px solid #e9ecef !important; box-shadow: none !important;">專案類別</span>
-            </div>
-            
-            <div class="project-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin: 60px 0;">
-                <div class="project-image-section" style="text-align: center;">
-                    <div class="project-image" id="projectImage" style="width: 100%; max-width: 400px; height: 300px; background: #f8f9fa !important; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #666 !important; font-size: 4rem; margin: 0 auto 20px; border: 1px solid #e9ecef !important; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                </div>
-                
-                <div class="project-info">
-                    <div class="project-description" id="projectDescription" style="font-size: 1.1rem; line-height: 1.7; color: #555; margin-bottom: 40px; background: #f8f9fa !important; padding: 25px !important; border-radius: 15px !important; border-left: 4px solid #e9ecef !important;">
-                        專案描述將在這裡顯示...
-                    </div>
-                    
-                    <div class="project-tech-stack" style="margin-bottom: 40px;">
-                        <h3 class="category-title" style="position: relative;">技術棧
-                            <span style="position: absolute; left: -40px; top: 50%; transform: translateY(-50%); width: 30px; height: 3px; background: #e9ecef !important; border-radius: 2px;"></span>
-                        </h3>
-                        <div class="tech-tags" id="techTags" style="display: flex; flex-wrap: wrap; gap: 12px;">
-                            <!-- 技術標籤將在這裡動態生成 -->
-                        </div>
-                    </div>
-                    
-                    <div class="project-features" style="margin-bottom: 40px;">
-                        <h3 class="category-title" style="position: relative;">主要功能
-                            <span style="position: absolute; left: -40px; top: 50%; transform: translateY(-50%); width: 30px; height: 3px; background: #e9ecef !important; border-radius: 2px;"></span>
-                        </h3>
-                        <ul class="features-list" id="featuresList" style="list-style: none; padding: 0;">
-                            <!-- 功能列表將在這裡動態生成 -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-links" id="projectLinks" style="text-align: center; margin: 60px 0; padding: 40px;">
-                <!-- 專案連結將在這裡動態生成 -->
-            </div>
-            
-            <div class="about-stats" style="margin-top: 60px; padding: 40px 0;">
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">完成度</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">4.8</div>
-                    <div class="stat-label">使用者評分</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">10K+</div>
-                    <div class="stat-label">下載次數</div>
-                </div>
-            </div>
-        </section>
-    </div>
 
     <script>
         // 導航欄滾動效果
@@ -95,181 +34,19 @@
             }
         });
 
-        // 專案資料庫
-        const projectDatabase = {
-            '跳蛙APP': {
-                category: '商業應用',
-                description: '整合 Google 登入、地圖功能與 Firebase 推播的商業應用程式，提供完整的用戶體驗與後端服務整合。',
-                techStack: ['.NET MAUI', 'Google登入', '地圖整合', 'Firebase推播', 'RESTful API'],
-                features: [
-                    'Google 帳號登入與授權',
-                    '地圖定位與路線規劃',
-                    '即時推播通知',
-                    '用戶資料同步',
-                    '響應式 UI 設計'
-                ],
-                icon: 'fas fa-frog',
-                links: [
-                    { text: 'Google Play', icon: 'fab fa-google-play', url: '#' },
-                    { text: '專案展示', icon: 'fas fa-external-link-alt', url: '#' }
-                ]
-            },
-            '今皓AI APP': {
-                category: 'AI 應用',
-                description: 'AI 驅動的虛擬 IP 互動應用，整合第三方登入、AI 助理聊天與 Google 行事曆功能，提供智能化的個人助理服務。',
-                techStack: ['.NET MAUI', '第三方登入', 'AI助理', 'Google行事曆', 'OpenAI API'],
-                features: [
-                    'AI 智能對話系統',
-                    '第三方帳號登入',
-                    'Google 行事曆整合',
-                    '自然語言處理',
-                    '個性化用戶體驗'
-                ],
-                icon: 'fas fa-robot',
-                links: [
-                    { text: '專案展示', icon: 'fas fa-external-link-alt', url: '#' }
-                ]
-            },
-            '島嶼生吐司 POS': {
-                category: '商業系統',
-                description: '商業手持 POS 系統，整合條碼掃描硬體、API 串接與特殊機型功能實作，提供完整的零售解決方案。',
-                techStack: ['.NET MAUI', '硬體整合', '條碼掃描', 'API串接', 'SQLite'],
-                features: [
-                    '條碼掃描器整合',
-                    '多種支付方式',
-                    '庫存管理系統',
-                    '銷售報表生成',
-                    '離線作業支援'
-                ],
-                icon: 'fas fa-cash-register',
-                links: [
-                    { text: 'Google Play', icon: 'fab fa-google-play', url: '#' },
-                    { text: '專案展示', icon: 'fas fa-external-link-alt', url: '#' }
-                ]
-            },
-            'Mino 待辦清單': {
-                category: 'iOS 應用',
-                description: 'SwiftUI 開發的待辦清單 APP，具備推播提醒、iCloud 資料儲存、UI 規劃與 App Store 上架完整經驗。',
-                techStack: ['SwiftUI', 'iCloud', '推播提醒', 'App Store', 'Core Data'],
-                features: [
-                    'iCloud 資料同步',
-                    '本地推播通知',
-                    '美觀的 UI 設計',
-                    '任務分類管理',
-                    '完成度追蹤'
-                ],
-                icon: 'fab fa-swift',
-                links: [
-                    { text: 'App Store', icon: 'fab fa-app-store', url: '#' },
-                    { text: '專案展示', icon: 'fas fa-external-link-alt', url: '#' }
-                ]
-            },
-            'MIsh 個人書櫃': {
-                category: '跨平台應用',
-                description: 'Flutter 開發的個人書櫃 APP，具備第三方 API 串接、Apple 登入、Firebase 資料儲存與 App Store 上架經驗。',
-                techStack: ['Flutter', '第三方API', 'Apple登入', 'Firebase', 'App Store'],
-                features: [
-                    '跨平台支援',
-                    '第三方 API 整合',
-                    'Apple ID 登入',
-                    'Firebase 資料庫',
-                    '書籍管理系統'
-                ],
-                icon: 'fas fa-book',
-                links: [
-                    { text: 'App Store', icon: 'fab fa-app-store', url: '#' },
-                    { text: '專案展示', icon: 'fas fa-external-link-alt', url: '#' }
-                ]
-            },
-            '智能客服': {
-                category: '商業應用',
-                description: '基於 .NET MAUI 的智能客服系統，整合 AI 聊天機器人、多語言支援與客戶管理功能。',
-                techStack: ['.NET MAUI', 'AI聊天', '多語言', '客戶管理', 'Azure'],
-                features: [
-                    'AI 智能對話',
-                    '多語言支援',
-                    '客戶資料管理',
-                    '對話歷史記錄',
-                    '自動回覆系統'
-                ],
-                icon: 'fas fa-headset',
-                links: [
-                    { text: '專案展示', icon: 'fas fa-external-link-alt', url: '#' }
-                ]
-            }
-        };
-
-        // 頁面載入時初始化
+        // 頁面載入時更新專案標題
         document.addEventListener('DOMContentLoaded', function() {
             // 從 URL 參數獲取專案名稱
             const urlParams = new URLSearchParams(window.location.search);
             const projectName = urlParams.get('project');
             
-            if (projectName && projectDatabase[projectName]) {
-                displayProjectDetails(projectName);
-            } else {
-                // 如果沒有找到專案，顯示預設內容
-                displayDefaultContent();
+            if (projectName) {
+                // 更新導航欄標題
+                document.getElementById('projectTitle').textContent = projectName;
+                // 更新頁面標題
+                document.title = `${projectName} - 專案詳細資訊 - 余亮廷 Kenny Yu`;
             }
         });
-
-        // 顯示專案詳細資訊
-        function displayProjectDetails(projectName) {
-            const project = projectDatabase[projectName];
-            
-            // 更新頁面標題
-            document.title = `${projectName} - 專案詳細資訊 - 余亮廷 Kenny Yu`;
-            
-            // 更新專案標題
-            document.getElementById('projectTitle').textContent = projectName;
-            
-            // 更新專案類別
-            const categoryElement = document.getElementById('projectCategory');
-            categoryElement.textContent = project.category;
-            categoryElement.style.background = '#f8f9fa !important';
-            categoryElement.style.color = '#333 !important';
-            categoryElement.style.border = '1px solid #e9ecef !important';
-            categoryElement.style.boxShadow = 'none !important';
-            
-            // 更新專案描述
-            document.getElementById('projectDescription').textContent = project.description;
-            
-            // 更新專案圖示
-            const projectImage = document.getElementById('projectImage');
-            projectImage.innerHTML = `<i class="${project.icon}"></i>`;
-            projectImage.style.background = '#f8f9fa !important';
-            projectImage.style.color = '#666 !important';
-            projectImage.style.border = '1px solid #e9ecef !important';
-            projectImage.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1) !important';
-            
-            // 更新技術標籤
-            const techTags = document.getElementById('techTags');
-            techTags.innerHTML = project.techStack.map(tech => 
-                `<span style="background: #f8f9fa !important; color: #333 !important; padding: 12px 24px; border-radius: 30px; font-size: 0.95rem; font-weight: 600; border: 1px solid #e9ecef !important; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;">${tech}</span>`
-            ).join('');
-            
-            // 更新功能列表
-            const featuresList = document.getElementById('featuresList');
-            featuresList.innerHTML = project.features.map(feature => 
-                `<li style="padding: 20px; color: #555; position: relative; padding-left: 45px; background: #f8f9fa; border-radius: 10px; margin-bottom: 10px; border-bottom: 1px solid #e9ecef;">${feature}</li>`
-            ).join('');
-            
-            // 更新專案連結
-            const projectLinks = document.getElementById('projectLinks');
-            projectLinks.innerHTML = project.links.map(link => 
-                `<a href="${link.url}" class="btn btn-primary" target="_blank">
-                    <i class="${link.icon}"></i>
-                    ${link.text}
-                </a>`
-            ).join('');
-        }
-
-        // 顯示預設內容
-        function displayDefaultContent() {
-            document.getElementById('projectTitle').textContent = '專案詳細資訊';
-            document.getElementById('projectCategory').textContent = '未指定';
-            document.getElementById('projectDescription').textContent = '請從首頁選擇專案以查看詳細資訊。';
-        }
     </script>
 </body>
 </html>
