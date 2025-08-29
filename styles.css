@@ -444,11 +444,39 @@ section {
     background: #fff;
 }
 
+/* Personal Introduction */
+.personal-intro {
+    margin: 40px 0 60px 0;
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.intro-text:last-child {
+    margin-bottom: 0;
+}
+
+.intro-text .highlight {
+    color: #1a1a1a;
+    font-weight: 600;
+    background: linear-gradient(120deg, #f0f0f0 0%, #f0f0f0 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.3em;
+    background-position: 0 88%;
+    padding: 0 2px;
+}
+
 .about-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 60px;
-    align-items: start;
+    margin-top: 40px;
 }
 
 .about-item {
@@ -494,6 +522,7 @@ section {
 
 .about-stats {
     display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
 }
 
@@ -671,10 +700,13 @@ section {
     transition: all 0.3s ease;
     opacity: 1;
     transform: scale(1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .project-card.featured {
-    grid-column: span 2;
+    /* Remove featured card spanning - all cards same size */
 }
 
 .project-card:hover {
@@ -741,6 +773,9 @@ section {
 
 .project-content {
     padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-header {
@@ -787,23 +822,7 @@ section {
     font-weight: 500;
 }
 
-.project-achievements {
-    display: grid;
-    gap: 8px;
-}
 
-.achievement {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.achievement i {
-    color: #1a1a1a;
-    font-size: 0.8rem;
-}
 
 /* Experience Section */
 .experience {
@@ -1110,7 +1129,7 @@ section {
     }
 
     .project-card.featured {
-        grid-column: span 1;
+        /* All cards same size on mobile too */
     }
 
     .footer-content {
