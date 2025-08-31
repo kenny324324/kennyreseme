@@ -248,7 +248,7 @@ function animateNumbers() {
     
     statNumbers.forEach(number => {
         const finalNumber = parseInt(number.textContent);
-        const duration = 2000; // 2秒
+        const duration = 400; // 0.4秒
         const increment = finalNumber / (duration / 16); // 60fps
         let currentNumber = 0;
         
