@@ -1626,6 +1626,13 @@ section {
     min-height: 100vh;
 }
 
+/* 響應式返回按鈕樣式 */
+@media (max-width: 768px) {
+    .back-btn {
+        margin-left: 10px !important;
+    }
+}
+
 .project-details .section-header {
     text-align: center;
     margin-bottom: 60px;
@@ -1716,7 +1723,6 @@ section {
     padding: 25px;
     background: #ffffff;
     border-radius: 15px;
-    border-left: 4px solid #667eea;
 }
 
 .project-details .project-tech-stack,
