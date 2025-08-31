@@ -1740,13 +1740,7 @@ section {
     gap: 10px;
 }
 
-.project-details .category-title:before {
-    content: '';
-    width: 30px;
-    height: 3px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 2px;
-}
+
 
 .project-details .tech-tags {
     display: flex;
@@ -1769,10 +1763,10 @@ section {
 }
 
 .project-details .tech-tag:hover {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #1a1a1a;
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 5px 20px rgba(26, 26, 26, 0.3);
 }
 
 .project-details .features-list {
@@ -1806,13 +1800,13 @@ section {
     content: '✓';
     position: absolute;
     left: 15px;
-    color: #667eea;
+    color: #1a1a1a;
     font-weight: bold;
     font-size: 1.3rem;
     line-height: 1;
     width: 25px;
     height: 25px;
-    background: rgba(102, 126, 234, 0.1);
+    background: rgba(26, 26, 26, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
