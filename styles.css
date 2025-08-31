@@ -1861,8 +1861,11 @@ section {
 @media (max-width: 768px) {
     .project-details .project-content {
         grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 30px;
+        gap: 30px;
+        padding: 15px;
+        margin: 0 10px;
+        width: calc(100% - 20px);
+        box-sizing: border-box;
     }
     
     .project-details .section-title {
@@ -1870,19 +1873,93 @@ section {
     }
     
     .project-details .project-image {
-        min-height: 200px;
+        min-height: 150px;
         aspect-ratio: 16/9;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
     }
     
     .project-details .project-links {
-        padding: 30px 20px;
+        padding: 20px;
         gap: 20px;
+        width: 100%;
     }
     
     .project-details .btn {
-        min-width: 150px;
-        padding: 12px 25px;
+        min-width: auto;
+        width: 100%;
+        max-width: 100%;
+        padding: 10px 20px;
         font-size: 0.9rem;
+        box-sizing: border-box;
+    }
+}
+
+/* 處理很窄的螢幕 */
+@media (max-width: 480px) {
+    .project-details .project-content {
+        padding: 10px;
+        margin: 0 5px;
+        width: calc(100% - 10px);
+    }
+    
+    .project-details .project-description {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .project-details .project-image {
+        min-height: 120px;
+        aspect-ratio: 4/3;
+    }
+    
+    .project-details .tech-tags {
+        gap: 4px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    
+    .project-details .tech-tag {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    
+    .project-details .btn {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+}
+
+/* 處理超窄的螢幕 */
+@media (max-width: 360px) {
+    .project-details .project-content {
+        padding: 8px;
+        margin: 0 3px;
+        width: calc(100% - 6px);
+    }
+    
+    .project-details .project-image {
+        min-height: 100px;
+        aspect-ratio: 1/1;
+    }
+    
+    .project-details .tech-tags {
+        gap: 3px;
+    }
+    
+    .project-details .tech-tag {
+        padding: 3px 6px;
+        font-size: 0.7rem;
+        min-width: 0;
+        max-width: 100%;
+    }
+    
+    .project-details .project-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
     }
 }
 
