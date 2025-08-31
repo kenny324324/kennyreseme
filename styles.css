@@ -1823,11 +1823,10 @@ section {
 
 .project-details .project-links {
     text-align: center;
-    margin-top: 60px;
+    margin-top: 0;
     padding: 50px;
     background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
     border-radius: 30px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
     display: flex;
     justify-content: center;
     gap: 30px;
