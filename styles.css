@@ -1898,3 +1898,39 @@ section {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* 頁面轉場動畫 */
+.page-fade-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.page-fade-overlay.fade-out {
+    opacity: 1;
+}
+
+/* 新頁面淡入動畫 */
+.page-fade-in-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+}
+
+.page-fade-in-overlay.fade-in {
+    opacity: 0;
+}

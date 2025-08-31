@@ -449,9 +449,27 @@ function handleLearnMoreClick(e) {
     const title = projectTitle.textContent;
     console.log('專案標題:', title);
     
-    // 跳轉到新頁面，傳遞專案標題作為參數
-    const projectPageUrl = `project-details.html?project=${encodeURIComponent(title)}`;
-    window.location.href = projectPageUrl;
+    // 觸發頁面淡出動畫
+    fadeOutAndNavigate(title);
+}
+
+// 新增：頁面淡出後跳轉的函數
+function fadeOutAndNavigate(projectTitle) {
+    // 創建淡出遮罩
+    const fadeOverlay = document.createElement('div');
+    fadeOverlay.className = 'page-fade-overlay';
+    document.body.appendChild(fadeOverlay);
+    
+    // 觸發淡出動畫
+    setTimeout(() => {
+        fadeOverlay.classList.add('fade-out');
+        
+        // 動畫完成後跳轉
+        setTimeout(() => {
+            const projectPageUrl = `project-details.html?project=${encodeURIComponent(projectTitle)}`;
+            window.location.href = projectPageUrl;
+        }, 500); // 500ms 後跳轉
+    }, 50);
 }
 
 function showProjectModal(title) {

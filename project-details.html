@@ -12,7 +12,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html" class="back-btn" style="display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 500; background: #f8f9fa; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease;">
+                <a href="#" class="back-btn" id="backBtn" style="display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 500; background: #f8f9fa; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease;">
                     <i class="fas fa-arrow-left"></i>
                     <span>返回首頁</span>
                 </a>
@@ -46,7 +46,42 @@
                 // 更新頁面標題
                 document.title = `${projectName} - 專案詳細資訊 - 余亮廷 Kenny Yu`;
             }
+            
+            // 觸發頁面淡入動畫
+            setTimeout(() => {
+                const fadeInOverlay = document.querySelector('.page-fade-in-overlay');
+                if (fadeInOverlay) {
+                    fadeInOverlay.classList.add('fade-in');
+                }
+            }, 100);
+            
+            // 返回按鈕點擊事件
+            const backBtn = document.getElementById('backBtn');
+            if (backBtn) {
+                backBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    fadeOutAndReturn();
+                });
+            }
         });
+        
+        // 返回首頁的淡出動畫函數
+        function fadeOutAndReturn() {
+            // 創建淡出遮罩
+            const fadeOverlay = document.createElement('div');
+            fadeOverlay.className = 'page-fade-overlay';
+            document.body.appendChild(fadeOverlay);
+            
+            // 觸發淡出動畫
+            setTimeout(() => {
+                fadeOverlay.classList.add('fade-out');
+                
+                // 動畫完成後跳轉回首頁的專案區域
+                setTimeout(() => {
+                    window.location.href = 'index.html#projects';
+                }, 500); // 500ms 後跳轉
+            }, 50);
+        }
     </script>
 </body>
 </html>
