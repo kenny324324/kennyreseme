@@ -660,7 +660,7 @@ section {
 
 /* Skills Section */
 .skills {
-    background: #f8fafc;
+    background: #ffffff;
 }
 
 .skills-content {
@@ -706,7 +706,7 @@ section {
 }
 
 .skill-item.expert {
-    background: linear-gradient(135deg, #fff 0%, #f8fafc 100%);
+    background: linear-gradient(135deg, #fff 0%, #ffffff 100%);
     border: 1px solid #e2e8f0;
 }
 
@@ -830,7 +830,7 @@ section {
 .project-image {
     position: relative;
     height: 200px;
-    background: #f8fafc;
+    background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -968,7 +968,7 @@ section {
 
 /* Experience Section */
 .experience {
-    background: #f8fafc;
+    background: #ffffff;
 }
 
 .timeline {
@@ -1622,7 +1622,7 @@ section {
 /* Project Details Page Styles */
 .project-details {
     padding: 100px 0 60px;
-    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
     min-height: 100vh;
 }
 
@@ -1714,7 +1714,7 @@ section {
     margin-bottom: 40px;
     font-weight: 400;
     padding: 25px;
-    background: #f8fafc;
+    background: #ffffff;
     border-radius: 15px;
     border-left: 4px solid #667eea;
 }
@@ -1787,7 +1787,7 @@ section {
 }
 
 .project-details .features-list li:hover {
-    background: #f8fafc;
+    background: #ffffff;
     padding-left: 50px;
     color: #1a1a1a;
 }
@@ -1817,7 +1817,7 @@ section {
     text-align: center;
     margin-top: 60px;
     padding: 50px;
-    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
     border-radius: 30px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
     display: flex;
