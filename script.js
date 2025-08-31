@@ -449,12 +449,20 @@ function handleLearnMoreClick(e) {
     const title = projectTitle.textContent;
     console.log('專案標題:', title);
     
+    // 收集專案的技術標籤
+    const techTags = [];
+    const techElements = projectCard.querySelectorAll('.tech-tag');
+    techElements.forEach(tag => {
+        techTags.push(tag.textContent);
+    });
+    console.log('專案技術標籤:', techTags);
+    
     // 觸發頁面淡出動畫
-    fadeOutAndNavigate(title);
+    fadeOutAndNavigate(title, techTags);
 }
 
 // 新增：頁面淡出後跳轉的函數
-function fadeOutAndNavigate(projectTitle) {
+function fadeOutAndNavigate(projectTitle, techTags) {
     // 創建淡出遮罩
     const fadeOverlay = document.createElement('div');
     fadeOverlay.className = 'page-fade-overlay';
@@ -466,7 +474,7 @@ function fadeOutAndNavigate(projectTitle) {
         
         // 動畫完成後跳轉
         setTimeout(() => {
-            const projectPageUrl = `project-details.html?project=${encodeURIComponent(projectTitle)}`;
+            const projectPageUrl = `project-details.html?project=${encodeURIComponent(projectTitle)}&tech=${encodeURIComponent(techTags.join(','))}`;
             window.location.href = projectPageUrl;
         }, 500); // 500ms 後跳轉
     }, 50);

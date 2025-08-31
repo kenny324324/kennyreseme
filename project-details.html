@@ -1,289 +1,233 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>專案詳細資訊 - 余亮廷 Kenny Yu</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>專案詳細資訊 - 余亮廷 Kenny Yu</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo" style="margin-left: -20px;">
-                <a href="#" class="back-btn" id="backBtn" style="display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 500; background: #f8f9fa; padding: 8px 16px; border-radius: 15px; transition: all 0.3s ease; margin: 0;">
-                    <i class="fas fa-arrow-left"></i>
-                    <span>返回首頁</span>
-                </a>
-            </div>
-            <div class="nav-logo" style="margin-left: auto;">
-                <span class="logo-text" id="projectTitle">專案詳細資訊</span>
-            </div>
-        </div>
-    </nav>
+  <!-- 進場淡入遮罩（你的 JS 會用到） -->
+  <div class="page-fade-in-overlay"></div>
 
-    <!-- 作品集詳細內容 -->
-    <div class="project-details">
-        <div class="container">
-            <!-- 專案標題區域 -->
-            <div class="section-header">
-            </div>
-
-            <!-- 專案主要內容 -->
-            <div class="project-content" style="margin: 60px auto; max-width: 1200px; padding: 0 20px;">
-                <div class="project-image-section">
-                    <div class="project-image" style="background: #f8f9fa; color: #333; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <div class="project-description">
-                        這是一個基於深度學習的智能客服系統，能夠理解用戶意圖、處理複雜查詢，並提供準確的業務解答。系統支援多語言、多平台整合，大幅降低企業客服成本。
-                    </div>
-                    
-                    <div class="project-tech-stack">
-                        <h3 class="category-title">技術架構</h3>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Docker</span>
-                        </div>
-                    </div>
-                    
-                    <div class="project-features">
-                        <h3 class="category-title">核心功能</h3>
-                        <ul class="features-list">
-                            <li>智能意圖識別與實體提取</li>
-                            <li>多輪對話管理與上下文理解</li>
-                            <li>知識庫自動學習與更新</li>
-                            <li>多平台整合（Web、APP、LINE）</li>
-                            <li>即時數據分析與報表</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 專案背景 -->
-            <section class="case__background" style="margin: 60px auto; max-width: 1200px; padding: 0 20px;">
-                <h2 class="case__section-title" style="font-size: 2rem; font-weight: 700; color: #1a1a1a; margin-bottom: 30px; text-align: center;">專案背景</h2>
-                <ul class="case__list" style="list-style: none; padding: 0;">
-                    <li style="background: #f8f9fa; padding: 25px; border-radius: 15px; margin-bottom: 20px;">
-                        <strong style="color: #1a1a1a;">目標：</strong>
-                        <span style="color: #4a5568;">開發企業級智能客服系統，降低 70% 人工客服成本，提升客戶響應速度至 5 秒內</span>
-                    </li>
-                    <li style="background: #f8f9fa; padding: 25px; border-radius: 15px; margin-bottom: 20px;">
-                        <strong style="color: #1a1a1a;">使用者/場景：</strong>
-                        <span style="color: #4a5568;">中大型企業客服部門、電商平台、金融機構，需要 24/7 不間斷客服服務</span>
-                    </li>
-                    <li style="background: #f8f9fa; padding: 25px; border-radius: 15px; margin-bottom: 20px;">
-                        <strong style="color: #1a1a1a;">我的角色與貢獻：</strong>
-                        <span style="color: #4a5568;">全端開發工程師，負責 AI 模型訓練、後端 API 開發、前端介面設計，以及系統整合測試</span>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- 規劃與流程 -->
-            <section class="case__process" style="margin: 60px auto; max-width: 1200px; padding: 0 20px;">
-                <h2 class="case__section-title" style="font-size: 2rem; font-weight: 700; color: #1a1a1a; margin-bottom: 30px; text-align: center;">規劃與流程</h2>
-                <div style="display: grid; grid-template-columns: 1fr; gap: 30px;">
-                    <div class="case__subsection" style="background: #f8f9fa; padding: 30px; border-radius: 20px;">
-                        <h3 class="case__subtitle" style="font-size: 1.3rem; font-weight: 600; color: #1a1a1a; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-palette" style="color: #333;"></i>
-                            設計（Figma）
-                        </h3>
-                        <p style="color: #4a5568; line-height: 1.6;">採用用戶中心設計方法，透過用戶訪談與行為分析，設計直觀的對話介面。使用 Figma 製作高保真原型，確保良好的用戶體驗與可訪問性。</p>
-                    </div>
-                    <div class="case__subsection" style="background: #f8f9fa; padding: 30px; border-radius: 20px;">
-                        <h3 class="case__subtitle" style="font-size: 1.3rem; font-weight: 600; color: #1a1a1a; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-code" style="color: #333;"></i>
-                            開發（技術）
-                        </h3>
-                        <p style="color: #4a5568; line-height: 1.6;">後端使用 Python + TensorFlow 訓練 NLP 模型，前端採用 React + TypeScript 建構響應式介面，使用 Docker 容器化部署，確保系統穩定與可擴展性。</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 挑戰與解決 -->
-            <section class="case__challenges" style="margin: 60px auto; max-width: 1200px; padding: 0 20px;">
-                <h2 class="case__section-title" style="font-size: 2rem; font-weight: 700; color: #1a1a1a; margin-bottom: 30px; text-align: center;">挑戰與解決</h2>
-                <div style="display: grid; gap: 30px;">
-                    <article class="challenge" style="background: #f8f9fa; padding: 30px; border-radius: 20px;">
-                        <h3 class="challenge__title" style="font-size: 1.3rem; font-weight: 600; color: #1a1a1a; margin-bottom: 20px;">挑戰 #1：多語言意圖識別準確率</h3>
-                        <ul class="challenge__list" style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-                                <strong style="color: #1a1a1a;">情境：</strong>
-                                <span style="color: #4a5568;">中文語意複雜，同一個問題有多種表達方式，傳統規則匹配準確率僅 60%</span>
-                            </li>
-                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-                                <strong style="color: #1a1a1a;">困難點：</strong>
-                                <span style="color: #4a5568;">需要大量標註數據訓練模型，且中文語意理解比英文更具挑戰性</span>
-                            </li>
-                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-                                <strong style="color: #1a1a1a;">作法：</strong>
-                                <span style="color: #4a5568;">採用 BERT 預訓練模型進行遷移學習，結合數據增強技術，建立 10,000+ 標註樣本</span>
-                            </li>
-                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-                                <strong style="color: #1a1a1a;">結果：</strong>
-                                <span style="color: #4a5568;">意圖識別準確率提升至 92%，支援繁體中文、簡體中文、英文三種語言</span>
-                            </li>
-                        </ul>
-                    </article>
-                    <article class="challenge" style="background: #f8f9fa; padding: 30px; border-radius: 20px;">
-                        <h3 class="challenge__title" style="font-size: 1.3rem; font-weight: 600; color: #1a1a1a; margin-bottom: 20px;">挑戰 #2：系統響應速度與併發處理</h3>
-                        <ul class="challenge__list" style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-                                <strong style="color: #1a1a1a;">情境：</strong>
-                                <span style="color: #4a5568;">企業級應用需要同時處理數千個併發對話，且每個回應必須在 5 秒內完成</span>
-                            </li>
-                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-                                <strong style="color: #1a1a1a;">困難點：</strong>
-                                <span style="color: #4a5568;">AI 模型推理耗時較長，傳統同步處理無法滿足高併發需求</span>
-                            </li>
-                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-                                <strong style="color: #1a1a1a;">作法：</strong>
-                                <span style="color: #4a5568;">實作非同步處理架構，使用 Redis 快取常見問題，並採用模型量化技術減少推理時間</span>
-                            </li>
-                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
-                                <strong style="color: #1a1a1a;">結果：</strong>
-                                <span style="color: #4a5568;">平均響應時間降至 2.3 秒，可同時處理 5,000+ 併發對話，系統可用性達 99.9%</span>
-                            </li>
-                        </ul>
-                    </article>
-                </div>
-            </section>
-
-            <!-- 設計/技術亮點 -->
-            <section class="case__highlights" style="margin: 60px auto; max-width: 1200px; padding: 0 20px;">
-                <h2 class="case__section-title" style="font-size: 2rem; font-weight: 700; color: #1a1a1a; margin-bottom: 30px; text-align: center;">設計 / 技術亮點</h2>
-                <div style="display: grid; grid-template-columns: 1fr; gap: 30px;">
-                    <div style="background: #f8f9fa; padding: 30px; border-radius: 20px; border: 2px solid #333;">
-                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; color: #1a1a1a;">
-                            <i class="fas fa-magic" style="color: #333;"></i>
-                            設計亮點
-                        </h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative; color: #4a5568;">
-                                <strong style="color: #1a1a1a;">直觀對話介面：</strong>採用卡片式設計，清晰展示對話流程與選項
-                            </li>
-                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative; color: #4a5568;">
-                                <strong style="color: #1a1a1a;">智能建議系統：</strong>根據用戶行為提供個性化問題建議，提升互動體驗
-                            </li>
-                        </ul>
-                    </div>
-                    <div style="background: #f8f9fa; padding: 30px; border-radius: 20px; border: 2px solid #333;">
-                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; color: #1a1a1a;">
-                            <i class="fas fa-rocket" style="color: #333;"></i>
-                            技術亮點
-                        </h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative; color: #4a5568;">
-                                <strong style="color: #1a1a1a;">微服務架構：</strong>模組化設計，支援水平擴展與獨立部署
-                            </li>
-                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative; color: #4a5568;">
-                                <strong style="color: #1a1a1a;">持續學習機制：</strong>模型可根據新數據自動更新，持續提升準確率
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 反思與收穫 -->
-            <section class="case__reflection" style="margin: 60px auto; max-width: 1200px; padding: 0 20px;">
-                <h2 class="case__section-title" style="font-size: 2rem; font-weight: 700; color: #1a1a1a; margin-bottom: 30px; text-align: center;">反思與收穫</h2>
-                <div style="background: #f8f9fa; padding: 30px; border-radius: 20px;">
-                    <p style="color: #4a5568; line-height: 1.8; font-size: 1.1rem;">
-                        透過這個專案，我深入理解了 AI 產品從概念到落地的完整流程。最大的收穫是學會如何平衡技術複雜度與用戶體驗，以及如何設計可擴展的系統架構。在處理大量數據和模型訓練過程中，我也提升了機器學習工程的最佳實踐能力。
-                    </p>
-                </div>
-            </section>
-
-            <!-- 下一步 -->
-            <section class="case__next" style="margin: 60px auto; max-width: 1200px; padding: 0 20px;">
-                <h2 class="case__section-title" style="font-size: 2rem; font-weight: 700; color: #1a1a1a; margin-bottom: 30px; text-align: center;">下一步</h2>
-                <div style="background: #f8f9fa; padding: 30px; border-radius: 20px;">
-                    <p style="color: #4a5568; line-height: 1.8; font-size: 1.1rem;">
-                        未來計劃整合語音識別技術，支援語音對話功能；實作情感分析，提供更人性化的回應；並探索多模態 AI 技術，支援圖片與文件理解，進一步提升客服系統的智能化程度。
-                    </p>
-                </div>
-            </section>
-
-            <!-- 專案連結 -->
-            <div class="project-links">
-                <a href="#" class="btn btn-primary">
-                    <i class="fas fa-external-link-alt"></i>
-                    Figma Prototype
-                </a>
-                <a href="#" class="btn btn-outline">
-                    <i class="fab fa-github"></i>
-                    GitHub Repo
-                </a>
-            </div>
-        </div>
+  <!-- Navigation（原樣保留） -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo" style="margin-left: -20px;">
+        <a href="#" class="back-btn" id="backBtn" style="display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 500; background: #f8f9fa; padding: 8px 16px; border-radius: 15px; transition: all 0.3s ease; margin: 0;">
+          <i class="fas fa-arrow-left"></i>
+          <span>返回首頁</span>
+        </a>
+      </div>
+      <div class="nav-logo" style="margin-left: auto;">
+        <span class="logo-text" id="projectTitle">專案詳細資訊</span>
+      </div>
     </div>
+  </nav>
 
-    <script>
-        // 導航欄滾動效果
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+  <!-- 作品集詳細內容（骨架版，吃你現有 CSS） -->
+  <section class="project-details">
+    <div class="container">
 
-        // 頁面載入時更新專案標題
-        document.addEventListener('DOMContentLoaded', function() {
-            // 從 URL 參數獲取專案名稱
-            const urlParams = new URLSearchParams(window.location.search);
-            const projectName = urlParams.get('project');
-            
-            if (projectName) {
-                // 更新導航欄標題
-                document.getElementById('projectTitle').textContent = projectName;
-                // 更新頁面標題
-                document.title = `${projectName} - 專案詳細資訊 - 余亮廷 Kenny Yu`;
-            }
-            
-            // 觸發頁面淡入動畫
-            setTimeout(() => {
-                const fadeInOverlay = document.querySelector('.page-fade-in-overlay');
-                if (fadeInOverlay) {
-                    fadeInOverlay.classList.add('fade-in');
-                }
-            }, 100);
-            
-            // 返回按鈕點擊事件
-            const backBtn = document.getElementById('backBtn');
-            if (backBtn) {
-                backBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    fadeOutAndReturn();
-                });
-            }
-        });
-        
-        // 返回首頁的淡出動畫函數
-        function fadeOutAndReturn() {
-            // 創建淡出遮罩
-            const fadeOverlay = document.createElement('div');
-            fadeOverlay.className = 'page-fade-overlay';
-            document.body.appendChild(fadeOverlay);
-            
-            // 觸發淡出動畫
-            setTimeout(() => {
-                fadeOverlay.classList.add('fade-out');
-                
-                // 動畫完成後跳轉回首頁的專案區域
-                setTimeout(() => {
-                    window.location.href = 'index.html#projects';
-                }, 500); // 500ms 後跳轉
-            }, 50);
+
+
+      <!-- 主視覺 + 簡介 + 技術堆疊 + 專案背景 -->
+      <div class="project-content">
+        <div class="project-image-section">
+          <div class="project-image">
+            <img src="documents/profolio source/Bus/detailcover.png" alt="跳蛙公車2.0專案圖片" class="project-detail-image">
+          </div>
+        </div>
+
+        <div class="project-info">
+          <!-- 一句話電梯簡介 -->
+          <div class="project-description" id="projectDescription">
+            （一句話：這個產品幫助【對象】在【情境】中更快/更順地【動作】）
+          </div>
+
+          <!-- 技術標籤 -->
+          <div class="project-tech-stack">
+            <div class="tech-tags">
+              <span class="tech-tag">.NET MAUI</span>
+              <span class="tech-tag">Figma</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">SwiftUI</span>
+            </div>
+          </div>
+
+          <!-- 專案背景 -->
+          <div class="project-features">
+            <h3 class="category-title">專案背景</h3>
+            <ul class="features-list">
+              <li><strong>目標：</strong>（尚未填寫）</li>
+              <li><strong>使用者/場景：</strong>（尚未填寫）</li>
+              <li><strong>我的角色與貢獻：</strong>（尚未填寫）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 規劃與流程（設計 / 開發） -->
+      <div class="project-content">
+        <div class="project-info">
+          <h3 class="category-title">規劃與流程｜設計（Figma）</h3>
+          <ul class="features-list">
+            <li>需求 → Wireframe → Prototype（Figma 連結可放此處）</li>
+            <li>我主導的決策（2–3 點）：（尚未填寫）</li>
+          </ul>
+        </div>
+        <div class="project-info">
+          <h3 class="category-title">規劃與流程｜開發（技術）</h3>
+          <ul class="features-list">
+            <li>主要技術與架構重點：（尚未填寫）</li>
+            <li>我負責的模組：（尚未填寫）</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 挑戰與解決（#1 / #2） -->
+      <div class="project-content">
+        <div class="project-info">
+          <h3 class="category-title">挑戰與解決 #1</h3>
+          <ul class="features-list">
+            <li><strong>情境：</strong>（尚未填寫）</li>
+            <li><strong>困難點：</strong>（尚未填寫）</li>
+            <li><strong>作法：</strong>（尚未填寫）</li>
+            <li><strong>結果（定性）：</strong>（尚未填寫）</li>
+          </ul>
+        </div>
+        <div class="project-info">
+          <h3 class="category-title">挑戰與解決 #2</h3>
+          <ul class="features-list">
+            <li><strong>情境：</strong>（尚未填寫）</li>
+            <li><strong>困難點：</strong>（尚未填寫）</li>
+            <li><strong>作法：</strong>（尚未填寫）</li>
+            <li><strong>結果（定性）：</strong>（尚未填寫）</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 設計 / 技術亮點 -->
+      <div class="project-content">
+        <div class="project-info">
+          <h3 class="category-title">設計亮點</h3>
+          <ul class="features-list">
+            <li>色彩層級 / 空狀態 / 微互動…（尚未填寫）</li>
+            <li>可用性細節（錯誤處理、回饋）…（尚未填寫）</li>
+          </ul>
+        </div>
+        <div class="project-info">
+          <h3 class="category-title">技術亮點</h3>
+          <ul class="features-list">
+            <li>跨平台差異抽象與元件化（尚未填寫）</li>
+            <li>資料綁定 / 快取策略 / 錯誤處理（尚未填寫）</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 反思與收穫 / 下一步 -->
+      <div class="project-content">
+        <div class="project-info">
+          <h3 class="category-title">反思與收穫</h3>
+          <ul class="features-list">
+            <li>（尚未填寫）</li>
+          </ul>
+        </div>
+        <div class="project-info">
+          <h3 class="category-title">下一步</h3>
+          <ul class="features-list">
+            <li>優先改善 / 待驗證假設（尚未填寫）</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 連結 -->
+      <div class="project-links">
+        <a href="#" class="btn btn-outline"><i class="fab fa-figma"></i>Figma Prototype</a>
+        <a href="#" class="btn btn-outline"><i class="fab fa-github"></i>GitHub Repo</a>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // 導航欄滾動效果（原樣）
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // 載入時：設定標題 / 進場動畫 / 返回
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const projectName = urlParams.get('project');
+      const techTags = urlParams.get('tech');
+
+      if (projectName) {
+        document.getElementById('projectTitle').textContent = projectName;
+        document.title = `${projectName} - 專案詳細資訊 - 余亮廷 Kenny Yu`;
+      }
+
+      // 如果有技術標籤，則顯示在技術堆疊區塊
+      if (techTags) {
+        const techTagsArray = techTags.split(',');
+        const techTagsContainer = document.querySelector('.tech-tags');
+        if (techTagsContainer) {
+          techTagsContainer.innerHTML = '';
+          techTagsArray.forEach(tag => {
+            const techTag = document.createElement('span');
+            techTag.className = 'tech-tag';
+            techTag.textContent = tag.trim();
+            techTagsContainer.appendChild(techTag);
+          });
         }
-    </script>
+      }
+
+      // 根據專案名稱顯示不同的描述
+      if (projectName) {
+        const projectDescription = document.getElementById('projectDescription');
+        if (projectDescription) {
+          if (projectName.includes('跳蛙公車')) {
+            projectDescription.innerHTML = '跳蛙公車2.0幫助民眾在規劃公車行程時更快地完成<span class="highlight">購票</span>和在地圖上自訂創建<span class="highlight">募集路線</span>';
+          } else {
+            projectDescription.innerHTML = '（一句話：這個產品幫助【對象】在【情境】中更快/更順地【動作】）';
+          }
+        }
+      }
+
+      // 觸發進場淡入
+      setTimeout(() => {
+        const fadeInOverlay = document.querySelector('.page-fade-in-overlay');
+        if (fadeInOverlay) fadeInOverlay.classList.add('fade-in');
+      }, 100);
+
+      // 返回首頁
+      const backBtn = document.getElementById('backBtn');
+      if (backBtn) {
+        backBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          fadeOutAndReturn();
+        });
+      }
+    });
+
+    // 返回首頁的淡出動畫
+    function fadeOutAndReturn() {
+      const fadeOverlay = document.createElement('div');
+      fadeOverlay.className = 'page-fade-overlay';
+      document.body.appendChild(fadeOverlay);
+      setTimeout(() => {
+        fadeOverlay.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = 'index.html#projects';
+        }, 500);
+      }, 50);
+    }
+  </script>
 </body>
 </html>
