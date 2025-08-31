@@ -1879,3 +1879,22 @@ section {
         max-width: 250px;
     }
 }
+
+/* 非App系統專案樣式 */
+.section-subtitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: #6b7280;
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
