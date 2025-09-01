@@ -36,14 +36,14 @@
       <div class="project-content">
         <div class="project-image-section">
           <div class="project-image">
-            <img src="documents/profolio source/Bus/detailcover.png" alt="跳蛙公車2.0專案圖片" class="project-detail-image">
+            <img id="projectDetailImage" src="documents/profolio source/Bus/detailcover.png" alt="專案詳細圖片" class="project-detail-image">
           </div>
         </div>
 
         <div class="project-info">
           <!-- 一句話電梯簡介 -->
           <div class="project-description" id="projectDescription">
-            （一句話：這個產品幫助【對象】在【情境】中更快/更順地【動作】）
+            載入中...
           </div>
 
           <!-- 技術標籤 -->
@@ -171,6 +171,9 @@
       if (projectName) {
         document.getElementById('projectTitle').textContent = projectName;
         document.title = `${projectName} - 專案詳細資訊 - 余亮廷 Kenny Yu`;
+        
+        // 動態載入專案內容
+        loadProjectContent(projectName);
       }
 
       // 如果有技術標籤，則顯示在技術堆疊區塊
@@ -185,18 +188,6 @@
             techTag.textContent = tag.trim();
             techTagsContainer.appendChild(techTag);
           });
-        }
-      }
-
-      // 根據專案名稱顯示不同的描述
-      if (projectName) {
-        const projectDescription = document.getElementById('projectDescription');
-        if (projectDescription) {
-          if (projectName.includes('跳蛙公車')) {
-            projectDescription.innerHTML = '跳蛙公車2.0幫助民眾在規劃公車行程時更快地完成<span class="highlight">購票</span>和在地圖上自訂創建<span class="highlight">募集路線</span>';
-          } else {
-            projectDescription.innerHTML = '（一句話：這個產品幫助【對象】在【情境】中更快/更順地【動作】）';
-          }
         }
       }
 
@@ -215,6 +206,76 @@
         });
       }
     });
+
+    // 專案名稱到資料夾名稱的映射
+    const projectFolderMap = {
+      '跳蛙公車2.0': 'Bus',
+      '跳蛙公車': 'Bus',
+      '跳蛙購票APP': 'Bus',
+      'Bus': 'Bus',
+      '今皓TUAN AI助理APP': 'Tuan',
+      '今皓AI APP': 'Tuan',
+      'Tuan': 'Tuan',
+      '島嶼生吐司 手持POS': 'POS',
+      '島嶼生吐司 POS': 'POS',
+      'POS': 'POS',
+      'JustAI 客服系統': 'Justai',
+      'Justai': 'Justai',
+      'Mino 待辦清單': 'Mino',
+      'Mino': 'Mino',
+      'MIsh 個人書櫃': 'MIsh',
+      'MIsh': 'MIsh'
+    };
+
+    // 動態載入專案內容
+    function loadProjectContent(projectName) {
+      // 根據專案名稱獲取對應的資料夾名稱
+      const folderName = projectFolderMap[projectName] || projectName;
+      console.log('專案名稱:', projectName, '資料夾名稱:', folderName);
+      
+      // 載入專案描述
+      fetch(`documents/profolio source/${folderName}/description.txt`)
+        .then(response => {
+          if (response.ok) {
+            return response.text();
+          } else {
+            // 如果檔案不存在，顯示預設內容
+            return '（一句話：這個產品幫助【對象】在【情境】中更快/更順地【動作】）';
+          }
+        })
+        .then(description => {
+          const projectDescription = document.getElementById('projectDescription');
+          if (projectDescription) {
+            // 處理文字檔中的標記語法：**文字** → <span class="highlight">文字</span>
+            const highlightedDescription = description.replace(
+              /\*\*(.*?)\*\*/g, 
+              '<span class="highlight">$1</span>'
+            );
+            projectDescription.innerHTML = highlightedDescription;
+          }
+        })
+        .catch(error => {
+          console.log('載入描述檔案失敗，使用預設內容');
+          const projectDescription = document.getElementById('projectDescription');
+          if (projectDescription) {
+            projectDescription.textContent = '（一句話：這個產品幫助【對象】在【情境】中更快/更順地【動作】）';
+          }
+        });
+
+      // 載入專案詳細圖片
+      const detailImage = document.getElementById('projectDetailImage');
+      if (detailImage) {
+        const imagePath = `documents/profolio source/${folderName}/detailcover.png`;
+        detailImage.src = imagePath;
+        detailImage.alt = `${projectName}專案圖片`;
+        
+        // 圖片載入失敗時顯示佔位符
+        detailImage.onerror = function() {
+          this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIExvYWRpbmcuLi48L3RleHQ+Cjwvc3ZnPg==';
+          this.alt = '圖片載入中...';
+        };
+      }
+    }
 
     // 返回首頁的淡出動畫
     function fadeOutAndReturn() {
