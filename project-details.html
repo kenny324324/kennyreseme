@@ -114,25 +114,109 @@
         </div>
       </div>
 
-      <!-- 設計 / 技術亮點 -->
-      <div class="project-content">
-        <div class="project-info">
+      <!-- 設計亮點 -->
+      <div class="project-content" id="highlights-section" style="grid-template-columns: 1fr;">
+        <div class="project-info" id="design-highlights">
           <h3 class="category-title">設計亮點</h3>
-          <ul class="features-list">
-            <li><strong>溫暖色調設計：</strong>採用橘色暖色調，營造友善親切的使用體驗</li>
-            <li><strong>直觀購票流程：</strong>簡化複雜的購票步驟，3 步完成購票</li>
-            <li><strong>創新募集路線 UI：</strong>獨特的地圖互動設計，讓路線規劃變得有趣</li>
-            <li><strong>一致的視覺語言：</strong>建立完整的設計系統，確保介面一致性</li>
-          </ul>
-        </div>
-        <div class="project-info">
-          <h3 class="category-title">技術亮點</h3>
-          <ul class="features-list">
-            <li><strong>.NET MAUI 跨平台架構：</strong>單一程式碼基底，支援 iOS/Android 雙平台</li>
-            <li><strong>模組化 API 整合：</strong>彈性的服務層設計，易於維護和擴展</li>
-            <li><strong>即時推播通知：</strong>整合 Firebase，提供票務提醒和路線更新</li>
-            <li><strong>離線功能支援：</strong>關鍵功能支援離線使用，提升使用者體驗</li>
-          </ul>
+          
+          <!-- 水平排列的亮點容器 -->
+          <div class="highlights-container" style="display: flex; gap: 30px; justify-content: space-between; flex-wrap: wrap; align-items: flex-start;">
+            
+            <!-- 亮點 1: 首頁動態輪播公告 -->
+            <div class="highlight-item" id="highlight-1" style="flex: 1; min-width: 280px; max-width: 350px;">
+              <!-- 標題和文字說明區域 - 固定高度 -->
+              <div class="highlight-text-area" style="min-height: 120px; display: flex; flex-direction: column;">
+                <h4 style="margin: 0 0 15px 0; color: #333; font-size: 16px; font-weight: bold;">首頁動態輪播公告</h4>
+                <div class="highlight-content" style="line-height: 1.6; color: #555; margin-bottom: 20px; font-size: 14px; flex: 1;">
+                  <p>載入中...</p>
+                </div>
+              </div>
+              
+              <!-- 影片區域 -->
+              <div class="highlight-video-section" id="highlight-1-video" style="display: block;">
+                <h5 style="margin: 0 0 10px 0; color: #666; font-size: 12px; font-weight: bold;"><span class="highlight">動態展示</span></h5>
+                <div class="highlight-video-container" style="border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #f9f9f9; width: 100%;">
+                  <video id="highlight-1-vid" autoplay muted loop playsinline style="width: 100%; height: auto; display: none; vertical-align: top;">
+                    <source src="" type="video/quicktime">
+                    您的瀏覽器不支援影片播放。
+                  </video>
+                  <div id="video-placeholder" style="color: #999; text-align: center; padding: 30px; min-height: 150px; display: flex; align-items: center; justify-content: center; font-size: 14px;">
+                    <p>載入影片中...</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="highlight-image-section" id="highlight-1-image" style="display: none;">
+                <h5 style="margin: 0 0 10px 0; color: #666; font-size: 12px; font-weight: bold;"><span class="highlight">靜態截圖</span></h5>
+                <div class="highlight-image-container" style="border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #f9f9f9;">
+                  <img id="highlight-1-img" src="" alt="首頁動態輪播公告截圖" style="width: 100%; height: auto; display: block; object-fit: contain;">
+                </div>
+              </div>
+            </div>
+
+            <!-- 亮點 2: 互動式地圖介面 -->
+            <div class="highlight-item" id="highlight-2" style="flex: 1; min-width: 280px; max-width: 350px;">
+              <!-- 標題和文字說明區域 - 固定高度 -->
+              <div class="highlight-text-area" style="min-height: 120px; display: flex; flex-direction: column;">
+                <div class="highlight-content" style="line-height: 1.6; color: #555; margin-bottom: 20px; font-size: 14px; flex: 1;">
+                  <p>載入中...</p>
+                </div>
+              </div>
+              
+              <!-- 影片區域 -->
+              <div class="highlight-video-section" id="highlight-2-video" style="display: block;">
+                <h5 style="margin: 0 0 10px 0; color: #666; font-size: 12px; font-weight: bold;"><span class="highlight">動態展示</span></h5>
+                <div class="highlight-video-container" style="border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #f9f9f9; width: 100%;">
+                  <video id="highlight-2-vid" autoplay muted loop playsinline style="width: 100%; height: auto; display: none; vertical-align: top;">
+                    <source src="" type="video/quicktime">
+                    您的瀏覽器不支援影片播放。
+                  </video>
+                  <div id="video-placeholder-2" style="color: #999; text-align: center; padding: 30px; min-height: 150px; display: flex; align-items: center; justify-content: center; font-size: 14px;">
+                    <p>載入影片中...</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="highlight-image-section" id="highlight-2-image" style="display: none;">
+                <h5 style="margin: 0 0 10px 0; color: #666; font-size: 12px; font-weight: bold;"><span class="highlight">介面截圖</span></h5>
+                <div class="highlight-image-container" style="border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #f9f9f9;">
+                  <img id="highlight-2-img" src="" alt="互動式地圖介面截圖" style="width: 100%; height: auto; display: block; object-fit: contain;">
+                </div>
+              </div>
+            </div>
+
+            <!-- 亮點 3: 訂購路線列表設計 -->
+            <div class="highlight-item" id="highlight-3" style="flex: 1; min-width: 280px; max-width: 350px;">
+              <!-- 標題和文字說明區域 - 固定高度 -->
+              <div class="highlight-text-area" style="min-height: 120px; display: flex; flex-direction: column;">
+                <div class="highlight-content" style="line-height: 1.6; color: #555; margin-bottom: 20px; font-size: 14px; flex: 1;">
+                  <p>載入中...</p>
+                </div>
+              </div>
+              
+              <!-- 影片區域 -->
+              <div class="highlight-video-section" id="highlight-3-video" style="display: block;">
+                <h5 style="margin: 0 0 10px 0; color: #666; font-size: 12px; font-weight: bold;"><span class="highlight">動態展示</span></h5>
+                <div class="highlight-video-container" style="border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #f9f9f9; width: 100%;">
+                  <video id="highlight-3-vid" autoplay muted loop playsinline style="width: 100%; height: auto; display: none; vertical-align: top;">
+                    <source src="" type="video/quicktime">
+                    您的瀏覽器不支援影片播放。
+                  </video>
+                  <div id="video-placeholder-3" style="color: #999; text-align: center; padding: 30px; min-height: 150px; display: flex; align-items: center; justify-content: center; font-size: 14px;">
+                    <p>載入影片中...</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="highlight-image-section" id="highlight-3-image" style="display: none;">
+                <h5 style="margin: 0 0 10px 0; color: #666; font-size: 12px; font-weight: bold;"><span class="highlight">介面截圖</span></h5>
+                <div class="highlight-image-container" style="border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #f9f9f9;">
+                  <img id="highlight-3-img" src="" alt="訂購路線列表截圖" style="width: 100%; height: auto; display: block; object-fit: contain;">
+                </div>
+              </div>
+            </div>
+            
+          </div>
         </div>
       </div>
 
@@ -453,6 +537,123 @@
         })
         .catch(error => {
           console.log('載入挑戰檔案失敗，使用預設內容');
+        });
+
+      // 載入設計與技術亮點內容（如果存在 highlights.txt）
+      fetch(`documents/profolio source/${folderName}/highlights.txt`)
+        .then(response => {
+          if (response.ok) {
+            return response.text();
+          }
+          return null;
+        })
+        .then(highlightsContent => {
+          if (highlightsContent) {
+            // 分割三個亮點
+            const highlights = highlightsContent.split(/亮點[123]：/).filter(section => section.trim());
+            
+            // 載入每個亮點
+            highlights.forEach((highlight, index) => {
+              if (highlight.trim()) {
+                const highlightNum = index + 1;
+                const lines = highlight.trim().split('\n');
+                const title = lines[0]; // 第一行是標題
+                const content = lines.slice(2).join('\n'); // 跳過標題和空行
+                
+                // 更新標題和內容
+                const highlightDiv = document.querySelector(`#highlight-${highlightNum} .highlight-content`);
+                if (highlightDiv) {
+                  const processedContent = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/##(.*?)##/g, '<span class="highlight">$1</span>');
+                  
+                  // 水平佈局：所有亮點都使用相同格式
+                  if (highlightNum === 1) {
+                    // 亮點1有獨立的標題元素
+                    const titleElement = highlightDiv.parentElement.parentElement.querySelector('h4');
+                    if (titleElement) {
+                      titleElement.innerHTML = title;
+                    }
+                    highlightDiv.innerHTML = `<p>${processedContent}</p>`;
+                  } else {
+                    // 其他亮點需要在內容中添加標題，使用與亮點1相同的字體大小
+                    highlightDiv.innerHTML = `<h4 style="margin: 0 0 15px 0; color: #333; font-size: 16px; font-weight: bold;">${title}</h4><p style="line-height: 1.6; color: #555;">${processedContent}</p>`;
+                  }
+                }
+                
+                // 載入對應的圖片（如果存在）
+                const imageSection = document.getElementById(`highlight-${highlightNum}-image`);
+                const imageElement = document.getElementById(`highlight-${highlightNum}-img`);
+                if (imageSection && imageElement) {
+                  const imagePath = `documents/profolio source/${folderName}/highlight-${highlightNum}.png`;
+                  
+                  // 檢查圖片是否存在
+                  const testImage = new Image();
+                  testImage.onload = function() {
+                    imageElement.src = imagePath;
+                    imageSection.style.display = 'block';
+                  };
+                  testImage.onerror = function() {
+                    // 如果 .png 不存在，嘗試 .gif
+                    const gifPath = `documents/profolio source/${folderName}/highlight-${highlightNum}.gif`;
+                    const testGif = new Image();
+                    testGif.onload = function() {
+                      imageElement.src = gifPath;
+                      imageSection.style.display = 'block';
+                    };
+                    testGif.onerror = function() {
+                      console.log(`亮點 ${highlightNum} 的圖片不存在`);
+                    };
+                    testGif.src = gifPath;
+                  };
+                  testImage.src = imagePath;
+                }
+
+                // 處理所有亮點的影片
+                const videoFiles = {
+                  1: 'carousell.mov',
+                  2: 'map.mov',
+                  3: 'list.mov'
+                };
+                
+                if (videoFiles[highlightNum]) {
+                  const videoSection = document.getElementById(`highlight-${highlightNum}-video`);
+                  const videoElement = document.getElementById(`highlight-${highlightNum}-vid`);
+                  const placeholder = document.getElementById(`video-placeholder${highlightNum === 1 ? '' : '-' + highlightNum}`);
+                  
+                  if (videoSection && videoElement) {
+                    const videoPath = `documents/profolio source/${folderName}/media/${videoFiles[highlightNum]}`;
+                    
+                    // 檢查影片是否存在
+                    fetch(videoPath, { method: 'HEAD' })
+                      .then(response => {
+                        if (response.ok) {
+                          videoElement.querySelector('source').src = videoPath;
+                          videoElement.load();
+                          videoElement.style.display = 'block';
+                          if (placeholder) placeholder.style.display = 'none';
+                          
+                          // 確保影片載入後自動播放
+                          videoElement.addEventListener('loadeddata', function() {
+                            videoElement.play().catch(error => {
+                              console.log(`亮點${highlightNum}影片自動播放被阻擋，這是正常的瀏覽器行為`);
+                            });
+                          });
+                        } else {
+                          if (placeholder) placeholder.innerHTML = '<p>影片載入失敗</p>';
+                        }
+                      })
+                      .catch(error => {
+                        console.log(`亮點${highlightNum}影片不存在`);
+                        if (placeholder) placeholder.innerHTML = '<p>找不到影片檔案</p>';
+                      });
+                  }
+                }
+              }
+            });
+          }
+        })
+        .catch(error => {
+          console.log('載入亮點檔案失敗，使用預設內容');
         });
 
       // 載入專案詳細圖片
