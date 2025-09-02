@@ -820,9 +820,7 @@ section {
     height: 100%;
 }
 
-.project-card.featured {
-    /* Remove featured card spanning - all cards same size */
-}
+/* Featured card class removed - all cards same size */
 
 .project-card:hover {
     transform: translateY(-5px);
@@ -1332,9 +1330,7 @@ section {
         grid-template-columns: 1fr;
     }
 
-    .project-card.featured {
-        /* All cards same size on mobile too */
-    }
+    /* All cards same size on mobile */
 
     .footer-content {
         flex-direction: column;
@@ -1885,17 +1881,32 @@ section {
     
     .project-details .project-links {
         padding: 20px;
-        gap: 20px;
+        gap: 10px;
         width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
     }
     
     .project-details .btn {
         min-width: auto;
-        width: 100%;
-        max-width: 100%;
-        padding: 10px 20px;
-        font-size: 0.9rem;
+        width: calc(33.333% - 7px);
+        max-width: calc(33.333% - 7px);
+        padding: 15px 8px;
+        font-size: 0;
         box-sizing: border-box;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    
+    /* 手機版只顯示圖標，隱藏文字 */
+    .project-details .btn span {
+        display: none;
+    }
+    
+    .project-details .btn i {
+        font-size: 1.2rem;
+        margin: 0;
     }
 }
 
@@ -1925,9 +1936,20 @@ section {
         flex-shrink: 0;
     }
     
+    .project-details .project-links {
+        padding: 15px;
+        gap: 8px;
+    }
+    
     .project-details .btn {
-        padding: 8px 15px;
-        font-size: 0.85rem;
+        width: calc(33.333% - 5px);
+        max-width: calc(33.333% - 5px);
+        padding: 12px 6px;
+        font-size: 0;
+    }
+    
+    .project-details .btn i {
+        font-size: 1.1rem;
     }
 }
 
@@ -1953,6 +1975,25 @@ section {
     .project-details .project-description {
         font-size: 0.9rem;
         line-height: 1.5;
+    }
+    
+    .project-details .project-links {
+        padding: 10px;
+        gap: 6px;
+    }
+    
+    .project-details .btn {
+        width: calc(33.333% - 4px);
+        max-width: calc(33.333% - 4px);
+        padding: 10px 4px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .project-details .btn i {
+        font-size: 1rem;
     }
 }
 
