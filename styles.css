@@ -1803,17 +1803,15 @@ section {
 }
 
 .project-details .features-list li:before {
-    content: '✓';
+    content: '•';
     position: absolute;
     left: 15px;
     color: #1a1a1a;
     font-weight: bold;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     line-height: 1;
     width: 25px;
     height: 25px;
-    background: rgba(26, 26, 26, 0.1);
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
