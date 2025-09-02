@@ -621,7 +621,8 @@
                   const placeholder = document.getElementById(`video-placeholder${highlightNum === 1 ? '' : '-' + highlightNum}`);
                   
                   if (videoSection && videoElement) {
-                    const videoPath = `documents/profolio source/${folderName}/media/${videoFiles[highlightNum]}`;
+                    // 修正路徑問題：移除空格，使用正確的GitHub Pages路徑
+                    const videoPath = `documents/profolio%20source/${folderName}/Media/${videoFiles[highlightNum]}`;
                     
                     // 檢查影片是否存在
                     fetch(videoPath, { method: 'HEAD' })
@@ -639,12 +640,53 @@
                             });
                           });
                         } else {
-                          if (placeholder) placeholder.innerHTML = '<p>影片載入失敗</p>';
+                          // 如果影片載入失敗，嘗試其他路徑格式
+                          const alternativePaths = [
+                            `documents/profolio%20source/${folderName}/Media/${videoFiles[highlightNum]}`,
+                            `documents/profolio%20source/${folderName}/media/${videoFiles[highlightNum]}`,
+                            `./documents/profolio%20source/${folderName}/Media/${videoFiles[highlightNum]}`,
+                            `./documents/profolio%20source/${folderName}/media/${videoFiles[highlightNum]}`
+                          ];
+                          
+                          // 嘗試載入第一個可用的路徑
+                          let pathIndex = 0;
+                          const tryNextPath = () => {
+                            if (pathIndex < alternativePaths.length) {
+                              const altPath = alternativePaths[pathIndex];
+                              fetch(altPath, { method: 'HEAD' })
+                                .then(response => {
+                                  if (response.ok) {
+                                    videoElement.querySelector('source').src = altPath;
+                                    videoElement.load();
+                                    videoElement.style.display = 'block';
+                                    if (placeholder) placeholder.style.display = 'none';
+                                    
+                                    videoElement.addEventListener('loadeddata', function() {
+                                      videoElement.play().catch(error => {
+                                        console.log(`亮點${highlightNum}影片自動播放被阻擋`);
+                                      });
+                                    });
+                                  } else {
+                                    pathIndex++;
+                                    tryNextPath();
+                                  }
+                                })
+                                .catch(() => {
+                                  pathIndex++;
+                                  tryNextPath();
+                                });
+                            } else {
+                              // 所有路徑都失敗，顯示錯誤訊息
+                              if (placeholder) placeholder.innerHTML = '<p>影片載入失敗<br><small>請檢查網路連線或重新整理頁面</small></p>';
+                            }
+                          };
+                          
+                          tryNextPath();
                         }
                       })
                       .catch(error => {
-                        console.log(`亮點${highlightNum}影片不存在`);
-                        if (placeholder) placeholder.innerHTML = '<p>找不到影片檔案</p>';
+                        console.log(`亮點${highlightNum}影片載入錯誤:`, error);
+                        if (placeholder) placeholder.innerHTML = '<p>影片載入錯誤<br><small>請檢查網路連線</small></p>';
                       });
                   }
                 }
