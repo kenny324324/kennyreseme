@@ -77,11 +77,23 @@
           <div class="process-content">
             <p>載入中...</p>
           </div>
+          <div class="design-image-section" id="design-image-section" style="display: none;">
+            <h4 style="margin-top: 20px; margin-bottom: 10px; font-size: 14px;"><span class="highlight">Figma 設計流程圖</span></h4>
+            <div class="design-image-container" style="border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; margin-bottom: 20px;">
+              <img id="figma-design-image" src="" alt="Figma 設計流程圖" style="width: 100%; height: auto; display: block;">
+            </div>
+          </div>
         </div>
         <div class="project-info" id="development-process">
           <h3 class="category-title">規劃與流程｜開發（技術）</h3>
           <div class="process-content">
             <p>載入中...</p>
+          </div>
+          <div class="tech-image-section" id="tech-image-section" style="display: none;">
+            <h4 style="margin-top: 20px; margin-bottom: 10px; font-size: 14px;"><span class="highlight">技術架構圖</span></h4>
+            <div class="tech-image-container" style="border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; margin-bottom: 20px; background: white;">
+              <img id="tech-architecture-image" src="" alt="技術架構圖" style="width: 100%; height: auto; display: block;">
+            </div>
           </div>
         </div>
       </div>
@@ -347,6 +359,43 @@
         .catch(error => {
           console.log('載入規劃檔案失敗，使用預設內容');
         });
+
+      // 載入 Figma 設計截圖（如果存在）
+      const figmaDesignImage = document.getElementById('figma-design-image');
+      const designImageSection = document.getElementById('design-image-section');
+      if (figmaDesignImage && designImageSection) {
+        const figmaImagePath = `documents/profolio source/${folderName}/figma-design.png`;
+        
+        // 檢查圖片是否存在
+        const testImage = new Image();
+        testImage.onload = function() {
+          figmaDesignImage.src = figmaImagePath;
+          designImageSection.style.display = 'block';
+        };
+        testImage.onerror = function() {
+          console.log('Figma 設計截圖不存在，隱藏圖片區塊');
+        };
+        testImage.src = figmaImagePath;
+      }
+
+      // 載入技術架構圖（如果存在）
+      const techArchImage = document.getElementById('tech-architecture-image');
+      const techImageSection = document.getElementById('tech-image-section');
+      if (techArchImage && techImageSection) {
+        const techImagePath = `documents/profolio source/${folderName}/tech-architecture.svg`;
+        
+        // 檢查 SVG 是否存在
+        fetch(techImagePath)
+          .then(response => {
+            if (response.ok) {
+              techArchImage.src = techImagePath;
+              techImageSection.style.display = 'block';
+            }
+          })
+          .catch(error => {
+            console.log('技術架構圖不存在，隱藏圖片區塊');
+          });
+      }
 
       // 載入專案詳細圖片
       const detailImage = document.getElementById('projectDetailImage');
