@@ -43,67 +43,67 @@
         <div class="project-info">
           <!-- 一句話電梯簡介 -->
           <div class="project-description" id="projectDescription">
-            載入中...
+            跳蛙公車2.0幫助民眾在規劃公車行程時更快地完成<span class="highlight">購票</span>和在地圖上自訂創建<span class="highlight">募集路線</span>
           </div>
 
           <!-- 技術標籤 -->
           <div class="project-tech-stack">
             <div class="tech-tags">
               <span class="tech-tag">.NET MAUI</span>
-              <span class="tech-tag">Figma</span>
-              <span class="tech-tag">Firebase</span>
-              <span class="tech-tag">SwiftUI</span>
+              <span class="tech-tag">Google登入</span>
+              <span class="tech-tag">地圖整合</span>
+              <span class="tech-tag">Firebase推播</span>
             </div>
           </div>
 
           <!-- 專案背景 -->
           <div class="project-features">
             <h3 class="category-title">專案背景</h3>
-            <ul class="features-list">
-              <li><strong>目標：</strong>（尚未填寫）</li>
-              <li><strong>使用者/場景：</strong>（尚未填寫）</li>
-              <li><strong>我的角色與貢獻：</strong>（尚未填寫）</li>
-            </ul>
+            <div class="project-background-content">
+              <p>跳蛙公車2.0是受公車處委託的改版專案，主要目的是將既有APP進行全面升級，引進全新的視覺配色設計，並在募集路線功能中加入直觀的地圖顯示功能。</p>
+              
+              <p>專案啟動會議中，我們針對現有系統的痛點進行深入分析：優化首頁資訊推送、重新設計路線顯示邏輯、改進跨縣市路線的視覺區分、調整訂票介面並加入座位圖例說明，以及導入雙重認證機制解決密碼問題。</p>
+              
+              <p><strong>我的角色：</strong>負責 Figma UI/UX 設計規劃、.NET MAUI 跨平台開發實作、以及 Google 登入、Firebase 推播等第三方 API 系統整合。</p>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- 規劃與流程（設計 / 開發） -->
       <div class="project-content">
-        <div class="project-info">
+        <div class="project-info" id="design-process">
           <h3 class="category-title">規劃與流程｜設計（Figma）</h3>
-          <ul class="features-list">
-            <li>需求 → Wireframe → Prototype（Figma 連結可放此處）</li>
-            <li>我主導的決策（2–3 點）：（尚未填寫）</li>
-          </ul>
+          <div class="process-content">
+            <p>載入中...</p>
+          </div>
         </div>
-        <div class="project-info">
+        <div class="project-info" id="development-process">
           <h3 class="category-title">規劃與流程｜開發（技術）</h3>
-          <ul class="features-list">
-            <li>主要技術與架構重點：（尚未填寫）</li>
-            <li>我負責的模組：（尚未填寫）</li>
-          </ul>
+          <div class="process-content">
+            <p>載入中...</p>
+          </div>
         </div>
       </div>
 
       <!-- 挑戰與解決（#1 / #2） -->
       <div class="project-content">
         <div class="project-info">
-          <h3 class="category-title">挑戰與解決 #1</h3>
+          <h3 class="category-title">挑戰與解決 #1：地圖整合與自訂路線</h3>
           <ul class="features-list">
-            <li><strong>情境：</strong>（尚未填寫）</li>
-            <li><strong>困難點：</strong>（尚未填寫）</li>
-            <li><strong>作法：</strong>（尚未填寫）</li>
-            <li><strong>結果（定性）：</strong>（尚未填寫）</li>
+            <li><strong>情境：</strong>需要讓使用者在地圖上自訂創建募集路線，並支援路線編輯功能</li>
+            <li><strong>困難點：</strong>地圖 API 的複雜整合、自訂路線的資料結構設計、觸控操作的 UX 優化</li>
+            <li><strong>作法：</strong>採用 Google Maps API 自訂地圖控制項、設計彈性路線資料模型、實作直觀觸控手勢</li>
+            <li><strong>結果：</strong>成功實現直觀的路線創建功能，使用者可輕鬆在地圖上規劃理想的公車路線</li>
           </ul>
         </div>
         <div class="project-info">
-          <h3 class="category-title">挑戰與解決 #2</h3>
+          <h3 class="category-title">挑戰與解決 #2：跨平台購票系統</h3>
           <ul class="features-list">
-            <li><strong>情境：</strong>（尚未填寫）</li>
-            <li><strong>困難點：</strong>（尚未填寫）</li>
-            <li><strong>作法：</strong>（尚未填寫）</li>
-            <li><strong>結果（定性）：</strong>（尚未填寫）</li>
+            <li><strong>情境：</strong>需要整合複雜的購票 API，支援多種票種（單程票、多日票）</li>
+            <li><strong>困難點：</strong>複雜的票價計算邏輯、支付流程的安全性考量、iOS/Android 平台差異處理</li>
+            <li><strong>作法：</strong>建立統一的購票服務層、實作安全的支付流程驗證、使用 .NET MAUI 處理平台差異</li>
+            <li><strong>結果：</strong>建立了穩定可靠的購票系統，支援多平台無縫體驗</li>
           </ul>
         </div>
       </div>
@@ -113,15 +113,19 @@
         <div class="project-info">
           <h3 class="category-title">設計亮點</h3>
           <ul class="features-list">
-            <li>色彩層級 / 空狀態 / 微互動…（尚未填寫）</li>
-            <li>可用性細節（錯誤處理、回饋）…（尚未填寫）</li>
+            <li><strong>溫暖色調設計：</strong>採用橘色暖色調，營造友善親切的使用體驗</li>
+            <li><strong>直觀購票流程：</strong>簡化複雜的購票步驟，3 步完成購票</li>
+            <li><strong>創新募集路線 UI：</strong>獨特的地圖互動設計，讓路線規劃變得有趣</li>
+            <li><strong>一致的視覺語言：</strong>建立完整的設計系統，確保介面一致性</li>
           </ul>
         </div>
         <div class="project-info">
           <h3 class="category-title">技術亮點</h3>
           <ul class="features-list">
-            <li>跨平台差異抽象與元件化（尚未填寫）</li>
-            <li>資料綁定 / 快取策略 / 錯誤處理（尚未填寫）</li>
+            <li><strong>.NET MAUI 跨平台架構：</strong>單一程式碼基底，支援 iOS/Android 雙平台</li>
+            <li><strong>模組化 API 整合：</strong>彈性的服務層設計，易於維護和擴展</li>
+            <li><strong>即時推播通知：</strong>整合 Firebase，提供票務提醒和路線更新</li>
+            <li><strong>離線功能支援：</strong>關鍵功能支援離線使用，提升使用者體驗</li>
           </ul>
         </div>
       </div>
@@ -131,13 +135,17 @@
         <div class="project-info">
           <h3 class="category-title">反思與收穫</h3>
           <ul class="features-list">
-            <li>（尚未填寫）</li>
+            <li><strong>深化技能：</strong>提升了 .NET MAUI 跨平台開發技能和複雜 API 整合能力</li>
+            <li><strong>完整流程：</strong>強化了從 UI/UX 設計到實作的完整流程經驗</li>
+            <li><strong>用戶體驗：</strong>學習了如何平衡技術實作與使用者體驗的要求</li>
           </ul>
         </div>
         <div class="project-info">
-          <h3 class="category-title">下一步</h3>
+          <h3 class="category-title">未來改進</h3>
           <ul class="features-list">
-            <li>優先改善 / 待驗證假設（尚未填寫）</li>
+            <li><strong>效能優化：</strong>優化地圖載入效能，提升大量資料處理速度</li>
+            <li><strong>功能擴展：</strong>增加更多支付方式選項，提供更彈性的購票體驗</li>
+            <li><strong>数據分析：</strong>強化使用者行為分析功能，提供更好的服務建議</li>
           </ul>
         </div>
       </div>
@@ -146,8 +154,9 @@
 
     <!-- 連結 -->
     <div class="project-links">
-      <a href="#" class="btn btn-outline"><i class="fab fa-figma"></i>Figma Prototype</a>
-      <a href="#" class="btn btn-outline"><i class="fab fa-github"></i>GitHub Repo</a>
+      <a href="https://www.figma.com/proto/Gw633NeO0kIuw1PbpVU1Dr/%E8%B7%B3%E8%9B%99%E5%85%AC%E8%BB%8AUI%EF%BC%88%E6%9A%96%E8%89%B2%EF%BC%89?page-id=0%3A1&node-id=1-1582&p=f&viewport=227%2C406%2C0.02&t=5NtMAnc7cMrpQ9DD-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A966" target="_blank" class="btn btn-outline"><i class="fab fa-figma"></i>Figma 設計原型</a>
+      <a href="https://apps.apple.com/tw/app/%E8%B7%B3%E8%9B%99%E5%85%AC%E8%BB%8A2-0/id6667097903" target="_blank" class="btn btn-outline"><i class="fab fa-apple"></i>App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=tw.wowbus.www&hl=zh_TW" target="_blank" class="btn btn-outline"><i class="fab fa-google-play"></i>Google Play</a>
     </div>
   </section>
 
@@ -246,12 +255,13 @@
         .then(description => {
           const projectDescription = document.getElementById('projectDescription');
           if (projectDescription) {
-            // 處理文字檔中的標記語法：**文字** → <span class="highlight">文字</span>
-            const highlightedDescription = description.replace(
-              /\*\*(.*?)\*\*/g, 
-              '<span class="highlight">$1</span>'
-            );
-            projectDescription.innerHTML = highlightedDescription;
+            // 處理文字檔中的標記語法
+            // **文字** → <strong>文字</strong> (純粗體)
+            // ##文字## → <span class="highlight">文字</span> (highlight粗體)
+            let processedDescription = description
+              .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+              .replace(/##(.*?)##/g, '<span class="highlight">$1</span>');
+            projectDescription.innerHTML = processedDescription;
           }
         })
         .catch(error => {
@@ -260,6 +270,82 @@
           if (projectDescription) {
             projectDescription.textContent = '（一句話：這個產品幫助【對象】在【情境】中更快/更順地【動作】）';
           }
+        });
+
+      // 載入專案背景（如果存在 background.txt）
+      fetch(`documents/profolio source/${folderName}/background.txt`)
+        .then(response => {
+          if (response.ok) {
+            return response.text();
+          }
+          return null;
+        })
+        .then(background => {
+          if (background) {
+            const backgroundContent = document.querySelector('.project-background-content');
+            if (backgroundContent) {
+              // 將文字按段落分割並格式化，同時處理粗體標記
+              const paragraphs = background.split('\n\n').filter(p => p.trim());
+              backgroundContent.innerHTML = paragraphs.map(p => {
+                // 處理雙重標記語法
+                // **文字** → <strong>文字</strong> (純粗體)
+                // ##文字## → <span class="highlight">文字</span> (highlight粗體)
+                const processedText = p.trim()
+                  .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                  .replace(/##(.*?)##/g, '<span class="highlight">$1</span>');
+                return `<p>${processedText}</p>`;
+              }).join('\n');
+            }
+          }
+        })
+        .catch(error => {
+          console.log('載入背景檔案失敗，使用預設內容');
+        });
+
+      // 載入規劃與流程內容（如果存在 plan.txt）
+      fetch(`documents/profolio source/${folderName}/plan.txt`)
+        .then(response => {
+          if (response.ok) {
+            return response.text();
+          }
+          return null;
+        })
+        .then(planContent => {
+          if (planContent) {
+            // 分割設計流程和開發流程
+            const sections = planContent.split('開發流程｜技術');
+            
+            if (sections.length >= 2) {
+              // 設計流程部分
+              const designSection = sections[0].replace('設計流程｜Figma', '').trim();
+              const designProcessDiv = document.querySelector('#design-process .process-content');
+              if (designProcessDiv && designSection) {
+                const designParagraphs = designSection.split('\n\n').filter(p => p.trim());
+                designProcessDiv.innerHTML = designParagraphs.map(p => {
+                  const processedText = p.trim()
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/##(.*?)##/g, '<span class="highlight">$1</span>');
+                  return `<p>${processedText}</p>`;
+                }).join('\n');
+              }
+              
+              // 開發流程部分
+              const devSection = sections[1].trim();
+              const devProcessDiv = document.querySelector('#development-process .process-content');
+              if (devProcessDiv && devSection) {
+                const devParagraphs = devSection.split('\n\n').filter(p => p.trim());
+                devProcessDiv.innerHTML = devParagraphs.map(p => {
+                  const processedText = p.trim()
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/##(.*?)##/g, '<span class="highlight">$1</span>');
+                  return `<p>${processedText}</p>`;
+                }).join('\n');
+              }
+            }
+          }
+        })
+        .catch(error => {
+          console.log('載入規劃檔案失敗，使用預設內容');
         });
 
       // 載入專案詳細圖片
