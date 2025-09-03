@@ -112,6 +112,7 @@
                 </span>
                 <span id="design-wireframe-link" class="wireframe-icon-link" style="display: none;">
                   <a href="#" target="_blank" style="background-color: #f0f0f0; color: #333; text-decoration: none; font-size: 14px; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; border-radius: 20px; white-space: nowrap;">
+                    <i class="fas fa-pencil-ruler" style="color: #333; font-size: 1.1rem;"></i>
                     <span>Wireframe 線稿</span>
                   </a>
                 </span>
@@ -875,9 +876,11 @@
       const lines = content.split('\n').filter(line => line.trim());
       
       for (const line of lines) {
-        if (line.includes(':')) {
-          // 新格式：type: url
-          const [type, url] = line.split(':').map(part => part.trim());
+        if (line.includes(':') && !line.trim().startsWith('http')) {
+          // 新格式：type: url (但不是以http開頭的URL)
+          const colonIndex = line.indexOf(':');
+          const type = line.substring(0, colonIndex).trim();
+          const url = line.substring(colonIndex + 1).trim();
           if (url) {
             links.push({ type: type.toLowerCase(), url: url });
           }
