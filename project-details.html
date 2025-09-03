@@ -6,6 +6,34 @@
   <title>專案詳細資訊 - 余亮廷 Kenny Yu</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .figma-icon-link a, .wireframe-icon-link a {
+      font-weight: 500;
+    }
+    
+    .figma-icon-link a:hover, .wireframe-icon-link a:hover {
+      background-color: #333 !important;
+      color: #fff !important;
+    }
+    
+    .figma-icon-link a:hover i, .wireframe-icon-link a:hover i {
+      color: #fff !important;
+    }
+    
+    /* 手機版調整 */
+    @media (max-width: 768px) {
+      .category-title {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px;
+      }
+      
+      #design-links {
+        align-self: flex-start;
+        margin-top: 8px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- 進場淡入遮罩（你的 JS 會用到） -->
@@ -73,7 +101,22 @@
       <!-- 規劃與流程（設計 / 開發） -->
       <div class="project-content">
         <div class="project-info" id="design-process">
-          <h3 class="category-title">規劃與流程｜設計（Figma）</h3>
+                     <h3 class="category-title" style="display: flex; align-items: center; justify-content: space-between;">
+              <span>規劃與流程｜設計</span>
+              <div id="design-links" style="display: flex; gap: 8px; align-items: center;">
+                <span id="design-figma-link" class="figma-icon-link" style="display: none;">
+                  <a href="#" target="_blank" style="background-color: #f0f0f0; color: #333; text-decoration: none; font-size: 14px; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; border-radius: 20px; white-space: nowrap;">
+                    <i class="fab fa-figma" style="color: #333; font-size: 1.1rem;"></i>
+                    <span>Figma 設計</span>
+                  </a>
+                </span>
+                <span id="design-wireframe-link" class="wireframe-icon-link" style="display: none;">
+                  <a href="#" target="_blank" style="background-color: #f0f0f0; color: #333; text-decoration: none; font-size: 14px; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; border-radius: 20px; white-space: nowrap;">
+                    <span>Wireframe 線稿</span>
+                  </a>
+                </span>
+              </div>
+            </h3>
           <div class="process-content">
             <p>載入中...</p>
           </div>
@@ -85,7 +128,7 @@
           </div>
         </div>
         <div class="project-info" id="development-process">
-          <h3 class="category-title">規劃與流程｜開發（技術）</h3>
+          <h3 class="category-title">規劃與流程｜開發</h3>
           <div class="process-content">
             <p>載入中...</p>
           </div>
@@ -224,22 +267,20 @@
       <div class="project-content" style="grid-template-columns: 1fr;">
         <div class="project-info">
           <h3 class="category-title">反思與收穫</h3>
-          <ul class="features-list">
-            <li><strong>技術突破：</strong>首次成功整合<span class="highlight">Firebase推播系統</span>，從零開始學習到完整實作，建立了後台與使用者裝置的穩定通訊機制，大幅提升了對雲端服務整合的技術能力</li>
-            <li><strong>跨領域協作：</strong>從<strong>UI/UX設計規劃</strong>到<strong>.NET MAUI開發實作</strong>，體驗了完整的產品開發流程，學會如何與後端工程師協作定義API規格，以及透過PM進行有效的需求溝通</li>
-            <li><strong>問題解決能力：</strong>面對<span class="highlight">地圖與公車站點整合</span>這類複雜技術挑戰時，培養了<strong>持續研究與測試</strong>的解決思維，學會透過不斷嘗試找出最適合的技術方案</li>
-            <li><strong>長期專案管理：</strong>參與<strong>兩年多</strong>的持續開發專案，學習了如何在敏捷開發模式下即時響應需求變更，並保持產品的穩定性與可維護性</li>
-          </ul>
+          <div id="reflection-content" class="reflection-content">
+            <!-- 動態載入的反思與收穫內容 -->
+            <div class="reflection-section">
+              <p>載入中...</p>
+            </div>
+          </div>
         </div>
       </div>
 
     </div>
 
     <!-- 連結 -->
-    <div class="project-links">
-      <a href="https://www.figma.com/proto/Gw633NeO0kIuw1PbpVU1Dr/%E8%B7%B3%E8%9B%99%E5%85%AC%E8%BB%8AUI%EF%BC%88%E6%9A%96%E8%89%B2%EF%BC%89?page-id=0%3A1&node-id=1-1582&p=f&viewport=227%2C406%2C0.02&t=5NtMAnc7cMrpQ9DD-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A966" target="_blank" class="btn btn-outline"><i class="fab fa-figma"></i><span>Figma 設計原型</span></a>
-      <a href="https://apps.apple.com/tw/app/%E8%B7%B3%E8%9B%99%E5%85%AC%E8%BB%8A2-0/id6667097903" target="_blank" class="btn btn-outline"><i class="fab fa-apple"></i><span>App Store</span></a>
-      <a href="https://play.google.com/store/apps/details?id=tw.wowbus.www&hl=zh_TW" target="_blank" class="btn btn-outline"><i class="fab fa-google-play"></i><span>Google Play</span></a>
+    <div id="project-links" class="project-links">
+      <!-- 動態載入的專案連結 -->
     </div>
   </section>
 
@@ -703,6 +744,244 @@
           this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIExvYWRpbmcuLi48L3RleHQ+Cjwvc3ZnPg==';
           this.alt = '圖片載入中...';
         };
+      }
+
+      // 載入反思與收穫內容（如果存在 reflection.txt）
+      fetch(`documents/profolio source/${folderName}/reflection.txt`)
+        .then(response => {
+          if (response.ok) {
+            return response.text();
+          }
+          return null;
+        })
+        .then(reflectionContent => {
+          const reflectionDiv = document.getElementById('reflection-content');
+          if (reflectionDiv) {
+            if (reflectionContent) {
+              // 分割「反思與收穫」和「未來改進」兩個部分
+              const sections = reflectionContent.split('未來改進');
+              
+              let htmlContent = '';
+              
+              if (sections.length >= 1) {
+                // 處理「反思與收穫」部分
+                const reflectionSection = sections[0].replace('反思與收穫', '').trim();
+                if (reflectionSection) {
+                  const reflectionParagraphs = reflectionSection.split('\n\n').filter(p => p.trim());
+                  htmlContent += '<ul class="features-list">';
+                  reflectionParagraphs.forEach(paragraph => {
+                    if (paragraph.trim()) {
+                      const processedText = paragraph.trim()
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/##(.*?)##/g, '<span class="highlight">$1</span>');
+                      htmlContent += `<li>${processedText}</li>`;
+                    }
+                  });
+                  htmlContent += '</ul>';
+                }
+              }
+              
+              if (sections.length >= 2) {
+                // 處理「未來改進」部分
+                const futureSection = sections[1].trim();
+                if (futureSection) {
+                  htmlContent += '<h4 style="margin-top: 40px; margin-bottom: 20px; color: #333; font-size: 1.2rem; font-weight: 700;">未來改進</h4>';
+                  const futureParagraphs = futureSection.split('\n\n').filter(p => p.trim());
+                  htmlContent += '<ul class="features-list">';
+                  futureParagraphs.forEach(paragraph => {
+                    if (paragraph.trim()) {
+                      const processedText = paragraph.trim()
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/##(.*?)##/g, '<span class="highlight">$1</span>');
+                      htmlContent += `<li>${processedText}</li>`;
+                    }
+                  });
+                  htmlContent += '</ul>';
+                }
+              }
+              
+              reflectionDiv.innerHTML = htmlContent;
+            } else {
+              // 如果沒有reflection.txt檔案，顯示預設內容
+              reflectionDiv.innerHTML = `
+                <ul class="features-list">
+                  <li><strong>技術突破：</strong>透過此專案獲得了重要的技術突破和學習成長</li>
+                  <li><strong>跨領域協作：</strong>體驗了完整的產品開發流程，提升協作能力</li>
+                  <li><strong>問題解決能力：</strong>面對技術挑戰時，培養了持續研究與測試的解決思維</li>
+                  <li><strong>專案管理：</strong>學習了如何在開發過程中即時響應需求變更</li>
+                </ul>
+              `;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('載入反思檔案失敗，使用預設內容');
+          const reflectionDiv = document.getElementById('reflection-content');
+          if (reflectionDiv) {
+            reflectionDiv.innerHTML = `
+              <ul class="features-list">
+                <li><strong>技術突破：</strong>透過此專案獲得了重要的技術突破和學習成長</li>
+                <li><strong>跨領域協作：</strong>體驗了完整的產品開發流程，提升協作能力</li>
+                <li><strong>問題解決能力：</strong>面對技術挑戰時，培養了持續研究與測試的解決思維</li>
+                <li><strong>專案管理：</strong>學習了如何在開發過程中即時響應需求變更</li>
+              </ul>
+            `;
+          }
+        });
+
+      // 載入專案連結（根據不同專案顯示不同的連結）
+      loadProjectLinks(folderName);
+    }
+
+    // 載入專案連結的函數
+    function loadProjectLinks(folderName) {
+      const projectLinksDiv = document.getElementById('project-links');
+      if (!projectLinksDiv) return;
+
+      // 嘗試載入 links.txt，如果不存在則載入 figma.txt
+      fetch(`documents/profolio source/${folderName}/links.txt`)
+        .then(response => {
+          if (response.ok) {
+            return response.text();
+          } else {
+            // 如果 links.txt 不存在，嘗試載入 figma.txt（向後兼容）
+            return fetch(`documents/profolio source/${folderName}/figma.txt`)
+              .then(figmaResponse => figmaResponse.ok ? figmaResponse.text() : null)
+              .then(figmaContent => figmaContent ? `figma: ${figmaContent.trim()}` : null);
+          }
+        })
+        .then(content => {
+          if (!content) {
+            throw new Error('沒有找到連結檔案');
+          }
+
+          const links = parseLinksContent(content);
+          const linksHtml = generateLinksHtml(links);
+          projectLinksDiv.innerHTML = linksHtml;
+          
+          // 同時更新設計標題旁邊的按鈕
+          updateDesignLinks(links);
+        })
+        .catch(error => {
+          console.log('載入連結失敗，使用預設連結');
+          // 提供最基本的預設連結
+          projectLinksDiv.innerHTML = `<a href="#" target="_blank" class="btn btn-outline"><i class="fab fa-figma"></i><span>Figma 設計原型</span></a>`;
+        });
+    }
+
+    // 解析連結內容的函數
+    function parseLinksContent(content) {
+      const links = [];
+      const lines = content.split('\n').filter(line => line.trim());
+      
+      for (const line of lines) {
+        if (line.includes(':')) {
+          // 新格式：type: url
+          const [type, url] = line.split(':').map(part => part.trim());
+          if (url) {
+            links.push({ type: type.toLowerCase(), url: url });
+          }
+        } else if (line.trim().startsWith('http')) {
+          // 舊格式：只有URL，假設是 figma
+          links.push({ type: 'figma', url: line.trim() });
+        }
+      }
+      
+      return links;
+    }
+
+    // 生成連結HTML的函數
+    function generateLinksHtml(links) {
+      const linkConfigs = {
+        'figma': {
+          icon: 'fab fa-figma',
+          text: 'Figma 設計原型'
+        },
+        'appstore': {
+          icon: 'fab fa-apple',
+          text: 'App Store'
+        },
+        'googleplay': {
+          icon: 'fab fa-google-play',
+          text: 'Google Play'
+        },
+        'github': {
+          icon: 'fab fa-github',
+          text: 'GitHub'
+        },
+        'website': {
+          icon: 'fas fa-globe',
+          text: '官方網站'
+        },
+        'demo': {
+          icon: 'fas fa-play',
+          text: 'Demo 展示'
+        },
+        'download': {
+          icon: 'fas fa-download',
+          text: '下載'
+        },
+        'wireframe': {
+          icon: 'fas fa-pencil-ruler',
+          text: 'Wireframe 線稿'
+        }
+      };
+
+      let html = '';
+      for (const link of links) {
+        // 過濾掉wireframe連結，它只顯示在標題旁邊
+        if (link.type === 'wireframe') {
+          continue;
+        }
+        
+        const config = linkConfigs[link.type];
+        if (config) {
+          html += `<a href="${link.url}" target="_blank" class="btn btn-outline">
+                     <i class="${config.icon}"></i>
+                     <span>${config.text}</span>
+                   </a>`;
+        } else {
+          // 未知類型，使用通用圖標
+          html += `<a href="${link.url}" target="_blank" class="btn btn-outline">
+                     <i class="fas fa-external-link-alt"></i>
+                     <span>${link.type}</span>
+                   </a>`;
+        }
+      }
+      
+      return html;
+    }
+
+    // 更新設計標題旁邊的按鈕
+    function updateDesignLinks(links) {
+      // 處理Figma按鈕
+      const designFigmaLink = document.getElementById('design-figma-link');
+      if (designFigmaLink) {
+        const figmaLink = links.find(link => link.type === 'figma');
+        if (figmaLink) {
+          const linkElement = designFigmaLink.querySelector('a');
+          if (linkElement) {
+            linkElement.href = figmaLink.url;
+            designFigmaLink.style.display = 'inline';
+          }
+        } else {
+          designFigmaLink.style.display = 'none';
+        }
+      }
+      
+      // 處理Wireframe按鈕
+      const designWireframeLink = document.getElementById('design-wireframe-link');
+      if (designWireframeLink) {
+        const wireframeLink = links.find(link => link.type === 'wireframe');
+        if (wireframeLink) {
+          const linkElement = designWireframeLink.querySelector('a');
+          if (linkElement) {
+            linkElement.href = wireframeLink.url;
+            designWireframeLink.style.display = 'inline';
+          }
+        } else {
+          designWireframeLink.style.display = 'none';
+        }
       }
     }
 
