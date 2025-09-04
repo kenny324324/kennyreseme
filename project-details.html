@@ -644,11 +644,23 @@
                 }
 
                 // 處理所有亮點的影片
-                const videoFiles = {
-                  1: 'carousell.mov',
-                  2: 'map.mov',
-                  3: 'list.mov'
-                };
+                let videoFiles = {};
+                
+                // 根據不同專案設定影片檔案
+                if (folderName === 'Tuan') {
+                  videoFiles = {
+                    1: 'applelogin.MP4',
+                    2: 'calauth.mov',
+                    3: 'setcalendar.mov'
+                  };
+                } else {
+                  // 預設為Bus專案的影片檔案
+                  videoFiles = {
+                    1: 'carousell.mov',
+                    2: 'map.mov',
+                    3: 'list.mov'
+                  };
+                }
                 
                 if (videoFiles[highlightNum]) {
                   const videoSection = document.getElementById(`highlight-${highlightNum}-video`);
@@ -663,7 +675,17 @@
                     fetch(videoPath, { method: 'HEAD' })
                       .then(response => {
                         if (response.ok) {
-                          videoElement.querySelector('source').src = videoPath;
+                          const sourceElement = videoElement.querySelector('source');
+                          sourceElement.src = videoPath;
+                          
+                          // 根據檔案副檔名設定正確的MIME type
+                          const fileName = videoFiles[highlightNum];
+                          if (fileName.toLowerCase().endsWith('.mp4')) {
+                            sourceElement.type = 'video/mp4';
+                          } else if (fileName.toLowerCase().endsWith('.mov')) {
+                            sourceElement.type = 'video/quicktime';
+                          }
+                          
                           videoElement.load();
                           videoElement.style.display = 'block';
                           if (placeholder) placeholder.style.display = 'none';
