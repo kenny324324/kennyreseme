@@ -1,0 +1,70 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="600" height="400" fill="#f8f9fa"/>
+  
+  <!-- 標題 -->
+  <text x="300" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">
+    島嶼生吐司POS系統架構
+  </text>
+  
+  <!-- Android手持裝置 -->
+  <rect x="50" y="80" width="120" height="60" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+  <text x="110" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1976d2">
+    Android手持裝置
+  </text>
+  <text x="110" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#424242">
+    內建掃描器
+  </text>
+  
+  <!-- 箭頭1 -->
+  <path d="M 170 120 L 220 120" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- .NET MAUI App -->
+  <rect x="240" y="80" width="120" height="80" rx="8" fill="#e8f5e8" stroke="#4caf50" stroke-width="2"/>
+  <text x="300" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#4caf50">
+    .NET MAUI App
+  </text>
+  <text x="300" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#424242">
+    進貨管理
+  </text>
+  <text x="300" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#424242">
+    銷貨管理
+  </text>
+  <text x="300" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#424242">
+    盤點功能
+  </text>
+  
+  <!-- 箭頭2 -->
+  <path d="M 300 160 L 300 200" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- API服務 -->
+  <rect x="240" y="220" width="120" height="60" rx="8" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+  <text x="300" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ff9800">
+    API服務
+  </text>
+  <text x="300" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#424242">
+    資料同步
+  </text>
+  <text x="300" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#424242">
+    庫存管理
+  </text>
+  
+  <!-- 箭頭3 -->
+  <path d="M 300 280 L 300 320" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- 後端系統 -->
+  <rect x="240" y="340" width="120" height="40" rx="8" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+  <text x="300" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#e91e63">
+    後端系統
+  </text>
+  <text x="300" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#424242">
+    資料庫
+  </text>
+  
+  <!-- 箭頭定義 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+</svg>
