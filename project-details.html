@@ -122,7 +122,7 @@
             <p>載入中...</p>
           </div>
           <div class="design-image-section" id="design-image-section" style="display: none;">
-            <h4 style="margin-top: 20px; margin-bottom: 10px; font-size: 14px;"><span class="highlight">Figma 設計流程圖</span></h4>
+            <h4 style="margin-top: 20px; margin-bottom: 10px; font-size: 14px;"><span class="highlight" id="design-image-title">Figma 設計流程圖</span></h4>
             <div class="design-image-container" style="border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; margin-bottom: 20px;">
               <img id="figma-design-image" src="" alt="Figma 設計流程圖" style="width: 100%; height: auto; display: block;">
             </div>
@@ -476,6 +476,17 @@
       // 載入 Figma 設計截圖（如果存在）
       const figmaDesignImage = document.getElementById('figma-design-image');
       const designImageSection = document.getElementById('design-image-section');
+      const designImageTitle = document.getElementById('design-image-title');
+      
+      // 根據專案名稱設定標題
+      if (designImageTitle) {
+        if (folderName === 'POS') {
+          designImageTitle.textContent = '操作流程圖';
+        } else {
+          designImageTitle.textContent = 'Figma 設計流程圖';
+        }
+      }
+      
       if (figmaDesignImage && designImageSection) {
         const figmaImagePath = `documents/profolio source/${folderName}/figma-design.png`;
         
