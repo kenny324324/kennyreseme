@@ -5,114 +5,232 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>余亮廷 Kenny Yu - UI/UX 跨平台工程師</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a1a1a',
+                        secondary: '#666',
+                        accent: '#667eea'
+                    },
+                    fontFamily: {
+                        'sans': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'SF Pro Text', 'system-ui', 'sans-serif']
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                        'sm': '4px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '24px'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- 滾動動畫 CSS -->
+    <style>
+        /* 滾動觸發動畫基礎樣式 */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .scroll-fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* 動畫激活狀態 */
+        .scroll-fade-in.animate-in,
+        .scroll-fade-in-up.animate-in {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+        
+        /* 錯位動畫延遲 */
+        .scroll-fade-in-up:nth-child(1) { transition-delay: 0.1s; }
+        .scroll-fade-in-up:nth-child(2) { transition-delay: 0.2s; }
+        .scroll-fade-in-up:nth-child(3) { transition-delay: 0.3s; }
+        .scroll-fade-in-up:nth-child(4) { transition-delay: 0.4s; }
+        .scroll-fade-in-up:nth-child(5) { transition-delay: 0.5s; }
+        .scroll-fade-in-up:nth-child(6) { transition-delay: 0.6s; }
+
+        /* 極光波浪動畫 */
+        @keyframes wave {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(-2deg);
+            }
+            25% {
+                transform: translateY(-10px) translateX(20px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(5px) translateX(-15px) rotate(2deg);
+            }
+            75% {
+                transform: translateY(-5px) translateX(10px) rotate(-1deg);
+            }
+        }
+    </style>
 
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">Kenny Yu</span>
-                <span class="logo-subtitle">UI/UX Engineer</span>
+    <nav class="navbar fixed top-5 left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-[1200px] bg-white/80 backdrop-blur-md rounded-[50px] z-[1000] transition-all duration-300 shadow-none md:w-[calc(100%-20px)] md:top-2.5 md:rounded-[20px] max-md:w-[calc(100%-20px)] max-md:top-2.5 max-md:rounded-[20px]">
+        <div class="nav-container mx-auto px-8 grid grid-cols-[1fr_auto_1fr] items-center h-16 max-md:flex max-md:justify-between max-md:px-5">
+            <div class="nav-logo justify-self-start flex flex-col items-start max-md:flex max-md:items-center">
+                <span class="logo-text text-xl font-bold text-[#1a1a1a] leading-none">Kenny Yu</span>
+                <span class="logo-subtitle text-[10px] text-[#666] font-normal -mt-0.5">UI/UX Engineer</span>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">首頁</a></li>
-                <li><a href="#about" class="nav-link">關於我</a></li>
-                <li><a href="#skills" class="nav-link">專業技能</a></li>
-                <li><a href="#projects" class="nav-link">專案作品</a></li>
-                <li><a href="#experience" class="nav-link">工作經歷</a></li>
-                <li class="mobile-download-item"><a href="#" class="download-btn">
-                    <i class="fas fa-download"></i>
+            <ul class="nav-menu justify-self-center flex list-none gap-5 max-md:fixed max-md:-left-full max-md:top-[84px] max-md:flex-col max-md:bg-white max-md:w-[calc(100%-20px)] max-md:text-center max-md:transition-all max-md:duration-300 max-md:shadow-[0_10px_27px_rgba(0,0,0,0.1)] max-md:py-5 max-md:gap-2.5 max-md:rounded-[20px] max-md:mx-2.5">
+                <li><a href="#home" class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/5">首頁</a></li>
+                <li><a href="#about" class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/5">關於我</a></li>
+                <li><a href="#skills" class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/5">專業技能</a></li>
+                <li><a href="#projects" class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/5">專案作品</a></li>
+                <li><a href="#experience" class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/5">工作經歷</a></li>
+                <li class="mobile-download-item hidden max-md:block">
+                    <a href="#" class="download-btn flex items-center gap-2 no-underline text-[#333] font-semibold text-[13px] px-4 py-2 rounded-[25px] transition-all duration-300 bg-black/5 border-none hover:bg-[#1a1a1a] hover:text-white max-md:inline-flex max-md:justify-center max-md:px-6 max-md:py-3 max-md:text-sm max-md:my-2.5 max-md:mx-auto max-md:w-fit max-md:hover:bg-[#e2e8f0] max-md:hover:text-[#333]">
+                        <i class="fas fa-download text-xs max-md:text-sm"></i>
                     <span>下載履歷</span>
-                </a></li>
+                    </a>
+                </li>
             </ul>
-            <div class="nav-actions">
-                <a href="#" class="download-btn">
-                    <i class="fas fa-download"></i>
+            <div class="nav-actions justify-self-end -mr-4 flex items-center gap-[15px] max-md:hidden">
+                <a href="#" class="download-btn flex items-center gap-2 no-underline text-[#333] font-semibold text-[13px] px-4 py-2 rounded-[25px] transition-all duration-300 bg-black/5 border-none hover:bg-[#1a1a1a] hover:text-white">
+                    <i class="fas fa-download text-xs"></i>
                     <span>下載履歷</span>
                 </a>
             </div>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="hamburger hidden flex-col justify-center items-center w-[30px] h-[30px] cursor-pointer p-[3px] max-md:flex max-md:ml-[15px]">
+                <span class="block w-[25px] h-[3px] bg-[#333] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative backface-hidden"></span>
+                <span class="block w-[25px] h-[3px] bg-[#333] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative backface-hidden"></span>
+                <span class="block w-[25px] h-[3px] bg-[#333] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative backface-hidden"></span>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="greeting">您好，我是</span>
-                        <span class="name">余亮廷 Kenny Yu</span>
+    <section id="home" class="min-h-screen bg-white flex items-center relative overflow-hidden py-24">
+        <div class="w-full max-w-[1200px] mx-auto px-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center text-center md:text-left">
+                <!-- Hero Text -->
+                <div class="text-[#333]">
+                    <h1 class="mb-5">
+                        <span class="block text-lg font-normal mb-2 text-[#666]">您好，我是</span>
+                        <span class="block text-5xl md:text-[4rem] font-bold mb-1 text-[#1a1a1a]">余亮廷 Kenny Yu</span>
                     </h1>
-                    <h2 class="hero-subtitle">UI/UX 跨平台工程師</h2>
-                    <p class="hero-description">
-                        具備 <span class="highlight">SwiftUI</span>、<span class="highlight">Flutter</span> 跨平台開發經驗，專精 <span class="highlight">.NET MAUI</span> 商業應用開發<br>
-                        善於運用 <span class="highlight">Figma</span> 進行 <span class="highlight">UI/UX 規劃設計</span>，結合 <span class="highlight">AI 整合</span>與 <span class="highlight">第三方服務</span>串接<br>
-                        具備<span class="highlight">App Store上架</span>、<span class="highlight">iCloud</span>、<span class="highlight">Firebase</span>等雲端服務整合實戰經驗
+                    <h2 class="text-2xl md:text-[1.5rem] font-medium mb-5 text-[#333]">UI/UX 跨平台工程師</h2>
+                    <p class="text-lg md:text-[1.1rem] leading-[1.8] mb-10 text-[#666]">
+                        具備 <span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">SwiftUI</span>、<span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">Flutter</span> 跨平台開發經驗，專精 <span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">.NET MAUI</span> 商業應用開發<br class="hidden md:block">
+                        善於運用 <span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">Figma</span> 進行 <span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">UI/UX 規劃設計</span>，結合 <span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">AI 整合</span>與 <span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">第三方服務</span>串接<br class="hidden md:block">
+                        具備<span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">App Store上架</span>、<span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">iCloud</span>、<span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">Firebase</span>等雲端服務整合實戰經驗
                     </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">查看作品</a>
-                        <a href="#experience" class="btn btn-outline">查看經歷</a>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-5">
+                        <a href="#projects" class="px-8 py-3 rounded-lg no-underline font-semibold text-base transition-all duration-300 border-2 border-transparent cursor-pointer bg-[#1a1a1a] text-white hover:bg-[#333]">查看作品</a>
+                        <a href="#experience" class="px-8 py-3 rounded-lg no-underline font-semibold text-base transition-all duration-300 border-2 border-transparent cursor-pointer bg-[#f5f5f5] text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white">查看經歷</a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="profile-card">
-                        <div class="card-header">
-                            <div class="profile-avatar">
-                                <img src="profile.JPG" alt="余亮廷 Kenny Yu" class="profile-photo">
+                
+                <!-- Hero Image -->
+                <div class="flex justify-center items-center">
+                    <div class="relative rounded-[32px] p-8 text-center border border-gray-200 w-full max-w-[380px] md:max-w-none mx-auto overflow-hidden bg-white shadow-[0_2px_8px_-2px_rgba(0,0,0,0.08),0_4px_12px_-3px_rgba(0,0,0,0.06)]">
+
+                        <!-- 頭像區塊 -->
+                        <div class="relative mb-6 mx-auto w-[120px]">
+                            <div class="w-[120px] h-[120px] rounded-full overflow-hidden border-4 border-white shadow-sm mx-auto relative z-10">
+                                <img src="profile.JPG" alt="余亮廷 Kenny Yu" class="w-full h-full object-cover">
                             </div>
-                            <div class="status-indicator"></div>
+                            <!-- 狀態標示 -->
+                            <div class="absolute bottom-1 right-1 z-20 bg-white p-1 rounded-full shadow-sm border border-gray-100">
+                                <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                            </div>
+                            <!-- 裝飾圓環 -->
+                            <div class="absolute inset-0 rounded-full border border-dashed border-gray-300 scale-110 animate-[spin_10s_linear_infinite]"></div>
                         </div>
-                        <div class="card-content">
-                            <h3>UI/UX 跨平台工程師</h3>
-                            <div class="tech-stack">
-                                <span class="tech-item">SwiftUI</span>
-                                <span class="tech-item">Flutter</span>
-                                <span class="tech-item">.NET MAUI</span>
-                                <span class="tech-item">Figma</span>
+
+                        <!-- 文字區塊 -->
+                        <div class="relative z-10 flex flex-col items-center">
+                            <h3 class="text-2xl font-bold text-[#1a1a1a] mb-1">Kenny Yu</h3>
+                            <p class="text-sm text-[#666] mb-6 font-medium tracking-wide">UI/UX 跨平台工程師</p>
+
+                            <!-- 數據/特點小標籤 -->
+                            <div class="flex items-center justify-center gap-6 mb-6 text-sm text-[#444] w-full border-t border-b border-gray-100 py-4">
+                                <div class="flex flex-col items-center flex-1 text-right border-r border-gray-100 pr-3">
+                                    <span class="font-bold text-lg text-[#1a1a1a] leading-tight">2+</span>
+                                    <span class="text-[10px] text-[#888] uppercase tracking-wider">Years</span>
+                                </div>
+                                <div class="flex flex-col items-center flex-1 text-left pl-3">
+                                    <span class="font-bold text-lg text-[#1a1a1a] leading-tight">6+</span>
+                                    <span class="text-[10px] text-[#888] uppercase tracking-wider">Projects</span>
+                                </div>
+                            </div>
+
+                            <!-- 技能標籤 -->
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full px-4">
+                                <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
+                                    <i class="fab fa-swift text-orange-600 text-base"></i> SwiftUI
+                                </span>
+                                <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
+                                    <i class="fas fa-layer-group text-blue-500 text-base"></i> Flutter
+                                </span>
+                                <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
+                                    <i class="fab fa-microsoft text-blue-700 text-base"></i> .NET MAUI
+                                </span>
+                                <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
+                                    <i class="fab fa-figma text-purple-600 text-base"></i> Figma
+                                </span>
+                                <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
+                                    <i class="fab fa-css3-alt text-blue-600 text-base"></i> CSS
+                                </span>
+                                <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
+                                    <i class="fas fa-tasks text-teal-600 text-base"></i> Project Mgt.
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#333]">
+            <div class="w-0.5 h-8 bg-[#333] relative animate-bounce after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:w-2 after:h-2 after:border-r-2 after:border-b-2 after:border-[#333]"></div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">關於我</h2>
+    <section id="about" class="about py-16 bg-white">
+        <div class="w-full max-w-[1200px] mx-auto px-5">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-[2.5rem] font-bold text-[#1a1a1a] mb-4 relative inline-block after:content-[''] after:absolute after:-bottom-2.5 after:left-1/2 after:-translate-x-1/2 after:w-[60px] after:h-1 after:bg-[#1a1a1a] after:rounded-sm">關於我</h2>
             </div>
             
             <!-- Personal Introduction -->
-            <div class="personal-intro">
-                <p class="intro-text">
+            <div class="personal-intro max-w-[900px] mx-auto text-center my-10 md:my-16">
+                <p class="text-lg leading-[1.8] text-[#444] mb-5 text-left">
                     畢業於長庚大學資訊管理學系，目前在喬思齊科技擔任 UI/UX 工程師，實習與正職共計兩年。主要負責以 Figma 規劃介面設計，並使用 .NET MAUI 進行跨平台行動應用程式開發。我同時主動學習 Swift 與 Flutter，持續追蹤產業趨勢，並積極強化自身跨平台開發實力。
                 </p>
-                <p class="intro-text">
+                <p class="text-lg leading-[1.8] text-[#444] mb-0 text-left">
                     我對使用者體驗與細節具有高度敏銳度，尤其對於 App 的 UI/UX 與動畫交互設計充滿熱情。希望能持續結合設計思維與程式開發能力，打造兼具美感與功能性的產品，為使用者帶來更流暢與愉快的數位體驗。
                 </p>
             </div>
             
-            <div class="about-content">
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">6+</div>
-                        <div class="stat-label">App專案</div>
+            <div class="about-content mt-10">
+                <div class="about-stats grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-8 max-w-[600px] mx-auto">
+                    <div class="stat-item text-center p-8 bg-white rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-transform duration-300">
+                        <div class="stat-number text-[2.5rem] font-bold text-[#1a1a1a] mb-1.5">6+</div>
+                        <div class="stat-label text-sm font-medium text-[#666]">App專案</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">2</div>
-                        <div class="stat-label">工作年資</div>
+                    <div class="stat-item text-center p-8 bg-white rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-transform duration-300">
+                        <div class="stat-number text-[2.5rem] font-bold text-[#1a1a1a] mb-1.5">2</div>
+                        <div class="stat-label text-sm font-medium text-[#666]">工作年資</div>
                     </div>
                 </div>
             </div>
@@ -120,268 +238,268 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">專業技能</h2>
+    <section id="skills" class="skills py-16 bg-white">
+        <div class="w-full max-w-[1200px] mx-auto px-5">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-[2.5rem] font-bold text-[#1a1a1a] mb-4 relative inline-block after:content-[''] after:absolute after:-bottom-2.5 after:left-1/2 after:-translate-x-1/2 after:w-[60px] after:h-1 after:bg-[#1a1a1a] after:rounded-sm">專業技能</h2>
             </div>
-            <div class="skills-content">
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-code"></i>
+            <div class="grid gap-12">
+                <div class="skill-category bg-white p-10 rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.1)]">
+                    <h3 class="category-title flex items-center gap-4 text-2xl font-semibold text-[#1a1a1a] mb-8">
+                        <i class="fas fa-code text-[1.8rem] text-[#1a1a1a]"></i>
                         跨平台開發
                     </h3>
-                    <div class="skills-grid">
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                    <div class="skills-grid grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fab fa-swift"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>SwiftUI</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 85%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">SwiftUI</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 85%"></div>
                                     </div>
-                                    <span class="level-text">專業級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">專業級</span>
                                 </div>
-                                <p>完成Mino待辦清單APP，具備iCloud資料儲存、推播提醒、UI規劃與App Store上架完整經驗</p>
+                                <p class="text-sm text-[#666] leading-normal">完成Mino待辦清單APP，具備iCloud資料儲存、推播提醒、UI規劃與App Store上架完整經驗</p>
                             </div>
                         </div>
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fas fa-layer-group"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>Flutter</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 80%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">Flutter</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 80%"></div>
                                     </div>
-                                    <span class="level-text">專業級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">專業級</span>
                                 </div>
-                                <p>完成MIsh個人書櫃APP，具備第三方API串接、Apple登入、Firebase資料儲存與App Store上架經驗</p>
+                                <p class="text-sm text-[#666] leading-normal">完成MIsh個人書櫃APP，具備第三方API串接、Apple登入、Firebase資料儲存與App Store上架經驗</p>
                             </div>
                         </div>
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fab fa-microsoft"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>.NET MAUI</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 90%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">.NET MAUI</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 90%"></div>
                                     </div>
-                                    <span class="level-text">專家級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">專家級</span>
                                 </div>
-                                <p>完成跳蛙APP、今皓AI、智能客服等4+個商業專案，具備從開發到上架完整流程經驗</p>
+                                <p class="text-sm text-[#666] leading-normal">完成跳蛙APP、今皓AI、智能客服等4+個商業專案，具備從開發到上架完整流程經驗</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-cogs"></i>
+                <div class="skill-category bg-white p-10 rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.1)]">
+                    <h3 class="category-title flex items-center gap-4 text-2xl font-semibold text-[#1a1a1a] mb-8">
+                        <i class="fas fa-cogs text-[1.8rem] text-[#1a1a1a]"></i>
                         核心技術
                     </h3>
-                    <div class="skills-grid">
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                    <div class="skills-grid grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fas fa-plug"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>API 整合</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 90%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">API 整合</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 90%"></div>
                                     </div>
-                                    <span class="level-text">專家級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">專家級</span>
                                 </div>
-                                <p>RESTful API設計與串接，完成購票系統、AI服務、POS系統等多個商業專案API整合</p>
+                                <p class="text-sm text-[#666] leading-normal">RESTful API設計與串接，完成購票系統、AI服務、POS系統等多個商業專案API整合</p>
                             </div>
                         </div>
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fas fa-map-marked-alt"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>地圖服務</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 85%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">地圖服務</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 85%"></div>
                                     </div>
-                                    <span class="level-text">專業級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">專業級</span>
                                 </div>
-                                <p>跳蛙APP地圖整合實作，支援路線規劃、定位服務，具備地圖API串接與用戶體驗優化經驗</p>
+                                <p class="text-sm text-[#666] leading-normal">跳蛙APP地圖整合實作，支援路線規劃、定位服務，具備地圖API串接與用戶體驗優化經驗</p>
                             </div>
                         </div>
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fas fa-shield-alt"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>安全認證</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 80%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">安全認證</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 80%"></div>
                                     </div>
-                                    <span class="level-text">專業級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">專業級</span>
                                 </div>
-                                <p>整合Google/Apple/FB第三方登入系統，完成用戶認證與安全驗證機制實作</p>
+                                <p class="text-sm text-[#666] leading-normal">整合Google/Apple/FB第三方登入系統，完成用戶認證與安全驗證機制實作</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-robot"></i>
+                <div class="skill-category bg-white p-10 rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.1)]">
+                    <h3 class="category-title flex items-center gap-4 text-2xl font-semibold text-[#1a1a1a] mb-8">
+                        <i class="fas fa-robot text-[1.8rem] text-[#1a1a1a]"></i>
                         現代開發
                     </h3>
-                    <div class="skills-grid">
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                    <div class="skills-grid grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fas fa-brain"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>AI 整合開發</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 85%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">AI 整合開發</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 85%"></div>
                                     </div>
-                                    <span class="level-text">專業級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">專業級</span>
                                 </div>
-                                <p>喬思齊智能客服系統開發，整合OpenAI API、reg、embedding技術，具備AI聊天UI實作經驗</p>
+                                <p class="text-sm text-[#666] leading-normal">喬思齊智能客服系統開發，整合OpenAI API、reg、embedding技術，具備AI聊天UI實作經驗</p>
                             </div>
                         </div>
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fab fa-figma"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>Figma 設計</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 75%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">Figma 設計</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 75%"></div>
                                     </div>
-                                    <span class="level-text">專業級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">專業級</span>
                                 </div>
-                                <p>跳蛙APP、今皓AI、大南方智慧餐飲等專案UI/UX設計稿製作，與設計師協作完成介面規劃</p>
+                                <p class="text-sm text-[#666] leading-normal">跳蛙APP、今皓AI、大南方智慧餐飲等專案UI/UX設計稿製作，與設計師協作完成介面規劃</p>
                             </div>
                         </div>
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fas fa-paint-brush"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>UI/UX 設計</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 70%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">UI/UX 設計</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 70%"></div>
                                     </div>
-                                    <span class="level-text">實作級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">實作級</span>
                                 </div>
-                                <p>從Figma設計稿實作為實際應用介面，具備用戶體驗優化與響應式設計實作經驗</p>
+                                <p class="text-sm text-[#666] leading-normal">從Figma設計稿實作為實際應用介面，具備用戶體驗優化與響應式設計實作經驗</p>
                             </div>
                         </div>
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fab fa-git-alt"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>版本控制</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 85%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">版本控制</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 85%"></div>
                                     </div>
-                                    <span class="level-text">專業級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">專業級</span>
                                 </div>
-                                <p>Git版本控制與團隊協作，具備多專案並行開發與程式碼管理經驗</p>
+                                <p class="text-sm text-[#666] leading-normal">Git版本控制與團隊協作，具備多專案並行開發與程式碼管理經驗</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-cogs"></i>
+                <div class="skill-category bg-white p-10 rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.1)]">
+                    <h3 class="category-title flex items-center gap-4 text-2xl font-semibold text-[#1a1a1a] mb-8">
+                        <i class="fas fa-cogs text-[1.8rem] text-[#1a1a1a]"></i>
                         其他技能
                     </h3>
-                    <div class="skills-grid">
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                    <div class="skills-grid grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fas fa-tasks"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>專案管理</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 80%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">專案管理</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 80%"></div>
                                     </div>
-                                    <span class="level-text">專業級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">專業級</span>
                                 </div>
-                                <p>文策院需求溝通與專案管理經驗，具備與PM、設計師、後端工程師有效溝通協作能力</p>
+                                <p class="text-sm text-[#666] leading-normal">文策院需求溝通與專案管理經驗，具備與PM、設計師、後端工程師有效溝通協作能力</p>
                             </div>
                         </div>
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fas fa-code"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>系統開發</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 70%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">系統開發</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 70%"></div>
                                     </div>
-                                    <span class="level-text">實作級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">實作級</span>
                                 </div>
-                                <p>揚昇球場電子投票系統MVC架構開發，那智捷截圖辨識Python自動化測試實作</p>
+                                <p class="text-sm text-[#666] leading-normal">揚昇球場電子投票系統MVC架構開發，那智捷截圖辨識Python自動化測試實作</p>
                             </div>
                         </div>
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fas fa-users"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>團隊協作</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 85%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">團隊協作</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 85%"></div>
                                     </div>
-                                    <span class="level-text">專業級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">專業級</span>
                                 </div>
-                                <p>中小企總專案協調工作，具備跨部門溝通與需求分析能力，能有效與PM協作</p>
+                                <p class="text-sm text-[#666] leading-normal">中小企總專案協調工作，具備跨部門溝通與需求分析能力，能有效與PM協作</p>
                             </div>
                         </div>
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fas fa-file-alt"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>文件製作</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 75%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">文件製作</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 75%"></div>
                                     </div>
-                                    <span class="level-text">專業級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">專業級</span>
                                 </div>
-                                <p>高球AI專案文件與簡報製作，具備技術文件撰寫與專案報告能力</p>
+                                <p class="text-sm text-[#666] leading-normal">高球AI專案文件與簡報製作，具備技術文件撰寫與專案報告能力</p>
                             </div>
                         </div>
-                        <div class="skill-item expert">
-                            <div class="skill-icon">
+                        <div class="skill-item expert flex gap-5 items-start bg-white p-6 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 border border-[#f0f0f0] hover:border-[#d1d5db] group bg-gradient-to-br from-white to-white">
+                            <div class="skill-icon flex-shrink-0 w-[50px] h-[50px] bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-xl flex items-center justify-center text-xl text-white shadow-[0_4px_15px_rgba(26,26,26,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(26,26,26,0.3)]">
                                 <i class="fas fa-language"></i>
                             </div>
-                            <div class="skill-info">
-                                <h4>語言能力</h4>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 85%"></div>
+                            <div class="skill-info flex-1">
+                                <h4 class="text-[1.1rem] font-semibold text-[#1a1a1a] mb-2.5">語言能力</h4>
+                                <div class="skill-level flex items-center gap-4 mb-2.5">
+                                    <div class="level-bar flex-1 h-1.5 bg-[#e2e8f0] rounded-sm overflow-hidden">
+                                        <div class="level-fill h-full bg-[#1a1a1a] rounded-sm transition-[width] duration-700 ease-in-out" style="width: 85%"></div>
                                     </div>
-                                    <span class="level-text">高級</span>
+                                    <span class="level-text text-[0.85rem] font-semibold text-[#666] min-w-[60px]">高級</span>
                                 </div>
-                                <p>中文母語流利，英文高級水準（多益835分），能熟練閱讀英文技術文檔與API文件，具備跨國專案協作溝通能力</p>
+                                <p class="text-sm text-[#666] leading-normal">中文母語流利，英文高級水準（多益835分），能熟練閱讀英文技術文檔與API文件，具備跨國專案協作溝通能力</p>
                             </div>
                         </div>
                     </div>
@@ -392,278 +510,254 @@
 
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">專案作品</h2>
+    <section id="projects" class="projects py-16 bg-white">
+        <div class="w-full max-w-[1200px] mx-auto px-5">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-[2.5rem] font-bold text-[#1a1a1a] mb-4 relative inline-block after:content-[''] after:absolute after:-bottom-2.5 after:left-1/2 after:-translate-x-1/2 after:w-[60px] after:h-1 after:bg-[#1a1a1a] after:rounded-sm">專案作品</h2>
             </div>
 
-            <div class="projects-grid">
-                <div class="project-card featured" data-category="maui">
-                    <div class="project-image">
-                        <img src="documents/profolio source/Bus/cover.png" alt="跳蛙公車APP封面" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://apps.apple.com/tw/app/%E8%B7%B3%E8%9B%99%E5%85%AC%E8%BB%8A2-0/id6667097903" target="_blank" class="project-link" title="App Store"><i class="fab fa-apple"></i></a>
-                                <a href="https://play.google.com/store/apps/details?id=tw.wowbus.www&hl=zh_TW" target="_blank" class="project-link" title="Google Play"><i class="fab fa-google-play"></i></a>
-                                <a href="#" class="project-link" title="專案詳情"><i class="fas fa-external-link-alt"></i></a>
+            <div class="projects-grid grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-8">
+                <div class="project-card featured bg-white rounded-[20px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300 opacity-100 scale-100 flex flex-col h-full group hover:bg-[#1a1a1a]/5 border border-gray-200/30 hover:border-gray-300/50" data-category="maui">
+                    <div class="project-image relative h-[200px] bg-white flex items-center justify-center overflow-hidden">
+                        <img src="documents/profolio source/Bus/cover.png" alt="跳蛙公車APP封面" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <div class="project-links flex gap-4">
+                                <a href="https://apps.apple.com/tw/app/%E8%B7%B3%E8%9B%99%E5%85%AC%E8%BB%8A2-0/id6667097903" target="_blank" class="project-link w-[50px] h-[50px] bg-white/20 rounded-full flex items-center justify-center text-white no-underline text-lg transition-all duration-300 hover:bg-white/30 hover:scale-110" title="App Store"><i class="fab fa-apple"></i></a>
+                                <a href="https://play.google.com/store/apps/details?id=tw.wowbus.www&hl=zh_TW" target="_blank" class="project-link w-[50px] h-[50px] bg-white/20 rounded-full flex items-center justify-center text-white no-underline text-lg transition-all duration-300 hover:bg-white/30 hover:scale-110" title="Google Play"><i class="fab fa-google-play"></i></a>
+                                <a href="#" class="project-link w-[50px] h-[50px] bg-white/20 rounded-full flex items-center justify-center text-white no-underline text-lg transition-all duration-300 hover:bg-white/30 hover:scale-110" title="專案詳情"><i class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">跳蛙公車2.0</h3>
-                        </div>
-                        <p class="project-description">
+                    <div class="project-content p-6 flex-1 flex flex-col">
+                        <h3 class="project-title text-[1.3rem] font-semibold text-[#1a1a1a] mb-4">跳蛙公車2.0</h3>
+                        <p class="project-description text-[#666] leading-[1.6] mb-5 flex-1">
                             完整的跨平台購票與交通管理系統，支援單程票、多日票購買，整合地圖服務、Google登入與Firebase推播通知
                         </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">.NET MAUI</span>
-                            <span class="tech-tag">Google登入</span>
-                            <span class="tech-tag">地圖整合</span>
-                            <span class="tech-tag">Firebase推播</span>
-                            <span class="tech-tag">UI改版</span>
+                        <div class="project-tech flex flex-wrap gap-2 mb-5">
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">.NET MAUI</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">Google登入</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">地圖整合</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">Firebase推播</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">UI改版</span>
                         </div>
-                        <div class="project-actions">
-                            <button class="learn-more-btn">了解更多</button>
-                        </div>
+                        <button class="learn-more-btn bg-[#1a1a1a] text-white border-none px-5 py-2.5 rounded-lg text-[0.9rem] font-medium cursor-pointer transition-all duration-300 shadow-[0_2px_8px_rgba(26,26,26,0.2)] hover:bg-[#333] active:translate-y-0 w-full mt-auto">了解更多</button>
                     </div>
                 </div>
 
-                <div class="project-card" data-category="maui ai">
-                    <div class="project-image">
-                        <img src="documents/profolio source/Tuan/cover.png" alt="今皓TUAN AI助理APP封面" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="project-overlay">
-                            <div class="project-links">
+                <div class="project-card bg-white rounded-[20px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300 opacity-100 scale-100 flex flex-col h-full group hover:bg-[#1a1a1a]/5 border border-gray-200/30 hover:border-gray-300/50" data-category="maui ai">
+                    <div class="project-image relative h-[200px] bg-white flex items-center justify-center overflow-hidden">
+                        <img src="documents/profolio source/Tuan/cover.png" alt="今皓TUAN AI助理APP封面" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <div class="project-links flex gap-4">
                                 <!-- 暫時不放置連結按鈕 -->
                             </div>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">今皓TUAN AI助理APP</h3>
-                        </div>
-                        <p class="project-description">
+                    <div class="project-content p-6 flex-1 flex flex-col">
+                        <h3 class="project-title text-[1.3rem] font-semibold text-[#1a1a1a] mb-4">今皓TUAN AI助理APP</h3>
+                        <p class="project-description text-[#666] leading-[1.6] mb-5 flex-1">
                             AI 驅動的虛擬 IP 互動應用，整合第三方登入、AI助理聊天控制Google行事曆功能
                         </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">.NET MAUI</span>
-                            <span class="tech-tag">第三方登入</span>
-                            <span class="tech-tag">AI助理</span>
-                            <span class="tech-tag">Google行事曆</span>
+                        <div class="project-tech flex flex-wrap gap-2 mb-5">
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">.NET MAUI</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">第三方登入</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">AI助理</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">Google行事曆</span>
                         </div>
-                        <div class="project-actions">
-                            <button class="learn-more-btn">了解更多</button>
-                        </div>
+                        <button class="learn-more-btn bg-[#1a1a1a] text-white border-none px-5 py-2.5 rounded-lg text-[0.9rem] font-medium cursor-pointer transition-all duration-300 shadow-[0_2px_8px_rgba(26,26,26,0.2)] hover:bg-[#333] active:translate-y-0 w-full mt-auto">了解更多</button>
                     </div>
                 </div>
 
-                <div class="project-card" data-category="maui">
-                    <div class="project-image">
-                        <img src="documents/profolio source/POS/cover.png" alt="島嶼生吐司手持POS封面" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="Google Play"><i class="fab fa-google-play"></i></a>
+                <div class="project-card bg-white rounded-[20px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300 opacity-100 scale-100 flex flex-col h-full group hover:bg-[#1a1a1a]/5 border border-gray-200/30 hover:border-gray-300/50" data-category="maui">
+                    <div class="project-image relative h-[200px] bg-white flex items-center justify-center overflow-hidden">
+                        <img src="documents/profolio source/POS/cover.png" alt="島嶼生吐司手持POS封面" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <div class="project-links flex gap-4">
+                                <a href="#" class="project-link w-[50px] h-[50px] bg-white/20 rounded-full flex items-center justify-center text-white no-underline text-lg transition-all duration-300 hover:bg-white/30 hover:scale-110" title="Google Play"><i class="fab fa-google-play"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">島嶼生吐司 手持POS</h3>
-                        </div>
-                        <p class="project-description">
+                    <div class="project-content p-6 flex-1 flex flex-col">
+                        <h3 class="project-title text-[1.3rem] font-semibold text-[#1a1a1a] mb-4">島嶼生吐司 手持POS</h3>
+                        <p class="project-description text-[#666] leading-[1.6] mb-5 flex-1">
                             商業手持 POS 系統，整合條碼掃描硬體、API串接與特殊機型功能實作
                         </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">.NET MAUI</span>
-                            <span class="tech-tag">硬體整合</span>
-                            <span class="tech-tag">條碼掃描</span>
-                            <span class="tech-tag">API串接</span>
+                        <div class="project-tech flex flex-wrap gap-2 mb-5">
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">.NET MAUI</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">硬體整合</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">條碼掃描</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">API串接</span>
                         </div>
-                        <div class="project-actions">
-                            <button class="learn-more-btn">了解更多</button>
-                        </div>
+                        <button class="learn-more-btn bg-[#1a1a1a] text-white border-none px-5 py-2.5 rounded-lg text-[0.9rem] font-medium cursor-pointer transition-all duration-300 shadow-[0_2px_8px_rgba(26,26,26,0.2)] hover:bg-[#333] active:translate-y-0 w-full mt-auto">了解更多</button>
                     </div>
                 </div>
 
-                <div class="project-card" data-category="maui">
-                    <div class="project-image">
-                        <img src="documents/profolio source/Justai/cover.png" alt="JustAI客服系統封面" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="project-overlay">
-                            <div class="project-links">
+                <div class="project-card bg-white rounded-[20px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300 opacity-100 scale-100 flex flex-col h-full hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] group hover:bg-[#1a1a1a]/5 border border-gray-200/30 hover:border-gray-300/50" data-category="maui">
+                    <div class="project-image relative h-[200px] bg-white flex items-center justify-center overflow-hidden">
+                        <img src="documents/profolio source/Justai/cover.png" alt="JustAI客服系統封面" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <div class="project-links flex gap-4">
                                 <!-- 暫時不放置連結按鈕 -->
                             </div>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">JustAI 客服系統</h3>
-                        </div>
-                        <p class="project-description">
+                    <div class="project-content p-6 flex-1 flex flex-col">
+                        <h3 class="project-title text-[1.3rem] font-semibold text-[#1a1a1a] mb-4">JustAI 客服系統</h3>
+                        <p class="project-description text-[#666] leading-[1.6] mb-5 flex-1">
                             AI聊天機器人介面開發練習專案，整合RAG技術與OpenAI API，從Figma設計稿實作完整客服對話介面
                         </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">RAG技術</span>
-                            <span class="tech-tag">OpenAI API</span>
-                            <span class="tech-tag">AI聊天介面</span>
+                        <div class="project-tech flex flex-wrap gap-2 mb-5">
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">RAG技術</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">OpenAI API</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">AI聊天介面</span>
                         </div>
-                        <div class="project-actions">
-                            <button class="learn-more-btn">了解更多</button>
-                        </div>
+                        <button class="learn-more-btn bg-[#1a1a1a] text-white border-none px-5 py-2.5 rounded-lg text-[0.9rem] font-medium cursor-pointer transition-all duration-300 shadow-[0_2px_8px_rgba(26,26,26,0.2)] hover:bg-[#333] active:translate-y-0 w-full mt-auto">了解更多</button>
                     </div>
                 </div>
 
-                                <div class="project-card" data-category="swift">
-                    <div class="project-image">
-                        <img src="documents/profolio source/Mino/cover.png" alt="Mino待辦清單APP封面" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="App Store"><i class="fab fa-app-store"></i></a>
+                <div class="project-card bg-white rounded-[20px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300 opacity-100 scale-100 flex flex-col h-full hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] group hover:bg-[#1a1a1a]/5 border border-gray-200/30 hover:border-gray-300/50" data-category="swift">
+                    <div class="project-image relative h-[200px] bg-white flex items-center justify-center overflow-hidden">
+                        <img src="documents/profolio source/Mino/cover.png" alt="Mino待辦清單APP封面" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <div class="project-links flex gap-4">
+                                <a href="#" class="project-link w-[50px] h-[50px] bg-white/20 rounded-full flex items-center justify-center text-white no-underline text-lg transition-all duration-300 hover:bg-white/30 hover:scale-110" title="App Store"><i class="fab fa-app-store"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">Mino 待辦清單</h3>
-                        </div>
-                        <p class="project-description">
+                    <div class="project-content p-6 flex-1 flex flex-col">
+                        <h3 class="project-title text-[1.3rem] font-semibold text-[#1a1a1a] mb-4">Mino 待辦清單</h3>
+                        <p class="project-description text-[#666] leading-[1.6] mb-5 flex-1">
                             SwiftUI開發的待辦清單APP，具備推播提醒、iCloud資料儲存、UI規劃與App Store上架
                         </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">SwiftUI</span>
-                            <span class="tech-tag">iCloud</span>
-                            <span class="tech-tag">推播提醒</span>
-                            <span class="tech-tag">App Store</span>
-                            <span class="tech-tag">自主學習</span>
+                        <div class="project-tech flex flex-wrap gap-2 mb-5">
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">SwiftUI</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">iCloud</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">推播提醒</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">App Store</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">自主學習</span>
                         </div>
-                        <div class="project-actions">
-                            <button class="learn-more-btn">了解更多</button>
-                        </div>
+                        <button class="learn-more-btn bg-[#1a1a1a] text-white border-none px-5 py-2.5 rounded-lg text-[0.9rem] font-medium cursor-pointer transition-all duration-300 shadow-[0_2px_8px_rgba(26,26,26,0.2)] hover:bg-[#333] active:translate-y-0 w-full mt-auto">了解更多</button>
                     </div>
                 </div>
 
-                <div class="project-card" data-category="flutter">
-                    <div class="project-image">
-                        <img src="documents/profolio source/MIsh/cover.png" alt="MIsh個人書櫃APP封面" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="App Store"><i class="fab fa-app-store"></i></a>
+                <div class="project-card bg-white rounded-[20px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300 opacity-100 scale-100 flex flex-col h-full hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] group hover:bg-[#1a1a1a]/5 border border-gray-200/30 hover:border-gray-300/50" data-category="flutter">
+                    <div class="project-image relative h-[200px] bg-white flex items-center justify-center overflow-hidden">
+                        <img src="documents/profolio source/MIsh/cover.png" alt="MIsh個人書櫃APP封面" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <div class="project-links flex gap-4">
+                                <a href="#" class="project-link w-[50px] h-[50px] bg-white/20 rounded-full flex items-center justify-center text-white no-underline text-lg transition-all duration-300 hover:bg-white/30 hover:scale-110" title="App Store"><i class="fab fa-app-store"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">MIsh 個人書櫃</h3>
-                        </div>
-                        <p class="project-description">
+                    <div class="project-content p-6 flex-1 flex flex-col">
+                        <h3 class="project-title text-[1.3rem] font-semibold text-[#1a1a1a] mb-4">MIsh 個人書櫃</h3>
+                        <p class="project-description text-[#666] leading-[1.6] mb-5 flex-1">
                             Flutter開發的個人書櫃APP，具備第三方API串接、Apple登入、Firebase資料儲存與App Store上架
                         </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">Apple登入</span>
-                            <span class="tech-tag">App Store</span>
-                            <span class="tech-tag">自主學習</span>
+                        <div class="project-tech flex flex-wrap gap-2 mb-5">
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">Flutter</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">Firebase</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">Apple登入</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">App Store</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">自主學習</span>
                         </div>
-                        <div class="project-actions">
-                            <button class="learn-more-btn">了解更多</button>
-                        </div>
+                        <button class="learn-more-btn bg-[#1a1a1a] text-white border-none px-5 py-2.5 rounded-lg text-[0.9rem] font-medium cursor-pointer transition-all duration-300 shadow-[0_2px_8px_rgba(26,26,26,0.2)] hover:bg-[#333] active:translate-y-0 w-full mt-auto">了解更多</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- 非App系統專案區塊 -->
-        <div class="container">
-            <div class="section-header" style="margin-top: 60px;">
-                <h3 class="section-subtitle">其他系統專案</h3>
+        <div class="w-full max-w-[1200px] mx-auto px-5">
+            <div class="text-center mt-[60px] mb-16">
+                <h3 class="section-subtitle text-[1.8rem] font-semibold text-[#1a1a1a] mb-2.5 text-center">其他系統專案</h3>
             </div>
 
-            <div class="projects-grid">
-            <div class="project-card" data-category="system">
-                <div class="project-image">
-                    <div class="project-placeholder">
+            <div class="projects-grid grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-8">
+            <div class="project-card bg-white rounded-[20px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300 opacity-100 scale-100 flex flex-col h-full hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] group hover:bg-[#1a1a1a]/5 border border-gray-200/30 hover:border-gray-300/50" data-category="system">
+                <div class="project-image relative h-[200px] bg-white flex items-center justify-center overflow-hidden">
+                    <div class="project-placeholder text-6xl text-[#ddd]">
                         <i class="fas fa-vote-yea"></i>
                     </div>
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="project-link" title="專案詳情"><i class="fas fa-external-link-alt"></i></a>
+                    <div class="project-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <div class="project-links flex gap-4">
+                            <a href="#" class="project-link w-[50px] h-[50px] bg-white/20 rounded-full flex items-center justify-center text-white no-underline text-lg transition-all duration-300 hover:bg-white/30 hover:scale-110" title="專案詳情"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3 class="project-title">揚昇球場 電子投票系統</h3>
+                <div class="project-content p-6 flex-1 flex flex-col">
+                    <div class="project-header flex justify-between items-start mb-4">
+                        <h3 class="project-title text-[1.3rem] font-semibold text-[#1a1a1a]">揚昇球場 電子投票系統</h3>
                     </div>
-                    <p class="project-description">
+                    <p class="project-description text-[#666] leading-[1.6] mb-5 flex-1">
                         高爾夫球場電子投票系統開發，採用MVC架構設計，具備用戶認證、投票管理、結果統計等功能
                     </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">MVC架構</span>
-                        <span class="tech-tag">系統開發</span>
-                        <span class="tech-tag">資料庫設計</span>
+                    <div class="project-tech flex flex-wrap gap-2 mb-5">
+                        <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">MVC架構</span>
+                        <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">系統開發</span>
+                        <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">資料庫設計</span>
                     </div>
-                    <div class="project-actions">
-                        <button class="learn-more-btn">了解更多</button>
+                    <div class="project-actions text-center mt-auto">
+                        <button class="learn-more-btn bg-[#1a1a1a] text-white border-none px-5 py-2.5 rounded-lg text-[0.9rem] font-medium cursor-pointer transition-all duration-300 shadow-[0_2px_8px_rgba(26,26,26,0.2)] hover:bg-[#333] hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(26,26,26,0.3)] active:translate-y-0 w-full">了解更多</button>
                     </div>
                 </div>
             </div>
 
-            <div class="project-card" data-category="automation">
-                <div class="project-image">
-                    <div class="project-placeholder">
+            <div class="project-card bg-white rounded-[20px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300 opacity-100 scale-100 flex flex-col h-full hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] group hover:bg-[#1a1a1a]/5 border border-gray-200/30 hover:border-gray-300/50" data-category="automation">
+                <div class="project-image relative h-[200px] bg-white flex items-center justify-center overflow-hidden">
+                    <div class="project-placeholder text-6xl text-[#ddd]">
                         <i class="fas fa-robot"></i>
                     </div>
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="project-link" title="專案詳情"><i class="fas fa-external-link-alt"></i></a>
+                    <div class="project-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <div class="project-links flex gap-4">
+                            <a href="#" class="project-link w-[50px] h-[50px] bg-white/20 rounded-full flex items-center justify-center text-white no-underline text-lg transition-all duration-300 hover:bg-white/30 hover:scale-110" title="專案詳情"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3 class="project-title">那智捷 截圖辨識</h3>
+                <div class="project-content p-6 flex-1 flex flex-col">
+                    <div class="project-header flex justify-between items-start mb-4">
+                        <h3 class="project-title text-[1.3rem] font-semibold text-[#1a1a1a]">那智捷 截圖辨識</h3>
                     </div>
-                    <p class="project-description">
+                    <p class="project-description text-[#666] leading-[1.6] mb-5 flex-1">
                         自動化截圖辨識系統，使用Appium進行UI測試，Python腳本解析資料並回存資料庫，提升測試效率
                     </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Appium</span>
-                        <span class="tech-tag">自動化測試</span>
-                        <span class="tech-tag">資料庫整合</span>
+                    <div class="project-tech flex flex-wrap gap-2 mb-5">
+                        <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">Python</span>
+                        <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">Appium</span>
+                        <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">自動化測試</span>
+                        <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">資料庫整合</span>
                     </div>
-                    <div class="project-actions">
-                        <button class="learn-more-btn">了解更多</button>
+                    <div class="project-actions text-center mt-auto">
+                        <button class="learn-more-btn bg-[#1a1a1a] text-white border-none px-5 py-2.5 rounded-lg text-[0.9rem] font-medium cursor-pointer transition-all duration-300 shadow-[0_2px_8px_rgba(26,26,26,0.2)] hover:bg-[#333] hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(26,26,26,0.3)] active:translate-y-0 w-full">了解更多</button>
                     </div>
                 </div>
             </div>
 
-            <div class="project-card" data-category="ui-design">
-                <div class="project-image">
-                    <div class="project-placeholder">
+            <div class="project-card bg-white rounded-[20px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300 opacity-100 scale-100 flex flex-col h-full hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] group hover:bg-[#1a1a1a]/5 border border-gray-200/30 hover:border-gray-300/50" data-category="ui-design">
+                <div class="project-image relative h-[200px] bg-white flex items-center justify-center overflow-hidden">
+                    <div class="project-placeholder text-6xl text-[#ddd]">
                         <i class="fas fa-utensils"></i>
                     </div>
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="project-link" title="專案詳情"><i class="fas fa-external-link-alt"></i></a>
+                    <div class="project-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <div class="project-links flex gap-4">
+                            <a href="#" class="project-link w-[50px] h-[50px] bg-white/20 rounded-full flex items-center justify-center text-white no-underline text-lg transition-all duration-300 hover:bg-white/30 hover:scale-110" title="專案詳情"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3 class="project-title">大南方智慧餐飲</h3>
+                <div class="project-content p-6 flex-1 flex flex-col">
+                    <div class="project-header flex justify-between items-start mb-4">
+                        <h3 class="project-title text-[1.3rem] font-semibold text-[#1a1a1a]">大南方智慧餐飲</h3>
                     </div>
-                    <p class="project-description">
+                    <p class="project-description text-[#666] leading-[1.6] mb-5 flex-1">
                         智慧餐飲點餐機UI/UX設計規劃，使用Figma完成介面設計稿，優化用戶點餐體驗與操作流程
                     </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Figma設計</span>
-                        <span class="tech-tag">UI/UX規劃</span>
-                        <span class="tech-tag">用戶體驗</span>
+                    <div class="project-tech flex flex-wrap gap-2 mb-5">
+                        <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">Figma設計</span>
+                        <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">UI/UX規劃</span>
+                        <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">用戶體驗</span>
                     </div>
-                    <div class="project-actions">
-                        <button class="learn-more-btn">了解更多</button>
+                    <div class="project-actions text-center mt-auto">
+                        <button class="learn-more-btn bg-[#1a1a1a] text-white border-none px-5 py-2.5 rounded-lg text-[0.9rem] font-medium cursor-pointer transition-all duration-300 shadow-[0_2px_8px_rgba(26,26,26,0.2)] hover:bg-[#333] hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(26,26,26,0.3)] active:translate-y-0 w-full">了解更多</button>
                     </div>
                 </div>
             </div>
@@ -671,86 +765,86 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">工作經歷</h2>
+    <section id="experience" class="experience py-16 bg-white">
+        <div class="w-full max-w-[1200px] mx-auto px-5">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-[2.5rem] font-bold text-[#1a1a1a] mb-4 relative inline-block after:content-[''] after:absolute after:-bottom-2.5 after:left-1/2 after:-translate-x-1/2 after:w-[60px] after:h-1 after:bg-[#1a1a1a] after:rounded-sm">工作經歷</h2>
             </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>跨平台App工程師</h3>
-                            <span class="company">喬思齊科技</span>
-                            <span class="duration">2023年7月 - 至今</span>
+            <div class="timeline max-w-[800px] mx-auto relative before:content-[''] before:absolute before:left-[15px] md:before:left-[30px] before:top-0 before:bottom-0 before:w-0.5 before:bg-[#e2e8f0] ml-5 md:ml-auto">
+                <div class="timeline-item relative mb-12 pl-12 md:pl-20">
+                    <div class="timeline-marker absolute left-[5px] md:left-[20px] top-0 w-5 h-5 bg-[#1a1a1a] rounded-full border-4 border-white shadow-[0_0_0_4px_#e2e8f0]"></div>
+                    <div class="timeline-content bg-white p-8 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300">
+                        <div class="timeline-header mb-4">
+                            <h3 class="text-[1.4rem] font-semibold text-[#1a1a1a] mb-1.5">跨平台App工程師</h3>
+                            <span class="company text-[#1a1a1a] font-semibold mr-4">喬思齊科技</span>
+                            <span class="duration text-[#666] text-sm">2023年7月 - 至今</span>
                         </div>
                         <div class="timeline-description">
-                            <p>主導多個企業級跨平台應用開發，專精 .NET MAUI 技術棧</p>
-                            <ul class="achievement-list">
-                                <li>完成跳蛙APP、今皓AI、智能客服等專案</li>
-                                <li>成功上架跳蛙APP至App Store</li>
-                                <li>解決跨平台相容性與硬體整合問題</li>
-                                <li>整合第三方服務、AI功能、地圖服務</li>
+                            <p class="text-[#666] leading-[1.6] mb-4">主導多個企業級跨平台應用開發，專精 .NET MAUI 技術棧</p>
+                            <ul class="achievement-list list-none mb-5">
+                                <li class="text-[#666] leading-[1.6] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#1a1a1a] before:font-bold">完成跳蛙APP、今皓AI、智能客服等專案</li>
+                                <li class="text-[#666] leading-[1.6] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#1a1a1a] before:font-bold">成功上架跳蛙APP至App Store</li>
+                                <li class="text-[#666] leading-[1.6] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#1a1a1a] before:font-bold">解決跨平台相容性與硬體整合問題</li>
+                                <li class="text-[#666] leading-[1.6] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#1a1a1a] before:font-bold">整合第三方服務、AI功能、地圖服務</li>
                             </ul>
                         </div>
-                        <div class="timeline-tech">
-                            <span class="tech-tag">.NET MAUI</span>
-                            <span class="tech-tag">C#</span>
-                            <span class="tech-tag">API 整合</span>
-                            <span class="tech-tag">AI 整合</span>
+                        <div class="timeline-tech flex flex-wrap gap-2">
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">.NET MAUI</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">C#</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">API 整合</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">AI 整合</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>自主技術學習</h3>
-                            <span class="company">個人專案</span>
-                            <span class="duration">持續中</span>
+                <div class="timeline-item relative mb-12 pl-12 md:pl-20">
+                    <div class="timeline-marker absolute left-[5px] md:left-[20px] top-0 w-5 h-5 bg-[#1a1a1a] rounded-full border-4 border-white shadow-[0_0_0_4px_#e2e8f0]"></div>
+                    <div class="timeline-content bg-white p-8 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300">
+                        <div class="timeline-header mb-4">
+                            <h3 class="text-[1.4rem] font-semibold text-[#1a1a1a] mb-1.5">自主技術學習</h3>
+                            <span class="company text-[#1a1a1a] font-semibold mr-4">個人專案</span>
+                            <span class="duration text-[#666] text-sm">持續中</span>
                         </div>
                         <div class="timeline-description">
-                            <p>自主學習SwiftUI與Flutter跨平台開發技術</p>
-                            <ul class="achievement-list">
-                                <li>Mino待辦清單：SwiftUI開發，具備iCloud、推播提醒、App Store上架經驗</li>
-                                <li>MIsh個人書櫃：Flutter開發，整合Firebase、Apple登入、第三方API</li>
-                                <li>持續學習最新行動裝置開發技術與最佳實踐</li>
-                                <li>具備從設計到上架的完整開發流程經驗</li>
+                            <p class="text-[#666] leading-[1.6] mb-4">自主學習SwiftUI與Flutter跨平台開發技術</p>
+                            <ul class="achievement-list list-none mb-5">
+                                <li class="text-[#666] leading-[1.6] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#1a1a1a] before:font-bold">Mino待辦清單：SwiftUI開發，具備iCloud、推播提醒、App Store上架經驗</li>
+                                <li class="text-[#666] leading-[1.6] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#1a1a1a] before:font-bold">MIsh個人書櫃：Flutter開發，整合Firebase、Apple登入、第三方API</li>
+                                <li class="text-[#666] leading-[1.6] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#1a1a1a] before:font-bold">持續學習最新行動裝置開發技術與最佳實踐</li>
+                                <li class="text-[#666] leading-[1.6] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#1a1a1a] before:font-bold">具備從設計到上架的完整開發流程經驗</li>
                             </ul>
                         </div>
-                        <div class="timeline-tech">
-                            <span class="tech-tag">SwiftUI</span>
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">iCloud</span>
-                            <span class="tech-tag">Firebase</span>
+                        <div class="timeline-tech flex flex-wrap gap-2">
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">SwiftUI</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">Flutter</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">iCloud</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">Firebase</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>PM相關經驗</h3>
-                            <span class="company">文策院、中小企總</span>
-                            <span class="duration">專案協作</span>
+                <div class="timeline-item relative mb-12 pl-12 md:pl-20">
+                    <div class="timeline-marker absolute left-[5px] md:left-[20px] top-0 w-5 h-5 bg-[#1a1a1a] rounded-full border-4 border-white shadow-[0_0_0_4px_#e2e8f0]"></div>
+                    <div class="timeline-content bg-white p-8 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300">
+                        <div class="timeline-header mb-4">
+                            <h3 class="text-[1.4rem] font-semibold text-[#1a1a1a] mb-1.5">PM相關經驗</h3>
+                            <span class="company text-[#1a1a1a] font-semibold mr-4">文策院、中小企總</span>
+                            <span class="duration text-[#666] text-sm">專案協作</span>
                         </div>
                         <div class="timeline-description">
-                            <p>具備專案管理思維與跨部門溝通協調能力</p>
-                            <ul class="achievement-list">
-                                <li>文策院：需求溝通、專案管理、與內部工程師及廠商窗口協調</li>
-                                <li>中小企總：專案協調工作、跨部門溝通與需求分析</li>
-                                <li>高球AI專案：文件製作、簡報製作、專案報告</li>
-                                <li>具備與PM、設計師、後端工程師有效溝通協作能力</li>
+                            <p class="text-[#666] leading-[1.6] mb-4">具備專案管理思維與跨部門溝通協調能力</p>
+                            <ul class="achievement-list list-none mb-5">
+                                <li class="text-[#666] leading-[1.6] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#1a1a1a] before:font-bold">文策院：需求溝通、專案管理、與內部工程師及廠商窗口協調</li>
+                                <li class="text-[#666] leading-[1.6] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#1a1a1a] before:font-bold">中小企總：專案協調工作、跨部門溝通與需求分析</li>
+                                <li class="text-[#666] leading-[1.6] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#1a1a1a] before:font-bold">高球AI專案：文件製作、簡報製作、專案報告</li>
+                                <li class="text-[#666] leading-[1.6] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#1a1a1a] before:font-bold">具備與PM、設計師、後端工程師有效溝通協作能力</li>
                             </ul>
                         </div>
-                        <div class="timeline-tech">
-                            <span class="tech-tag">專案管理</span>
-                            <span class="tech-tag">需求分析</span>
-                            <span class="tech-tag">跨部門溝通</span>
-                            <span class="tech-tag">團隊協作</span>
+                        <div class="timeline-tech flex flex-wrap gap-2">
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">專案管理</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">需求分析</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">跨部門溝通</span>
+                            <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">團隊協作</span>
                         </div>
                     </div>
                 </div>
@@ -761,30 +855,31 @@
 
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-text">
+    <footer class="footer bg-[#1a1a1a] text-white py-10 text-center">
+        <div class="w-full max-w-[1200px] mx-auto px-5">
+            <div class="footer-content flex justify-between items-center flex-wrap gap-5 flex-col md:flex-row">
+                <div class="footer-text flex-1">
                     <p>&copy; 2024 余亮廷 Kenny Yu. UI/UX 跨平台工程師</p>
                 </div>
-                <div class="footer-social">
-                    <a href="tel:+886123456789" class="social-link"><i class="fas fa-phone"></i></a>
-                    <a href="mailto:kenny@example.com" class="social-link"><i class="fas fa-envelope"></i></a>
-                    <a href="https://linkedin.com/in/kenny-yu" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/kenny-yu" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                <div class="footer-social flex gap-4">
+                    <a href="tel:+886123456789" class="social-link text-white text-[1.2rem] w-10 h-10 rounded-full bg-white/10 flex items-center justify-center no-underline transition-all duration-300 hover:bg-white hover:text-[#1a1a1a]"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:kenny@example.com" class="social-link text-white text-[1.2rem] w-10 h-10 rounded-full bg-white/10 flex items-center justify-center no-underline transition-all duration-300 hover:bg-white hover:text-[#1a1a1a]"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/kenny-yu" target="_blank" class="social-link text-white text-[1.2rem] w-10 h-10 rounded-full bg-white/10 flex items-center justify-center no-underline transition-all duration-300 hover:bg-white hover:text-[#1a1a1a]"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/kenny-yu" target="_blank" class="social-link text-white text-[1.2rem] w-10 h-10 rounded-full bg-white/10 flex items-center justify-center no-underline transition-all duration-300 hover:bg-white hover:text-[#1a1a1a]"><i class="fab fa-github"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Language Toggle -->
-    <div class="language-toggle">
-        <div class="lang-switch">
-            <span class="lang-option active" data-lang="zh">繁中</span>
-            <span class="lang-option" data-lang="en">EN</span>
+    <div class="language-toggle fixed bottom-8 right-8 z-[1000] md:bottom-5 md:right-5">
+        <div class="lang-switch bg-white/95 backdrop-blur-[20px] rounded-[32px] p-1 shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-[rgba(0,0,0,0.08)] flex gap-0">
+            <span class="lang-option active px-4 py-2 rounded-[28px] text-[0.85rem] font-medium cursor-pointer transition-all duration-300 text-[#64748b] select-none min-w-[44px] text-center hover:not(.active):text-[#1a1a1a] hover:not(.active):bg-[rgba(0,0,0,0.05)] [&.active]:bg-[#1a1a1a] [&.active]:text-white [&.active]:shadow-[0_2px_8px_rgba(0,0,0,0.15)]" data-lang="zh">繁中</span>
+            <span class="lang-option px-4 py-2 rounded-[28px] text-[0.85rem] font-medium cursor-pointer transition-all duration-300 text-[#64748b] select-none min-w-[44px] text-center hover:not(.active):text-[#1a1a1a] hover:not(.active):bg-[rgba(0,0,0,0.05)] [&.active]:bg-[#1a1a1a] [&.active]:text-white [&.active]:shadow-[0_2px_8px_rgba(0,0,0,0.15)]" data-lang="en">EN</span>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+

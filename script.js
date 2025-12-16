@@ -48,27 +48,36 @@ function initNavigation() {
 // 滾動動畫
 function initScrollAnimations() {
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px'
     };
 
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // 添加動畫類別
+                entry.target.classList.add('animate-in');
+                
+                // 為了向後兼容，也保留原有的 visible 類別
                 entry.target.classList.add('visible');
+                
+                // 一次性動畫，觀察後就停止
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     // 觀察所有需要動畫的元素
     const animatedElements = document.querySelectorAll(
-        '.fade-in, .slide-in-left, .slide-in-right, .about-item, .skill-item, .project-card, .timeline-item'
+        '.scroll-fade-in, .scroll-fade-in-up, .fade-in, .slide-in-left, .slide-in-right, .about-item, .skill-item, .project-card, .timeline-item'
     );
 
     animatedElements.forEach(el => {
-        el.classList.add('fade-in');
+        // 不再自動添加 fade-in 類別，讓元素保持自己的動畫類別
         observer.observe(el);
     });
+    
+    console.log(`已初始化 ${animatedElements.length} 個滾動動畫元素`);
 }
 
 // 專案篩選功能

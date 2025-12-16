@@ -5,6 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>專案詳細資訊 - 余亮廷 Kenny Yu</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1a1a1a',
+            secondary: '#666',
+            accent: '#667eea'
+          },
+          fontFamily: {
+            'sans': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'SF Pro Text', 'system-ui', 'sans-serif']
+          },
+          backdropBlur: {
+            'xs': '2px',
+            'sm': '4px',
+            'md': '12px',
+            'lg': '16px',
+            'xl': '24px'
+          }
+        }
+      }
+    }
+  </script>
+
   <link rel="stylesheet" href="styles.css"/>
   <style>
     .figma-icon-link a, .wireframe-icon-link a {
@@ -39,17 +66,17 @@
   <!-- 進場淡入遮罩（你的 JS 會用到） -->
   <div class="page-fade-in-overlay"></div>
 
-  <!-- Navigation（原樣保留） -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="nav-logo" style="margin-left: -20px;">
-        <a href="#" class="back-btn" id="backBtn" style="display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 500; background: #f5f5f5; padding: 8px 16px; border-radius: 15px; transition: all 0.3s ease; margin: 0;">
-          <i class="fas fa-arrow-left"></i>
+  <!-- Navigation -->
+  <nav class="navbar fixed top-5 left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-[1200px] bg-white/80 backdrop-blur-md rounded-[50px] z-[1000] transition-all duration-300 shadow-none md:w-[calc(100%-20px)] md:top-2.5 md:rounded-[20px] max-md:w-[calc(100%-20px)] max-md:top-2.5 max-md:rounded-[20px]">
+    <div class="nav-container mx-auto px-8 flex justify-between items-center h-16 max-md:px-5">
+      <div class="nav-logo flex items-center -ml-5">
+        <a href="#" class="back-btn flex items-center gap-2 text-[#333] no-underline font-semibold text-[13px] bg-black/5 px-4 py-2 rounded-[25px] transition-all duration-300 hover:bg-gray-800 hover:text-white border border-transparent" id="backBtn">
+          <i class="fas fa-arrow-left text-xs"></i>
           <span>返回首頁</span>
         </a>
       </div>
-      <div class="nav-logo" style="margin-left: auto;">
-        <span class="logo-text" id="projectTitle">專案詳細資訊</span>
+      <div class="nav-logo flex items-center">
+        <span class="logo-text text-xl font-bold text-[#1a1a1a]" id="projectTitle">專案詳細資訊</span>
       </div>
     </div>
   </nav>
@@ -61,7 +88,7 @@
 
 
       <!-- 主視覺 + 簡介 + 技術堆疊 + 專案背景 -->
-      <div class="project-content">
+      <div class="project-content border border-gray-200/30 hover:border-gray-300/50 hover:bg-gray-50/5 transition-all duration-300 rounded-lg">
         <div class="project-image-section">
           <div class="project-image">
             <img id="projectDetailImage" src="documents/profolio source/Bus/detailcover.png" alt="專案詳細圖片" class="project-detail-image">
@@ -99,19 +126,19 @@
       </div>
 
       <!-- 規劃與流程（設計 / 開發） -->
-      <div class="project-content" style="align-items: stretch;">
+      <div class="project-content border border-gray-200/30 hover:border-gray-300/50 hover:bg-gray-50/5 transition-all duration-300 rounded-lg" style="align-items: stretch;">
         <div class="project-info" id="design-process" style="display: flex; flex-direction: column;">
                      <h3 class="category-title" style="display: flex; align-items: center; justify-content: space-between;">
               <span>規劃與流程｜設計</span>
               <div id="design-links" style="display: flex; gap: 8px; align-items: center;">
                 <span id="design-figma-link" class="figma-icon-link" style="display: none;">
-                  <a href="#" target="_blank" style="background-color: #f0f0f0; color: #333; text-decoration: none; font-size: 14px; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; border-radius: 20px; white-space: nowrap;">
+                  <a href="#" target="_blank" class="rounded border border-gray-200 hover:border-gray-300 hover:bg-gray-100" style="background-color: #f0f0f0; color: #333; text-decoration: none; font-size: 14px; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; white-space: nowrap;">
                     <i class="fab fa-figma" style="color: #333; font-size: 1.1rem;"></i>
                     <span>Figma 設計</span>
                   </a>
                 </span>
                 <span id="design-wireframe-link" class="wireframe-icon-link" style="display: none;">
-                  <a href="#" target="_blank" style="background-color: #f0f0f0; color: #333; text-decoration: none; font-size: 14px; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; border-radius: 20px; white-space: nowrap;">
+                  <a href="#" target="_blank" class="rounded border border-gray-200 hover:border-gray-300 hover:bg-gray-100" style="background-color: #f0f0f0; color: #333; text-decoration: none; font-size: 14px; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; white-space: nowrap;">
                     <i class="fas fa-pencil-ruler" style="color: #333; font-size: 1.1rem;"></i>
                     <span>Wireframe 線稿</span>
                   </a>
@@ -143,7 +170,7 @@
       </div>
 
       <!-- 挑戰與解決（#1 / #2） -->
-      <div class="project-content" id="challenges-section">
+      <div class="project-content border border-gray-200/30 hover:border-gray-300/50 hover:bg-gray-50/5 transition-all duration-300 rounded-lg" id="challenges-section">
         <div class="project-info" id="challenge-1">
           <h3 class="category-title">挑戰與解決 #1</h3>
           <div class="challenge-content">
@@ -159,26 +186,22 @@
       </div>
 
       <!-- 設計亮點 -->
-      <div class="project-content" id="highlights-section" style="grid-template-columns: 1fr;">
-        <div class="project-info" id="design-highlights">
-          <h3 class="category-title">設計亮點</h3>
-          
-          <!-- 水平排列的亮點容器（動態生成） -->
-          <div class="highlights-container" id="highlights-container" style="display: flex; gap: 30px; justify-content: flex-start; flex-wrap: wrap; align-items: stretch;">
-            <!-- 亮點項目將動態生成 -->
-          </div>
+      <div class="project-content border border-gray-200/30 hover:border-gray-300/50 hover:bg-gray-50/5 transition-all duration-300 rounded-lg" id="highlights-section" style="grid-template-columns: 1fr;">
+        <h3 class="category-title">設計亮點</h3>
+        
+        <!-- 水平排列的亮點容器（動態生成） -->
+        <div class="highlights-container" id="highlights-container" style="display: flex; gap: 30px; justify-content: flex-start; flex-wrap: wrap; align-items: stretch;">
+          <!-- 亮點項目將動態生成 -->
         </div>
       </div>
 
       <!-- 反思與收穫 -->
-      <div class="project-content" style="grid-template-columns: 1fr;">
-        <div class="project-info">
-          <h3 class="category-title">反思與收穫</h3>
-          <div id="reflection-content" class="reflection-content">
-            <!-- 動態載入的反思與收穫內容 -->
-            <div class="reflection-section">
-              <p>載入中...</p>
-            </div>
+      <div class="project-content border border-gray-200/30 hover:border-gray-300/50 hover:bg-gray-50/5 transition-all duration-300 rounded-lg" style="grid-template-columns: 1fr;">
+        <h3 class="category-title">反思與收穫</h3>
+        <div id="reflection-content" class="reflection-content">
+          <!-- 動態載入的反思與收穫內容 -->
+          <div class="reflection-section">
+            <p>載入中...</p>
           </div>
         </div>
       </div>
