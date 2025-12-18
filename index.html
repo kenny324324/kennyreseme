@@ -187,7 +187,7 @@
                                     <i class="fab fa-figma text-purple-600 text-base"></i> Figma
                                 </span>
                                 <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
-                                    <i class="fab fa-css3-alt text-blue-600 text-base"></i> CSS
+                                    <i class="fas fa-code text-blue-600 text-base"></i> CSS
                                 </span>
                                 <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
                                     <i class="fas fa-tasks text-teal-600 text-base"></i> Project Mgt.
@@ -242,8 +242,11 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills py-16 bg-white">
-        <div class="w-full max-w-[1200px] mx-auto px-5">
+    <section id="skills" class="skills py-16 bg-[#fafafa] relative overflow-hidden">
+        <!-- 背景裝飾：淡色點陣 -->
+        <div class="absolute inset-0" style="background-image: radial-gradient(#e5e5e5 1px, transparent 1px); background-size: 20px 20px;"></div>
+        
+        <div class="w-full max-w-[1200px] mx-auto px-5 relative z-10">
             <div class="flex items-center gap-6 mb-16">
                 <div class="flex-1 border-t border-dashed border-black/10"></div>
                 <h2 class="text-4xl md:text-[2.5rem] font-bold text-[#1a1a1a] whitespace-nowrap">專業技能</h2>
@@ -258,9 +261,9 @@
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <!-- SwiftUI -->
-                        <div class="skill-card bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+                        <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
                             <div class="mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg">
+                                <div class="w-14 h-14 bg-[#F05138] rounded-[10px] flex items-center justify-center text-2xl text-white">
                                     <i class="fab fa-swift"></i>
                                 </div>
                             </div>
@@ -271,9 +274,9 @@
                         </div>
 
                         <!-- Flutter -->
-                        <div class="skill-card bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+                        <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
                             <div class="mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg">
+                                <div class="w-14 h-14 bg-[#0A84FF] rounded-[10px] flex items-center justify-center text-2xl text-white">
                                     <i class="fas fa-layer-group"></i>
                                 </div>
                             </div>
@@ -284,9 +287,9 @@
                         </div>
 
                         <!-- .NET MAUI -->
-                        <div class="skill-card bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+                        <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
                             <div class="mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg">
+                                <div class="w-14 h-14 bg-[#512BD4] rounded-[10px] flex items-center justify-center text-2xl text-white">
                                     <i class="fab fa-microsoft"></i>
                                 </div>
                             </div>
@@ -297,9 +300,9 @@
                         </div>
 
                         <!-- UI/UX 設計 -->
-                        <div class="skill-card bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+                        <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
                             <div class="mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg">
+                                <div class="w-14 h-14 bg-[#A259FF] rounded-[10px] flex items-center justify-center text-2xl text-white">
                                     <i class="fab fa-figma"></i>
                                 </div>
                             </div>
@@ -318,9 +321,9 @@
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <!-- API 整合 -->
-                        <div class="skill-card bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+                        <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
                             <div class="mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg">
+                                <div class="w-14 h-14 bg-[#10B981] rounded-[10px] flex items-center justify-center text-2xl text-white">
                                     <i class="fas fa-plug"></i>
                                 </div>
                             </div>
@@ -331,9 +334,9 @@
                         </div>
 
                         <!-- AI 整合開發 -->
-                        <div class="skill-card bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+                        <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
                             <div class="mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg">
+                                <div class="w-14 h-14 bg-[#8B5CF6] rounded-[10px] flex items-center justify-center text-2xl text-white">
                                     <i class="fas fa-brain"></i>
                                 </div>
                             </div>
@@ -344,9 +347,9 @@
                         </div>
 
                         <!-- 地圖服務 -->
-                        <div class="skill-card bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+                        <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
                             <div class="mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg">
+                                <div class="w-14 h-14 bg-[#3B82F6] rounded-[10px] flex items-center justify-center text-2xl text-white">
                                     <i class="fas fa-map-marked-alt"></i>
                                 </div>
                             </div>
@@ -357,9 +360,9 @@
                         </div>
 
                         <!-- 安全認證 -->
-                        <div class="skill-card bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+                        <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
                             <div class="mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg">
+                                <div class="w-14 h-14 bg-[#14B8A6] rounded-[10px] flex items-center justify-center text-2xl text-white">
                                     <i class="fas fa-shield-alt"></i>
                                 </div>
                             </div>
@@ -370,9 +373,9 @@
                         </div>
 
                         <!-- 系統開發 -->
-                        <div class="skill-card bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+                        <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
                             <div class="mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg">
+                                <div class="w-14 h-14 bg-[#06B6D4] rounded-[10px] flex items-center justify-center text-2xl text-white">
                                     <i class="fas fa-code"></i>
                                 </div>
                             </div>
@@ -391,10 +394,10 @@
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <!-- 版本控制 -->
-                        <div class="skill-card bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+                        <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
                             <div class="mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg">
-                                    <i class="fab fa-git-alt"></i>
+                                <div class="w-14 h-14 bg-[#1a1a1a] rounded-[10px] flex items-center justify-center text-2xl text-white">
+                                    <i class="fab fa-github"></i>
                                 </div>
                             </div>
                             <h4 class="text-xl font-bold text-[#1a1a1a] mb-3">版本控制</h4>
@@ -404,9 +407,9 @@
                         </div>
 
                         <!-- 專案管理 -->
-                        <div class="skill-card bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+                        <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
                             <div class="mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg">
+                                <div class="w-14 h-14 bg-[#10B981] rounded-[10px] flex items-center justify-center text-2xl text-white">
                                     <i class="fas fa-tasks"></i>
                                 </div>
                             </div>
@@ -417,9 +420,9 @@
                         </div>
 
                         <!-- 團隊協作 -->
-                        <div class="skill-card bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+                        <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
                             <div class="mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg">
+                                <div class="w-14 h-14 bg-[#6366F1] rounded-[10px] flex items-center justify-center text-2xl text-white">
                                     <i class="fas fa-users"></i>
                                 </div>
                             </div>
@@ -430,9 +433,9 @@
                         </div>
 
                         <!-- 語言能力 -->
-                        <div class="skill-card bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+                        <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
                             <div class="mb-6">
-                                <div class="w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#333] rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg">
+                                <div class="w-14 h-14 bg-[#EC4899] rounded-[10px] flex items-center justify-center text-2xl text-white">
                                     <i class="fas fa-language"></i>
                                 </div>
                             </div>
