@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScrolling();
     initParallaxEffects();
     initProjectModals(); // 新增：專案詳細資訊模態框功能
+    updateProjectCount(); // 新增：自動計算App專案數量
     console.log('所有功能初始化完成');
 });
 
@@ -256,7 +257,16 @@ function animateNumbers() {
     const statNumbers = document.querySelectorAll('.stat-number');
     
     statNumbers.forEach(number => {
-        const finalNumber = parseInt(number.textContent);
+        const originalText = number.textContent;
+        const hasPlus = originalText.includes('+');
+        const hasPercent = originalText.includes('%');
+        
+        // 使用 parseFloat 支援小數
+        const finalNumber = parseFloat(originalText);
+        
+        // 檢查是否為小數
+        const isDecimal = finalNumber % 1 !== 0;
+        
         const duration = 400; // 0.4秒
         const increment = finalNumber / (duration / 16); // 60fps
         let currentNumber = 0;
@@ -264,10 +274,15 @@ function animateNumbers() {
         const timer = setInterval(() => {
             currentNumber += increment;
             if (currentNumber >= finalNumber) {
-                number.textContent = finalNumber + (number.textContent.includes('+') ? '+' : number.textContent.includes('%') ? '%' : '');
+                // 保留小數點格式
+                let displayText = isDecimal ? finalNumber.toFixed(1) : finalNumber;
+                displayText += hasPlus ? '+' : hasPercent ? '%' : '';
+                number.textContent = displayText;
                 clearInterval(timer);
             } else {
-                number.textContent = Math.floor(currentNumber);
+                // 動畫過程中也顯示小數
+                let displayText = isDecimal ? currentNumber.toFixed(1) : Math.floor(currentNumber);
+                number.textContent = displayText;
             }
         }, 16);
     });
@@ -386,6 +401,35 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
+}
+
+// 新增：自動計算App專案數量
+function updateProjectCount() {
+    // 計算所有App專案卡片（排除"其他系統專案"區塊的卡片）
+    const projectsSection = document.querySelector('#projects');
+    if (!projectsSection) {
+        console.warn('找不到專案區塊');
+        return;
+    }
+    
+    // 只計算第一個 projects-grid 中的專案（App專案區塊）
+    const appProjectsGrid = projectsSection.querySelector('.projects-grid');
+    if (!appProjectsGrid) {
+        console.warn('找不到App專案網格');
+        return;
+    }
+    
+    const appProjectCards = appProjectsGrid.querySelectorAll('.project-card');
+    const projectCount = appProjectCards.length;
+    
+    // 更新統計數據
+    const projectStatElement = document.querySelector('[data-stat="projects"]');
+    if (projectStatElement) {
+        projectStatElement.textContent = projectCount + '+';
+        console.log(`已更新App專案數量: ${projectCount}+`);
+    } else {
+        console.warn('找不到專案統計元素');
+    }
 }
 
 // 滾動效能優化
