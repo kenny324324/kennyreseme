@@ -1,0 +1,171 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'UI/UX 跨平台工程師，專精 SwiftUI、Flutter、.NET MAUI 開發，具備 Figma 設計與 AI 整合經驗' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+  <title>{title}</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`}>
+</head>
+<body class="bg-white text-gray-900">
+  <slot />
+
+  <script>
+    // Navigation scroll effect
+    function initNavigation() {
+      const navbar = document.querySelector('.navbar');
+      const hamburger = document.querySelector('.hamburger');
+      const navMenu = document.querySelector('.nav-menu');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+          hamburger.classList.toggle('active');
+          navMenu.classList.toggle('active');
+        });
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger?.classList.remove('active');
+          navMenu?.classList.remove('active');
+        });
+      });
+
+      window.addEventListener('scroll', () => {
+        if (navbar) {
+          if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+          } else {
+            navbar.classList.remove('scrolled');
+          }
+        }
+        highlightCurrentSection();
+      });
+    }
+
+    // Highlight current section in nav
+    function highlightCurrentSection() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      let currentSection = '';
+
+      sections.forEach(section => {
+        const sectionTop = (section as HTMLElement).offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          currentSection = section.getAttribute('id') || '';
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Scroll animations
+    function initScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+
+      document.querySelectorAll('.scroll-fade-in, .scroll-fade-in-up').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    // Smooth scrolling
+    function initSmoothScrolling() {
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = (link as HTMLAnchorElement).getAttribute('href');
+          if (targetId) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              const offsetTop = (targetElement as HTMLElement).offsetTop - 70;
+              window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+            }
+          }
+        });
+      });
+    }
+
+    // Number animation for stats
+    function animateNumbers() {
+      const statNumbers = document.querySelectorAll('.stat-number');
+
+      statNumbers.forEach(number => {
+        const originalText = number.textContent || '0';
+        const hasPlus = originalText.includes('+');
+        const finalNumber = parseFloat(originalText);
+        const isDecimal = finalNumber % 1 !== 0;
+
+        const duration = 400;
+        const increment = finalNumber / (duration / 16);
+        let currentNumber = 0;
+
+        const timer = setInterval(() => {
+          currentNumber += increment;
+          if (currentNumber >= finalNumber) {
+            let displayText = isDecimal ? finalNumber.toFixed(1) : String(finalNumber);
+            displayText += hasPlus ? '+' : '';
+            number.textContent = displayText;
+            clearInterval(timer);
+          } else {
+            number.textContent = isDecimal ? currentNumber.toFixed(1) : String(Math.floor(currentNumber));
+          }
+        }, 16);
+      });
+    }
+
+    // Stats observer
+    function initStatsAnimation() {
+      const statsSection = document.querySelector('.about-stats');
+      if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateNumbers();
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+
+        observer.observe(statsSection);
+      }
+    }
+
+    // Initialize on DOM load
+    document.addEventListener('DOMContentLoaded', () => {
+      initNavigation();
+      initScrollAnimations();
+      initSmoothScrolling();
+      initStatsAnimation();
+    });
+  </script>
+</body>
+</html>

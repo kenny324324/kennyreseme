@@ -1,0 +1,33 @@
+---
+import SectionHeader from '../common/SectionHeader.astro';
+import { aboutParagraphs, stats } from '../../data/personal';
+---
+
+<section id="about" class="about py-16 bg-white">
+  <div class="w-full max-w-[1200px] mx-auto px-5">
+    <SectionHeader title="關於我" />
+
+    <div class="about-content grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 items-center">
+      <!-- Personal Intro -->
+      <div class="personal-intro">
+        {aboutParagraphs.zh.map((paragraph, index) => (
+          <p class={`text-lg leading-[1.8] text-[#444] ${index < aboutParagraphs.zh.length - 1 ? 'mb-5' : 'mb-0'}`}>
+            {paragraph}
+          </p>
+        ))}
+      </div>
+
+      <!-- Stats -->
+      <div class="about-stats grid grid-cols-1 gap-6">
+        <div class="stat-item text-center p-8 bg-white rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)]">
+          <div class="stat-number text-[3rem] font-bold text-[#1a1a1a] mb-1.5" data-stat="projects">{stats.projects}+</div>
+          <div class="stat-label text-base font-medium text-[#666]">App專案</div>
+        </div>
+        <div class="stat-item text-center p-8 bg-white rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)]">
+          <div class="stat-number text-[3rem] font-bold text-[#1a1a1a] mb-1.5">{stats.years}</div>
+          <div class="stat-label text-base font-medium text-[#666]">工作年資</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

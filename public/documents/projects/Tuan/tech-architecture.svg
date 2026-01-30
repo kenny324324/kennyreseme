@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700" height="450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: bold 20px sans-serif; fill: #1e293b; }
+      .box { fill: #6366f1; stroke: #4f46e5; stroke-width: 2; rx: 6; }
+      .backend-box { fill: #8b5cf6; stroke: #7c3aed; stroke-width: 2; rx: 6; }
+      .text { font: 11px sans-serif; fill: white; text-anchor: middle; }
+      .arrow { stroke: #64748b; stroke-width: 2; marker-end: url(#arrowhead); }
+      .layer-text { font: 14px sans-serif; fill: #334155; font-weight: bold; }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="350" y="25" class="title" text-anchor="middle">今皓TUAN AI助理APP 技術架構</text>
+  
+  <!-- Frontend Layer -->
+  <text x="30" y="70" class="layer-text">前端</text>
+  <rect x="120" y="50" width="120" height="40" class="box"/>
+  <text x="180" y="75" class="text">.NET MAUI APP</text>
+  
+  <rect x="260" y="50" width="100" height="40" class="box"/>
+  <text x="310" y="75" class="text">語音介面</text>
+  
+  <rect x="380" y="50" width="100" height="40" class="box"/>
+  <text x="430" y="75" class="text">藝人肖像</text>
+  
+  <!-- API Layer -->
+  <text x="30" y="150" class="layer-text">API</text>
+  <rect x="150" y="130" width="100" height="40" class="box"/>
+  <text x="200" y="155" class="text">輸入API</text>
+  
+  <rect x="270" y="130" width="100" height="40" class="box"/>
+  <text x="320" y="155" class="text">AI回覆API</text>
+  
+  <rect x="390" y="130" width="100" height="40" class="box"/>
+  <text x="440" y="155" class="text">聲音轉換API</text>
+  
+  <!-- Backend Services -->
+  <text x="30" y="230" class="layer-text">後端</text>
+  <rect x="100" y="210" width="80" height="40" class="backend-box"/>
+  <text x="140" y="235" class="text">語音識別</text>
+  
+  <rect x="200" y="210" width="80" height="40" class="backend-box"/>
+  <text x="240" y="235" class="text">AI引擎</text>
+  
+  <rect x="300" y="210" width="80" height="40" class="backend-box"/>
+  <text x="340" y="235" class="text">聲音合成</text>
+  
+  <rect x="400" y="210" width="80" height="40" class="backend-box"/>
+  <text x="440" y="235" class="text">影像處理</text>
+  
+  <!-- Client Services -->
+  <text x="30" y="310" class="layer-text">今晧服務</text>
+  <rect x="150" y="290" width="120" height="40" class="backend-box"/>
+  <text x="210" y="315" class="text">藝人授權資料</text>
+  
+  <rect x="290" y="290" width="120" height="40" class="backend-box"/>
+  <text x="350" y="315" class="text">聲音轉換技術</text>
+  
+  <!-- Third Party -->
+  <text x="30" y="390" class="layer-text">第三方</text>
+  <rect x="120" y="370" width="80" height="40" class="box"/>
+  <text x="160" y="395" class="text">Google登入</text>
+  
+  <rect x="220" y="370" width="80" height="40" class="box"/>
+  <text x="260" y="395" class="text">FB登入</text>
+  
+  <rect x="320" y="370" width="80" height="40" class="box"/>
+  <text x="360" y="395" class="text">原生語音</text>
+  
+  <!-- Arrows -->
+  <!-- Frontend to API -->
+  <line x1="180" y1="90" x2="200" y2="130" class="arrow"/>
+  <line x1="310" y1="90" x2="320" y2="130" class="arrow"/>
+  <line x1="430" y1="90" x2="440" y2="130" class="arrow"/>
+  
+  <!-- API to Backend -->
+  <line x1="200" y1="170" x2="140" y2="210" class="arrow"/>
+  <line x1="320" y1="170" x2="240" y2="210" class="arrow"/>
+  <line x1="320" y1="170" x2="340" y2="210" class="arrow"/>
+  <line x1="440" y1="170" x2="440" y2="210" class="arrow"/>
+  
+  <!-- Backend to Client Services -->
+  <line x1="240" y1="250" x2="210" y2="290" class="arrow"/>
+  <line x1="340" y1="250" x2="350" y2="290" class="arrow"/>
+  
+  <!-- Third Party to Frontend -->
+  <line x1="160" y1="370" x2="180" y2="90" class="arrow"/>
+  <line x1="260" y1="370" x2="180" y2="90" class="arrow"/>
+  <line x1="360" y1="370" x2="310" y2="90" class="arrow"/>
+  
+</svg>

@@ -1,0 +1,67 @@
+---
+import type { Project } from '../../data/projects';
+
+interface Props {
+  project: Project;
+  icon?: string;
+}
+
+const { project, icon } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<div
+  class={`project-card bg-white rounded-[20px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex flex-col h-full group border border-gray-200/30 hover:border-gray-300/50 ${project.featured ? 'featured' : ''}`}
+  data-category={project.categories.join(' ')}
+>
+  <div class="project-image relative h-[200px] bg-white flex items-center justify-center overflow-hidden">
+    {project.coverImage ? (
+      <img src={project.coverImage} alt={`${project.title}封面`} class="w-full h-full object-cover" />
+    ) : (
+      <div class="project-placeholder text-6xl text-[#ddd]">
+        <i class={icon || 'fas fa-folder'}></i>
+      </div>
+    )}
+    <div class="project-overlay absolute inset-0 bg-black/30 backdrop-blur-md flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+      <div class="project-links flex gap-4">
+        {project.links.appstore && (
+          <a
+            href={project.links.appstore}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link w-[50px] h-[50px] bg-white/20 rounded-full flex items-center justify-center text-white no-underline text-lg transition-all duration-300 hover:bg-white/30 hover:scale-110"
+            title="App Store"
+          >
+            <i class="fab fa-apple"></i>
+          </a>
+        )}
+        {project.links.googleplay && (
+          <a
+            href={project.links.googleplay}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link w-[50px] h-[50px] bg-white/20 rounded-full flex items-center justify-center text-white no-underline text-lg transition-all duration-300 hover:bg-white/30 hover:scale-110"
+            title="Google Play"
+          >
+            <i class="fab fa-google-play"></i>
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+  <div class="project-content p-6 flex-1 flex flex-col">
+    <h3 class="project-title text-[1.3rem] font-semibold text-[#1a1a1a] mb-4">{project.title}</h3>
+    <p class="project-description text-[#666] leading-[1.6] mb-5 flex-1">{project.description}</p>
+    <div class="project-tech flex flex-wrap gap-2 mb-5">
+      {project.techStack.map((tech) => (
+        <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">{tech}</span>
+      ))}
+    </div>
+    <a
+      href={`${base}projects/${project.slug}`}
+      class="learn-more-btn bg-[#1a1a1a] text-white border-none px-5 py-2.5 rounded-lg text-[0.9rem] font-medium cursor-pointer transition-all duration-300 shadow-[0_2px_8px_rgba(26,26,26,0.2)] hover:bg-[#333] w-full mt-auto text-center no-underline block"
+    >
+      了解更多
+    </a>
+  </div>
+</div>
