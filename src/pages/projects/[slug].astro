@@ -67,18 +67,12 @@ const base = import.meta.env.BASE_URL;
             </div>
           </div>
 
-          {project.background.myRole.length > 0 && (
-            <div class="project-features mb-10">
+          {project.background && (
+            <div class="project-background mb-10">
               <h3 class="category-title text-xl font-bold text-[#1a1a1a] mb-5 flex items-center gap-2.5">
-                <i class="fas fa-user"></i> 我的角色
+                <i class="fas fa-info-circle"></i> 專案背景
               </h3>
-              <ul class="features-list list-none p-0">
-                {project.background.myRole.map((role) => (
-                  <li class="py-5 text-[#4a5568] relative pl-11 font-normal border-b border-[#f1f5f9] transition-all duration-300 rounded-[10px] mb-2.5 before:content-['•'] before:absolute before:left-4 before:text-[#1a1a1a] before:font-bold before:text-2xl before:leading-none before:w-6 before:h-6 before:flex before:items-center before:justify-center">
-                    {role}
-                  </li>
-                ))}
-              </ul>
+              <div class="background-content text-[#4a5568] leading-[1.8]" set:html={project.background} />
             </div>
           )}
         </div>
@@ -94,7 +88,7 @@ const base = import.meta.env.BASE_URL;
                 {highlight.media && (
                   <div class="highlight-media mb-4 rounded-[10px] overflow-hidden bg-gray-100">
                     {highlight.mediaType === 'video' ? (
-                      <video src={highlight.media} controls class="w-full h-auto" preload="metadata">
+                      <video src={highlight.media} controls autoplay muted loop playsinline class="w-full h-auto" preload="metadata">
                         您的瀏覽器不支援影片播放
                       </video>
                     ) : (
@@ -103,7 +97,7 @@ const base = import.meta.env.BASE_URL;
                   </div>
                 )}
                 <h4 class="text-lg font-bold text-[#1a1a1a] mb-2">{highlight.title}</h4>
-                <p class="text-[#666] text-sm leading-relaxed">{highlight.description}</p>
+                <p class="text-[#666] text-sm leading-relaxed" set:html={highlight.description} />
               </div>
             ))}
           </div>
@@ -121,19 +115,19 @@ const base = import.meta.env.BASE_URL;
                 <div class="grid gap-4">
                   <div>
                     <span class="text-sm font-semibold text-[#667eea]">情境</span>
-                    <p class="text-[#666] mt-1">{challenge.situation}</p>
+                    <p class="text-[#666] mt-1" set:html={challenge.situation} />
                   </div>
                   <div>
                     <span class="text-sm font-semibold text-[#e53e3e]">困難點</span>
-                    <p class="text-[#666] mt-1">{challenge.difficulty}</p>
+                    <p class="text-[#666] mt-1" set:html={challenge.difficulty} />
                   </div>
                   <div>
                     <span class="text-sm font-semibold text-[#38a169]">解決方案</span>
-                    <p class="text-[#666] mt-1">{challenge.solution}</p>
+                    <p class="text-[#666] mt-1" set:html={challenge.solution} />
                   </div>
                   <div>
                     <span class="text-sm font-semibold text-[#3182ce]">結果</span>
-                    <p class="text-[#666] mt-1">{challenge.result}</p>
+                    <p class="text-[#666] mt-1" set:html={challenge.result} />
                   </div>
                 </div>
               </div>
@@ -152,11 +146,11 @@ const base = import.meta.env.BASE_URL;
                 <h4 class="text-lg font-bold text-[#1a1a1a] mb-4 flex items-center gap-2">
                   <i class="fab fa-figma text-purple-600"></i> 設計流程
                 </h4>
-                <ol class="list-decimal list-inside space-y-2">
+                <div class="space-y-3">
                   {project.process.design.map((step) => (
-                    <li class="text-[#666] text-sm leading-relaxed">{step}</li>
+                    <p class="text-[#666] text-sm leading-relaxed" set:html={step} />
                   ))}
-                </ol>
+                </div>
               </div>
             )}
             {project.process.development.length > 0 && (
@@ -164,11 +158,11 @@ const base = import.meta.env.BASE_URL;
                 <h4 class="text-lg font-bold text-[#1a1a1a] mb-4 flex items-center gap-2">
                   <i class="fas fa-code text-blue-600"></i> 開發流程
                 </h4>
-                <ol class="list-decimal list-inside space-y-2">
+                <div class="space-y-3">
                   {project.process.development.map((step) => (
-                    <li class="text-[#666] text-sm leading-relaxed">{step}</li>
+                    <p class="text-[#666] text-sm leading-relaxed" set:html={step} />
                   ))}
-                </ol>
+                </div>
               </div>
             )}
           </div>
@@ -183,8 +177,8 @@ const base = import.meta.env.BASE_URL;
             <ul class="space-y-3">
               {project.reflection.map((item) => (
                 <li class="text-[#4a5568] flex items-start gap-3">
-                  <i class="fas fa-check-circle text-[#667eea] mt-1"></i>
-                  <span>{item}</span>
+                  <i class="fas fa-check-circle text-[#667eea] mt-1 flex-shrink-0"></i>
+                  <span set:html={item} />
                 </li>
               ))}
             </ul>
@@ -194,7 +188,7 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Links -->
       <div class="project-links text-center mt-0 p-12 bg-gradient-to-r from-white to-white rounded-[30px] flex justify-center gap-8 flex-nowrap">
-        <a href={`${base}`} class="btn btn-secondary bg-[#f5f5f5] text-[#1a1a1a] min-w-[200px] px-9 py-4 text-base rounded-[30px] inline-flex items-center justify-center gap-3 transition-all duration-300 no-underline font-medium hover:bg-[#1a1a1a] hover:text-white hover:-translate-y-1 hover:shadow-lg">
+        <a href={`${base}/`} class="btn btn-secondary bg-[#f5f5f5] text-[#1a1a1a] min-w-[200px] px-9 py-4 text-base rounded-[30px] inline-flex items-center justify-center gap-3 transition-all duration-300 no-underline font-medium hover:bg-[#1a1a1a] hover:text-white hover:-translate-y-1 hover:shadow-lg">
           <i class="fas fa-arrow-left"></i>
           <span>返回首頁</span>
         </a>
@@ -224,6 +218,14 @@ const base = import.meta.env.BASE_URL;
 </BaseLayout>
 
 <style>
+  /* Highlight 樣式 */
+  .highlight, :global(.highlight) {
+    background: linear-gradient(120deg, #667eea20 0%, #764ba220 100%);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
   @media (max-width: 768px) {
     .project-content {
       grid-template-columns: 1fr;
