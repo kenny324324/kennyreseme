@@ -47,6 +47,11 @@ body {
 .scroll-fade-in-up:nth-child(5) { transition-delay: 0.5s; }
 .scroll-fade-in-up:nth-child(6) { transition-delay: 0.6s; }
 
+/* Navbar Base - Force Center */
+.navbar {
+  transform: translateX(-50%);
+}
+
 /* Navbar Scrolled State */
 .navbar.scrolled {
   background: rgba(255, 255, 255, 0.8);
