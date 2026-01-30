@@ -11,11 +11,11 @@ const base = import.meta.env.BASE_URL;
       <span class="logo-subtitle text-[10px] text-[#666] font-normal -mt-0.5">{personalInfo.title.en}</span>
     </div>
     <ul class="nav-menu justify-self-center flex list-none gap-5 max-md:fixed max-md:-left-full max-md:top-[84px] max-md:flex-col max-md:bg-white max-md:w-[calc(100%-20px)] max-md:text-center max-md:transition-all max-md:duration-300 max-md:shadow-[0_10px_27px_rgba(0,0,0,0.1)] max-md:py-5 max-md:gap-2.5 max-md:rounded-[20px] max-md:mx-2.5">
-      <li><a href="#home" class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/10">首頁</a></li>
-      <li><a href="#about" class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/10">關於我</a></li>
-      <li><a href="#skills" class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/10">專業技能</a></li>
-      <li><a href="#projects" class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/10">專案作品</a></li>
-      <li><a href="#experience" class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/10">工作經歷</a></li>
+      <li><a href={`${base}#home`} class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/10">首頁</a></li>
+      <li><a href={`${base}#about`} class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/10">關於我</a></li>
+      <li><a href={`${base}#skills`} class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/10">專業技能</a></li>
+      <li><a href={`${base}#projects`} class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/10">專案作品</a></li>
+      <li><a href={`${base}#experience`} class="nav-link no-underline text-[#333] font-medium text-sm px-4 py-2 rounded-[20px] transition-all duration-300 relative hover:text-black hover:bg-black/10">工作經歷</a></li>
       <li class="mobile-download-item hidden max-md:block">
         <a href={personalInfo.resumeUrl} class="download-btn flex items-center gap-2 no-underline text-[#333] font-semibold text-[13px] px-4 py-2 rounded-[25px] transition-all duration-300 bg-black/5 border-none hover:bg-[#1a1a1a] hover:text-white max-md:inline-flex max-md:justify-center max-md:px-6 max-md:py-3 max-md:text-sm max-md:my-2.5 max-md:mx-auto max-md:w-fit max-md:hover:bg-[#e2e8f0] max-md:hover:text-[#333]">
           <i class="fas fa-download text-xs max-md:text-sm"></i>
