@@ -1,12 +1,85 @@
 @import "tailwindcss";
 
-/* Custom Tailwind Theme */
-@theme {
-  --color-primary: #1a1a1a;
-  --color-secondary: #666;
-  --color-accent: #667eea;
+/* ===== Custom Fonts ===== */
 
-  --font-family-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+/* JetBrains Mono - 英文 (字重加一級) */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/kennyreseme/fonts/JetBrainsMono-Medium.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/kennyreseme/fonts/JetBrainsMono-SemiBold.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/kennyreseme/fonts/JetBrainsMono-Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/kennyreseme/fonts/JetBrainsMono-ExtraBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* PingFang TC - 中文 (字重加一級) */
+@font-face {
+  font-family: 'PingFang TC';
+  src: url('/kennyreseme/fonts/PingFangTC-Medium.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PingFang TC';
+  src: url('/kennyreseme/fonts/PingFangTC-Semibold.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PingFang TC';
+  src: url('/kennyreseme/fonts/PingFangTC-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PingFang TC';
+  src: url('/kennyreseme/fonts/PingFangTC-Semibold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Custom Tailwind Theme - 接近 Simon 風格 */
+@theme {
+  --color-primary: #2B2B2B;
+  --color-secondary: #6A6A6A;
+  --color-accent: #BDBDBD;
+  --color-bg: #F6F6F6;
+  --color-card: #FFFFFF;
+  --color-tag: #F3F3F3;
+  --color-border: #E6E6E6;
+
+  --font-family-sans: 'JetBrains Mono', 'PingFang TC', 'SF Mono', 'Menlo', monospace;
+  --font-family-body: 'JetBrains Mono', 'PingFang TC', 'SF Mono', 'Menlo', monospace;
 }
 
 /* Base Styles */
@@ -15,9 +88,17 @@ html {
 }
 
 body {
-  font-family: var(--font-family-sans);
+  font-family: var(--font-family-body);
+  color: #2B2B2B;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-sans);
+  letter-spacing: -0.01em;
 }
 
 /* Scroll Animation Base */
@@ -54,11 +135,11 @@ body {
 
 /* Navbar Scrolled State */
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(43, 43, 43, 0.08);
   transform: translateX(-50%) scale(1.02);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(230, 230, 230, 0.6);
 }
 
 /* Hamburger Active State */
@@ -80,7 +161,7 @@ body {
 
 /* Nav Link Active State */
 .nav-link.active {
-  background: #1a1a1a;
+  background: #2B2B2B;
   color: white;
 }
 
@@ -106,7 +187,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #ffffff;
+  background: #F6F6F6;
   z-index: 9999;
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -125,7 +206,7 @@ body {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: #e2e8f0;
+  background: #E6E6E6;
 }
 
 @media (min-width: 768px) {
@@ -141,7 +222,7 @@ body {
 
 .skill-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(43, 43, 43, 0.08);
 }
 
 /* Project Card Hover - Unified */
@@ -151,11 +232,11 @@ body {
 
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 30px rgba(43, 43, 43, 0.1);
 }
 
 /* Background Pattern for Skills Section */
 .skills-pattern {
-  background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
+  background-image: radial-gradient(#E6E6E6 1px, transparent 1px);
   background-size: 20px 20px;
 }

@@ -2,18 +2,18 @@
 import { personalInfo } from '../../data/personal';
 ---
 
-<footer class="footer bg-[#1a1a1a] text-white py-10 text-center">
+<footer class="footer bg-[#1F1F1F] text-[#D6D6D6] py-10 text-center border-t border-[#2A2A2A]">
   <div class="w-full max-w-[1200px] mx-auto px-5">
     <div class="footer-content flex justify-between items-center flex-wrap gap-5 flex-col md:flex-row">
       <div class="footer-text flex-1">
-        <p>&copy; {new Date().getFullYear()} {personalInfo.name.zh} {personalInfo.name.en}. {personalInfo.title.zh}</p>
+        <p class="text-[#BDBDBD]">&copy; {new Date().getFullYear()} {personalInfo.name.zh} {personalInfo.name.en}. {personalInfo.title.zh}</p>
       </div>
       <div class="footer-social flex gap-4">
-        <a href={`mailto:${personalInfo.email}`} class="social-link text-white text-[1.2rem] w-10 h-10 rounded-full bg-white/10 flex items-center justify-center no-underline transition-all duration-300 hover:bg-white hover:text-[#1a1a1a]" aria-label="Email">
+        <a href={`mailto:${personalInfo.email}`} class="social-link text-[#D6D6D6] text-[1.1rem] w-10 h-10 rounded-full bg-white/5 border border-[#2A2A2A] flex items-center justify-center no-underline transition-all duration-300 hover:border-[#7A66CC] hover:text-white" aria-label="Email">
           <i class="fas fa-envelope"></i>
         </a>
         {personalInfo.github && (
-          <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" class="social-link text-white text-[1.2rem] w-10 h-10 rounded-full bg-white/10 flex items-center justify-center no-underline transition-all duration-300 hover:bg-white hover:text-[#1a1a1a]" aria-label="GitHub">
+          <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" class="social-link text-[#D6D6D6] text-[1.1rem] w-10 h-10 rounded-full bg-white/5 border border-[#2A2A2A] flex items-center justify-center no-underline transition-all duration-300 hover:border-[#7A66CC] hover:text-white" aria-label="GitHub">
             <i class="fab fa-github"></i>
           </a>
         )}

@@ -166,17 +166,38 @@ export function parseChallenges(projectFolder: string): Array<{
 }
 
 /**
+ * 尋找專案資料夾中的圖片檔案
+ */
+function findProjectImage(projectFolder: string, baseName: string): string | undefined {
+  const extensions = ['.png', '.jpg', '.jpeg', '.svg'];
+  for (const ext of extensions) {
+    const filename = `${baseName}${ext}`;
+    const filePath = path.join(PROJECTS_DIR, projectFolder, filename);
+    if (fs.existsSync(filePath)) {
+      return `/kennyreseme/documents/projects/${projectFolder}/${filename}`;
+    }
+  }
+  return undefined;
+}
+
+/**
  * 解析 plan.txt
  */
 export function parseProcess(projectFolder: string): {
   design: string[];
   development: string[];
+  designImage?: string;
+  developmentImage?: string;
 } {
   const content = readProjectFile(projectFolder, 'plan.txt');
-  if (!content) return { design: [], development: [] };
-
   const design: string[] = [];
   const development: string[] = [];
+  
+  // 尋找對應的流程圖片
+  const designImage = findProjectImage(projectFolder, 'figma-design');
+  const developmentImage = findProjectImage(projectFolder, 'tech-architecture');
+
+  if (!content) return { design: [], development: [], designImage, developmentImage };
 
   // 分割設計和開發部分
   const sections = content.split('開發流程｜技術');
@@ -201,7 +222,7 @@ export function parseProcess(projectFolder: string): {
     });
   }
 
-  return { design, development };
+  return { design, development, designImage, developmentImage };
 }
 
 /**

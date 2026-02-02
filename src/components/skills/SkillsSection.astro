@@ -3,7 +3,7 @@ import SectionHeader from '../common/SectionHeader.astro';
 import { skillCategories } from '../../data/skills';
 ---
 
-<section id="skills" class="skills py-16 bg-[#fafafa] relative overflow-hidden">
+<section id="skills" class="skills py-16 bg-[#F6F6F6] relative overflow-hidden">
   <!-- Background Pattern -->
   <div class="absolute inset-0 skills-pattern"></div>
 
@@ -13,12 +13,12 @@ import { skillCategories } from '../../data/skills';
     <div class="flex flex-col gap-16">
       {skillCategories.map((category) => (
         <div>
-          <h3 class="flex items-center gap-3 text-2xl font-bold text-[#1a1a1a] mb-8 pl-2 border-l-4 border-[#1a1a1a]">
+          <h3 class="flex items-center gap-3 text-2xl font-bold text-[#2B2B2B] mb-8 pl-2 border-l-4 border-[#5AA6B1]">
             {category.title}
           </h3>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {category.skills.map((skill) => (
-              <div class="skill-card bg-white p-6 rounded-[24px] border-2 border-dashed border-gray-300">
+              <div class="skill-card bg-white p-6 rounded-[20px] border border-[#E6E6E6] shadow-[0_8px_24px_-16px_rgba(43,43,43,0.18)]">
                 <div class="mb-6">
                   <div
                     class="w-14 h-14 rounded-[10px] flex items-center justify-center text-2xl text-white"
@@ -27,8 +27,8 @@ import { skillCategories } from '../../data/skills';
                     <i class={skill.icon}></i>
                   </div>
                 </div>
-                <h4 class="text-xl font-bold text-[#1a1a1a] mb-3">{skill.name}</h4>
-                <p class="text-sm text-[#666] leading-relaxed">{skill.description}</p>
+                <h4 class="text-xl font-bold text-[#2B2B2B] mb-3">{skill.name}</h4>
+                <p class="text-sm text-[#6A6A6A] leading-relaxed">{skill.description}</p>
               </div>
             ))}
           </div>

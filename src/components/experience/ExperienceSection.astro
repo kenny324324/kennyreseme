@@ -3,25 +3,25 @@ import SectionHeader from '../common/SectionHeader.astro';
 import { experiences } from '../../data/experience';
 ---
 
-<section id="experience" class="experience py-16 bg-white">
+<section id="experience" class="experience py-16 bg-[#F6F6F6]">
   <div class="w-full max-w-[1200px] mx-auto px-5">
     <SectionHeader title="工作經歷" />
 
     <div class="timeline max-w-[800px] mx-auto relative ml-5 md:ml-auto">
       {experiences.map((exp) => (
         <div class="timeline-item relative mb-12 pl-12 md:pl-20">
-          <div class="timeline-marker absolute left-[5px] md:left-[20px] top-0 w-5 h-5 bg-[#1a1a1a] rounded-full border-4 border-white shadow-[0_0_0_4px_#e2e8f0]"></div>
-          <div class="timeline-content bg-white p-8 rounded-[15px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300 scroll-fade-in">
+          <div class="timeline-marker absolute left-[5px] md:left-[20px] top-0 w-5 h-5 bg-[#5AA6B1] rounded-full border-4 border-[#F6F6F6] shadow-[0_0_0_4px_#E6E6E6]"></div>
+          <div class="timeline-content bg-white p-8 rounded-[14px] shadow-[0_8px_24px_-16px_rgba(43,43,43,0.22)] border border-[#E6E6E6] transition-all duration-300 scroll-fade-in">
             <div class="timeline-header mb-4">
-              <h3 class="text-[1.4rem] font-semibold text-[#1a1a1a] mb-1.5">{exp.title}</h3>
-              <span class="company text-[#1a1a1a] font-semibold mr-4">{exp.company}</span>
-              <span class="duration text-[#666] text-sm">{exp.duration}</span>
+              <h3 class="text-[1.35rem] font-semibold text-[#2B2B2B] mb-1.5">{exp.title}</h3>
+              <span class="company text-[#2B2B2B] font-semibold mr-4">{exp.company}</span>
+              <span class="duration text-[#6A6A6A] text-sm">{exp.duration}</span>
             </div>
             <div class="timeline-description">
-              <p class="text-[#666] leading-[1.6] mb-4">{exp.description}</p>
+              <p class="text-[#6A6A6A] leading-[1.7] mb-4">{exp.description}</p>
               <ul class="achievement-list list-none mb-5">
                 {exp.achievements.map((achievement) => (
-                  <li class="text-[#666] leading-[1.6] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#1a1a1a] before:font-bold">
+                  <li class="text-[#6A6A6A] leading-[1.7] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#5AA6B1] before:font-bold">
                     {achievement}
                   </li>
                 ))}
@@ -29,7 +29,7 @@ import { experiences } from '../../data/experience';
             </div>
             <div class="timeline-tech flex flex-wrap gap-2">
               {exp.techStack.map((tech) => (
-                <span class="tech-tag bg-[#f1f5f9] text-[#333] px-3 py-1 rounded-[15px] text-[0.85rem] font-medium">{tech}</span>
+                <span class="tech-tag bg-white text-[#6A6A6A] px-3 py-1 rounded-[12px] text-[0.8rem] font-medium border border-[#E6E6E6]">{tech}</span>
               ))}
             </div>
           </div>

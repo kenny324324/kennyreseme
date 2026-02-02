@@ -39,6 +39,8 @@ export interface ProjectDetail {
   process: {
     design: string[];
     development: string[];
+    designImage?: string;
+    developmentImage?: string;
   };
   reflection: string[];
 }

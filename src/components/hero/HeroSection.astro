@@ -4,76 +4,94 @@ import { personalInfo, stats } from '../../data/personal';
 const base = import.meta.env.BASE_URL;
 ---
 
-<section id="home" class="min-h-screen bg-white flex items-center relative overflow-hidden py-24">
+<section id="home" class="min-h-screen bg-[#F6F6F6] flex items-center relative overflow-hidden py-24">
   <div class="w-full max-w-[1200px] mx-auto px-5">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center text-center md:text-left">
       <!-- Hero Text -->
-      <div class="text-[#333]">
+      <div class="text-[#6A6A6A]">
         <h1 class="mb-5">
-          <span class="block text-lg font-normal mb-2 text-[#666]">您好，我是</span>
-          <span class="block text-5xl md:text-[4rem] font-bold mb-1 text-[#1a1a1a]">{personalInfo.name.zh} {personalInfo.name.en}</span>
+          <span class="block text-lg font-normal mb-2 text-[#6A6A6A]">您好，我是</span>
+          <span class="block text-5xl md:text-[4rem] font-bold mb-1 text-[#2B2B2B]">{personalInfo.name.zh} {personalInfo.name.en}</span>
         </h1>
-        <h2 class="text-2xl md:text-[1.5rem] font-medium mb-5 text-[#333]">{personalInfo.title.zh}</h2>
-        <p class="text-lg md:text-[1.1rem] leading-[1.8] mb-10 text-[#666]">
-          具備 <span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">SwiftUI</span>、<span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">Flutter</span> 跨平台開發經驗，專精 <span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">.NET MAUI</span> 商業應用開發<br class="hidden md:block">
-          善於運用 <span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">Figma</span> 進行 <span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">UI/UX 規劃設計</span>，結合 <span class="bg-[#e4daf3]/50 px-1.5 py-0.5 rounded font-medium text-[#1a1a1a]">AI 整合</span>
+        <h2 class="text-2xl md:text-[1.5rem] font-medium mb-5 text-[#2B2B2B]">{personalInfo.title.zh}</h2>
+        <p class="text-lg md:text-[1.05rem] leading-[1.85] mb-10 text-[#6A6A6A]">
+          具備 <span class="bg-[#7A66CC]/20 px-1.5 py-0.5 rounded text-[#2B2B2B] font-medium">SwiftUI</span>、<span class="bg-[#7A66CC]/20 px-1.5 py-0.5 rounded text-[#2B2B2B] font-medium">Flutter</span> 跨平台開發經驗，專精 <span class="bg-[#7A66CC]/20 px-1.5 py-0.5 rounded text-[#2B2B2B] font-medium">.NET MAUI</span> 商業應用開發。<br class="hidden md:block">
+          善於運用 <span class="bg-[#7A66CC]/20 px-1.5 py-0.5 rounded text-[#2B2B2B] font-medium">Figma</span> 進行 <span class="bg-[#7A66CC]/20 px-1.5 py-0.5 rounded text-[#2B2B2B] font-medium">UI/UX 規劃設計</span>，並整合 <span class="bg-[#7A66CC]/20 px-1.5 py-0.5 rounded text-[#2B2B2B] font-medium">AI</span> 方案。
         </p>
         <div class="flex flex-wrap justify-center md:justify-start gap-5">
-          <a href={`${base}#projects`} class="px-8 py-3 rounded-lg no-underline font-semibold text-base transition-all duration-300 border-2 border-transparent cursor-pointer bg-[#1a1a1a] text-white hover:bg-[#333]">查看作品</a>
-          <a href={`${base}#experience`} class="px-8 py-3 rounded-lg no-underline font-semibold text-base transition-all duration-300 border-2 border-transparent cursor-pointer bg-[#f5f5f5] text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white">查看經歷</a>
+          <a href={`${base}#projects`} class="px-8 py-3 rounded-lg no-underline font-semibold text-base transition-all duration-300 border border-[#2B2B2B] cursor-pointer bg-[#2B2B2B] text-white hover:bg-transparent hover:text-[#2B2B2B]">查看作品</a>
+          <a href={`${base}#experience`} class="px-8 py-3 rounded-lg no-underline font-semibold text-base transition-all duration-300 border border-[#E6E6E6] cursor-pointer bg-white text-[#2B2B2B] hover:border-[#2B2B2B]">查看經歷</a>
         </div>
       </div>
 
       <!-- Hero Card -->
       <div class="flex justify-center items-center">
-        <div class="relative rounded-[32px] p-8 text-center border border-gray-200 w-full max-w-[380px] md:max-w-none mx-auto overflow-hidden bg-white shadow-[0_2px_8px_-2px_rgba(0,0,0,0.08),0_4px_12px_-3px_rgba(0,0,0,0.06)]">
+        <div class="relative rounded-[28px] p-8 text-center border border-[#E6E6E6] w-full max-w-[380px] md:max-w-none mx-auto overflow-hidden bg-white shadow-[0_2px_10px_-4px_rgba(43,43,43,0.08),0_6px_16px_-6px_rgba(43,43,43,0.06)]">
           <!-- Avatar -->
           <div class="relative mb-6 mx-auto w-[120px]">
             <div class="w-[120px] h-[120px] rounded-full overflow-hidden border-4 border-white shadow-sm mx-auto relative z-10">
               <img src={`${base}/profile.JPG`} alt={`${personalInfo.name.zh} ${personalInfo.name.en}`} class="w-full h-full object-cover">
             </div>
-            <div class="absolute bottom-1 right-1 z-20 bg-white p-1 rounded-full shadow-sm border border-gray-100">
+            <div class="absolute bottom-1 right-1 z-20 bg-white p-1 rounded-full shadow-sm border border-[#E6E6E6]">
               <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
             </div>
-            <div class="absolute inset-0 rounded-full border border-dashed border-gray-300 scale-110 animate-[spin_10s_linear_infinite]"></div>
+            <div class="absolute inset-0 rounded-full border border-dashed border-[#E6E6E6] scale-110 animate-[spin_10s_linear_infinite]"></div>
           </div>
 
           <!-- Text -->
           <div class="relative z-10 flex flex-col items-center">
-            <h3 class="text-2xl font-bold text-[#1a1a1a] mb-1">{personalInfo.name.en}</h3>
-            <p class="text-sm text-[#666] mb-6 font-medium tracking-wide">{personalInfo.title.zh}</p>
+            <h3 class="text-2xl font-bold text-[#2B2B2B] mb-1">{personalInfo.name.en}</h3>
+            <p class="text-sm text-[#6A6A6A] mb-6 font-medium tracking-wide">{personalInfo.title.zh}</p>
 
             <!-- Stats -->
-            <div class="flex items-center justify-center gap-6 mb-6 text-sm text-[#444] w-full border-t border-b border-gray-100 py-4">
-              <div class="flex flex-col items-center flex-1 text-right border-r border-gray-100 pr-3">
-                <span class="font-bold text-lg text-[#1a1a1a] leading-tight">{stats.years}+</span>
-                <span class="text-[10px] text-[#888] uppercase tracking-wider">Years</span>
+            <div class="flex items-center justify-center gap-6 mb-6 text-sm text-[#6A6A6A] w-full border-t border-b border-[#E6E6E6] py-4">
+              <div class="flex flex-col items-center flex-1 text-right border-r border-[#E6E6E6] pr-3">
+                <span class="font-bold text-lg text-[#2B2B2B] leading-tight">{stats.years}+</span>
+                <span class="text-[10px] text-[#6A6A6A] uppercase tracking-wider">Years</span>
               </div>
               <div class="flex flex-col items-center flex-1 text-left pl-3">
-                <span class="font-bold text-lg text-[#1a1a1a] leading-tight">{stats.projects}+</span>
-                <span class="text-[10px] text-[#888] uppercase tracking-wider">Projects</span>
+                <span class="font-bold text-lg text-[#2B2B2B] leading-tight">{stats.projects}+</span>
+                <span class="text-[10px] text-[#6A6A6A] uppercase tracking-wider">Projects</span>
               </div>
             </div>
 
             <!-- Skill Tags -->
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full px-4">
-              <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
-                <i class="fab fa-swift text-orange-600 text-base"></i> SwiftUI
+              <span class="bg-[#F6F6F6] border border-[#E6E6E6] px-3 py-2 h-[44px] rounded-xl text-[0.8rem] leading-tight font-semibold text-[#2B2B2B] flex items-center justify-center gap-2 cursor-default w-full text-center">
+                <span class="w-[18px] flex items-center justify-center">
+                  <i class="fab fa-swift text-orange-600 text-base"></i>
+                </span>
+                <span>SwiftUI</span>
               </span>
-              <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
-                <i class="fas fa-layer-group text-blue-500 text-base"></i> Flutter
+              <span class="bg-[#F6F6F6] border border-[#E6E6E6] px-3 py-2 h-[44px] rounded-xl text-[0.8rem] leading-tight font-semibold text-[#2B2B2B] flex items-center justify-center gap-2 cursor-default w-full text-center">
+                <span class="w-[18px] flex items-center justify-center">
+                  <i class="fas fa-layer-group text-blue-500 text-base"></i>
+                </span>
+                <span>Flutter</span>
               </span>
-              <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
-                <i class="fab fa-microsoft text-blue-700 text-base"></i> .NET MAUI
+              <span class="bg-[#F6F6F6] border border-[#E6E6E6] px-3 py-2 h-[44px] rounded-xl text-[0.8rem] leading-tight font-semibold text-[#2B2B2B] flex items-center justify-center gap-2 cursor-default w-full text-center">
+                <span class="w-[18px] flex items-center justify-center">
+                  <i class="fab fa-microsoft text-blue-700 text-base"></i>
+                </span>
+                <span>.NET MAUI</span>
               </span>
-              <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
-                <i class="fab fa-figma text-purple-600 text-base"></i> Figma
+              <span class="bg-[#F6F6F6] border border-[#E6E6E6] px-3 py-2 h-[44px] rounded-xl text-[0.8rem] leading-tight font-semibold text-[#2B2B2B] flex items-center justify-center gap-2 cursor-default w-full text-center">
+                <span class="w-[18px] flex items-center justify-center">
+                  <i class="fab fa-figma text-purple-600 text-base"></i>
+                </span>
+                <span>Figma</span>
               </span>
-              <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
-                <i class="fas fa-code text-blue-600 text-base"></i> CSS
+              <span class="bg-[#F6F6F6] border border-[#E6E6E6] px-3 py-2 h-[44px] rounded-xl text-[0.8rem] leading-tight font-semibold text-[#2B2B2B] flex items-center justify-center gap-2 cursor-default w-full text-center">
+                <span class="w-[18px] flex items-center justify-center">
+                  <i class="fas fa-code text-blue-600 text-base"></i>
+                </span>
+                <span>CSS</span>
               </span>
-              <span class="bg-black/5 border border-transparent px-2 py-2.5 rounded-xl text-sm font-bold text-[#333] flex items-center justify-center gap-1.5 cursor-default w-full">
-                <i class="fas fa-tasks text-teal-600 text-base"></i> Project Mgt.
+              <span class="bg-[#F6F6F6] border border-[#E6E6E6] px-3 py-2 h-[44px] rounded-xl text-[0.8rem] leading-tight font-semibold text-[#2B2B2B] flex items-center justify-center gap-2 cursor-default w-full text-center">
+                <span class="w-[18px] flex items-center justify-center">
+                  <i class="fas fa-tasks text-teal-600 text-base"></i>
+                </span>
+                <span>Project Mgt.</span>
               </span>
             </div>
           </div>
@@ -83,7 +101,7 @@ const base = import.meta.env.BASE_URL;
   </div>
 
   <!-- Scroll Indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#333]">
-    <div class="w-0.5 h-8 bg-[#333] relative animate-bounce after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:w-2 after:h-2 after:border-r-2 after:border-b-2 after:border-[#333]"></div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#6A6A6A]">
+    <div class="w-0.5 h-8 bg-[#BDBDBD] relative animate-bounce after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:w-2 after:h-2 after:border-r-2 after:border-b-2 after:border-[#BDBDBD]"></div>
   </div>
 </section>
