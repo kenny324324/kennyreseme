@@ -1,40 +1,60 @@
 ---
-import SectionHeader from '../common/SectionHeader.astro';
 import { experiences } from '../../data/experience';
 ---
 
-<section id="experience" class="experience py-16 bg-[#F6F6F6]">
+<section id="experience" class="experience py-16 bg-[#f5f5f5]">
   <div class="w-full max-w-[1200px] mx-auto px-5">
-    <SectionHeader title="工作經歷" />
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-    <div class="timeline max-w-[800px] mx-auto relative ml-5 md:ml-auto">
-      {experiences.map((exp) => (
-        <div class="timeline-item relative mb-12 pl-12 md:pl-20">
-          <div class="timeline-marker absolute left-[5px] md:left-[20px] top-0 w-5 h-5 bg-[#5AA6B1] rounded-full border-4 border-[#F6F6F6] shadow-[0_0_0_4px_#E6E6E6]"></div>
-          <div class="timeline-content bg-white p-8 rounded-[14px] shadow-[0_8px_24px_-16px_rgba(43,43,43,0.22)] border border-[#E6E6E6] transition-all duration-300 scroll-fade-in">
-            <div class="timeline-header mb-4">
-              <h3 class="text-[1.35rem] font-semibold text-[#2B2B2B] mb-1.5">{exp.title}</h3>
-              <span class="company text-[#2B2B2B] font-semibold mr-4">{exp.company}</span>
-              <span class="duration text-[#6A6A6A] text-sm">{exp.duration}</span>
-            </div>
-            <div class="timeline-description">
-              <p class="text-[#6A6A6A] leading-[1.7] mb-4">{exp.description}</p>
-              <ul class="achievement-list list-none mb-5">
-                {exp.achievements.map((achievement) => (
-                  <li class="text-[#6A6A6A] leading-[1.7] mb-2 pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#5AA6B1] before:font-bold">
-                    {achievement}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div class="timeline-tech flex flex-wrap gap-2">
+      <!-- 左側：Sticky 標題 (4 欄) -->
+      <div class="lg:col-span-4 lg:sticky lg:top-32 lg:self-start">
+        <p class="text-[10px] font-semibold text-[#66798f] uppercase tracking-[0.15em] mb-3">Experience</p>
+        <h2 class="text-4xl font-semibold text-[#263238] mb-5">工作經歷</h2>
+        <p class="text-[#66798f] leading-relaxed text-sm">
+          跨越設計、開發與管理的多元工作經驗，持續在實戰中精進技術與協作能力。
+        </p>
+      </div>
+
+      <!-- 右側：Timeline (8 欄) -->
+      <div class="lg:col-span-8 space-y-16">
+        {experiences.map((exp) => (
+          <div class="relative pl-12 border-l border-[#cfd8dc] group scroll-fade-in">
+            <!-- 時間點圓點 -->
+            <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#C4873A] group-hover:scale-150 transition-transform duration-300"></div>
+
+            <!-- 時期標籤 -->
+            <span class="inline-block text-[10px] font-semibold text-[#66798f] uppercase tracking-[0.12em] mb-3 bg-[#eceff1] px-3 py-1 rounded-full">
+              {exp.duration}
+            </span>
+
+            <!-- 職稱與公司 -->
+            <h3 class="text-xl font-semibold text-[#263238] mb-1">{exp.title}</h3>
+            <p class="text-[#546e7a] font-medium text-sm mb-4">{exp.company}</p>
+
+            <!-- 描述 -->
+            <p class="text-[#66798f] leading-[1.7] mb-5">{exp.description}</p>
+
+            <!-- 成就列表 -->
+            <ul class="space-y-2 mb-6">
+              {exp.achievements.map((achievement) => (
+                <li class="text-[#66798f] leading-[1.7] pl-4 relative before:content-['▸'] before:absolute before:left-0 before:text-[#C4873A] before:font-bold text-sm">
+                  {achievement}
+                </li>
+              ))}
+            </ul>
+
+            <!-- Tech tags -->
+            <div class="flex flex-wrap gap-2">
               {exp.techStack.map((tech) => (
-                <span class="tech-tag bg-white text-[#6A6A6A] px-3 py-1 rounded-[12px] text-[0.8rem] font-medium border border-[#E6E6E6]">{tech}</span>
+                <span class="text-[#66798f] px-3 py-1 rounded-lg text-[0.78rem] font-medium border border-[#cfd8dc] bg-white">
+                  {tech}
+                </span>
               ))}
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
     </div>
   </div>
 </section>

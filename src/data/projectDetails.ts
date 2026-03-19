@@ -116,12 +116,48 @@ const projectMeta: Record<string, ProjectMeta> = {
   },
   mish: {
     slug: 'mish',
-    title: 'MIsh 個人書櫃',
-    subtitle: 'Flutter 跨平台書籍管理 APP',
-    description: 'Flutter開發的個人書櫃APP，具備第三方API串接、Apple登入、Firebase資料儲存與App Store上架',
+    title: 'Mish 閱讀筆記',
+    subtitle: '整理想法與書單管理 APP',
+    description: '整理想法與書單管理的 Flutter APP，具備第三方API串接、Apple登入、Firebase資料儲存與App Store上架',
     categories: ['flutter'],
     techStack: ['Flutter', 'Firebase', 'Apple登入', 'App Store', '自主學習'],
     folder: 'MIsh'
+  },
+  pickup: {
+    slug: 'pickup',
+    title: 'Pickup 取貨吧',
+    subtitle: '包裹追蹤・貨態查詢工具',
+    description: '包裹追蹤・貨態查詢工具，以 Swift 開發的個人自主學習專案',
+    categories: ['swift'],
+    techStack: ['SwiftUI', '自主學習'],
+    folder: 'Pickup'
+  },
+  findtoilets: {
+    slug: 'findtoilets',
+    title: 'FindToilets 找廁所',
+    subtitle: '附近廁所地圖查詢工具',
+    description: '附近廁所地圖查詢工具，以 Swift 開發的個人自主學習專案',
+    categories: ['swift'],
+    techStack: ['SwiftUI', '地圖整合', '自主學習'],
+    folder: 'FindToilets'
+  },
+  spostats: {
+    slug: 'spostats',
+    title: 'spo.stats for Spotify',
+    subtitle: 'Spotify 個人聆聽統計查詢',
+    description: 'Spotify 個人聆聽統計查詢工具，以 Swift 開發的個人自主學習專案',
+    categories: ['swift'],
+    techStack: ['SwiftUI', 'Spotify API', '自主學習'],
+    folder: 'SpoStats'
+  },
+  soulfeed: {
+    slug: 'soulfeed',
+    title: 'SoulFeed',
+    subtitle: 'Flutter 個人自主學習專案',
+    description: '以 Flutter 開發的個人自主學習專案',
+    categories: ['flutter'],
+    techStack: ['Flutter', '自主學習'],
+    folder: 'SoulFeed'
   }
 };
 

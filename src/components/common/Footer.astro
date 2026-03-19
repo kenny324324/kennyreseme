@@ -9,11 +9,11 @@ import { personalInfo } from '../../data/personal';
         <p class="text-[#BDBDBD]">&copy; {new Date().getFullYear()} {personalInfo.name.zh} {personalInfo.name.en}. {personalInfo.title.zh}</p>
       </div>
       <div class="footer-social flex gap-4">
-        <a href={`mailto:${personalInfo.email}`} class="social-link text-[#D6D6D6] text-[1.1rem] w-10 h-10 rounded-full bg-white/5 border border-[#2A2A2A] flex items-center justify-center no-underline transition-all duration-300 hover:border-[#7A66CC] hover:text-white" aria-label="Email">
+        <a href={`mailto:${personalInfo.email}`} class="social-link text-[#D6D6D6] text-[1.1rem] w-10 h-10 rounded-full bg-white/5 border border-[#2A2A2A] flex items-center justify-center no-underline transition-all duration-300 hover:border-[#546e7a] hover:text-white" aria-label="Email">
           <i class="fas fa-envelope"></i>
         </a>
         {personalInfo.github && (
-          <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" class="social-link text-[#D6D6D6] text-[1.1rem] w-10 h-10 rounded-full bg-white/5 border border-[#2A2A2A] flex items-center justify-center no-underline transition-all duration-300 hover:border-[#7A66CC] hover:text-white" aria-label="GitHub">
+          <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" class="social-link text-[#D6D6D6] text-[1.1rem] w-10 h-10 rounded-full bg-white/5 border border-[#2A2A2A] flex items-center justify-center no-underline transition-all duration-300 hover:border-[#546e7a] hover:text-white" aria-label="GitHub">
             <i class="fab fa-github"></i>
           </a>
         )}

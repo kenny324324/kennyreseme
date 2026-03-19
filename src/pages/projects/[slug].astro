@@ -23,128 +23,138 @@ const base = import.meta.env.BASE_URL;
 <BaseLayout title={`${project.title} - 余亮廷 Kenny Yu`} description={project.description}>
   <Navbar showBackButton={true} />
 
-  <main class="project-details pt-[100px] pb-[60px] bg-[#F6F6F6] min-h-screen">
+  <main class="project-details pt-[100px] pb-[60px] bg-[#f5f5f5] min-h-screen">
     <div class="container max-w-[1200px] mx-auto px-5">
+
       <!-- Header -->
-      <div class="section-header text-left mb-[60px] relative">
-        <h1 class="section-title text-[3rem] md:text-[3.5rem] font-bold text-[#2B2B2B] mb-2 tracking-tight leading-tight">
+      <div class="section-header text-left mb-12 relative">
+        <!-- 分類 eyebrow -->
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-[2px] bg-[#C4873A]"></div>
+          <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-[0.15em]">
+            {project.techStack[0]}
+          </span>
+        </div>
+        <h1 class="section-title text-[3rem] md:text-[3.5rem] font-bold text-[#263238] mb-2 tracking-tight leading-tight">
           {project.title}
         </h1>
         {project.subtitle && (
-          <p class="text-xl text-[#6A6A6A] font-medium">{project.subtitle}</p>
+          <p class="text-xl text-[#66798f] font-medium mb-5">{project.subtitle}</p>
         )}
+        <!-- Tech tags row -->
+        <div class="flex flex-wrap items-center gap-2 mt-4">
+          <span class="text-[10px] font-semibold text-[#66798f] uppercase tracking-wider mr-1">Tech Stack</span>
+          {project.techStack.map((tech) => (
+            <span class="text-[11px] font-medium text-[#66798f] border border-[#cfd8dc] bg-white px-3 py-1 rounded-full">
+              {tech}
+            </span>
+          ))}
+        </div>
       </div>
 
       <!-- Main Content -->
-      <div class="project-content grid grid-cols-1 lg:grid-cols-2 gap-[60px] my-[10px] mb-[60px] items-stretch bg-white p-10 rounded-2xl shadow-sm border border-[#E6E6E6] relative z-[1]">
+      <div class="project-content grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12 items-start bg-white p-10 rounded-lg border border-[#cfd8dc] relative z-[1]">
         <!-- Image -->
-        <div class="project-image-section text-center">
-          <div class="project-image w-full h-full bg-[#F6F6F6] rounded-lg border border-[#E6E6E6] flex items-center justify-center mx-auto relative overflow-hidden transition-all duration-300">
+        <div class="project-image-section">
+          <div class="aspect-[4/3] bg-[#eceff1] rounded-lg border border-[#cfd8dc] overflow-hidden">
             {project.detailImage ? (
-              <img src={project.detailImage} alt={project.title} class="project-detail-image w-full h-full object-cover rounded-lg" />
+              <img src={project.detailImage} alt={project.title} class="w-full h-full object-cover" />
             ) : (
-              <span class="image-size-hint text-[#BDBDBD] text-xl font-medium tracking-wider">No Image</span>
+              <div class="w-full h-full flex items-center justify-center">
+                <span class="text-[#546e7a]/40 text-xl font-medium tracking-wider">No Image</span>
+              </div>
             )}
           </div>
         </div>
 
         <!-- Info -->
         <div class="project-info text-left">
-          <p class="project-description text-lg leading-[1.8] text-[#6A6A6A] mb-10 font-normal">
+          <p class="project-description text-lg leading-[1.8] text-[#66798f] mb-8 font-normal">
             {project.description}
           </p>
 
-          <div class="project-tech-stack mb-8">
-            <h3 class="category-title text-xl font-bold text-[#2B2B2B] mb-5 flex items-center gap-2.5">
-              <i class="fas fa-code text-[#5AA6B1]"></i> 技術棧
-            </h3>
-            <div class="tech-tags flex flex-wrap gap-2 justify-start items-center">
-              {project.techStack.map((tech) => (
-                <span class="tech-tag bg-[#F3F3F3] text-[#2B2B2B] px-4 py-2 rounded-full text-[0.85rem] font-medium transition-all duration-200 whitespace-nowrap hover:bg-[#E6E6E6]">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
           {project.background && (
-            <div class="project-background mb-10">
-              <h3 class="category-title text-xl font-bold text-[#2B2B2B] mb-5 flex items-center gap-2.5">
-                <i class="fas fa-info-circle text-[#5AA6B1]"></i> 專案背景
-              </h3>
-              <div class="background-content text-[#6A6A6A] leading-[1.8]" set:html={project.background} />
+            <div class="project-background">
+              <div class="flex items-center gap-2.5 mb-3">
+                <i class="fas fa-info-circle text-[#C4873A] text-sm"></i>
+                <h3 class="text-sm font-semibold text-[#263238] uppercase tracking-wider">專案背景</h3>
+              </div>
+              <div class="background-content text-[#66798f] leading-[1.8] pl-[22px]" set:html={project.background} />
             </div>
           )}
         </div>
       </div>
 
-      <!-- Process (Moved Up) -->
+      <!-- Process -->
       {(project.process.design.length > 0 || project.process.development.length > 0) && (
-        <div class="process-section mb-16">
-          <h2 class="text-2xl font-bold text-[#2B2B2B] mb-8 pb-3 border-b border-[#E6E6E6]">開發流程</h2>
+        <div class="process-section mb-12">
+          <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
+            <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">01</span>
+            <h2 class="text-xl font-bold text-[#263238]">開發流程</h2>
+          </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {project.process.design.length > 0 && (
-              <div class="process-card bg-white p-8 rounded-xl shadow-sm border border-[#E6E6E6]">
+              <div class="process-card bg-white p-8 rounded-lg border border-[#cfd8dc]">
                 <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
-                  <h4 class="text-xl font-bold text-[#2B2B2B] flex items-center gap-3">
-                    <span class="w-10 h-10 rounded-full bg-[#F3F3F3] flex items-center justify-center">
-                      <i class="fab fa-figma text-[#7A66CC]"></i>
+                  <h4 class="text-base font-bold text-[#263238] flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#eceff1] flex items-center justify-center">
+                      <i class="fab fa-figma text-[#546e7a] text-sm"></i>
                     </span>
                     設計流程
                   </h4>
                   {project.links.figma && (
-                    <a href={project.links.figma} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#F3F3F3] text-[#2B2B2B] px-4 py-2 rounded-full text-[0.85rem] font-medium transition-all duration-200 whitespace-nowrap hover:bg-[#E6E6E6] no-underline">
-                      <i class="fab fa-figma"></i>
+                    <a href={project.links.figma} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-[#cfd8dc] text-[#66798f] px-3 py-1.5 rounded-full text-[0.78rem] font-medium transition-all duration-200 whitespace-nowrap hover:border-[#546e7a] hover:text-[#263238] no-underline">
+                      <i class="fab fa-figma text-xs"></i>
                       <span>Figma</span>
                     </a>
                   )}
                 </div>
-                
+
                 {project.process.designImage && (
-                  <div class="mb-8 rounded-lg overflow-hidden border border-[#E6E6E6]">
-                    <img 
-                      src={project.process.designImage} 
-                      alt="Design Process" 
+                  <div class="mb-6 rounded-lg overflow-hidden border border-[#cfd8dc]">
+                    <img
+                      src={project.process.designImage}
+                      alt="Design Process"
                       class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-500"
                     />
                   </div>
                 )}
 
-                <div class="space-y-4">
+                <div class="space-y-3">
                   {project.process.design.map((step) => (
-                    <div class="flex gap-4">
-                      <div class="w-1.5 h-1.5 rounded-full bg-[#5AA6B1] mt-2.5 flex-shrink-0"></div>
-                      <p class="text-[#6A6A6A] leading-relaxed" set:html={step} />
+                    <div class="flex gap-3">
+                      <div class="w-1.5 h-1.5 rounded-full bg-[#C4873A] mt-2.5 flex-shrink-0"></div>
+                      <p class="text-[#66798f] leading-relaxed" set:html={step} />
                     </div>
                   ))}
                 </div>
               </div>
             )}
-            
+
             {project.process.development.length > 0 && (
-              <div class="process-card bg-white p-8 rounded-xl shadow-sm border border-[#E6E6E6]">
-                <h4 class="text-xl font-bold text-[#2B2B2B] mb-6 flex items-center gap-3">
-                  <span class="w-10 h-10 rounded-full bg-[#F3F3F3] flex items-center justify-center">
-                    <i class="fas fa-code text-[#5AA6B1]"></i>
+              <div class="process-card bg-white p-8 rounded-lg border border-[#cfd8dc]">
+                <h4 class="text-base font-bold text-[#263238] mb-6 flex items-center gap-3">
+                  <span class="w-8 h-8 rounded-lg bg-[#eceff1] flex items-center justify-center">
+                    <i class="fas fa-code text-[#546e7a] text-sm"></i>
                   </span>
                   開發流程
                 </h4>
 
                 {project.process.developmentImage && (
-                  <div class="mb-8 rounded-lg overflow-hidden border border-[#E6E6E6]">
-                    <img 
-                      src={project.process.developmentImage} 
-                      alt="Development Architecture" 
+                  <div class="mb-6 rounded-lg overflow-hidden border border-[#cfd8dc]">
+                    <img
+                      src={project.process.developmentImage}
+                      alt="Development Architecture"
                       class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-500"
                     />
                   </div>
                 )}
 
-                <div class="space-y-4">
+                <div class="space-y-3">
                   {project.process.development.map((step) => (
-                    <div class="flex gap-4">
-                      <div class="w-1.5 h-1.5 rounded-full bg-[#5AA6B1] mt-2.5 flex-shrink-0"></div>
-                      <p class="text-[#6A6A6A] leading-relaxed" set:html={step} />
+                    <div class="flex gap-3">
+                      <div class="w-1.5 h-1.5 rounded-full bg-[#C4873A] mt-2.5 flex-shrink-0"></div>
+                      <p class="text-[#66798f] leading-relaxed" set:html={step} />
                     </div>
                   ))}
                 </div>
@@ -154,30 +164,33 @@ const base = import.meta.env.BASE_URL;
         </div>
       )}
 
-      <!-- Challenges (Moved Up, Layout Changed) -->
+      <!-- Challenges -->
       {project.challenges.length > 0 && (
-        <div class="challenges-section mb-16">
-          <h2 class="text-2xl font-bold text-[#2B2B2B] mb-8 pb-3 border-b border-[#E6E6E6]">技術挑戰與解決方案</h2>
+        <div class="challenges-section mb-12">
+          <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
+            <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">02</span>
+            <h2 class="text-xl font-bold text-[#263238]">技術挑戰與解決方案</h2>
+          </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             {project.challenges.map((challenge) => (
-              <div class="challenge-card bg-white p-8 rounded-xl shadow-sm border border-[#E6E6E6]">
-                <h4 class="text-xl font-bold text-[#2B2B2B] mb-4">{challenge.title}</h4>
-                <div class="grid gap-4">
+              <div class="challenge-card bg-white p-7 rounded-lg border border-[#cfd8dc]">
+                <h4 class="text-base font-bold text-[#263238] mb-5">{challenge.title}</h4>
+                <div class="space-y-4">
                   <div>
-                    <span class="text-xs font-semibold text-[#5AA6B1] uppercase tracking-wider">情境</span>
-                    <p class="text-[#6A6A6A] mt-1" set:html={challenge.situation} />
+                    <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-wider">情境</span>
+                    <p class="text-[#66798f] mt-1 leading-relaxed" set:html={challenge.situation} />
                   </div>
-                  <div>
-                    <span class="text-xs font-semibold text-[#5AA6B1] uppercase tracking-wider">困難點</span>
-                    <p class="text-[#6A6A6A] mt-1" set:html={challenge.difficulty} />
+                  <div class="pt-3 border-t border-[#eceff1]">
+                    <span class="text-[10px] font-semibold text-[#546e7a] uppercase tracking-wider">困難點</span>
+                    <p class="text-[#66798f] mt-1 leading-relaxed" set:html={challenge.difficulty} />
                   </div>
-                  <div>
-                    <span class="text-xs font-semibold text-[#5AA6B1] uppercase tracking-wider">解決方案</span>
-                    <p class="text-[#6A6A6A] mt-1" set:html={challenge.solution} />
+                  <div class="pt-3 border-t border-[#eceff1]">
+                    <span class="text-[10px] font-semibold text-[#546e7a] uppercase tracking-wider">解決方案</span>
+                    <p class="text-[#66798f] mt-1 leading-relaxed" set:html={challenge.solution} />
                   </div>
-                  <div>
-                    <span class="text-xs font-semibold text-[#5AA6B1] uppercase tracking-wider">結果</span>
-                    <p class="text-[#6A6A6A] mt-1" set:html={challenge.result} />
+                  <div class="pt-3 border-t border-[#eceff1]">
+                    <span class="text-[10px] font-semibold text-[#546e7a] uppercase tracking-wider">結果</span>
+                    <p class="text-[#66798f] mt-1 leading-relaxed" set:html={challenge.result} />
                   </div>
                 </div>
               </div>
@@ -186,15 +199,18 @@ const base = import.meta.env.BASE_URL;
         </div>
       )}
 
-      <!-- Highlights (Moved Down) -->
+      <!-- Highlights -->
       {project.highlights.length > 0 && (
-        <div class="highlights-section mb-16">
-          <h2 class="text-2xl font-bold text-[#2B2B2B] mb-8 pb-3 border-b border-[#E6E6E6]">設計與技術亮點</h2>
+        <div class="highlights-section mb-12">
+          <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
+            <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">03</span>
+            <h2 class="text-xl font-bold text-[#263238]">設計與技術亮點</h2>
+          </div>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {project.highlights.map((highlight) => (
-              <div class="highlight-card bg-white p-6 rounded-xl shadow-sm border border-[#E6E6E6] hover:shadow-md transition-shadow duration-300">
+              <div class="highlight-card bg-white p-6 rounded-lg border border-[#cfd8dc] transition-colors duration-300 hover:border-[#546e7a]/40">
                 {highlight.media && (
-                  <div class="highlight-media mb-4 rounded-[10px] overflow-hidden bg-[#F6F6F6]">
+                  <div class="highlight-media mb-4 rounded-lg overflow-hidden bg-[#eceff1]">
                     {highlight.mediaType === 'video' ? (
                       <video src={highlight.media} controls autoplay muted loop playsinline class="w-full h-auto" preload="metadata">
                         您的瀏覽器不支援影片播放
@@ -204,8 +220,8 @@ const base = import.meta.env.BASE_URL;
                     )}
                   </div>
                 )}
-                <h4 class="text-lg font-bold text-[#2B2B2B] mb-2">{highlight.title}</h4>
-                <p class="text-[#6A6A6A] text-sm leading-relaxed" set:html={highlight.description} />
+                <h4 class="text-base font-bold text-[#263238] mb-2">{highlight.title}</h4>
+                <p class="text-[#66798f] leading-relaxed" set:html={highlight.description} />
               </div>
             ))}
           </div>
@@ -214,14 +230,17 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Reflection -->
       {project.reflection.length > 0 && (
-        <div class="reflection-section mb-16">
-          <h2 class="text-2xl font-bold text-[#2B2B2B] mb-8 pb-3 border-b border-[#E6E6E6]">學習與反思</h2>
-          <div class="bg-white p-8 rounded-xl shadow-sm border border-[#E6E6E6]">
+        <div class="reflection-section mb-12">
+          <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
+            <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">04</span>
+            <h2 class="text-xl font-bold text-[#263238]">學習與反思</h2>
+          </div>
+          <div class="bg-white p-8 rounded-lg border border-[#cfd8dc]">
             <ul class="space-y-4">
               {project.reflection.map((item) => (
-                <li class="text-[#6A6A6A] flex items-start gap-4">
-                  <span class="w-6 h-6 rounded-full bg-[#F3F3F3] flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <i class="fas fa-check text-xs text-[#BDBDBD]"></i>
+                <li class="text-[#66798f] flex items-start gap-4">
+                  <span class="w-5 h-5 rounded-full bg-[#C4873A]/10 border border-[#C4873A]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i class="fas fa-check text-[9px] text-[#C4873A]"></i>
                   </span>
                   <span class="leading-relaxed" set:html={item} />
                 </li>
@@ -232,20 +251,26 @@ const base = import.meta.env.BASE_URL;
       )}
 
       <!-- Links -->
-      <div class="project-links text-center mt-0 py-12 flex justify-center gap-4 flex-nowrap">
-        {project.links.figma && (
-          <a href={project.links.figma} target="_blank" rel="noopener noreferrer" class="bg-[#F3F3F3] text-[#2B2B2B] px-6 py-3 rounded-full text-sm font-medium inline-flex items-center justify-center gap-2 transition-all duration-200 no-underline hover:bg-[#E6E6E6]">
-            <i class="fab fa-figma"></i>
-            <span>Figma</span>
-          </a>
-        )}
-        {project.links.github && (
-          <a href={project.links.github} target="_blank" rel="noopener noreferrer" class="bg-[#F3F3F3] text-[#2B2B2B] px-6 py-3 rounded-full text-sm font-medium inline-flex items-center justify-center gap-2 transition-all duration-200 no-underline hover:bg-[#E6E6E6]">
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
-          </a>
-        )}
-      </div>
+      {(project.links.figma || project.links.github) && (
+        <div class="project-links mt-4 pt-8 border-t border-[#cfd8dc] flex items-center justify-between flex-wrap gap-4">
+          <p class="text-sm text-[#66798f]">對這個專案有興趣？</p>
+          <div class="flex gap-3 flex-wrap">
+            {project.links.figma && (
+              <a href={project.links.figma} target="_blank" rel="noopener noreferrer" class="border border-[#cfd8dc] text-[#263238] px-5 py-2.5 rounded-full text-sm font-medium inline-flex items-center gap-2 transition-all duration-200 no-underline hover:border-[#546e7a] hover:text-[#546e7a] bg-white">
+                <i class="fab fa-figma"></i>
+                <span>Figma</span>
+              </a>
+            )}
+            {project.links.github && (
+              <a href={project.links.github} target="_blank" rel="noopener noreferrer" class="border border-[#cfd8dc] text-[#263238] px-5 py-2.5 rounded-full text-sm font-medium inline-flex items-center gap-2 transition-all duration-200 no-underline hover:border-[#546e7a] hover:text-[#546e7a] bg-white">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+              </a>
+            )}
+          </div>
+        </div>
+      )}
+
     </div>
   </main>
 
@@ -256,7 +281,7 @@ const base = import.meta.env.BASE_URL;
   /* Highlight 樣式 */
   .highlight, :global(.highlight) {
     font-weight: 600;
-    background: rgba(122, 102, 204, 0.2);
+    background: rgba(196, 135, 58, 0.12);
     padding: 0.1em 0.35em;
     border-radius: 4px;
   }
@@ -264,27 +289,12 @@ const base = import.meta.env.BASE_URL;
   @media (max-width: 768px) {
     .project-content {
       grid-template-columns: 1fr;
-      gap: 30px;
+      gap: 24px;
       padding: 20px;
-      margin: 10px 10px 40px 10px;
-      width: calc(100% - 20px);
-      border-radius: 15px;
     }
 
     .section-title {
-      font-size: 2.5rem;
-    }
-
-    .project-links {
-      padding: 20px;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .project-links .btn {
-      min-width: auto;
-      width: 100%;
-      max-width: none;
+      font-size: 2.2rem;
     }
   }
 </style>
