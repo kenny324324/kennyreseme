@@ -106,6 +106,11 @@ function getVideoFiles(projectFolder: string): Record<number, string> {
       1: '庫存總覽.mov',
       2: '操作介面.mov',
       3: '單據追蹤.mov'
+    },
+    'Mino': {
+      1: 'UI.mov',
+      2: 'iCloud.mov',
+      3: 'Notify.mov'
     }
   };
 

@@ -63,7 +63,9 @@ export const appProjects: Project[] = [
     categories: ['swift'],
     techStack: ['SwiftUI', 'iCloud', '推播提醒', 'App Store', '自主學習'],
     coverImage: `${base}/documents/projects/Mino/cover.png`,
-    links: {}
+    links: {
+      appstore: 'https://apps.apple.com/tw/app/mino/id6746743276'
+    }
   },
   {
     slug: 'mish',
@@ -72,7 +74,9 @@ export const appProjects: Project[] = [
     categories: ['flutter'],
     techStack: ['Flutter', 'Firebase', 'Apple登入', 'App Store', '自主學習'],
     coverImage: `${base}/documents/projects/MIsh/cover.png`,
-    links: {}
+    links: {
+      appstore: 'https://apps.apple.com/tw/app/mish-%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98-%E6%95%B4%E7%90%86%E6%83%B3%E6%B3%95%E8%88%87%E6%9B%B8%E5%96%AE%E7%AE%A1%E7%90%86/id6749848120'
+    }
   },
   {
     slug: 'pickup',
@@ -81,7 +85,9 @@ export const appProjects: Project[] = [
     categories: ['swift'],
     techStack: ['SwiftUI', '自主學習'],
     coverImage: `${base}/documents/projects/Pickup/cover.png`,
-    links: {}
+    links: {
+      appstore: 'https://apps.apple.com/tw/app/pickup-%E5%8F%96%E8%B2%A8%E5%90%A7-%E5%8C%85%E8%A3%B9%E8%BF%BD%E8%B9%A4-%E8%B2%A8%E6%85%8B%E6%9F%A5%E8%A9%A2%E5%B7%A5%E5%85%B7/id6758759908'
+    }
   },
   {
     slug: 'findtoilets',
@@ -90,7 +96,9 @@ export const appProjects: Project[] = [
     categories: ['swift'],
     techStack: ['SwiftUI', '自主學習'],
     coverImage: `${base}/documents/projects/FindToilets/cover.png`,
-    links: {}
+    links: {
+      appstore: 'https://apps.apple.com/tw/app/findtoilets-%E6%89%BE%E5%BB%81%E6%89%80-%E9%99%84%E8%BF%91%E5%BB%81%E6%89%80%E5%9C%B0%E5%9C%96%E5%B7%A5%E5%85%B7/id6752564383'
+    }
   },
   {
     slug: 'spostats',
@@ -99,7 +107,9 @@ export const appProjects: Project[] = [
     categories: ['swift'],
     techStack: ['SwiftUI', 'Spotify API', '自主學習'],
     coverImage: `${base}/documents/projects/SpoStats/cover.png`,
-    links: {}
+    links: {
+      appstore: 'https://apps.apple.com/tw/app/spostats/id6754908333'
+    }
   },
   {
     slug: 'soulfeed',

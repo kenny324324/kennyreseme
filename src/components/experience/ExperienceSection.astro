@@ -8,9 +8,9 @@ import { experiences } from '../../data/experience';
 
       <!-- 左側：Sticky 標題 (4 欄) -->
       <div class="lg:col-span-4 lg:sticky lg:top-32 lg:self-start">
-        <p class="text-[10px] font-semibold text-[#66798f] uppercase tracking-[0.15em] mb-3">Experience</p>
+        <p class="text-[10px] font-semibold text-[#3d4f5f] uppercase tracking-[0.15em] mb-3">Experience</p>
         <h2 class="text-4xl font-semibold text-[#263238] mb-5">工作經歷</h2>
-        <p class="text-[#66798f] leading-relaxed text-sm">
+        <p class="text-[#3d4f5f] leading-relaxed text-sm">
           跨越設計、開發與管理的多元工作經驗，持續在實戰中精進技術與協作能力。
         </p>
       </div>
@@ -23,7 +23,7 @@ import { experiences } from '../../data/experience';
             <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#C4873A] group-hover:scale-150 transition-transform duration-300"></div>
 
             <!-- 時期標籤 -->
-            <span class="inline-block text-[10px] font-semibold text-[#66798f] uppercase tracking-[0.12em] mb-3 bg-[#eceff1] px-3 py-1 rounded-full">
+            <span class="inline-block text-[10px] font-semibold text-[#3d4f5f] uppercase tracking-[0.12em] mb-3 bg-[#eceff1] px-3 py-1 rounded-full">
               {exp.duration}
             </span>
 
@@ -32,12 +32,12 @@ import { experiences } from '../../data/experience';
             <p class="text-[#546e7a] font-medium text-sm mb-4">{exp.company}</p>
 
             <!-- 描述 -->
-            <p class="text-[#66798f] leading-[1.7] mb-5">{exp.description}</p>
+            <p class="text-[#3d4f5f] leading-[1.7] mb-5">{exp.description}</p>
 
             <!-- 成就列表 -->
             <ul class="space-y-2 mb-6">
               {exp.achievements.map((achievement) => (
-                <li class="text-[#66798f] leading-[1.7] pl-4 relative before:content-['▸'] before:absolute before:left-0 before:text-[#C4873A] before:font-bold text-sm">
+                <li class="text-[#3d4f5f] leading-[1.7] pl-4 relative before:content-['▸'] before:absolute before:left-0 before:text-[#C4873A] before:font-bold text-sm">
                   {achievement}
                 </li>
               ))}
@@ -46,7 +46,7 @@ import { experiences } from '../../data/experience';
             <!-- Tech tags -->
             <div class="flex flex-wrap gap-2">
               {exp.techStack.map((tech) => (
-                <span class="text-[#66798f] px-3 py-1 rounded-lg text-[0.78rem] font-medium border border-[#cfd8dc] bg-white">
+                <span class="text-[#3d4f5f] px-3 py-1 rounded-lg text-[0.78rem] font-medium border border-[#cfd8dc] bg-white">
                   {tech}
                 </span>
               ))}

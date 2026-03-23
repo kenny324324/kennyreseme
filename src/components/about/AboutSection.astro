@@ -11,7 +11,7 @@ import { aboutParagraphs, stats } from '../../data/personal';
       <!-- Personal Intro -->
       <div class="personal-intro">
         {aboutParagraphs.zh.map((paragraph, index) => (
-          <p class={`text-lg leading-[1.85] text-[#66798f] ${index < aboutParagraphs.zh.length - 1 ? 'mb-5' : 'mb-0'}`}>
+          <p class={`text-lg leading-[1.85] text-[#3d4f5f] ${index < aboutParagraphs.zh.length - 1 ? 'mb-5' : 'mb-0'}`}>
             {paragraph}
           </p>
         ))}
@@ -21,11 +21,11 @@ import { aboutParagraphs, stats } from '../../data/personal';
       <div class="about-stats grid grid-cols-1 gap-6">
         <div class="stat-item text-center p-8 bg-white rounded-lg border border-[#cfd8dc]">
           <div class="stat-number text-[3rem] font-bold text-[#263238] mb-1.5" data-stat="projects">{stats.projects}+</div>
-          <div class="stat-label text-base font-medium text-[#66798f]">App專案</div>
+          <div class="stat-label text-base font-medium text-[#3d4f5f]">App專案</div>
         </div>
         <div class="stat-item text-center p-8 bg-white rounded-lg border border-[#cfd8dc]">
           <div class="stat-number text-[3rem] font-bold text-[#263238] mb-1.5">{stats.years}</div>
-          <div class="stat-label text-base font-medium text-[#66798f]">工作年資</div>
+          <div class="stat-label text-base font-medium text-[#3d4f5f]">工作年資</div>
         </div>
       </div>
     </div>

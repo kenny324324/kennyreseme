@@ -59,21 +59,21 @@ const base = import.meta.env.BASE_URL;
   <div class="flex items-start justify-between gap-4">
     <div class="flex-1 min-w-0">
       <div class="flex items-center gap-3 mb-2">
-        <span class="text-[10px] font-semibold text-[#66798f] uppercase tracking-[0.12em]">
+        <span class="text-[10px] font-semibold text-[#3d4f5f] uppercase tracking-[0.12em]">
           {project.categories[0]}
         </span>
         <div class="h-[1px] w-8 bg-[#90a4ae]/40 flex-shrink-0"></div>
-        <span class="text-[10px] text-[#66798f] truncate">{project.techStack[0]}</span>
+        <span class="text-[10px] text-[#3d4f5f] truncate">{project.techStack[0]}</span>
       </div>
       <!-- 標題可點擊 -->
       <a href={`${base}/projects/${project.slug}`} class="no-underline">
         <h3 class="text-lg font-semibold text-[#263238] mb-1.5 leading-tight transition-colors duration-300 group-hover:text-[#546e7a]">{project.title}</h3>
       </a>
-      <p class="text-sm text-[#66798f] leading-relaxed line-clamp-2">{project.description}</p>
+      <p class="text-sm text-[#3d4f5f] leading-relaxed line-clamp-2">{project.description}</p>
     </div>
     <a
       href={`${base}/projects/${project.slug}`}
-      class="flex-shrink-0 w-9 h-9 rounded-full border border-[#cfd8dc] flex items-center justify-center text-[#66798f] no-underline transition-all duration-300 hover:bg-[#546e7a] hover:border-[#546e7a] hover:text-white mt-1"
+      class="flex-shrink-0 w-9 h-9 rounded-full border border-[#cfd8dc] flex items-center justify-center text-[#3d4f5f] no-underline transition-all duration-300 hover:bg-[#546e7a] hover:border-[#546e7a] hover:text-white mt-1"
     >
       <i class="fas fa-arrow-right text-xs"></i>
     </a>
