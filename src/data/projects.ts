@@ -47,15 +47,15 @@ export const appProjects: Project[] = [
     coverImage: `${base}/documents/projects/POS/cover.png`,
     links: {}
   },
-  {
-    slug: 'justai',
-    title: 'JustAI 客服系統',
-    description: 'AI聊天機器人介面開發練習專案，整合RAG技術與OpenAI API，從Figma設計稿實作完整客服對話介面',
-    categories: ['maui', 'ai'],
-    techStack: ['RAG技術', 'OpenAI API', 'AI聊天介面'],
-    coverImage: `${base}/documents/projects/Justai/cover.png`,
-    links: {}
-  },
+  // {
+  //   slug: 'justai',
+  //   title: 'JustAI 客服系統',
+  //   description: 'AI聊天機器人介面開發練習專案，整合RAG技術與OpenAI API，從Figma設計稿實作完整客服對話介面',
+  //   categories: ['maui', 'ai'],
+  //   techStack: ['RAG技術', 'OpenAI API', 'AI聊天介面'],
+  //   coverImage: `${base}/documents/projects/Justai/cover.png`,
+  //   links: {}
+  // },
   {
     slug: 'mino',
     title: 'Mino 待辦清單',
@@ -70,9 +70,9 @@ export const appProjects: Project[] = [
   {
     slug: 'mish',
     title: 'Mish 閱讀筆記',
-    description: '整理想法與書單管理的 Flutter APP，具備第三方API串接、Apple登入、Firebase資料儲存與App Store上架',
+    description: '以「極簡」為核心的 Flutter 閱讀紀錄 APP，整合 Google Books API、Firebase 雲端同步、閱讀統計與多語言支援，已上架 App Store',
     categories: ['flutter'],
-    techStack: ['Flutter', 'Firebase', 'Apple登入', 'App Store', '自主學習'],
+    techStack: ['Flutter', 'Firebase', 'Google Books API', 'RevenueCat', '多語言（7種）', '自主學習'],
     coverImage: `${base}/documents/projects/MIsh/cover.png`,
     links: {
       appstore: 'https://apps.apple.com/tw/app/mish-%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98-%E6%95%B4%E7%90%86%E6%83%B3%E6%B3%95%E8%88%87%E6%9B%B8%E5%96%AE%E7%AE%A1%E7%90%86/id6749848120'

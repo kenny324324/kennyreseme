@@ -111,6 +111,11 @@ function getVideoFiles(projectFolder: string): Record<number, string> {
       1: 'UI.mov',
       2: 'iCloud.mov',
       3: 'Notify.mov'
+    },
+    'MIsh': {
+      1: 'googleapi.MP4',
+      2: 'tomato.MP4',
+      3: 'languege.MP4'
     }
   };
 
@@ -282,6 +287,73 @@ export function parseLinks(projectFolder: string): {
   }
 
   return links;
+}
+
+/**
+ * 解析 custom-sections.txt
+ * 格式：
+ * 區塊 #1：標題
+ * 圖示：icon-name
+ * 順序：5
+ *
+ * 內容項目（以空行分隔）
+ */
+export function parseCustomSections(projectFolder: string): Array<{
+  title: string;
+  icon: string;
+  order: number;
+  style: 'list' | 'cards';
+  items: string[];
+}> {
+  const content = readProjectFile(projectFolder, 'custom-sections.txt');
+  if (!content) return [];
+
+  const sections: Array<{
+    title: string;
+    icon: string;
+    order: number;
+    style: 'list' | 'cards';
+    items: string[];
+  }> = [];
+
+  // 分割區塊
+  const blocks = content.split(/區塊 #\d+：/).filter(s => s.trim());
+
+  blocks.forEach(block => {
+    const lines = block.trim().split('\n');
+    const title = lines[0]?.trim() || '';
+
+    let icon = 'star';
+    let order = 99;
+    let style: 'list' | 'cards' = 'list';
+
+    // 解析圖示、順序和樣式
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (line.startsWith('圖示：')) {
+        icon = line.replace('圖示：', '').trim();
+      } else if (line.startsWith('順序：')) {
+        const parsed = parseInt(line.replace('順序：', '').trim());
+        order = isNaN(parsed) ? 99 : parsed;
+      } else if (line.startsWith('樣式：')) {
+        const val = line.replace('樣式：', '').trim();
+        if (val === 'cards') style = 'cards';
+      } else if (line === '') {
+        // 空行之後是內容項目
+        const remaining = lines.slice(i + 1).join('\n').trim();
+        const items = remaining.split('\n\n').filter(p => p.trim()).map(p => processMarkup(p.trim()));
+        sections.push({ title, icon, order, style, items });
+        break;
+      }
+    }
+
+    // 如果沒有空行分隔（只有 metadata 沒有內容），也要加入
+    if (!sections.find(s => s.title === title)) {
+      sections.push({ title, icon, order, style, items: [] });
+    }
+  });
+
+  return sections;
 }
 
 /**

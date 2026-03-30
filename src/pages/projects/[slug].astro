@@ -18,6 +18,34 @@ interface Props {
 
 const { project } = Astro.props;
 const base = import.meta.env.BASE_URL;
+
+// 建立所有編號區塊的排序列表（固定 + 自訂）
+type SectionEntry = { type: 'process' | 'challenges' | 'highlights' | 'reflection' | 'custom'; order: number; customIndex?: number };
+const allSections: SectionEntry[] = [];
+
+// 固定區塊（預設順序 1~4）
+if (project.process.design.length > 0 || project.process.development.length > 0) {
+  allSections.push({ type: 'process', order: 1 });
+}
+if (project.challenges.length > 0) {
+  allSections.push({ type: 'challenges', order: 2 });
+}
+if (project.highlights.length > 0) {
+  allSections.push({ type: 'highlights', order: 3 });
+}
+if (project.reflection.length > 0) {
+  allSections.push({ type: 'reflection', order: 4 });
+}
+
+// 自訂區塊
+project.customSections.forEach((cs, idx) => {
+  if (cs.items.length > 0) {
+    allSections.push({ type: 'custom', order: cs.order, customIndex: idx });
+  }
+});
+
+// 按 order 排序
+allSections.sort((a, b) => a.order - b.order);
 ---
 
 <BaseLayout title={`${project.title} - 余亮廷 Kenny Yu`} description={project.description}>
@@ -109,170 +137,221 @@ const base = import.meta.env.BASE_URL;
         </div>
       </div>
 
-      <!-- Process -->
-      {(project.process.design.length > 0 || project.process.development.length > 0) && (
-        <div class="process-section mb-12">
-          <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
-            <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">01</span>
-            <h2 class="text-2xl font-bold text-[#263238]">開發流程</h2>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {project.process.design.length > 0 && (
-              <div class="process-card bg-white p-8 rounded-lg border border-[#cfd8dc]">
-                <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
-                  <h4 class="text-lg font-bold text-[#263238] flex items-center gap-3">
-                    <span class="w-8 h-8 rounded-lg bg-[#eceff1] flex items-center justify-center">
-                      <i class="fab fa-figma text-[#546e7a] text-sm"></i>
-                    </span>
-                    設計流程
-                  </h4>
-                  {project.links.figma && (
-                    <a href={project.links.figma} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-[#cfd8dc] text-[#3d4f5f] px-3 py-1.5 rounded-full text-[0.78rem] font-medium transition-all duration-200 whitespace-nowrap hover:border-[#546e7a] hover:text-[#263238] no-underline">
-                      <i class="fab fa-figma text-xs"></i>
-                      <span>Figma</span>
-                    </a>
-                  )}
-                </div>
+      <!-- Numbered Sections (fixed + custom, sorted by order) -->
+      {allSections.map((section, idx) => {
+        const num = String(idx + 1).padStart(2, '0');
 
-                {project.process.designImage && (
-                  <div class="mb-6 rounded-lg overflow-hidden border border-[#cfd8dc]">
-                    <img
-                      src={project.process.designImage}
-                      alt="Design Process"
-                      class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-500"
-                    />
-                  </div>
-                )}
-
-                <div class="space-y-3">
-                  {project.process.design.map((step) => (
-                    <div class="flex gap-3">
-                      <div class="w-1.5 h-1.5 rounded-full bg-[#C4873A] mt-2.5 flex-shrink-0"></div>
-                      <p class="text-[#3d4f5f] leading-relaxed" set:html={step} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {project.process.development.length > 0 && (
-              <div class="process-card bg-white p-8 rounded-lg border border-[#cfd8dc]">
-                <h4 class="text-lg font-bold text-[#263238] mb-6 flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-[#eceff1] flex items-center justify-center">
-                    <i class="fas fa-code text-[#546e7a] text-sm"></i>
-                  </span>
-                  開發流程
-                </h4>
-
-                {project.process.developmentImage && (
-                  <div class="mb-6 rounded-lg overflow-hidden border border-[#cfd8dc]">
-                    <img
-                      src={project.process.developmentImage}
-                      alt="Development Architecture"
-                      class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-500"
-                    />
-                  </div>
-                )}
-
-                <div class="space-y-3">
-                  {project.process.development.map((step) => (
-                    <div class="flex gap-3">
-                      <div class="w-1.5 h-1.5 rounded-full bg-[#C4873A] mt-2.5 flex-shrink-0"></div>
-                      <p class="text-[#3d4f5f] leading-relaxed" set:html={step} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      <!-- Challenges -->
-      {project.challenges.length > 0 && (
-        <div class="challenges-section mb-12">
-          <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
-            <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">02</span>
-            <h2 class="text-2xl font-bold text-[#263238]">技術挑戰與解決方案</h2>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {project.challenges.map((challenge) => (
-              <div class="challenge-card bg-white p-7 rounded-lg border border-[#cfd8dc]">
-                <h4 class="text-lg font-bold text-[#263238] mb-5">{challenge.title}</h4>
-                <div class="space-y-4">
-                  <div>
-                    <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-wider">情境</span>
-                    <p class="text-[#3d4f5f] mt-1 leading-relaxed" set:html={challenge.situation} />
-                  </div>
-                  <div class="pt-3 border-t border-[#eceff1]">
-                    <span class="text-[10px] font-semibold text-[#546e7a] uppercase tracking-wider">困難點</span>
-                    <p class="text-[#3d4f5f] mt-1 leading-relaxed" set:html={challenge.difficulty} />
-                  </div>
-                  <div class="pt-3 border-t border-[#eceff1]">
-                    <span class="text-[10px] font-semibold text-[#546e7a] uppercase tracking-wider">解決方案</span>
-                    <p class="text-[#3d4f5f] mt-1 leading-relaxed" set:html={challenge.solution} />
-                  </div>
-                  <div class="pt-3 border-t border-[#eceff1]">
-                    <span class="text-[10px] font-semibold text-[#546e7a] uppercase tracking-wider">結果</span>
-                    <p class="text-[#3d4f5f] mt-1 leading-relaxed" set:html={challenge.result} />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <!-- Highlights -->
-      {project.highlights.length > 0 && (
-        <div class="highlights-section mb-12">
-          <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
-            <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">03</span>
-            <h2 class="text-2xl font-bold text-[#263238]">設計與技術亮點</h2>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {project.highlights.map((highlight) => (
-              <div class="highlight-card bg-white p-6 rounded-lg border border-[#cfd8dc] transition-colors duration-300 hover:border-[#546e7a]/40">
-                {highlight.media && (
-                  <div class="highlight-media mb-4 rounded-lg overflow-hidden bg-[#eceff1]">
-                    {highlight.mediaType === 'video' ? (
-                      <video src={highlight.media} autoplay muted loop playsinline class="w-full h-auto" preload="metadata">
-                        您的瀏覽器不支援影片播放
-                      </video>
-                    ) : (
-                      <img src={highlight.media} alt={highlight.title} class="w-full h-auto" />
+        if (section.type === 'process') return (
+          <div class="process-section mb-12">
+            <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
+              <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">{num}</span>
+              <h2 class="text-2xl font-bold text-[#263238]">開發流程</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {project.process.design.length > 0 && (
+                <div class="process-card bg-white p-8 rounded-lg border border-[#cfd8dc]">
+                  <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+                    <h4 class="text-lg font-bold text-[#263238] flex items-center gap-3">
+                      <span class="w-8 h-8 rounded-lg bg-[#eceff1] flex items-center justify-center">
+                        <i class="fab fa-figma text-[#546e7a] text-sm"></i>
+                      </span>
+                      設計流程
+                    </h4>
+                    {project.links.figma && (
+                      <a href={project.links.figma} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-[#cfd8dc] text-[#3d4f5f] px-3 py-1.5 rounded-full text-[0.78rem] font-medium transition-all duration-200 whitespace-nowrap hover:border-[#546e7a] hover:text-[#263238] no-underline">
+                        <i class="fab fa-figma text-xs"></i>
+                        <span>Figma</span>
+                      </a>
                     )}
                   </div>
-                )}
-                <h4 class="text-lg font-bold text-[#263238] mb-2">{highlight.title}</h4>
-                <p class="text-[#3d4f5f] leading-relaxed" set:html={highlight.description} />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
 
-      <!-- Reflection -->
-      {project.reflection.length > 0 && (
-        <div class="reflection-section mb-12">
-          <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
-            <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">04</span>
-            <h2 class="text-2xl font-bold text-[#263238]">學習與反思</h2>
+                  {project.process.designImage && (
+                    <div class="mb-6 rounded-lg overflow-hidden border border-[#cfd8dc]">
+                      <img
+                        src={project.process.designImage}
+                        alt="Design Process"
+                        class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+
+                  <div class="space-y-3">
+                    {project.process.design.map((step) => (
+                      <div class="flex gap-3">
+                        <div class="w-1.5 h-1.5 rounded-full bg-[#C4873A] mt-2.5 flex-shrink-0"></div>
+                        <p class="text-[#3d4f5f] leading-relaxed" set:html={step} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {project.process.development.length > 0 && (
+                <div class="process-card bg-white p-8 rounded-lg border border-[#cfd8dc]">
+                  <h4 class="text-lg font-bold text-[#263238] mb-6 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-[#eceff1] flex items-center justify-center">
+                      <i class="fas fa-code text-[#546e7a] text-sm"></i>
+                    </span>
+                    開發流程
+                  </h4>
+
+                  {project.process.developmentImage && (
+                    <div class="mb-6 rounded-lg overflow-hidden border border-[#cfd8dc]">
+                      <img
+                        src={project.process.developmentImage}
+                        alt="Development Architecture"
+                        class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+
+                  <div class="space-y-3">
+                    {project.process.development.map((step) => (
+                      <div class="flex gap-3">
+                        <div class="w-1.5 h-1.5 rounded-full bg-[#C4873A] mt-2.5 flex-shrink-0"></div>
+                        <p class="text-[#3d4f5f] leading-relaxed" set:html={step} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-          <div class="bg-white p-8 rounded-lg border border-[#cfd8dc]">
-            <ul class="space-y-4">
-              {project.reflection.map((item) => (
-                <li class="text-[#3d4f5f] flex items-start gap-4">
-                  <span class="w-5 h-5 rounded-full bg-[#C4873A]/10 border border-[#C4873A]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <i class="fas fa-check text-[9px] text-[#C4873A]"></i>
-                  </span>
-                  <span class="leading-relaxed" set:html={item} />
-                </li>
+        );
+
+        if (section.type === 'challenges') return (
+          <div class="challenges-section mb-12">
+            <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
+              <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">{num}</span>
+              <h2 class="text-2xl font-bold text-[#263238]">技術挑戰與解決方案</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {project.challenges.map((challenge) => (
+                <div class="challenge-card bg-white p-7 rounded-lg border border-[#cfd8dc]">
+                  <h4 class="text-lg font-bold text-[#263238] mb-5">{challenge.title}</h4>
+                  <div class="space-y-4">
+                    <div>
+                      <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-wider">情境</span>
+                      <p class="text-[#3d4f5f] mt-1 leading-relaxed" set:html={challenge.situation} />
+                    </div>
+                    <div class="pt-3 border-t border-[#eceff1]">
+                      <span class="text-[10px] font-semibold text-[#546e7a] uppercase tracking-wider">困難點</span>
+                      <p class="text-[#3d4f5f] mt-1 leading-relaxed" set:html={challenge.difficulty} />
+                    </div>
+                    <div class="pt-3 border-t border-[#eceff1]">
+                      <span class="text-[10px] font-semibold text-[#546e7a] uppercase tracking-wider">解決方案</span>
+                      <p class="text-[#3d4f5f] mt-1 leading-relaxed" set:html={challenge.solution} />
+                    </div>
+                    <div class="pt-3 border-t border-[#eceff1]">
+                      <span class="text-[10px] font-semibold text-[#546e7a] uppercase tracking-wider">結果</span>
+                      <p class="text-[#3d4f5f] mt-1 leading-relaxed" set:html={challenge.result} />
+                    </div>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
-        </div>
-      )}
+        );
+
+        if (section.type === 'highlights') return (
+          <div class="highlights-section mb-12">
+            <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
+              <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">{num}</span>
+              <h2 class="text-2xl font-bold text-[#263238]">設計與技術亮點</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {project.highlights.map((highlight) => (
+                <div class="highlight-card bg-white p-6 rounded-lg border border-[#cfd8dc] transition-colors duration-300 hover:border-[#546e7a]/40">
+                  {highlight.media && (
+                    <div class="highlight-media mb-4 rounded-lg overflow-hidden bg-[#eceff1]">
+                      {highlight.mediaType === 'video' ? (
+                        <video src={highlight.media} autoplay muted loop playsinline class="w-full h-auto" preload="metadata">
+                          您的瀏覽器不支援影片播放
+                        </video>
+                      ) : (
+                        <img src={highlight.media} alt={highlight.title} class="w-full h-auto" />
+                      )}
+                    </div>
+                  )}
+                  <h4 class="text-lg font-bold text-[#263238] mb-2">{highlight.title}</h4>
+                  <p class="text-[#3d4f5f] leading-relaxed" set:html={highlight.description} />
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+
+        if (section.type === 'reflection') return (
+          <div class="reflection-section mb-12">
+            <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
+              <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">{num}</span>
+              <h2 class="text-2xl font-bold text-[#263238]">學習與反思</h2>
+            </div>
+            <div class="bg-white p-8 rounded-lg border border-[#cfd8dc]">
+              <ul class="space-y-4">
+                {project.reflection.map((item) => (
+                  <li class="text-[#3d4f5f] flex items-start gap-4">
+                    <span class="w-5 h-5 rounded-full bg-[#C4873A]/10 border border-[#C4873A]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <i class="fas fa-check text-[9px] text-[#C4873A]"></i>
+                    </span>
+                    <span class="leading-relaxed" set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        );
+
+        if (section.type === 'custom' && section.customIndex !== undefined) {
+          const cs = project.customSections[section.customIndex];
+
+          if (cs.style === 'cards') {
+            return (
+              <div class="custom-section mb-12">
+                <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
+                  <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">{num}</span>
+                  <h2 class="text-2xl font-bold text-[#263238]">{cs.title}</h2>
+                </div>
+                <div class="review-scroll flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory">
+                  {cs.items.map((item) => (
+                    <div class="review-card flex-shrink-0 w-[300px] bg-white p-6 rounded-2xl border border-[#cfd8dc] snap-start">
+                      <div class="flex items-center gap-1 mb-3">
+                        {[1,2,3,4,5].map(() => (
+                          <svg class="w-4 h-4 text-[#C4873A]" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
+                      <p class="text-[#3d4f5f] leading-relaxed text-[0.95rem]" set:html={item} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+
+          return (
+            <div class="custom-section mb-12">
+              <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
+                <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">{num}</span>
+                <h2 class="text-2xl font-bold text-[#263238]">{cs.title}</h2>
+              </div>
+              <div class="bg-white p-8 rounded-lg border border-[#cfd8dc]">
+                <ul class="space-y-4">
+                  {cs.items.map((item) => (
+                    <li class="text-[#3d4f5f] flex items-start gap-4">
+                      <span class="w-5 h-5 rounded-full bg-[#C4873A]/10 border border-[#C4873A]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i class={`fas fa-${cs.icon} text-[9px] text-[#C4873A]`}></i>
+                      </span>
+                      <span class="leading-relaxed" set:html={item} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          );
+        }
+      })}
 
       <!-- Links -->
       {(project.links.figma || project.links.github) && (
@@ -308,6 +387,15 @@ const base = import.meta.env.BASE_URL;
     background: rgba(196, 135, 58, 0.12);
     padding: 0.1em 0.35em;
     border-radius: 4px;
+  }
+
+  /* Review cards 水平捲動 */
+  .review-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .review-scroll::-webkit-scrollbar {
+    display: none;
   }
 
   @media (max-width: 768px) {
