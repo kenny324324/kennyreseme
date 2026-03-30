@@ -103,9 +103,9 @@ export const appProjects: Project[] = [
   {
     slug: 'spostats',
     title: 'spo.stats for Spotify',
-    description: 'Spotify 個人聆聽統計查詢工具，以 Swift 開發的個人自主學習專案',
+    description: '以圖表視覺化為核心的 Spotify 個人聆聽統計 APP，支援排名趨勢追蹤、多維度聆聽數據分析與 CloudKit 跨裝置同步',
     categories: ['swift'],
-    techStack: ['SwiftUI', 'Spotify API', '自主學習'],
+    techStack: ['SwiftUI', 'Spotify API', 'OAuth 2.0 PKCE', 'CloudKit', '自主學習'],
     coverImage: `${base}/documents/projects/SpoStats/cover.png`,
     links: {
       appstore: 'https://apps.apple.com/tw/app/spostats/id6754908333'

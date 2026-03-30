@@ -1,0 +1,1 @@
+spo.stats 是一款以圖表視覺化為核心的 Spotify 個人聆聽統計 APP，使用 SwiftUI 原生開發，支援排名趨勢追蹤、多維度聆聽數據分析與 CloudKit 跨裝置同步，已上架 App Store。

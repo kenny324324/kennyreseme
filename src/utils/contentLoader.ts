@@ -121,6 +121,11 @@ function getVideoFiles(projectFolder: string): Record<number, string> {
       1: '智慧聚合標記.MP4',
       2: '樓層解析.MP4',
       3: '社群.MP4'
+    },
+    'SpoStats': {
+      1: 'Star1.MP4',
+      2: 'star2.MP4',
+      3: 'star3.MP4'
     }
   };
 

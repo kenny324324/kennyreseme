@@ -155,11 +155,14 @@ const projectMeta: Record<string, ProjectMeta> = {
   spostats: {
     slug: 'spostats',
     title: 'spo.stats for Spotify',
-    subtitle: 'Spotify 個人聆聽統計查詢',
-    description: 'Spotify 個人聆聽統計查詢工具，以 Swift 開發的個人自主學習專案',
+    subtitle: '以圖表為核心的 Spotify 個人聆聽統計 APP',
+    description: '以圖表視覺化為核心的 Spotify 個人聆聽統計 APP，使用 SwiftUI 原生開發，支援排名趨勢追蹤、多維度聆聽數據分析與 CloudKit 跨裝置同步，已上架 App Store',
     categories: ['swift'],
-    techStack: ['SwiftUI', 'Spotify API', '自主學習'],
-    folder: 'SpoStats'
+    techStack: ['SwiftUI', 'Spotify API', 'OAuth 2.0 PKCE', 'CloudKit', '自主學習'],
+    folder: 'SpoStats',
+    defaultLinks: {
+      appstore: 'https://apps.apple.com/tw/app/spostats/id6754908333'
+    }
   },
   soulfeed: {
     slug: 'soulfeed',
