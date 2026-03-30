@@ -94,7 +94,7 @@ export const appProjects: Project[] = [
     title: 'FindToilets 找廁所',
     description: '專為台灣設計的公廁地圖查詢工具，整合環境部公開資料與社群評分功能',
     categories: ['swift'],
-    techStack: ['SwiftUI', 'MapKit', 'CloudKit'],
+    techStack: ['SwiftUI', 'MapKit', 'CloudKit', '自主學習'],
     coverImage: `${base}/documents/projects/FindToilets/cover.png`,
     links: {
       appstore: 'https://apps.apple.com/tw/app/findtoilets-%E6%89%BE%E5%BB%81%E6%89%80-%E9%99%84%E8%BF%91%E5%BB%81%E6%89%80%E5%9C%B0%E5%9C%96%E5%B7%A5%E5%85%B7/id6752564383'
