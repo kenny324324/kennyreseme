@@ -147,9 +147,9 @@ const projectMeta: Record<string, ProjectMeta> = {
     slug: 'findtoilets',
     title: 'FindToilets 找廁所',
     subtitle: '附近廁所地圖查詢工具',
-    description: '附近廁所地圖查詢工具，以 Swift 開發的個人自主學習專案',
+    description: '專為台灣設計的公廁地圖查詢工具，整合環境部公開資料與社群評分功能',
     categories: ['swift'],
-    techStack: ['SwiftUI', '地圖整合', '自主學習'],
+    techStack: ['SwiftUI', 'MapKit', 'CloudKit', 'CoreLocation'],
     folder: 'FindToilets'
   },
   spostats: {

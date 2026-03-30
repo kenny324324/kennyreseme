@@ -116,6 +116,11 @@ function getVideoFiles(projectFolder: string): Record<number, string> {
       1: 'googleapi.MP4',
       2: 'tomato.MP4',
       3: 'languege.MP4'
+    },
+    'FindToilets': {
+      1: '智慧聚合標記.MP4',
+      2: '樓層解析.MP4',
+      3: '社群.MP4'
     }
   };
 
