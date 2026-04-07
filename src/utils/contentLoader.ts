@@ -126,6 +126,14 @@ function getVideoFiles(projectFolder: string): Record<number, string> {
       1: 'Star1.MP4',
       2: 'star2.MP4',
       3: 'star3.MP4'
+    },
+    'Pickup': {
+      1: 'AI辨識.MP4',
+      2: '訂閱.MP4',
+      3: '統計.MP4',
+      4: '推播通知.MP4',
+      5: '包裹歷程.MP4',
+      6: '小工具.MP4'
     }
   };
 

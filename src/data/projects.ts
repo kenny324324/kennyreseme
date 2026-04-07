@@ -57,15 +57,16 @@ export const appProjects: Project[] = [
   //   links: {}
   // },
   {
-    slug: 'mino',
-    title: 'Mino 待辦清單',
-    description: 'SwiftUI開發的待辦清單APP，具備推播提醒、iCloud資料儲存、UI規劃與App Store上架',
+    slug: 'pickup',
+    title: 'Pickup 取貨吧',
+    description: '整合台灣 21 家物流的一站式包裹追蹤工具，支援 AI 截圖辨識與即時推播通知',
     categories: ['swift'],
-    techStack: ['SwiftUI', 'iCloud', '推播提醒', 'App Store', '自主學習'],
-    coverImage: `${base}/documents/projects/Mino/cover.png`,
+    techStack: ['SwiftUI', 'Firebase', 'Gemini AI', 'SwiftData', 'WidgetKit', 'StoreKit 2', '自主學習'],
+    coverImage: `${base}/documents/projects/Pickup/cover.png`,
     links: {
-      appstore: 'https://apps.apple.com/tw/app/mino/id6746743276'
-    }
+      appstore: 'https://apps.apple.com/tw/app/pickup-%E5%8F%96%E8%B2%A8%E5%90%A7-%E5%8C%85%E8%A3%B9%E8%BF%BD%E8%B9%A4-%E8%B2%A8%E6%85%8B%E6%9F%A5%E8%A9%A2%E5%B7%A5%E5%85%B7/id6758759908'
+    },
+    featured: true
   },
   {
     slug: 'mish',
@@ -76,18 +77,8 @@ export const appProjects: Project[] = [
     coverImage: `${base}/documents/projects/MIsh/cover.png`,
     links: {
       appstore: 'https://apps.apple.com/tw/app/mish-%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98-%E6%95%B4%E7%90%86%E6%83%B3%E6%B3%95%E8%88%87%E6%9B%B8%E5%96%AE%E7%AE%A1%E7%90%86/id6749848120'
-    }
-  },
-  {
-    slug: 'pickup',
-    title: 'Pickup 取貨吧',
-    description: '包裹追蹤・貨態查詢工具，以 Swift 開發的個人自主學習專案',
-    categories: ['swift'],
-    techStack: ['SwiftUI', '自主學習'],
-    coverImage: `${base}/documents/projects/Pickup/cover.png`,
-    links: {
-      appstore: 'https://apps.apple.com/tw/app/pickup-%E5%8F%96%E8%B2%A8%E5%90%A7-%E5%8C%85%E8%A3%B9%E8%BF%BD%E8%B9%A4-%E8%B2%A8%E6%85%8B%E6%9F%A5%E8%A9%A2%E5%B7%A5%E5%85%B7/id6758759908'
-    }
+    },
+    featured: true
   },
   {
     slug: 'findtoilets',
@@ -98,6 +89,18 @@ export const appProjects: Project[] = [
     coverImage: `${base}/documents/projects/FindToilets/cover.png`,
     links: {
       appstore: 'https://apps.apple.com/tw/app/findtoilets-%E6%89%BE%E5%BB%81%E6%89%80-%E9%99%84%E8%BF%91%E5%BB%81%E6%89%80%E5%9C%B0%E5%9C%96%E5%B7%A5%E5%85%B7/id6752564383'
+    },
+    featured: true
+  },
+  {
+    slug: 'mino',
+    title: 'Mino 待辦清單',
+    description: 'SwiftUI開發的待辦清單APP，具備推播提醒、iCloud資料儲存、UI規劃與App Store上架',
+    categories: ['swift'],
+    techStack: ['SwiftUI', 'iCloud', '推播提醒', 'App Store', '自主學習'],
+    coverImage: `${base}/documents/projects/Mino/cover.png`,
+    links: {
+      appstore: 'https://apps.apple.com/tw/app/mino/id6746743276'
     }
   },
   {

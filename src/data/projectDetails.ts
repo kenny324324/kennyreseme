@@ -138,9 +138,9 @@ const projectMeta: Record<string, ProjectMeta> = {
     slug: 'pickup',
     title: 'Pickup 取貨吧',
     subtitle: '包裹追蹤・貨態查詢工具',
-    description: '包裹追蹤・貨態查詢工具，以 Swift 開發的個人自主學習專案',
+    description: '整合台灣 21 家物流的一站式包裹追蹤工具，支援 AI 截圖辨識與即時推播通知',
     categories: ['swift'],
-    techStack: ['SwiftUI', '自主學習'],
+    techStack: ['SwiftUI', 'Firebase', 'Gemini AI', 'SwiftData', 'WidgetKit', 'StoreKit 2', '自主學習'],
     folder: 'Pickup'
   },
   findtoilets: {
