@@ -13,12 +13,14 @@ export const skillCategories: SkillCategory[] = [
       {
         name: 'Flutter',
         icon: 'fas fa-layer-group',
-        iconColor: '#0A84FF',
+        brand: 'flutter',
+        iconColor: '#02569B',
         description: '熟悉跨平台 UI 開發、第三方 API 串接、Firebase 整合與多平台發布流程。'
       },
       {
         name: '.NET MAUI',
         icon: 'fab fa-microsoft',
+        brand: 'dotnet',
         iconColor: '#512BD4',
         description: '精通商業邏輯開發、硬體整合、平台特定功能實作與跨平台架構設計。'
       },

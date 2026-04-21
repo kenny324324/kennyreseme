@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CURATOR | Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary": "#f3faff",
+              "on-tertiary-fixed": "#2f4155",
+              "surface-container-low": "#f2f4f4",
+              "secondary-dim": "#49555b",
+              "inverse-primary": "#ceeaf8",
+              "surface": "#f9f9f9",
+              "surface-bright": "#f9f9f9",
+              "secondary-fixed": "#d7e4ec",
+              "on-tertiary-container": "#415368",
+              "primary-container": "#cbe7f5",
+              "primary": "#48626e",
+              "error": "#9f403d",
+              "on-tertiary-fixed-variant": "#4b5d72",
+              "primary-dim": "#3c5662",
+              "tertiary-dim": "#435569",
+              "tertiary-fixed-dim": "#c3d6ef",
+              "outline": "#757c7d",
+              "error-container": "#fe8983",
+              "primary-fixed-dim": "#bdd9e6",
+              "tertiary-fixed": "#d1e4fe",
+              "surface-container": "#ebeeef",
+              "on-error": "#fff7f6",
+              "surface-container-lowest": "#ffffff",
+              "on-background": "#2d3435",
+              "background": "#f9f9f9",
+              "on-tertiary": "#f7f9ff",
+              "on-surface": "#2d3435",
+              "surface-dim": "#d4dbdd",
+              "on-secondary-fixed": "#354147",
+              "error-dim": "#4e0309",
+              "surface-variant": "#dde4e5",
+              "inverse-on-surface": "#9c9d9d",
+              "surface-container-highest": "#dde4e5",
+              "on-surface-variant": "#5a6061",
+              "on-primary-fixed": "#29434e",
+              "outline-variant": "#adb3b4",
+              "on-primary-container": "#3c5561",
+              "tertiary": "#4e6176",
+              "secondary-container": "#d7e4ec",
+              "on-primary": "#eff9ff",
+              "inverse-surface": "#0c0f0f",
+              "tertiary-container": "#d1e4fe",
+              "primary-fixed": "#cbe7f5",
+              "secondary": "#546168",
+              "on-secondary-fixed-variant": "#515d64",
+              "surface-container-high": "#e4e9ea",
+              "secondary-fixed-dim": "#c9d6de",
+              "on-primary-fixed-variant": "#455f6b",
+              "on-error-container": "#752121",
+              "on-secondary-container": "#47545a",
+              "surface-tint": "#48626e"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0_10px_40px_rgba(45,52,53,0.06)] dark:shadow-none">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-6">
+<span class="text-xl font-bold tracking-tighter text-slate-800 dark:text-slate-100 font-headline">CURATOR</span>
+<div class="hidden md:flex items-center gap-10 font-manrope text-sm tracking-tight text-slate-700 dark:text-slate-300">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Home</a>
+<a class="text-slate-900 dark:text-white font-semibold border-b-2 border-slate-800 dark:border-slate-200 pb-1" href="#">Projects</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">About</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded-xl font-medium scale-95 active:scale-90 transition-all duration-300 hover:bg-primary-dim shadow-sm">
+                Get in Touch
+            </button>
+</div>
+</nav>
+<main class="pt-40 pb-24 px-8 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<header class="mb-32">
+<div class="max-w-3xl">
+<span class="font-label text-xs uppercase tracking-[0.2rem] text-primary mb-6 block">Selected Works • 2024</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface mb-8 leading-[1.1]">
+                    Curating digital experiences with <span class="text-primary-dim italic">precision</span> and intent.
+                </h1>
+<p class="text-lg md:text-xl text-on-surface-variant leading-relaxed font-body max-w-xl">
+                    A collection of projects exploring the intersection of editorial design and functional technology.
+                </p>
+</div>
+</header>
+<!-- Project Grid (Asymmetric Editorial Layout) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-y-24 gap-x-12">
+<!-- Project 1: Large Featured -->
+<div class="md:col-span-7 group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low transition-all duration-500 group-hover:shadow-[0_20px_60px_rgba(45,52,53,0.08)] group-hover:translate-y-[-4px]">
+<img alt="Project Thumbnail" class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Minimalist architectural structure with clean lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUWN7l-dK9X6F4ELzHlsyOUatXLUjzfo6emYtFRauYsmdVMOoLJRYaUKiFpZUttDmm-eM2-3v6fEfqaMgpJ6qMaNGgV1DaRU5TDy_781DySmUvOMJ-fHYdmLkof3gIz2XnYH6GIwDES_xekV5VlH6pUqZ-g9ALP4IoaqZrGdTkamYKul1Yx0Ve7tG6M2wWIdHAcAIL2CxjFoI4tQD6RLBn6oA7JbycacFB2TLslJVysv-CVTaeDeIZhs1-ZBiGhf3x4T6G1rqswWNh"/>
+</div>
+<div class="mt-8">
+<div class="flex items-center gap-3 mb-4">
+<span class="font-label text-[10px] tracking-widest text-primary font-bold uppercase">Web Design</span>
+<div class="h-[1px] w-8 bg-outline-variant/30"></div>
+</div>
+<h2 class="font-headline text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">The Monolith Archive</h2>
+<p class="text-on-surface-variant leading-relaxed max-w-md font-body">
+                        An immersive digital library documenting brutalist architecture through high-fidelity visual storytelling.
+                    </p>
+</div>
+</div>
+<!-- Project 2: Smaller Offset -->
+<div class="md:col-span-4 md:col-start-9 md:mt-32 group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low transition-all duration-500 group-hover:shadow-[0_20px_60px_rgba(45,52,53,0.08)] group-hover:translate-y-[-4px]">
+<img alt="Project Thumbnail" class="w-full aspect-[3/4] object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Abstract colorful fluid paint texture pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCeoW3tCEI-rwl43vGfo9AbpTx_dEMDlfgMGDUD0GQOqytGpBvON8KP_xYdqsIwBS3tErVPVMV87kTevwhoLIa5TPi7Qg_ehTI6nxdMAQbFZwt6jsKPixp6rGMnXhM_UMuugJWSr5cM8WsXOUAGZ-wjR313doL_XC_3oov__oN_P5s2-lT670ZuB2JJQcSyCwN3TpabCYEXURcOur1DvXEa0CxJQs5Yy3UZVpgpuRzZWaJa99-ObaLDF6fm4row2O-7Gee3pf5KyBW"/>
+</div>
+<div class="mt-8">
+<div class="flex items-center gap-3 mb-4">
+<span class="font-label text-[10px] tracking-widest text-primary font-bold uppercase">Identity</span>
+<div class="h-[1px] w-8 bg-outline-variant/30"></div>
+</div>
+<h2 class="font-headline text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Aura Studio</h2>
+<p class="text-on-surface-variant leading-relaxed font-body">
+                        Reimagining brand identity for a generative art collective focused on fluid dynamics.
+                    </p>
+</div>
+</div>
+<!-- Project 3: Wide Layout -->
+<div class="md:col-span-10 md:col-start-2 group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low transition-all duration-500 group-hover:shadow-[0_20px_60px_rgba(45,52,53,0.08)] group-hover:translate-y-[-4px]">
+<img alt="Project Thumbnail" class="w-full aspect-[21/9] object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Modern desk setup with elegant lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYwkUpcuktDSMP13LmTKp_4aGkM4uAe7TJAQDEhiiMgG-5VmnPhiLB1vMGDrLFZm3LfsjDyBtK6ImNiJl-fPgAeVsB-w5R4QTmuidfCK06Sc4ZodK9uu5O6BfEEx_eWrWRaNmUAN04Zk53bpjLwt8g44hO4jzBx5cL5A6cXSBVBLPHOxgZHKVdK_prR8ofLgn1utMOobWoY57nnXGHKUjCjxdQVq7Rqf8epFK_q7l7AL211dhtpSm6AvOUVCXtX9c1y1Zg0FiUPfF5"/>
+</div>
+<div class="mt-8 flex flex-col md:flex-row md:justify-between md:items-end gap-6">
+<div class="max-w-xl">
+<div class="flex items-center gap-3 mb-4">
+<span class="font-label text-[10px] tracking-widest text-primary font-bold uppercase">Product Design</span>
+<div class="h-[1px] w-8 bg-outline-variant/30"></div>
+</div>
+<h2 class="font-headline text-3xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Lumina Workspace</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed font-body">
+                            Designing a productivity suite that prioritizes focus and mental clarity through minimalist UI patterns.
+                        </p>
+</div>
+<div class="flex gap-4">
+<span class="bg-surface-container-high px-4 py-2 rounded-lg text-xs font-medium text-on-surface-variant">UX Audit</span>
+<span class="bg-surface-container-high px-4 py-2 rounded-lg text-xs font-medium text-on-surface-variant">2024</span>
+</div>
+</div>
+</div>
+<!-- Project 4: Grid Row -->
+<div class="md:col-span-5 md:col-start-1 group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low transition-all duration-500 group-hover:shadow-[0_20px_60px_rgba(45,52,53,0.08)] group-hover:translate-y-[-4px]">
+<img alt="Project Thumbnail" class="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Vintage camera on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9opls0_WVmSWqUMHbmPUViBQ8PAnCoM9afFjzPXR8hnCF6mQDvtSf6XxScDsH1zrnf4HeaaCfxD_E5MTePdfwrtN2muoZL205shc0ZU6JepaRoVewF0uINT0eWFwp2irVoFXY2niWd7ZWmMJkbmpu23OZ2rJvFme8opeqE_JUJ7WsoUKOiRBkSB89Kl2A2_1PwcAskhFZlJXH94fL2Y2r3CGD-YIy7mMStK3yCbRrQZFx2pGPrM9QqRXDoGOu5Ic1ABGX3E1ssX05"/>
+</div>
+<div class="mt-8">
+<div class="flex items-center gap-3 mb-4">
+<span class="font-label text-[10px] tracking-widest text-primary font-bold uppercase">Photography</span>
+<div class="h-[1px] w-8 bg-outline-variant/30"></div>
+</div>
+<h2 class="font-headline text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Obsidian Frames</h2>
+<p class="text-on-surface-variant leading-relaxed font-body">
+                        A monochrome exploration of shadows and textures in urban environments.
+                    </p>
+</div>
+</div>
+<!-- Project 5: Grid Row -->
+<div class="md:col-span-5 md:col-start-7 group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low transition-all duration-500 group-hover:shadow-[0_20px_60px_rgba(45,52,53,0.08)] group-hover:translate-y-[-4px]">
+<img alt="Project Thumbnail" class="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Creative workspace with digital devices" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChvJo4gReliTWcaPO7gmZ4Cv4U_Y1GJvMRZAnJRdvOMxqKg4-ddqBaRMTIUKr6UWWOMiWvUntV0hOH3LuIVTW123xCKnevAPScqaqhfbqxqJBizTlVD425mqUvqlKCHftEAImLm-h72JdE6iH_HRbLWrUl4QPcJSBysw58YmuaXlcP2sEqPWuP1cJIT4yTeUNBUbb6pnVT9SABExde9QRZDKdEgZgsrdLU35vb60-Fsr9bTQ_bc-FbLKT4GEsoU_Wj3TxixYrP2yNQ"/>
+</div>
+<div class="mt-8">
+<div class="flex items-center gap-3 mb-4">
+<span class="font-label text-[10px] tracking-widest text-primary font-bold uppercase">UI Design</span>
+<div class="h-[1px] w-8 bg-outline-variant/30"></div>
+</div>
+<h2 class="font-headline text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Nexus OS</h2>
+<p class="text-on-surface-variant leading-relaxed font-body">
+                        Conceptualizing an operating system focused on seamless multi-device collaboration.
+                    </p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="mt-48 mb-24 py-32 rounded-3xl bg-surface-container-low flex flex-col items-center text-center px-8">
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight mb-8">Have a vision in mind?</h2>
+<p class="text-on-surface-variant max-w-lg mb-12 text-lg">
+                Let's collaborate to build something that stands out through purposeful design and technical excellence.
+            </p>
+<a class="inline-flex items-center gap-3 text-on-surface font-bold text-lg group" href="#">
+                Start a Conversation
+                <span class="material-symbols-outlined transition-transform group-hover:translate-x-2">arrow_forward</span>
+</a>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-20 bg-slate-50 dark:bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-8 gap-8">
+<div class="font-inter text-xs tracking-widest uppercase text-slate-600 dark:text-slate-400">
+                © 2024 The Digital Curator. All rights reserved.
+            </div>
+<div class="flex gap-12 font-inter text-xs tracking-widest uppercase">
+<a class="text-slate-400 dark:text-slate-600 hover:text-slate-800 dark:hover:text-slate-200 underline decoration-slate-300 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">LinkedIn</a>
+<a class="text-slate-400 dark:text-slate-600 hover:text-slate-800 dark:hover:text-slate-200 underline decoration-slate-300 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Dribbble</a>
+<a class="text-slate-400 dark:text-slate-600 hover:text-slate-800 dark:hover:text-slate-200 underline decoration-slate-300 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Read.cv</a>
+</div>
+</div>
+</footer>
+</body></html>

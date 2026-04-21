@@ -9,7 +9,7 @@ export const personalInfo: PersonalInfo = {
     zh: 'UI/UX 跨平台工程師',
     en: 'UI/UX Cross-Platform Engineer'
   },
-  email: 'jonathan3240601@gmail.com',
+  email: 'kenny4work324@gmail.com',
   github: 'https://github.com/kenny324324',
   resumeUrl: '/kennyreseme/resume.pdf'
 };

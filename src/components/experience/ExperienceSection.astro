@@ -2,51 +2,51 @@
 import { experiences } from '../../data/experience';
 ---
 
-<section id="experience" class="experience py-16 bg-[#f5f5f5]">
-  <div class="w-full max-w-[1200px] mx-auto px-5">
+<section id="experience" class="experience py-24 bg-[#faf9f5]">
+  <div class="w-full max-w-[1400px] mx-auto px-5">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
       <!-- 左側：Sticky 標題 (4 欄) -->
       <div class="lg:col-span-4 lg:sticky lg:top-32 lg:self-start">
-        <p class="text-[10px] font-semibold text-[#3d4f5f] uppercase tracking-[0.15em] mb-3">Experience</p>
-        <h2 class="text-4xl font-semibold text-[#263238] mb-5">工作經歷</h2>
-        <p class="text-[#3d4f5f] leading-relaxed text-sm">
+        <p class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em] mb-3">Experience</p>
+        <h2 class="text-[48px] md:text-[56px] font-[600] text-[#141413] leading-[1] tracking-display mb-5">工作經歷</h2>
+        <p class="text-[#5e5d59] leading-[1.6] text-[17px]">
           跨越設計、開發與管理的多元工作經驗，持續在實戰中精進技術與協作能力。
         </p>
       </div>
 
       <!-- 右側：Timeline (8 欄) -->
-      <div class="lg:col-span-8 space-y-16">
+      <div class="lg:col-span-8 space-y-14">
         {experiences.map((exp) => (
-          <div class="relative pl-12 border-l border-[#cfd8dc] group scroll-fade-in">
+          <div class="relative pl-10 border-l border-[#e8e6dc] group scroll-fade-in">
             <!-- 時間點圓點 -->
-            <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#C4873A] group-hover:scale-150 transition-transform duration-300"></div>
+            <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#c96442] shadow-[0_0_0_4px_#ffffff,0_0_0_5px_rgba(201,100,66,0.2)] group-hover:scale-125 transition-transform duration-300"></div>
 
             <!-- 時期標籤 -->
-            <span class="inline-block text-[10px] font-semibold text-[#3d4f5f] uppercase tracking-[0.12em] mb-3 bg-[#eceff1] px-3 py-1 rounded-full">
+            <span class="inline-block text-[13px] font-[590] text-[#5e5d59] uppercase tracking-[0.12em] mb-3 bg-black/[0.04] border border-[#f0eee6] px-2.5 py-1 rounded-full">
               {exp.duration}
             </span>
 
             <!-- 職稱與公司 -->
-            <h3 class="text-xl font-semibold text-[#263238] mb-1">{exp.title}</h3>
-            <p class="text-[#546e7a] font-medium text-sm mb-4">{exp.company}</p>
+            <h3 class="text-[32px] font-[600] text-[#141413] mb-1 tracking-[-0.02em] leading-[1.2]">{exp.title}</h3>
+            <p class="text-[#c96442] font-[590] text-[15px] mb-4 tracking-[-0.01em]">{exp.company}</p>
 
             <!-- 描述 -->
-            <p class="text-[#3d4f5f] leading-[1.7] mb-5">{exp.description}</p>
+            <p class="text-[#5e5d59] leading-[1.65] mb-5 text-[17px]">{exp.description}</p>
 
             <!-- 成就列表 -->
             <ul class="space-y-2 mb-6">
               {exp.achievements.map((achievement) => (
-                <li class="text-[#3d4f5f] leading-[1.7] pl-4 relative before:content-['▸'] before:absolute before:left-0 before:text-[#C4873A] before:font-bold text-sm">
+                <li class="text-[#5e5d59] leading-[1.65] pl-5 relative before:content-['▸'] before:absolute before:left-0 before:text-[#c96442] before:font-bold text-[16px]">
                   {achievement}
                 </li>
               ))}
             </ul>
 
             <!-- Tech tags -->
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-1.5">
               {exp.techStack.map((tech) => (
-                <span class="text-[#3d4f5f] px-3 py-1 rounded-lg text-[0.78rem] font-medium border border-[#cfd8dc] bg-white">
+                <span class="text-[#5e5d59] px-2.5 py-1 rounded-lg text-[14px] font-[510] border border-[#e8e6dc] bg-[#faf9f5] tracking-[-0.01em]">
                   {tech}
                 </span>
               ))}

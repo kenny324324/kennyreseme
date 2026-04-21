@@ -1,13 +1,17 @@
 ---
 interface Props {
   title: string;
+  eyebrow?: string;
 }
 
-const { title } = Astro.props;
+const { title, eyebrow } = Astro.props;
 ---
 
-<div class="flex items-center gap-6 mb-16">
-  <div class="flex-1 border-t border-dashed border-[#cfd8dc]"></div>
-  <h2 class="text-4xl md:text-[2.4rem] font-semibold text-[#263238] whitespace-nowrap">{title}</h2>
-  <div class="flex-1 border-t border-dashed border-[#cfd8dc]"></div>
+<div class="mb-10">
+  {eyebrow && (
+    <p class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em] mb-3">{eyebrow}</p>
+  )}
+  <div class="flex items-end justify-between gap-6 pb-5 border-b border-[#e8e6dc]">
+    <h2 class="text-[48px] md:text-[56px] font-[600] text-[#141413] leading-[1] tracking-display">{title}</h2>
+  </div>
 </div>

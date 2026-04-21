@@ -4,72 +4,106 @@ import { personalInfo, stats } from '../../data/personal';
 const base = import.meta.env.BASE_URL;
 ---
 
-<section id="home" class="min-h-screen bg-[#f5f5f5] flex items-center relative overflow-hidden py-28 lg:py-0">
-  <div class="w-full max-w-[1200px] mx-auto px-5">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+<section id="home" class="min-h-screen bg-[#faf9f5] flex items-center relative overflow-hidden py-28 lg:py-0">
+  <div class="w-full max-w-[1400px] mx-auto px-5">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
       <!-- 左側：文字 (7 欄) -->
-      <div class="lg:col-span-7 space-y-10">
+      <div class="lg:col-span-7 space-y-8">
         <div>
-          <p class="text-sm font-medium text-[#3d4f5f] uppercase tracking-[0.15em] mb-4">您好，我是</p>
-          <h1 class="text-5xl lg:text-[4.5rem] font-bold text-[#263238] leading-[1.05] tracking-tight mb-4">
+          <p class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em] mb-5">您好，我是</p>
+          <h1 class="text-[64px] lg:text-[80px] font-[600] text-[#141413] leading-[1] tracking-display-xl mb-5">
             {personalInfo.name.zh}<br class="hidden lg:block">{personalInfo.name.en}
           </h1>
-          <h2 class="text-xl lg:text-2xl font-medium text-[#3d4f5f]">{personalInfo.title.zh}</h2>
+          <h2 class="text-[22px] lg:text-[24px] font-[600] text-[#5e5d59] tracking-[-0.01em]">{personalInfo.title.zh}</h2>
         </div>
 
-        <p class="text-lg leading-[1.85] text-[#3d4f5f] max-w-[520px]">
-          具備 <span class="bg-[#C4873A]/12 px-1.5 py-0.5 rounded text-[#263238] font-medium">SwiftUI</span>、<span class="bg-[#C4873A]/12 px-1.5 py-0.5 rounded text-[#263238] font-medium">Flutter</span> 跨平台開發經驗，專精 <span class="bg-[#C4873A]/12 px-1.5 py-0.5 rounded text-[#263238] font-medium">.NET MAUI</span> 商業應用開發。
-          善於運用 <span class="bg-[#C4873A]/12 px-1.5 py-0.5 rounded text-[#263238] font-medium">Figma</span> 進行 UI/UX 規劃設計，並整合 <span class="bg-[#C4873A]/12 px-1.5 py-0.5 rounded text-[#263238] font-medium">AI</span> 方案。
+        <p class="text-[19px] leading-[1.65] text-[#5e5d59] max-w-[560px]">
+          具備 <span class="bg-[#faebe0] px-1.5 py-0.5 rounded text-[#b5623d] font-[590]">SwiftUI</span>、<span class="bg-[#faebe0] px-1.5 py-0.5 rounded text-[#b5623d] font-[590]">Flutter</span> 跨平台開發經驗，專精 <span class="bg-[#faebe0] px-1.5 py-0.5 rounded text-[#b5623d] font-[590]">.NET MAUI</span> 商業應用開發。
+          善於運用 <span class="bg-[#faebe0] px-1.5 py-0.5 rounded text-[#b5623d] font-[590]">Figma</span> 進行 UI/UX 規劃設計，並整合 <span class="bg-[#faebe0] px-1.5 py-0.5 rounded text-[#b5623d] font-[590]">AI</span> 方案。
         </p>
 
-        <div class="flex flex-wrap gap-4">
-          <a href={`${base}#projects`} class="px-8 py-3.5 rounded-lg no-underline font-semibold text-base transition-all duration-300 bg-[#C4873A] text-white hover:bg-[#A8712E]">
+        <div class="flex flex-wrap gap-3">
+          <a href={`${base}#projects`} class="px-6 py-2.5 rounded-[10px] no-underline font-[590] text-[14px] tracking-[-0.01em] transition-all duration-200 bg-[#141413] text-[#faf9f5] hover:bg-[#30302e] shadow-[0_1px_2px_rgba(20,20,19,0.15),0_0_0_1px_#141413]">
             查看作品
           </a>
-          <a href={`${base}#experience`} class="px-8 py-3.5 rounded-lg no-underline font-semibold text-base transition-all duration-300 border border-[#cfd8dc] bg-white text-[#263238] hover:border-[#546e7a] flex items-center gap-2">
-            查看經歷 <i class="fas fa-arrow-right text-xs"></i>
+          <a href={`${base}#experience`} class="px-6 py-2.5 rounded-[10px] no-underline font-[590] text-[14px] tracking-[-0.01em] transition-all duration-200 bg-[#faf9f5] text-[#141413] shadow-[0_0_0_1px_#e8e6dc] hover:shadow-[0_0_0_1px_#d1cfc5] hover:bg-black/[0.02] flex items-center gap-2">
+            查看經歷 <i class="fas fa-arrow-right text-[10px]"></i>
           </a>
         </div>
       </div>
 
-      <!-- 右側：大頭照 + 浮動玻璃卡 (5 欄) -->
+      <!-- 右側：橫式名片 (5 欄) -->
       <div class="lg:col-span-5 relative">
-        <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden border border-[#cfd8dc]">
-          <img
-            src={`${base}/profile.JPG`}
-            alt={`${personalInfo.name.zh} ${personalInfo.name.en}`}
-            class="w-full h-full object-cover object-top"
-          />
-          <!-- 浮動玻璃卡 -->
-          <div class="absolute bottom-5 left-5 right-5 p-4 bg-white/85 backdrop-blur-xl rounded-lg border border-[#cfd8dc]">
-            <!-- 狀態列 -->
-            <div class="flex items-center justify-between mb-3">
-              <div class="flex items-center gap-2">
-                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                <span class="text-sm font-semibold text-[#263238]">Available for work</span>
+        <div class="rounded-2xl bg-[#faf9f5] border border-[#e8e6dc] shadow-[0_1px_2px_rgba(20,20,19,0.04),0_8px_24px_rgba(20,20,19,0.06)] p-6 space-y-5">
+
+          <!-- A. Header row：avatar + 名字/職稱 + 狀態 + 地點 -->
+          <div class="flex items-center gap-5">
+            <!-- Avatar 96x96 圓形 -->
+            <img
+              src={`${base}/profile.JPG`}
+              alt={`${personalInfo.name.zh} ${personalInfo.name.en}`}
+              class="w-24 h-24 rounded-full object-cover object-top border border-[#e8e6dc] flex-shrink-0"
+            />
+
+            <div class="flex-1 min-w-0">
+              <!-- 狀態 -->
+              <div class="inline-flex items-center gap-1.5 mb-2">
+                <span class="relative flex items-center justify-center">
+                  <span class="absolute w-2 h-2 bg-emerald-500/40 rounded-full animate-ping"></span>
+                  <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full relative"></span>
+                </span>
+                <span class="text-[10px] font-[590] text-[#141413] uppercase tracking-[0.12em]">Available for work</span>
               </div>
-              <span class="text-[10px] text-[#3d4f5f] flex items-center gap-1">
-                <i class="fas fa-location-dot text-[9px]"></i>
-                台北，台灣
-              </span>
-            </div>
-            <!-- 數據列 -->
-            <div class="flex justify-between pt-3 border-t border-[#cfd8dc]">
-              <div>
-                <span class="text-lg font-bold text-[#263238]">{stats.years}+</span>
-                <p class="text-[10px] text-[#3d4f5f] uppercase tracking-wider mt-0.5">Years Exp.</p>
-              </div>
-              <div>
-                <span class="text-lg font-bold text-[#263238]">{stats.projects}+</span>
-                <p class="text-[10px] text-[#3d4f5f] uppercase tracking-wider mt-0.5">Projects</p>
-              </div>
-              <div>
-                <span class="text-lg font-bold text-[#263238]">3</span>
-                <p class="text-[10px] text-[#3d4f5f] uppercase tracking-wider mt-0.5">Platforms</p>
-              </div>
+
+              <!-- 名字 -->
+              <h3 class="text-[24px] font-[600] text-[#141413] leading-[1.15]">
+                {personalInfo.name.zh} <span class="text-[#87867f]">{personalInfo.name.en}</span>
+              </h3>
+              <!-- 職稱 -->
+              <p class="text-[13px] text-[#5e5d59] mt-0.5">
+                {personalInfo.title.zh}
+              </p>
+              <!-- 地點 -->
+              <p class="text-[12px] text-[#87867f] mt-1.5 flex items-center gap-1.5 font-[510]">
+                <i class="fas fa-location-dot text-[10px] text-[#c96442]"></i>
+                台北，台灣 · Taipei, Taiwan
+              </p>
             </div>
           </div>
+
+          <!-- B. 數據列 -->
+          <div class="grid grid-cols-3 py-3 border-y border-[#f0eee6]">
+            <div class="text-center">
+              <div class="text-[20px] font-[600] text-[#141413] tracking-[-0.02em]">{stats.years}+</div>
+              <p class="text-[9px] text-[#87867f] uppercase tracking-[0.12em] mt-0.5 font-[510]">Years</p>
+            </div>
+            <div class="text-center border-l border-r border-[#f0eee6]">
+              <div class="text-[20px] font-[600] text-[#141413] tracking-[-0.02em]">{stats.projects}+</div>
+              <p class="text-[9px] text-[#87867f] uppercase tracking-[0.12em] mt-0.5 font-[510]">Projects</p>
+            </div>
+            <div class="text-center">
+              <div class="text-[20px] font-[600] text-[#141413] tracking-[-0.02em]">3</div>
+              <p class="text-[9px] text-[#87867f] uppercase tracking-[0.12em] mt-0.5 font-[510]">Platforms</p>
+            </div>
+          </div>
+
+          <!-- C. 動作列 -->
+          <div class="flex items-center gap-2">
+            <a href={`mailto:${personalInfo.email}`} class="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#faf9f5] text-[#141413] text-[12px] font-[590] shadow-[0_0_0_1px_#e8e6dc] hover:shadow-[0_0_0_1px_#d1cfc5] hover:bg-black/[0.02] transition-all no-underline" aria-label="Email">
+              <i class="fas fa-envelope text-[12px]"></i>
+              <span>Email</span>
+            </a>
+            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#faf9f5] text-[#141413] text-[12px] font-[590] shadow-[0_0_0_1px_#e8e6dc] hover:shadow-[0_0_0_1px_#d1cfc5] hover:bg-black/[0.02] transition-all no-underline" aria-label="GitHub">
+              <i class="fab fa-github text-[14px]"></i>
+              <span>GitHub</span>
+            </a>
+            <a href={personalInfo.resumeUrl} class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#141413] text-[#faf9f5] text-[12px] font-[590] shadow-[0_1px_2px_rgba(20,20,19,0.15),0_0_0_1px_#141413] hover:bg-[#30302e] transition-all no-underline">
+              <i class="fas fa-arrow-down text-[10px]"></i>
+              <span>下載履歷</span>
+            </a>
+          </div>
+
         </div>
       </div>
 

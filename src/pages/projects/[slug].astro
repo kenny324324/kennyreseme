@@ -19,11 +19,9 @@ interface Props {
 const { project } = Astro.props;
 const base = import.meta.env.BASE_URL;
 
-// 建立所有編號區塊的排序列表（固定 + 自訂）
 type SectionEntry = { type: 'process' | 'challenges' | 'highlights' | 'reflection' | 'custom'; order: number; customIndex?: number };
 const allSections: SectionEntry[] = [];
 
-// 固定區塊（預設順序 1~4）
 if (project.process.design.length > 0 || project.process.development.length > 0) {
   allSections.push({ type: 'process', order: 1 });
 }
@@ -37,40 +35,38 @@ if (project.reflection.length > 0) {
   allSections.push({ type: 'reflection', order: 4 });
 }
 
-// 自訂區塊
 project.customSections.forEach((cs, idx) => {
   if (cs.items.length > 0) {
     allSections.push({ type: 'custom', order: cs.order, customIndex: idx });
   }
 });
 
-// 按 order 排序
 allSections.sort((a, b) => a.order - b.order);
 ---
 
 <BaseLayout title={`${project.title} - 余亮廷 Kenny Yu`} description={project.description}>
   <Navbar showBackButton={true} />
 
-  <main class="project-details pt-[100px] pb-[60px] bg-[#f5f5f5] min-h-screen">
-    <div class="container max-w-[1200px] mx-auto px-5">
+  <main class="project-details pt-[100px] pb-[60px] bg-[#faf9f5] min-h-screen">
+    <div class="container max-w-[1400px] mx-auto px-5">
 
       <!-- Header -->
-      <div class="section-header text-left mb-12 relative">
+      <div class="section-header text-left mb-10 relative">
         <!-- Top row: eyebrow + App Store button -->
-        <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center justify-between mb-5">
           <!-- 分類 eyebrow -->
           <div class="flex items-center gap-3">
-            <div class="w-8 h-[2px] bg-[#C4873A]"></div>
-            <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-[0.15em]">
+            <div class="w-6 h-px bg-[#c96442]"></div>
+            <span class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em]">
               {project.techStack[0]}
             </span>
           </div>
           <!-- App Store / Google Play links -->
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2">
             {project.links.appstore && (
               <a href={project.links.appstore} target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#263238] text-[#263238] text-xs font-semibold tracking-wide hover:bg-[#263238] hover:text-white transition-all duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 384 512" fill="currentColor">
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#e8e6dc] bg-[#faf9f5] text-[#141413] text-[14px] font-[590] tracking-[-0.01em] hover:border-[#c96442]/40 hover:bg-[#faebe0] hover:text-[#b5623d] transition-all duration-200 no-underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 384 512" fill="currentColor">
                   <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
                 </svg>
                 App Store
@@ -78,8 +74,8 @@ allSections.sort((a, b) => a.order - b.order);
             )}
             {project.links.googleplay && (
               <a href={project.links.googleplay} target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#263238] text-[#263238] text-xs font-semibold tracking-wide hover:bg-[#263238] hover:text-white transition-all duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 512 512" fill="currentColor">
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#e8e6dc] bg-[#faf9f5] text-[#141413] text-[14px] font-[590] tracking-[-0.01em] hover:border-[#c96442]/40 hover:bg-[#faebe0] hover:text-[#b5623d] transition-all duration-200 no-underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 512 512" fill="currentColor">
                   <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
                 </svg>
                 Google Play
@@ -87,17 +83,17 @@ allSections.sort((a, b) => a.order - b.order);
             )}
           </div>
         </div>
-        <h1 class="section-title text-[3rem] md:text-[3.5rem] font-bold text-[#263238] mb-2 tracking-tight leading-tight">
+        <h1 class="section-title text-[56px] md:text-[64px] font-[600] text-[#141413] mb-2 tracking-display-lg leading-[1]">
           {project.title}
         </h1>
         {project.subtitle && (
-          <p class="text-xl text-[#3d4f5f] font-medium mb-5">{project.subtitle}</p>
+          <p class="text-[22px] text-[#5e5d59] font-[510] mb-5 tracking-[-0.01em]">{project.subtitle}</p>
         )}
         <!-- Tech tags row -->
-        <div class="flex flex-wrap items-center gap-2 mt-4">
-          <span class="text-[10px] font-semibold text-[#3d4f5f] uppercase tracking-wider mr-1">Tech Stack</span>
+        <div class="flex flex-wrap items-center gap-1.5 mt-4">
+          <span class="text-[13px] font-[590] text-[#87867f] uppercase tracking-[0.12em] mr-2">Tech Stack</span>
           {project.techStack.map((tech) => (
-            <span class="text-[11px] font-medium text-[#3d4f5f] border border-[#cfd8dc] bg-white px-3 py-1 rounded-full">
+            <span class="text-[14px] font-[510] text-[#5e5d59] border border-[#e8e6dc] bg-[#faf9f5] px-2.5 py-1 rounded-lg">
               {tech}
             </span>
           ))}
@@ -105,15 +101,15 @@ allSections.sort((a, b) => a.order - b.order);
       </div>
 
       <!-- Main Content -->
-      <div class="project-content grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12 items-start bg-white p-10 rounded-lg border border-[#cfd8dc] relative z-[1]">
+      <div class="project-content grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10 items-start bg-[#faf9f5] p-10 rounded-2xl border border-[#e8e6dc] shadow-[0_1px_2px_rgba(20, 20, 19,0.04)] relative z-[1]">
         <!-- Image -->
         <div class="project-image-section">
-          <div class="aspect-[4/3] bg-[#eceff1] rounded-lg border border-[#cfd8dc] overflow-hidden">
+          <div class="aspect-[4/3] bg-[#f3f4f5] rounded-2xl border border-[#f0eee6] overflow-hidden">
             {project.detailImage ? (
               <img src={project.detailImage} alt={project.title} class="w-full h-full object-cover" />
             ) : (
               <div class="w-full h-full flex items-center justify-center">
-                <span class="text-[#546e7a]/40 text-xl font-medium tracking-wider">No Image</span>
+                <span class="text-[#b0aea5] text-[19px] font-[510] tracking-wider">No Image</span>
               </div>
             )}
           </div>
@@ -121,52 +117,52 @@ allSections.sort((a, b) => a.order - b.order);
 
         <!-- Info -->
         <div class="project-info text-left">
-          <p class="project-description text-lg leading-[1.8] text-[#3d4f5f] mb-8 font-normal">
+          <p class="project-description text-[19px] leading-[1.7] text-[#5e5d59] mb-8 font-normal">
             {project.description}
           </p>
 
           {project.background && (
             <div class="project-background">
               <div class="flex items-center gap-2.5 mb-3">
-                <i class="fas fa-info-circle text-[#C4873A] text-sm"></i>
-                <h3 class="text-sm font-semibold text-[#263238] uppercase tracking-wider">專案背景</h3>
+                <i class="fas fa-info-circle text-[#c96442] text-[15px]"></i>
+                <h3 class="text-[13px] font-[590] text-[#87867f] uppercase tracking-[0.15em]">專案背景</h3>
               </div>
-              <div class="background-content text-[#3d4f5f] leading-[1.8] pl-[22px]" set:html={project.background} />
+              <div class="background-content text-[#5e5d59] leading-[1.7] text-[17px] pl-6" set:html={project.background} />
             </div>
           )}
         </div>
       </div>
 
-      <!-- Numbered Sections (fixed + custom, sorted by order) -->
+      <!-- Numbered Sections -->
       {allSections.map((section, idx) => {
         const num = String(idx + 1).padStart(2, '0');
 
         if (section.type === 'process') return (
-          <div class="process-section mb-12">
-            <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
-              <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">{num}</span>
-              <h2 class="text-2xl font-bold text-[#263238]">開發流程</h2>
+          <div class="process-section mb-10">
+            <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#e8e6dc]">
+              <span class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em]">{num}</span>
+              <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">開發流程</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               {project.process.design.length > 0 && (
-                <div class="process-card bg-white p-8 rounded-lg border border-[#cfd8dc]">
+                <div class="process-card bg-[#faf9f5] p-8 rounded-2xl border border-[#e8e6dc] shadow-[0_1px_2px_rgba(20, 20, 19,0.04)]">
                   <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
-                    <h4 class="text-lg font-bold text-[#263238] flex items-center gap-3">
-                      <span class="w-8 h-8 rounded-lg bg-[#eceff1] flex items-center justify-center">
-                        <i class="fab fa-figma text-[#546e7a] text-sm"></i>
+                    <h4 class="text-[25px] font-[600] text-[#141413] flex items-center gap-3 tracking-[-0.02em]">
+                      <span class="w-8 h-8 rounded-lg bg-[#f3f4f5] flex items-center justify-center">
+                        <i class="fab fa-figma text-[#c96442] text-[15px]"></i>
                       </span>
                       設計流程
                     </h4>
                     {project.links.figma && (
-                      <a href={project.links.figma} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-[#cfd8dc] text-[#3d4f5f] px-3 py-1.5 rounded-full text-[0.78rem] font-medium transition-all duration-200 whitespace-nowrap hover:border-[#546e7a] hover:text-[#263238] no-underline">
-                        <i class="fab fa-figma text-xs"></i>
+                      <a href={project.links.figma} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 border border-[#e8e6dc] text-[#5e5d59] px-2.5 py-1 rounded-lg text-[14px] font-[510] transition-all duration-200 whitespace-nowrap hover:border-[#c96442]/40 hover:text-[#c96442] hover:bg-[#faebe0] no-underline">
+                        <i class="fab fa-figma text-[13px]"></i>
                         <span>Figma</span>
                       </a>
                     )}
                   </div>
 
                   {project.process.designImage && (
-                    <div class="mb-6 rounded-lg overflow-hidden border border-[#cfd8dc]">
+                    <div class="mb-6 rounded-2xl overflow-hidden border border-[#f0eee6]">
                       <img
                         src={project.process.designImage}
                         alt="Design Process"
@@ -178,8 +174,8 @@ allSections.sort((a, b) => a.order - b.order);
                   <div class="space-y-3">
                     {project.process.design.map((step) => (
                       <div class="flex gap-3">
-                        <div class="w-1.5 h-1.5 rounded-full bg-[#C4873A] mt-2.5 flex-shrink-0"></div>
-                        <p class="text-[#3d4f5f] leading-relaxed" set:html={step} />
+                        <div class="w-1 h-1 rounded-full bg-[#c96442] mt-2.5 flex-shrink-0"></div>
+                        <p class="text-[#5e5d59] leading-[1.65] text-[17px]" set:html={step} />
                       </div>
                     ))}
                   </div>
@@ -187,16 +183,16 @@ allSections.sort((a, b) => a.order - b.order);
               )}
 
               {project.process.development.length > 0 && (
-                <div class="process-card bg-white p-8 rounded-lg border border-[#cfd8dc]">
-                  <h4 class="text-lg font-bold text-[#263238] mb-6 flex items-center gap-3">
-                    <span class="w-8 h-8 rounded-lg bg-[#eceff1] flex items-center justify-center">
-                      <i class="fas fa-code text-[#546e7a] text-sm"></i>
+                <div class="process-card bg-[#faf9f5] p-8 rounded-2xl border border-[#e8e6dc] shadow-[0_1px_2px_rgba(20, 20, 19,0.04)]">
+                  <h4 class="text-[25px] font-[600] text-[#141413] mb-6 flex items-center gap-3 tracking-[-0.02em]">
+                    <span class="w-8 h-8 rounded-lg bg-[#f3f4f5] flex items-center justify-center">
+                      <i class="fas fa-code text-[#c96442] text-[15px]"></i>
                     </span>
                     開發流程
                   </h4>
 
                   {project.process.developmentImage && (
-                    <div class="mb-6 rounded-lg overflow-hidden border border-[#cfd8dc]">
+                    <div class="mb-6 rounded-2xl overflow-hidden border border-[#f0eee6]">
                       <img
                         src={project.process.developmentImage}
                         alt="Development Architecture"
@@ -208,8 +204,8 @@ allSections.sort((a, b) => a.order - b.order);
                   <div class="space-y-3">
                     {project.process.development.map((step) => (
                       <div class="flex gap-3">
-                        <div class="w-1.5 h-1.5 rounded-full bg-[#C4873A] mt-2.5 flex-shrink-0"></div>
-                        <p class="text-[#3d4f5f] leading-relaxed" set:html={step} />
+                        <div class="w-1 h-1 rounded-full bg-[#c96442] mt-2.5 flex-shrink-0"></div>
+                        <p class="text-[#5e5d59] leading-[1.65] text-[17px]" set:html={step} />
                       </div>
                     ))}
                   </div>
@@ -220,31 +216,31 @@ allSections.sort((a, b) => a.order - b.order);
         );
 
         if (section.type === 'challenges') return (
-          <div class="challenges-section mb-12">
-            <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
-              <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">{num}</span>
-              <h2 class="text-2xl font-bold text-[#263238]">技術挑戰與解決方案</h2>
+          <div class="challenges-section mb-10">
+            <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#e8e6dc]">
+              <span class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em]">{num}</span>
+              <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">技術挑戰與解決方案</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
               {project.challenges.map((challenge) => (
-                <div class="challenge-card bg-white p-7 rounded-lg border border-[#cfd8dc]">
-                  <h4 class="text-lg font-bold text-[#263238] mb-5">{challenge.title}</h4>
+                <div class="challenge-card bg-[#faf9f5] p-7 rounded-2xl border border-[#e8e6dc] shadow-[0_1px_2px_rgba(20, 20, 19,0.04)]">
+                  <h4 class="text-[25px] font-[600] text-[#141413] mb-5 tracking-[-0.02em]">{challenge.title}</h4>
                   <div class="space-y-4">
                     <div>
-                      <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-wider">情境</span>
-                      <p class="text-[#3d4f5f] mt-1 leading-relaxed" set:html={challenge.situation} />
+                      <span class="text-[10px] font-[590] text-[#c96442] uppercase tracking-[0.12em]">情境</span>
+                      <p class="text-[#5e5d59] mt-1 leading-[1.65] text-[16px]" set:html={challenge.situation} />
                     </div>
-                    <div class="pt-3 border-t border-[#eceff1]">
-                      <span class="text-[10px] font-semibold text-[#546e7a] uppercase tracking-wider">困難點</span>
-                      <p class="text-[#3d4f5f] mt-1 leading-relaxed" set:html={challenge.difficulty} />
+                    <div class="pt-3 border-t border-[#f0eee6]">
+                      <span class="text-[10px] font-[590] text-[#87867f] uppercase tracking-[0.12em]">困難點</span>
+                      <p class="text-[#5e5d59] mt-1 leading-[1.65] text-[16px]" set:html={challenge.difficulty} />
                     </div>
-                    <div class="pt-3 border-t border-[#eceff1]">
-                      <span class="text-[10px] font-semibold text-[#546e7a] uppercase tracking-wider">解決方案</span>
-                      <p class="text-[#3d4f5f] mt-1 leading-relaxed" set:html={challenge.solution} />
+                    <div class="pt-3 border-t border-[#f0eee6]">
+                      <span class="text-[10px] font-[590] text-[#87867f] uppercase tracking-[0.12em]">解決方案</span>
+                      <p class="text-[#5e5d59] mt-1 leading-[1.65] text-[16px]" set:html={challenge.solution} />
                     </div>
-                    <div class="pt-3 border-t border-[#eceff1]">
-                      <span class="text-[10px] font-semibold text-[#546e7a] uppercase tracking-wider">結果</span>
-                      <p class="text-[#3d4f5f] mt-1 leading-relaxed" set:html={challenge.result} />
+                    <div class="pt-3 border-t border-[#f0eee6]">
+                      <span class="text-[10px] font-[590] text-[#87867f] uppercase tracking-[0.12em]">結果</span>
+                      <p class="text-[#5e5d59] mt-1 leading-[1.65] text-[16px]" set:html={challenge.result} />
                     </div>
                   </div>
                 </div>
@@ -254,16 +250,16 @@ allSections.sort((a, b) => a.order - b.order);
         );
 
         if (section.type === 'highlights') return (
-          <div class="highlights-section mb-12">
-            <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
-              <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">{num}</span>
-              <h2 class="text-2xl font-bold text-[#263238]">設計與技術亮點</h2>
+          <div class="highlights-section mb-10">
+            <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#e8e6dc]">
+              <span class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em]">{num}</span>
+              <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">設計與技術亮點</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {project.highlights.map((highlight) => (
-                <div class="highlight-card bg-white p-6 rounded-lg border border-[#cfd8dc] transition-colors duration-300 hover:border-[#546e7a]/40">
+                <div class="highlight-card bg-[#faf9f5] p-6 rounded-2xl border border-[#e8e6dc] shadow-[0_1px_2px_rgba(20, 20, 19,0.04)] transition-all duration-200 hover:shadow-[0_0_0_1px_#d1cfc5,0_4px_24px_rgba(20,20,19,0.05)]">
                   {highlight.media && (
-                    <div class="highlight-media mb-4 rounded-lg overflow-hidden bg-[#eceff1]">
+                    <div class="highlight-media mb-4 rounded-2xl overflow-hidden bg-[#f3f4f5]">
                       {highlight.mediaType === 'video' ? (
                         <video src={highlight.media} autoplay muted loop playsinline class="w-full h-auto" preload="metadata">
                           您的瀏覽器不支援影片播放
@@ -273,8 +269,8 @@ allSections.sort((a, b) => a.order - b.order);
                       )}
                     </div>
                   )}
-                  <h4 class="text-lg font-bold text-[#263238] mb-2">{highlight.title}</h4>
-                  <p class="text-[#3d4f5f] leading-relaxed" set:html={highlight.description} />
+                  <h4 class="text-[22px] font-[600] text-[#141413] mb-2 tracking-[-0.02em]">{highlight.title}</h4>
+                  <p class="text-[#5e5d59] leading-[1.6] text-[16px]" set:html={highlight.description} />
                 </div>
               ))}
             </div>
@@ -282,19 +278,19 @@ allSections.sort((a, b) => a.order - b.order);
         );
 
         if (section.type === 'reflection') return (
-          <div class="reflection-section mb-12">
-            <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
-              <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">{num}</span>
-              <h2 class="text-2xl font-bold text-[#263238]">學習與反思</h2>
+          <div class="reflection-section mb-10">
+            <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#e8e6dc]">
+              <span class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em]">{num}</span>
+              <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">學習與反思</h2>
             </div>
-            <div class="bg-white p-8 rounded-lg border border-[#cfd8dc]">
+            <div class="bg-[#faf9f5] p-8 rounded-2xl border border-[#e8e6dc] shadow-[0_1px_2px_rgba(20, 20, 19,0.04)]">
               <ul class="space-y-4">
                 {project.reflection.map((item) => (
-                  <li class="text-[#3d4f5f] flex items-start gap-4">
-                    <span class="w-5 h-5 rounded-full bg-[#C4873A]/10 border border-[#C4873A]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <i class="fas fa-check text-[9px] text-[#C4873A]"></i>
+                  <li class="text-[#5e5d59] flex items-start gap-4">
+                    <span class="w-5 h-5 rounded-full bg-[#faebe0] border border-[#c96442]/25 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <i class="fas fa-check text-[9px] text-[#c96442]"></i>
                     </span>
-                    <span class="leading-relaxed" set:html={item} />
+                    <span class="leading-[1.65] text-[17px]" set:html={item} />
                   </li>
                 ))}
               </ul>
@@ -307,22 +303,22 @@ allSections.sort((a, b) => a.order - b.order);
 
           if (cs.style === 'cards') {
             return (
-              <div class="custom-section mb-12">
-                <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
-                  <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">{num}</span>
-                  <h2 class="text-2xl font-bold text-[#263238]">{cs.title}</h2>
+              <div class="custom-section mb-10">
+                <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#e8e6dc]">
+                  <span class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em]">{num}</span>
+                  <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">{cs.title}</h2>
                 </div>
-                <div class="review-scroll flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory">
+                <div class="review-scroll flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory">
                   {cs.items.map((item) => (
-                    <div class="review-card flex-shrink-0 w-[300px] bg-white p-6 rounded-2xl border border-[#cfd8dc] snap-start">
+                    <div class="review-card flex-shrink-0 w-[300px] bg-[#faf9f5] p-6 rounded-2xl border border-[#e8e6dc] shadow-[0_1px_2px_rgba(20, 20, 19,0.04)] snap-start">
                       <div class="flex items-center gap-1 mb-3">
                         {[1,2,3,4,5].map(() => (
-                          <svg class="w-4 h-4 text-[#C4873A]" fill="currentColor" viewBox="0 0 20 20">
+                          <svg class="w-3.5 h-3.5 text-[#c96442]" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
                         ))}
                       </div>
-                      <p class="text-[#3d4f5f] leading-relaxed text-[0.95rem]" set:html={item} />
+                      <p class="text-[#5e5d59] leading-[1.6] text-[16px]" set:html={item} />
                     </div>
                   ))}
                 </div>
@@ -331,19 +327,19 @@ allSections.sort((a, b) => a.order - b.order);
           }
 
           return (
-            <div class="custom-section mb-12">
-              <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#cfd8dc]">
-                <span class="text-[10px] font-semibold text-[#C4873A] uppercase tracking-widest">{num}</span>
-                <h2 class="text-2xl font-bold text-[#263238]">{cs.title}</h2>
+            <div class="custom-section mb-10">
+              <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#e8e6dc]">
+                <span class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em]">{num}</span>
+                <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">{cs.title}</h2>
               </div>
-              <div class="bg-white p-8 rounded-lg border border-[#cfd8dc]">
+              <div class="bg-[#faf9f5] p-8 rounded-2xl border border-[#e8e6dc] shadow-[0_1px_2px_rgba(20, 20, 19,0.04)]">
                 <ul class="space-y-4">
                   {cs.items.map((item) => (
-                    <li class="text-[#3d4f5f] flex items-start gap-4">
-                      <span class="w-5 h-5 rounded-full bg-[#C4873A]/10 border border-[#C4873A]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <i class={`fas fa-${cs.icon} text-[9px] text-[#C4873A]`}></i>
+                    <li class="text-[#5e5d59] flex items-start gap-4">
+                      <span class="w-5 h-5 rounded-full bg-[#faebe0] border border-[#c96442]/25 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i class={`fas fa-${cs.icon} text-[9px] text-[#c96442]`}></i>
                       </span>
-                      <span class="leading-relaxed" set:html={item} />
+                      <span class="leading-[1.65] text-[17px]" set:html={item} />
                     </li>
                   ))}
                 </ul>
@@ -355,17 +351,17 @@ allSections.sort((a, b) => a.order - b.order);
 
       <!-- Links -->
       {(project.links.figma || project.links.github) && (
-        <div class="project-links mt-4 pt-8 border-t border-[#cfd8dc] flex items-center justify-between flex-wrap gap-4">
-          <p class="text-sm text-[#3d4f5f]">對這個專案有興趣？</p>
-          <div class="flex gap-3 flex-wrap">
+        <div class="project-links mt-4 pt-8 border-t border-[#e8e6dc] flex items-center justify-between flex-wrap gap-4">
+          <p class="text-[16px] text-[#87867f] font-[510]">對這個專案有興趣？</p>
+          <div class="flex gap-2 flex-wrap">
             {project.links.figma && (
-              <a href={project.links.figma} target="_blank" rel="noopener noreferrer" class="border border-[#cfd8dc] text-[#263238] px-5 py-2.5 rounded-full text-sm font-medium inline-flex items-center gap-2 transition-all duration-200 no-underline hover:border-[#546e7a] hover:text-[#546e7a] bg-white">
+              <a href={project.links.figma} target="_blank" rel="noopener noreferrer" class="border border-[#e8e6dc] text-[#141413] px-4 py-2 rounded-lg text-[15px] font-[590] inline-flex items-center gap-2 transition-all duration-200 no-underline hover:border-[#c96442]/40 hover:text-[#c96442] hover:bg-[#faebe0] bg-[#faf9f5]">
                 <i class="fab fa-figma"></i>
                 <span>Figma</span>
               </a>
             )}
             {project.links.github && (
-              <a href={project.links.github} target="_blank" rel="noopener noreferrer" class="border border-[#cfd8dc] text-[#263238] px-5 py-2.5 rounded-full text-sm font-medium inline-flex items-center gap-2 transition-all duration-200 no-underline hover:border-[#546e7a] hover:text-[#546e7a] bg-white">
+              <a href={project.links.github} target="_blank" rel="noopener noreferrer" class="border border-[#e8e6dc] text-[#141413] px-4 py-2 rounded-lg text-[15px] font-[590] inline-flex items-center gap-2 transition-all duration-200 no-underline hover:border-[#c96442]/40 hover:text-[#c96442] hover:bg-[#faebe0] bg-[#faf9f5]">
                 <i class="fab fa-github"></i>
                 <span>GitHub</span>
               </a>
@@ -381,12 +377,19 @@ allSections.sort((a, b) => a.order - b.order);
 </BaseLayout>
 
 <style>
-  /* Highlight 樣式 */
+  /* Highlight 樣式 — terracotta tint */
   .highlight, :global(.highlight) {
-    font-weight: 600;
-    background: rgba(196, 135, 58, 0.12);
+    font-weight: 590;
+    background: #faebe0;
+    color: #b5623d;
     padding: 0.1em 0.35em;
     border-radius: 4px;
+  }
+
+  :global(.background-content strong),
+  :global(.project-description strong) {
+    color: #141413;
+    font-weight: 590;
   }
 
   /* Review cards 水平捲動 */
@@ -406,7 +409,7 @@ allSections.sort((a, b) => a.order - b.order);
     }
 
     .section-title {
-      font-size: 2.2rem;
+      font-size: 42px;
     }
   }
 </style>

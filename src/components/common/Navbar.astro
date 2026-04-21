@@ -9,97 +9,48 @@ const { showBackButton = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 
-<nav class="navbar fixed top-5 left-0 right-0 mx-auto w-[calc(100%-40px)] max-w-[1200px] bg-transparent backdrop-blur-none rounded-[50px] z-[1000] transition-all duration-300 shadow-none md:w-[calc(100%-20px)] md:top-2.5 md:rounded-[20px] max-md:w-[calc(100%-20px)] max-md:top-2.5 max-md:rounded-[20px]" data-navbar>
-  <div class="nav-container mx-auto px-8 grid grid-cols-[1fr_auto_1fr] items-center h-16 max-md:flex max-md:justify-between max-md:px-5">
+<nav class="navbar fixed top-0 left-0 right-0 w-full bg-[#faf9f5]/85 backdrop-blur-md border-b border-[#f0eee6] z-[1000]">
+  <div class="nav-container max-w-[1400px] mx-auto px-6 grid grid-cols-[1fr_auto_1fr] items-center h-14 max-md:flex max-md:justify-between max-md:px-5">
 
     <!-- Logo / Back -->
-    <div class="nav-logo justify-self-start -ml-4 flex flex-col items-start max-md:ml-0 max-md:flex max-md:items-center">
+    <div class="nav-logo justify-self-start flex items-center max-md:flex max-md:items-center">
       {showBackButton ? (
-        <a href={`${base}/`} class="back-link no-underline text-[#263238] font-semibold text-[13px] leading-none flex items-center gap-2 px-4 h-[36px] rounded-[20px] bg-[#eceff1] transition-all duration-300 hover:bg-[#546e7a] hover:text-white">
-          <i class="fas fa-arrow-left text-xs"></i>
+        <a href={`${base}/`} class="back-link no-underline text-[#141413] font-medium text-[15px] leading-none flex items-center gap-2 px-3 h-[32px] rounded-lg bg-black/[0.04] border border-[#e8e6dc] transition-all duration-200 hover:bg-black/[0.06] hover:border-[#e8e6dc]">
+          <i class="fas fa-arrow-left text-[10px]"></i>
           <span>返回首頁</span>
         </a>
       ) : (
-        <>
-          <span class="logo-text text-xl font-bold text-[#263238] leading-none">{personalInfo.name.en}</span>
-          <span class="logo-subtitle text-[10px] text-[#3d4f5f] font-normal -mt-0.5">{personalInfo.title.en}</span>
-        </>
+        <span class="logo-text text-[17px] font-semibold text-[#141413] leading-none tracking-[-0.01em]">{personalInfo.name.en}</span>
       )}
     </div>
 
     <!-- Nav Menu -->
-    <ul class="nav-menu justify-self-center flex items-center list-none gap-5 max-md:fixed max-md:-left-full max-md:top-[84px] max-md:flex-col max-md:bg-white max-md:w-[calc(100%-20px)] max-md:text-center max-md:transition-all max-md:duration-300 max-md:shadow-[0_10px_24px_rgba(38,50,56,0.08)] max-md:py-5 max-md:gap-2.5 max-md:rounded-[18px] max-md:mx-2.5">
-      <li class="flex items-center"><a href={`${base}#home`} class="nav-link no-underline text-[#263238] font-medium text-sm px-4 py-2 rounded-[18px] transition-all duration-300 relative hover:text-[#263238] hover:bg-[#eceff1]">首頁</a></li>
-      <li class="flex items-center"><a href={`${base}#about`} class="nav-link no-underline text-[#263238] font-medium text-sm px-4 py-2 rounded-[18px] transition-all duration-300 relative hover:text-[#263238] hover:bg-[#eceff1]">關於我</a></li>
-      <li class="flex items-center"><a href={`${base}#skills`} class="nav-link no-underline text-[#263238] font-medium text-sm px-4 py-2 rounded-[18px] transition-all duration-300 relative hover:text-[#263238] hover:bg-[#eceff1]">專業技能</a></li>
-
-      <!-- 專案作品 下拉選單 -->
-      <li class="relative group flex items-center" data-dropdown>
-        <a href={`${base}#projects`} class="nav-link no-underline text-[#263238] font-medium text-sm px-4 py-2 rounded-[18px] transition-all duration-300 relative hover:text-[#263238] hover:bg-[#eceff1] flex items-center gap-1">
-          專案作品
-          <i class="fas fa-chevron-down text-[8px] transition-transform duration-200 group-hover:rotate-180"></i>
-        </a>
-        <!-- Dropdown（pt-6 橋接 hover gap，避免滑鼠穿越空隙時選單消失） -->
-        <div class="dropdown-menu absolute top-full left-0 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-1 group-hover:translate-y-0">
-          <div class="rounded-xl py-1.5 min-w-[140px] bg-white border border-[#e0e6e9] shadow-[0_8px_24px_rgba(38,50,56,0.08)]">
-            <a href={`${base}#projects-commercial`} class="dropdown-item no-underline flex items-center px-4 py-2.5 text-sm text-[#263238] hover:bg-black/5 transition-colors duration-150 rounded-lg mx-1">商業專案</a>
-            <a href={`${base}#projects-personal`} class="dropdown-item no-underline flex items-center px-4 py-2.5 text-sm text-[#263238] hover:bg-black/5 transition-colors duration-150 rounded-lg mx-1">自主學習</a>
-            <a href={`${base}#projects-system`} class="dropdown-item no-underline flex items-center px-4 py-2.5 text-sm text-[#263238] hover:bg-black/5 transition-colors duration-150 rounded-lg mx-1">其他系統專案</a>
-          </div>
-        </div>
-      </li>
-
-      <li class="flex items-center"><a href={`${base}#experience`} class="nav-link no-underline text-[#263238] font-medium text-sm px-4 py-2 rounded-[18px] transition-all duration-300 relative hover:text-[#263238] hover:bg-[#eceff1]">工作經歷</a></li>
+    <ul class="nav-menu justify-self-center flex items-center list-none gap-0.5 max-md:fixed max-md:-left-full max-md:top-[56px] max-md:flex-col max-md:bg-[#faf9f5] max-md:w-[calc(100%-20px)] max-md:text-center max-md:transition-all max-md:duration-300 max-md:shadow-[0_8px_24px_rgba(20,20,19,0.08)] max-md:border max-md:border-[#f0eee6] max-md:py-4 max-md:gap-1 max-md:rounded-[14px] max-md:mx-2.5">
+      <li class="flex items-center"><a href={`${base}#home`} class="nav-link no-underline text-[#5e5d59] font-[510] text-[15px] px-3 py-1.5 rounded-lg transition-all duration-200 relative hover:text-[#141413] hover:bg-black/[0.04]">首頁</a></li>
+      <li class="flex items-center"><a href={`${base}#about`} class="nav-link no-underline text-[#5e5d59] font-[510] text-[15px] px-3 py-1.5 rounded-lg transition-all duration-200 relative hover:text-[#141413] hover:bg-black/[0.04]">關於我</a></li>
+      <li class="flex items-center"><a href={`${base}#skills`} class="nav-link no-underline text-[#5e5d59] font-[510] text-[15px] px-3 py-1.5 rounded-lg transition-all duration-200 relative hover:text-[#141413] hover:bg-black/[0.04]">專業技能</a></li>
+      <li class="flex items-center"><a href={`${base}#projects`} class="nav-link no-underline text-[#5e5d59] font-[510] text-[15px] px-3 py-1.5 rounded-lg transition-all duration-200 relative hover:text-[#141413] hover:bg-black/[0.04]">專案作品</a></li>
+      <li class="flex items-center"><a href={`${base}#experience`} class="nav-link no-underline text-[#5e5d59] font-[510] text-[15px] px-3 py-1.5 rounded-lg transition-all duration-200 relative hover:text-[#141413] hover:bg-black/[0.04]">工作經歷</a></li>
       <li class="mobile-download-item hidden max-md:block">
-        <a href={personalInfo.resumeUrl} class="download-btn flex items-center gap-2 no-underline text-[#263238] font-semibold text-[13px] leading-none px-4 h-[36px] rounded-[20px] transition-all duration-300 bg-[#eceff1] hover:bg-[#546e7a] hover:text-white max-md:inline-flex max-md:justify-center max-md:px-6 max-md:h-auto max-md:py-3 max-md:text-sm max-md:my-2.5 max-md:mx-auto max-md:w-fit">
-          <i class="fas fa-download text-xs max-md:text-sm"></i>
+        <a href={personalInfo.resumeUrl} class="download-btn flex items-center gap-2 no-underline text-[#faf9f5] font-[510] text-[15px] leading-none px-4 h-[36px] rounded-[10px] bg-[#141413] hover:bg-[#30302e] transition-all duration-200 max-md:inline-flex max-md:justify-center max-md:px-6 max-md:h-auto max-md:py-2.5 max-md:text-sm max-md:my-2 max-md:mx-auto max-md:w-fit">
+          <i class="fas fa-download text-[10px]"></i>
           <span>下載履歷</span>
         </a>
       </li>
     </ul>
 
-    <!-- Download -->
-    <div class="nav-actions justify-self-end -mr-4 flex items-center gap-[15px] max-md:hidden">
-      <a href={personalInfo.resumeUrl} class="download-btn flex items-center gap-2 no-underline text-[#263238] font-semibold text-[13px] leading-none px-4 h-[36px] rounded-[20px] transition-all duration-300 bg-[#eceff1] hover:bg-[#546e7a] hover:text-white">
-        <i class="fas fa-download text-xs"></i>
+    <!-- Download CTA -->
+    <div class="nav-actions justify-self-end flex items-center gap-3 max-md:hidden">
+      <a href={personalInfo.resumeUrl} class="download-btn flex items-center gap-2 no-underline text-[#faf9f5] font-[510] text-[14px] leading-none px-5 h-[36px] rounded-[10px] bg-[#141413] hover:bg-[#30302e] transition-all duration-200 shadow-[0_1px_2px_rgba(20,20,19,0.15)]">
+        <i class="fas fa-download text-[10px]"></i>
         <span>下載履歷</span>
       </a>
     </div>
 
     <div class="hamburger hidden flex-col justify-center items-center w-[30px] h-[30px] cursor-pointer p-[3px] max-md:flex max-md:ml-[15px]">
-      <span class="block w-[25px] h-[3px] bg-[#263238] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative"></span>
-      <span class="block w-[25px] h-[3px] bg-[#263238] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative"></span>
-      <span class="block w-[25px] h-[3px] bg-[#263238] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative"></span>
+      <span class="block w-[22px] h-[2px] bg-[#141413] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative"></span>
+      <span class="block w-[22px] h-[2px] bg-[#141413] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative"></span>
+      <span class="block w-[22px] h-[2px] bg-[#141413] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative"></span>
     </div>
   </div>
 </nav>
-
-<script>
-  function updateNavbar() {
-    const navbar = document.querySelector('[data-navbar]');
-    if (!navbar) return;
-
-    const scrollY = window.scrollY;
-
-    if (scrollY > 50) {
-      navbar.classList.remove('bg-transparent', 'backdrop-blur-none');
-      navbar.classList.add('bg-white/90', 'backdrop-blur-md');
-    } else {
-      navbar.classList.remove('bg-white/90', 'backdrop-blur-md');
-      navbar.classList.add('bg-transparent', 'backdrop-blur-none');
-    }
-  }
-
-  updateNavbar();
-  window.addEventListener('scroll', updateNavbar);
-</script>
-
-<style>
-  .dropdown-menu {
-    pointer-events: none;
-  }
-  .group:hover .dropdown-menu {
-    pointer-events: auto;
-  }
-
-</style>

@@ -2,7 +2,7 @@
 
 /* ===== Custom Fonts ===== */
 
-/* PingFang TC - 中文 (字重加一級) */
+/* PingFang TC - 中文 body (字重加一級) */
 @font-face {
   font-family: 'PingFang TC';
   src: url('/kennyreseme/fonts/PingFangTC-Medium.otf') format('opentype');
@@ -35,42 +35,107 @@
   font-display: swap;
 }
 
-/* Custom Tailwind Theme — Ethos Minimal */
+/* ===================================================================
+   Custom Tailwind Theme — Anthropic / Claude (Warm Parchment × Terracotta)
+   See DESIGN.md for full rationale.
+   =================================================================== */
 @theme {
-  --color-primary: #263238;
-  --color-secondary: #3d4f5f;
-  --color-accent: #546e7a;
-  --color-bg: #f5f5f5;
-  --color-card: #ffffff;
-  --color-tag: #eceff1;
-  --color-border: #cfd8dc;
-  --color-primary-container: #cbe7f5;
-  --color-on-primary: #eceff1;
+  /* Background surfaces — warm cream canvas */
+  --color-bg: #f5f4ed;            /* Parchment — primary page bg */
+  --color-panel: #faf9f5;         /* Ivory — elevated surface */
+  --color-surface: #e8e6dc;       /* Warm Sand — button/input bg */
+  --color-surface-alt: #f0eee6;   /* Border Cream */
+  --color-card: #faf9f5;          /* Ivory — standard card */
+  --color-dark-surface: #30302e;  /* Dark charcoal — dark sections */
+  --color-dark-bg: #141413;       /* Near Black — dark page bg */
 
-  --font-family-sans: 'Manrope', 'PingFang TC', 'Noto Sans TC', sans-serif;
-  --font-family-body: 'Inter', 'PingFang TC', 'Noto Sans TC', sans-serif;
-  --font-family-display: 'Manrope', 'PingFang TC', 'Noto Sans TC', sans-serif;
+  /* Text — warm-toned neutrals */
+  --color-primary: #141413;       /* Anthropic Near Black */
+  --color-secondary: #3d3d3a;     /* Dark Warm */
+  --color-tertiary: #5e5d59;      /* Olive Gray */
+  --color-quaternary: #87867f;    /* Stone Gray */
+  --color-on-dark: #b0aea5;       /* Warm Silver — text on dark */
+
+  /* Brand — Terracotta */
+  --color-accent: #c96442;        /* Terracotta Brand (true value) */
+  --color-accent-hover: #d97757;  /* Coral — lighter hover */
+  --color-accent-pressed: #b5532f;
+  --color-accent-text: #c96442;
+  --color-accent-tint: #faebe0;   /* Warm terracotta tint bg */
+  --color-accent-tint-strong: #f4d9c5;
+
+  /* Borders — warm cream */
+  --color-border: #f0eee6;        /* Border Cream — barely visible */
+  --color-border-strong: #e8e6dc; /* Border Warm — section dividers */
+  --color-border-dark: #30302e;
+
+  /* Ring shadows (Anthropic signature) */
+  --ring-warm: #d1cfc5;
+  --ring-deep: #c2c0b6;
+
+  /* Status */
+  --color-success: #10b981;
+  --color-error: #b53333;         /* Error Crimson — warm red */
+  --color-focus: #3898ec;         /* Focus Blue — only cool color */
+
+  /* Typography
+     Body: SF Pro on Apple devices, Inter elsewhere (legal fallback)
+     Display: Fraunces serif, Noto Serif TC for Chinese */
+  --font-family-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro', 'Inter Variable', 'Inter', 'PingFang TC', 'Noto Sans TC', sans-serif;
+  --font-family-body: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro', 'Inter Variable', 'Inter', 'PingFang TC', 'Noto Sans TC', sans-serif;
+  --font-family-display: 'Lora', 'Tiempos Headline', 'Noto Serif TC', 'Source Han Serif TC', 'Songti TC', Georgia, 'Times New Roman', serif;
+  --font-family-serif: 'Lora', 'Tiempos Headline', 'Noto Serif TC', 'Source Han Serif TC', 'Songti TC', Georgia, serif;
+  --font-family-mono: 'Berkeley Mono', 'ui-monospace', 'SF Mono', 'Menlo', monospace;
 }
 
 /* Base Styles */
 html {
   scroll-behavior: smooth;
+  background-color: #f5f4ed;
 }
 
 body {
   font-family: var(--font-family-body);
-  font-size: 1.0625rem; /* 17px base */
-  color: #263238;
-  line-height: 1.7;
-  letter-spacing: 0.01em;
+  font-feature-settings: "cv01", "ss03";
+  font-size: 1rem; /* 16px base */
+  color: #141413;
+  background-color: #f5f4ed;
+  line-height: 1.6;  /* Anthropic-signature relaxed reading */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Enable Inter OpenType features on sans text */
+*:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(.font-serif) {
+  font-feature-settings: "cv01", "ss03";
+}
+
+/* Anthropic Serif headings — Lora (literary, rounded, wider proportions).
+   Weight range 400-700 available; use 600 as default so Chinese (Noto Serif TC
+   fallback) reads with proper presence alongside Latin. */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-display);
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.15;
+  color: #141413;
 }
+
+/* Utility: force serif display */
+.font-serif {
+  font-family: var(--font-family-display);
+  font-weight: 600;
+}
+
+/* Display-size adjustments (tighter for larger) */
+.display-xl { line-height: 1.10; }  /* 64px+ hero */
+.display-lg { line-height: 1.15; }
+.display-md { line-height: 1.20; }
+.display-sm { line-height: 1.30; }
+
+/* Linear holdover weight class — remap to 500 (Anthropic uses single serif weight) */
+.font-weight-510 { font-weight: 500; }
+.font-weight-590 { font-weight: 500; }
 
 /* Scroll Animation Base */
 .scroll-fade-in {
@@ -99,15 +164,6 @@ h1, h2, h3, h4, h5, h6 {
 .scroll-fade-in-up:nth-child(5) { transition-delay: 0.5s; }
 .scroll-fade-in-up:nth-child(6) { transition-delay: 0.6s; }
 
-/* Navbar Scrolled State */
-.navbar.scrolled {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  box-shadow: 0 4px 24px rgba(38, 50, 56, 0.08);
-  transform: scale(1.02);
-}
-
 /* Hamburger Active State */
 .hamburger.active span:nth-child(2) {
   opacity: 0;
@@ -125,10 +181,10 @@ h1, h2, h3, h4, h5, h6 {
   left: 0 !important;
 }
 
-/* Nav Link Active State */
+/* Nav Link Active State — terracotta */
 .nav-link.active {
-  background: #546e7a;
-  color: white;
+  color: #c96442;
+  background: #faebe0;
 }
 
 /* Project Card Filter Animation */
@@ -142,18 +198,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
+  from { opacity: 0; transform: scale(0.98); }
   to { opacity: 1; transform: scale(1); }
 }
 
-/* Page Transition Overlay */
+/* Page Transition Overlay — parchment */
 .page-fade-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #f5f5f5;
+  background: #f5f4ed;
   z-index: 9999;
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -164,14 +220,14 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
 }
 
-/* Skill Card Hover */
+/* Skill Card — ring shadow on hover (Anthropic signature) */
 .skill-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(38, 50, 56, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px #d1cfc5, 0 4px 24px rgba(20, 20, 19, 0.05);
 }
 
 /* Project Card Hover */
@@ -179,8 +235,14 @@ h1, h2, h3, h4, h5, h6 {
   transition: opacity 0.3s ease;
 }
 
-/* Background Pattern for Skills Section */
+/* Background Pattern — faint terracotta dots on parchment */
 .skills-pattern {
-  background-image: radial-gradient(#cfd8dc 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-image: radial-gradient(rgba(201, 100, 66, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Selection color — terracotta tint */
+::selection {
+  background: rgba(201, 100, 66, 0.25);
+  color: #141413;
 }

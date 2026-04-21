@@ -13,39 +13,39 @@ const base = import.meta.env.BASE_URL;
 <div class="project-card group">
   <!-- 圖片區 -->
   <a href={`${base}/projects/${project.slug}`} class="block no-underline">
-    <div class="relative aspect-[4/3] rounded-lg overflow-hidden border border-[#cfd8dc] mb-5 transition-all duration-300 group-hover:border-[#546e7a]/40">
+    <div class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-[#e8e6dc] mb-4 transition-all duration-300 group-hover:shadow-[0_0_0_1px_#d1cfc5,0_4px_24px_rgba(20,20,19,0.05)]">
       {project.coverImage ? (
         <img
           src={project.coverImage}
           alt={`${project.title}封面`}
-          class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-500 group-hover:brightness-90"
+          class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-500 group-hover:scale-[1.02]"
         />
       ) : (
-        <div class="w-full h-full flex items-center justify-center text-6xl text-[#cfd8dc] bg-[#eceff1]">
+        <div class="w-full h-full flex items-center justify-center text-6xl text-[#b0aea5] bg-[#f3f4f5]">
           <i class={icon || 'fas fa-folder'}></i>
         </div>
       )}
       <!-- 精選 badge -->
       {project.featured && (
         <div class="absolute top-3 left-3 z-10">
-          <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#263238]/75 backdrop-blur-sm text-white text-[10px] font-semibold tracking-wider rounded-full">
-            <i class="fas fa-star text-amber-400 text-[8px]"></i>
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#faebe0]/95 backdrop-blur-sm text-[#b5623d] text-[10px] font-[590] tracking-wider rounded-full border border-[#c96442]/20">
+            <i class="fas fa-star text-[#c96442] text-[8px]"></i>
             精選
           </span>
         </div>
       )}
       <!-- App Store / Google Play overlay -->
       {(project.links.appstore || project.links.googleplay) && (
-        <div class="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div class="absolute top-3 right-3 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           {project.links.appstore && (
             <a
               href={project.links.appstore}
               target="_blank"
               rel="noopener noreferrer"
-              class="w-9 h-9 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-[#263238] no-underline transition-all duration-300 hover:bg-white"
+              class="w-8 h-8 bg-[#faf9f5]/90 backdrop-blur-sm border border-[#f0eee6] rounded-full flex items-center justify-center text-[#141413] no-underline transition-all duration-200 hover:bg-[#faf9f5] hover:border-[#c96442]/40"
               title="App Store"
             >
-              <i class="fab fa-apple text-sm"></i>
+              <i class="fab fa-apple text-[15px]"></i>
             </a>
           )}
           {project.links.googleplay && (
@@ -53,10 +53,10 @@ const base = import.meta.env.BASE_URL;
               href={project.links.googleplay}
               target="_blank"
               rel="noopener noreferrer"
-              class="w-9 h-9 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-[#263238] no-underline transition-all duration-300 hover:bg-white"
+              class="w-8 h-8 bg-[#faf9f5]/90 backdrop-blur-sm border border-[#f0eee6] rounded-full flex items-center justify-center text-[#141413] no-underline transition-all duration-200 hover:bg-[#faf9f5] hover:border-[#c96442]/40"
               title="Google Play"
             >
-              <i class="fab fa-google-play text-sm"></i>
+              <i class="fab fa-google-play text-[14px]"></i>
             </a>
           )}
         </div>
@@ -65,26 +65,26 @@ const base = import.meta.env.BASE_URL;
   </a>
 
   <!-- 文字區 -->
-  <div class="flex items-start justify-between gap-4">
+  <div class="flex items-start justify-between gap-3">
     <div class="flex-1 min-w-0">
-      <div class="flex items-center gap-3 mb-2">
-        <span class="text-[10px] font-semibold text-[#3d4f5f] uppercase tracking-[0.12em]">
+      <div class="flex items-center gap-2.5 mb-2">
+        <span class="text-[10px] font-[590] text-[#c96442] uppercase tracking-[0.12em]">
           {project.categories[0]}
         </span>
-        <div class="h-[1px] w-8 bg-[#90a4ae]/40 flex-shrink-0"></div>
-        <span class="text-[10px] text-[#3d4f5f] truncate">{project.techStack[0]}</span>
+        <div class="h-px w-6 bg-black/[0.1] flex-shrink-0"></div>
+        <span class="text-[10px] text-[#87867f] truncate font-[510]">{project.techStack[0]}</span>
       </div>
       <!-- 標題可點擊 -->
       <a href={`${base}/projects/${project.slug}`} class="no-underline">
-        <h3 class="text-lg font-semibold text-[#263238] mb-1.5 leading-tight transition-colors duration-300 group-hover:text-[#546e7a]">{project.title}</h3>
+        <h3 class="text-[25px] font-[600] text-[#141413] mb-1 leading-[1.25] tracking-[-0.02em] transition-colors duration-200 group-hover:text-[#c96442]">{project.title}</h3>
       </a>
-      <p class="text-sm text-[#3d4f5f] leading-relaxed line-clamp-2">{project.description}</p>
+      <p class="text-[15px] text-[#87867f] leading-[1.5] line-clamp-2">{project.description}</p>
     </div>
     <a
       href={`${base}/projects/${project.slug}`}
-      class="flex-shrink-0 w-9 h-9 rounded-full border border-[#cfd8dc] flex items-center justify-center text-[#3d4f5f] no-underline transition-all duration-300 hover:bg-[#546e7a] hover:border-[#546e7a] hover:text-white mt-1"
+      class="flex-shrink-0 w-8 h-8 rounded-full border border-[#e8e6dc] flex items-center justify-center text-[#5e5d59] no-underline transition-all duration-200 hover:bg-[#141413] hover:border-[#141413] hover:text-[#faf9f5] mt-0.5"
     >
-      <i class="fas fa-arrow-right text-xs"></i>
+      <i class="fas fa-arrow-right text-[13px]"></i>
     </a>
   </div>
 </div>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CURATOR | Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary": "#f3faff",
+              "on-tertiary-fixed": "#2f4155",
+              "surface-container-low": "#f2f4f4",
+              "secondary-dim": "#49555b",
+              "inverse-primary": "#ceeaf8",
+              "surface": "#f9f9f9",
+              "surface-bright": "#f9f9f9",
+              "secondary-fixed": "#d7e4ec",
+              "on-tertiary-container": "#415368",
+              "primary-container": "#cbe7f5",
+              "primary": "#48626e",
+              "error": "#9f403d",
+              "on-tertiary-fixed-variant": "#4b5d72",
+              "primary-dim": "#3c5662",
+              "tertiary-dim": "#435569",
+              "tertiary-fixed-dim": "#c3d6ef",
+              "outline": "#757c7d",
+              "error-container": "#fe8983",
+              "primary-fixed-dim": "#bdd9e6",
+              "tertiary-fixed": "#d1e4fe",
+              "surface-container": "#ebeeef",
+              "on-error": "#fff7f6",
+              "surface-container-lowest": "#ffffff",
+              "on-background": "#2d3435",
+              "background": "#f9f9f9",
+              "on-tertiary": "#f7f9ff",
+              "on-surface": "#2d3435",
+              "surface-dim": "#d4dbdd",
+              "on-secondary-fixed": "#354147",
+              "error-dim": "#4e0309",
+              "surface-variant": "#dde4e5",
+              "inverse-on-surface": "#9c9d9d",
+              "surface-container-highest": "#dde4e5",
+              "on-surface-variant": "#5a6061",
+              "on-primary-fixed": "#29434e",
+              "outline-variant": "#adb3b4",
+              "on-primary-container": "#3c5561",
+              "tertiary": "#4e6176",
+              "secondary-container": "#d7e4ec",
+              "on-primary": "#eff9ff",
+              "inverse-surface": "#0c0f0f",
+              "tertiary-container": "#d1e4fe",
+              "primary-fixed": "#cbe7f5",
+              "secondary": "#546168",
+              "on-secondary-fixed-variant": "#515d64",
+              "surface-container-high": "#e4e9ea",
+              "secondary-fixed-dim": "#c9d6de",
+              "on-primary-fixed-variant": "#455f6b",
+              "on-error-container": "#752121",
+              "on-secondary-container": "#47545a",
+              "surface-tint": "#48626e"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            color: #2d3435;
+        }
+        .hero-text-shadow {
+            text-shadow: 0 4px 12px rgba(45, 52, 53, 0.03);
+        }
+    </style>
+</head>
+<body class="bg-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0_10px_40px_rgba(45,52,53,0.06)] dark:shadow-none">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-6">
+<a class="text-xl font-bold tracking-tighter text-slate-800 dark:text-slate-100 font-headline uppercase" href="#">
+                CURATOR
+            </a>
+<div class="hidden md:flex items-center gap-10 font-manrope text-sm tracking-tight text-slate-700 dark:text-slate-300">
+<a class="text-slate-900 dark:text-white font-semibold border-b-2 border-slate-800 dark:border-slate-200 pb-1" href="#">Home</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Projects</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">About</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded-lg font-medium text-sm scale-95 active:scale-90 transition-transform hover:bg-primary-dim shadow-sm">
+                Get in Touch
+            </button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+<!-- Hero Content -->
+<div class="lg:col-span-7 space-y-12">
+<div class="space-y-4">
+<span class="inline-block text-xs font-label tracking-widest text-primary font-semibold uppercase">
+                            Digital Product Designer • Based in London
+                        </span>
+<h1 class="text-6xl md:text-7xl lg:text-[5.5rem] font-headline font-extrabold leading-[1.05] tracking-tight text-on-background hero-text-shadow">
+                            I'm a UI/UX Designer <br/>
+<span class="text-outline-variant">creating thoughtful</span> <br/>
+                            digital experiences.
+                        </h1>
+</div>
+<p class="text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-xl font-body">
+                        Specializing in minimalist interface design and editorial-style digital products that prioritize clarity, emotion, and functional elegance.
+                    </p>
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-8 pt-4">
+<button class="group relative flex items-center gap-3 bg-primary text-on-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-dim transition-all shadow-md active:scale-95">
+                            View My Projects
+                            <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<a class="text-on-surface font-semibold text-lg border-b-2 border-transparent hover:border-primary transition-all pb-1 flex items-center gap-2 group" href="#">
+                            Latest Case Study
+                            <span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">north_east</span>
+</a>
+</div>
+</div>
+<!-- Hero Visual (Asymmetric Bento Card) -->
+<div class="lg:col-span-5 relative">
+<div class="relative w-full aspect-[4/5] bg-surface-container-low rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(45,52,53,0.08)]">
+<img alt="Professional portrait" class="w-full h-full object-cover grayscale brightness-110 contrast-105" data-alt="Minimalist high-end black and white professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkQzVk5j227BDH1zkuQq6BopBa2KandQfKhKMOppT4ykPW-fMWQ632bMBO7qfuIlWE3KjLUujpCRqEfOKXhdd0tQ2SaMb9oePMqgU30sk-VB9NIYglaBk6KJ_9ryD_7r27WyxdEQw4uTVLx_pjEOb85Oos22vCBSGKLdg-keDTFdpOg8NSqqGK6JEWkIxJ4xoNNlBzx4_9DQin-FX81JIdBefL5tctGPXJbANGGFwf7gtz4PE64jUS0TQ5p55ctN_JT1tz0QHvolRl"/>
+<!-- Floating Glass Metric -->
+<div class="absolute bottom-6 left-6 right-6 p-6 bg-white/60 backdrop-blur-xl rounded-xl border border-white/20 shadow-xl">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[0.65rem] font-label tracking-widest text-on-surface-variant uppercase mb-1">Status</p>
+<p class="text-sm font-headline font-bold text-on-background">Available for projects</p>
+</div>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-primary-container flex items-center justify-center text-[10px] font-bold">24</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-primary-container/30 rounded-full blur-3xl -z-10"></div>
+</div>
+</div>
+</section>
+<!-- Featured Section (Bento Grid) -->
+<section class="py-32 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex justify-between items-end mb-20">
+<div class="space-y-4">
+<span class="text-xs font-label tracking-widest text-primary uppercase">Curated Work</span>
+<h2 class="text-4xl font-headline font-bold tracking-tight">Selected Projects</h2>
+</div>
+<a class="hidden md:flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors font-medium" href="#">
+                        Explore Archive
+                        <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Project Card 1 (Large) -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="bg-surface-container-low rounded-xl overflow-hidden transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(45,52,53,0.1)] group-hover:-translate-y-1">
+<div class="aspect-[16/9] w-full overflow-hidden">
+<img alt="Project dashboard" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Modern high-fidelity SaaS dashboard interface design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl5jsmaovwFbeaDXE-yiU1Hy1gjQdj-mKxOV2Ym8yP92ZzOb6cgVtFRFj2DBAxgHYAyyQwd8EmXVt7UeV0jgkjhAei2gs0ibuLTZD8D4MlKgik17-ZXcAKxPXPyGVSyBCp4Oi5vZly6EAawq9Oy0JVBd6TyKVpzh35sWEIjsuec0-NqVeKzk3JAnViFvVMj3xj0AMGfAfpexhGsYddmaGvLh9jJB08Sm1bc64gmq4WqOYgbPpjTpKJW123tsLbFFfPyN_ctaIGWFcN"/>
+</div>
+<div class="p-8">
+<p class="text-[0.7rem] font-label tracking-[0.15em] text-primary uppercase mb-3">FinTech • 2024</p>
+<h3 class="text-2xl font-headline font-bold mb-4">Lumina Banking Experience</h3>
+<p class="text-on-surface-variant leading-relaxed max-w-lg font-body">Redesigning the future of personal wealth management through data-driven clarity and minimalist aesthetics.</p>
+</div>
+</div>
+</div>
+<!-- Project Card 2 (Vertical) -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="h-full bg-surface-container-low rounded-xl overflow-hidden transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(45,52,53,0.1)] group-hover:-translate-y-1">
+<div class="aspect-[4/5] w-full overflow-hidden">
+<img alt="Abstract mobile design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Minimalist abstract mobile app interface visuals" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNG_tmGj-e7xiQc3wJ4NGGC3RJkiyZYB5Kn1w-aRm8qKQiNAf1rauJ5gvMUMwJIHE1wsxFsB_T1qFHlkkvMqbSnwFw0b7Ayg39eu3L3VlJOSRC2-cZ81Zz__L44MKrFRQCtOU25xFSeVy80XE8DY2QrzxYnpCeIkzAKHB8jfqfODui8bdbdixtoIA5m86Cr-D4hBp3DVvnVjLrFMUlYFd7dDaowmIKjHy4G8RTPR1SIcHR64BZpK58jTlS4KiignEXkTxMyF5_xDRY"/>
+</div>
+<div class="p-8">
+<p class="text-[0.7rem] font-label tracking-[0.15em] text-primary uppercase mb-3">Mobile • 2023</p>
+<h3 class="text-2xl font-headline font-bold mb-4">Oasis Wellness</h3>
+<p class="text-on-surface-variant leading-relaxed font-body">A sanctuary in your pocket. Focus on meditation and holistic health tracking.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-8">
+<div class="bg-surface-container-lowest p-12 md:p-24 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-12 shadow-[0_10px_40px_rgba(45,52,53,0.04)]">
+<div class="max-w-xl text-center md:text-left">
+<h2 class="text-4xl md:text-5xl font-headline font-extrabold tracking-tight mb-6">Let's create something meaningful together.</h2>
+<p class="text-on-surface-variant text-lg font-body">Currently accepting new projects for Q3 2024. Reach out for a consultation.</p>
+</div>
+<div class="flex flex-col gap-4 w-full md:w-auto">
+<button class="bg-on-background text-surface px-10 py-5 rounded-lg font-bold text-lg hover:bg-black transition-all text-center">
+                            Start a Conversation
+                        </button>
+<button class="flex items-center justify-center gap-2 py-4 font-semibold text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">mail</span>
+                            hello@digitalcurator.com
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-20 bg-slate-50 dark:bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-8 gap-8">
+<p class="font-inter text-xs tracking-widest uppercase text-slate-600 dark:text-slate-400">
+                © 2024 The Digital Curator. All rights reserved.
+            </p>
+<div class="flex gap-12">
+<a class="font-inter text-xs tracking-widest uppercase text-slate-400 dark:text-slate-600 hover:text-slate-800 dark:hover:text-slate-200 underline decoration-slate-300 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">LinkedIn</a>
+<a class="font-inter text-xs tracking-widest uppercase text-slate-400 dark:text-slate-600 hover:text-slate-800 dark:hover:text-slate-200 underline decoration-slate-300 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Dribbble</a>
+<a class="font-inter text-xs tracking-widest uppercase text-slate-400 dark:text-slate-600 hover:text-slate-800 dark:hover:text-slate-200 underline decoration-slate-300 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Read.cv</a>
+</div>
+</div>
+</footer>
+</body></html>
