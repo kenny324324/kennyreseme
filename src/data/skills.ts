@@ -22,7 +22,7 @@ export const skillCategories: SkillCategory[] = [
         icon: 'fab fa-microsoft',
         brand: 'dotnet',
         iconColor: '#512BD4',
-        description: '精通商業邏輯開發、硬體整合、平台特定功能實作與跨平台架構設計。'
+        description: '熟悉商業邏輯開發、硬體整合、平台特定功能實作與跨平台架構設計。'
       },
       {
         name: 'UI/UX 設計',

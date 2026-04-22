@@ -79,12 +79,12 @@
   --color-focus: #3898ec;         /* Focus Blue — only cool color */
 
   /* Typography
-     Body: SF Pro on Apple devices, Inter elsewhere (legal fallback)
-     Display: Fraunces serif, Noto Serif TC for Chinese */
-  --font-family-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro', 'Inter Variable', 'Inter', 'PingFang TC', 'Noto Sans TC', sans-serif;
-  --font-family-body: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro', 'Inter Variable', 'Inter', 'PingFang TC', 'Noto Sans TC', sans-serif;
-  --font-family-display: 'Lora', 'Tiempos Headline', 'Noto Serif TC', 'Source Han Serif TC', 'Songti TC', Georgia, 'Times New Roman', serif;
-  --font-family-serif: 'Lora', 'Tiempos Headline', 'Noto Serif TC', 'Source Han Serif TC', 'Songti TC', Georgia, serif;
+     Latin/digits: Lato (sans), Libre Baskerville (serif)
+     Chinese: PingFang TC / Noto Sans TC / Noto Serif TC via fallback chain */
+  --font-family-sans: 'Lato', 'PingFang TC', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-body: 'Lato', 'PingFang TC', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-display: 'Libre Baskerville', 'Noto Serif TC', 'Source Han Serif TC', 'Songti TC', Georgia, 'Times New Roman', serif;
+  --font-family-serif: 'Libre Baskerville', 'Noto Serif TC', 'Source Han Serif TC', 'Songti TC', Georgia, serif;
   --font-family-mono: 'Berkeley Mono', 'ui-monospace', 'SF Mono', 'Menlo', monospace;
 }
 

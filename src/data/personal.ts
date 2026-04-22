@@ -6,8 +6,8 @@ export const personalInfo: PersonalInfo = {
     en: 'Kenny Yu'
   },
   title: {
-    zh: 'UI/UX 跨平台工程師',
-    en: 'UI/UX Cross-Platform Engineer'
+    zh: 'UI/UX 與 App 開發工程師',
+    en: 'UI/UX & App Developer'
   },
   email: 'kenny4work324@gmail.com',
   github: 'https://github.com/kenny324324',
