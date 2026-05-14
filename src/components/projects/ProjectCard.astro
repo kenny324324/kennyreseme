@@ -13,7 +13,7 @@ const base = import.meta.env.BASE_URL;
 <div class="project-card group">
   <!-- 圖片區 -->
   <a href={`${base}/projects/${project.slug}`} class="block no-underline">
-    <div class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-[#e8e6dc] mb-4 transition-all duration-300 group-hover:shadow-[0_0_0_1px_#d1cfc5,0_4px_24px_rgba(20,20,19,0.05)]">
+    <div class="relative aspect-[4/3] overflow-hidden border border-[#e8e6dc] mb-4 transition-all duration-300 group-hover:shadow-[0_0_0_1px_#d1cfc5,0_4px_24px_rgba(20,20,19,0.05)]">
       {project.coverImage ? (
         <img
           src={project.coverImage}
@@ -42,7 +42,7 @@ const base = import.meta.env.BASE_URL;
               href={project.links.appstore}
               target="_blank"
               rel="noopener noreferrer"
-              class="w-8 h-8 bg-[#faf9f5]/90 backdrop-blur-sm border border-[#f0eee6] rounded-full flex items-center justify-center text-[#141413] no-underline transition-all duration-200 hover:bg-[#faf9f5] hover:border-[#c96442]/40"
+              class="w-8 h-8 bg-[#faf9f5]/90 backdrop-blur-sm border border-[#f0eee6] rounded-md flex items-center justify-center text-[#141413] no-underline transition-all duration-200 hover:bg-[#faf9f5] hover:border-[#c96442]/40"
               title="App Store"
             >
               <i class="fab fa-apple text-[15px]"></i>
@@ -53,7 +53,7 @@ const base = import.meta.env.BASE_URL;
               href={project.links.googleplay}
               target="_blank"
               rel="noopener noreferrer"
-              class="w-8 h-8 bg-[#faf9f5]/90 backdrop-blur-sm border border-[#f0eee6] rounded-full flex items-center justify-center text-[#141413] no-underline transition-all duration-200 hover:bg-[#faf9f5] hover:border-[#c96442]/40"
+              class="w-8 h-8 bg-[#faf9f5]/90 backdrop-blur-sm border border-[#f0eee6] rounded-md flex items-center justify-center text-[#141413] no-underline transition-all duration-200 hover:bg-[#faf9f5] hover:border-[#c96442]/40"
               title="Google Play"
             >
               <i class="fab fa-google-play text-[14px]"></i>
@@ -82,7 +82,7 @@ const base = import.meta.env.BASE_URL;
     </div>
     <a
       href={`${base}/projects/${project.slug}`}
-      class="flex-shrink-0 w-8 h-8 rounded-full border border-[#e8e6dc] flex items-center justify-center text-[#5e5d59] no-underline transition-all duration-200 hover:bg-[#141413] hover:border-[#141413] hover:text-[#faf9f5] mt-0.5"
+      class="flex-shrink-0 w-8 h-8 rounded-md border border-[#e8e6dc] flex items-center justify-center text-[#5e5d59] no-underline transition-all duration-200 hover:bg-[#141413] hover:border-[#141413] hover:text-[#faf9f5] mt-0.5"
     >
       <i class="fas fa-arrow-right text-[13px]"></i>
     </a>
