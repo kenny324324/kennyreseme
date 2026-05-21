@@ -76,10 +76,10 @@ const projectMeta: Record<string, ProjectMeta> = {
   bus: {
     slug: 'bus',
     title: '跳蛙公車2.0',
-    subtitle: '跨平台公車購票與交通管理系統',
-    description: '跳蛙公車2.0幫助民眾在規劃公車行程時更快地完成購票和在地圖上自訂創建募集路線',
+    subtitle: '公司商業專案｜跨平台交通購票 App 改版',
+    description: '跳蛙公車 2.0 是公司承接的交通購票 App 改版專案。我在專案中負責 Figma 介面規劃與 .NET MAUI App 開發，參與購票流程、募集路線地圖、Google 登入與 Firebase 推播等功能，協助產品完成 App Store 與 Google Play 上架。',
     categories: ['maui'],
-    techStack: ['.NET MAUI', 'Google登入', '地圖整合', 'Firebase推播', 'UI改版'],
+    techStack: ['.NET MAUI', 'Figma', 'Google登入', '地圖整合', 'Firebase推播', 'UI改版'],
     folder: 'Bus',
     defaultLinks: {
       appstore: 'https://apps.apple.com/tw/app/%E8%B7%B3%E8%9B%99%E5%85%AC%E8%BB%8A2-0/id6667097903',
@@ -89,19 +89,19 @@ const projectMeta: Record<string, ProjectMeta> = {
   tuan: {
     slug: 'tuan',
     title: '今皓TUAN AI助理APP',
-    subtitle: 'AI 驅動的虛擬 IP 互動應用',
-    description: 'AI 驅動的虛擬 IP 互動應用，整合第三方登入、AI助理聊天控制Google行事曆功能',
+    subtitle: '公司商業專案｜AI 虛擬 IP 互動 App',
+    description: '今皓 TUAN AI 助理 App 是公司承接的虛擬 IP 互動應用，目標是讓使用者透過語音或文字和授權藝人角色對話。我參與 .NET MAUI App 開發，負責第三方登入、語音輸入、AI 助理互動與 Google 行事曆流程，並協助串接多項 AI 與影像相關服務。',
     categories: ['maui', 'ai'],
-    techStack: ['.NET MAUI', '第三方登入', 'AI助理', 'Google行事曆'],
+    techStack: ['.NET MAUI', 'AI助理', '語音輸入', '第三方登入', 'Google行事曆'],
     folder: 'Tuan'
   },
   pos: {
     slug: 'pos',
     title: '島嶼生吐司 手持POS',
-    subtitle: '商業手持 POS 系統',
-    description: '商業手持 POS 系統，整合條碼掃描硬體、API串接與特殊機型功能實作',
+    subtitle: '公司商業專案｜內部營運手持 POS',
+    description: '島嶼生吐司手持 POS 是供內部司機、門市與倉庫使用的營運 App，用來處理進貨、銷貨、庫存核對與單據追蹤。我負責 .NET MAUI App 與前端實作，串接後端 API 並整合條碼掃描流程，讓現場人員能用掃描與數量核對完成日常作業。',
     categories: ['maui'],
-    techStack: ['.NET MAUI', '硬體整合', '條碼掃描', 'API串接'],
+    techStack: ['.NET MAUI', 'API串接', '硬體整合', '條碼掃描', '內部系統'],
     folder: 'POS'
   },
   justai: {
@@ -116,8 +116,8 @@ const projectMeta: Record<string, ProjectMeta> = {
   mino: {
     slug: 'mino',
     title: 'Mino 待辦清單',
-    subtitle: 'SwiftUI 個人待辦管理 APP',
-    description: 'SwiftUI開發的待辦清單APP，具備推播提醒、iCloud資料儲存、UI規劃與App Store上架',
+    subtitle: '個人作品｜第一個 SwiftUI 上架 App',
+    description: 'Mino 是我第一次把個人 App 從想法做到 App Store 上架的作品，題目選擇待辦清單，是為了完整練習 iOS App 常見的資料、提醒與同步流程。我負責 UI 設計、SwiftUI 開發、待辦資料管理、iCloud 同步與本地推播提醒，也透過這個專案建立完整的 iOS 開發與上架流程經驗。',
     categories: ['swift'],
     techStack: ['SwiftUI', 'iCloud', '推播提醒', 'App Store', '自主學習'],
     folder: 'Mino'
@@ -125,8 +125,8 @@ const projectMeta: Record<string, ProjectMeta> = {
   mish: {
     slug: 'mish',
     title: 'Mish 閱讀筆記',
-    subtitle: '極簡風格的閱讀紀錄與書籍管理 APP',
-    description: '以「極簡」為核心的 Flutter 閱讀紀錄 APP，整合 Google Books API、Firebase 雲端同步、閱讀統計、多語言支援與訂閱功能，已上架 App Store',
+    subtitle: '個人作品｜Flutter 閱讀紀錄與書籍管理 App',
+    description: 'Mish 從「極簡書櫃」這個概念出發，想讓閱讀紀錄、心得與書籍探索都能維持輕量、不打擾。我使用 Flutter 完成跨平台介面與功能架構，整合 Google Books API、Firebase 雲端同步、閱讀統計、7 種語言與訂閱功能；這也是我第一個 Flutter 專案，累積了 RevenueCat 訂閱與 App Store 審核經驗。',
     categories: ['flutter'],
     techStack: ['Flutter', 'Firebase', 'Google Books API', 'RevenueCat', 'Provider', '多語言（7種）', '自主學習'],
     folder: 'MIsh',
@@ -137,8 +137,8 @@ const projectMeta: Record<string, ProjectMeta> = {
   pickup: {
     slug: 'pickup',
     title: 'Pickup 取貨吧',
-    subtitle: '包裹追蹤・貨態查詢工具',
-    description: '整合多種主流物流的一站式包裹追蹤工具，支援 AI 截圖辨識與即時推播通知',
+    subtitle: '個人作品｜SwiftUI 包裹追蹤與貨態查詢 App',
+    description: 'Pickup 取貨吧的出發點，是解決自己網購時需要在不同物流網站之間來回查詢的麻煩。這款 App 以 SwiftUI 搭配 Firebase 建立完整架構，實作 AI 截圖辨識、物流查詢、即時推播、小工具、統計儀表板與 StoreKit 2 訂閱功能，讓待取包裹可以集中管理；目前已上架 App Store。',
     categories: ['swift'],
     techStack: ['SwiftUI', 'Firebase', 'Gemini AI', 'SwiftData', 'WidgetKit', 'StoreKit 2', '自主學習'],
     folder: 'Pickup'
@@ -146,8 +146,8 @@ const projectMeta: Record<string, ProjectMeta> = {
   findtoilets: {
     slug: 'findtoilets',
     title: 'FindToilets 找廁所',
-    subtitle: '附近廁所地圖查詢工具',
-    description: '專為台灣設計的公廁地圖查詢工具，整合環境部公開資料與社群評分功能',
+    subtitle: '個人作品｜台灣公廁地圖查詢 App',
+    description: 'FindToilets 來自外出時臨時找不到廁所的不便，因此我把它做成專門查詢台灣公廁的地圖 App。專案使用 SwiftUI、MapKit 與 CloudKit，整合環境部公開資料、地點分組、樓層解析、動態標記管理與社群評分功能，讓使用者能更快找到附近可用的廁所；目前已上架 App Store。',
     categories: ['swift'],
     techStack: ['SwiftUI', 'MapKit', 'CloudKit', 'CoreLocation'],
     folder: 'FindToilets'
@@ -155,8 +155,8 @@ const projectMeta: Record<string, ProjectMeta> = {
   spostats: {
     slug: 'spostats',
     title: 'spo.stats for Spotify',
-    subtitle: '以圖表為核心的 Spotify 個人聆聽統計 APP',
-    description: '以圖表視覺化為核心的 Spotify 個人聆聽統計 APP，使用 SwiftUI 原生開發，支援排名趨勢追蹤、多維度聆聽數據分析與 CloudKit 跨裝置同步，已上架 App Store',
+    subtitle: '個人作品｜Spotify 聆聽統計與圖表 App',
+    description: 'spo.stats 來自我想更直覺追蹤 Spotify 聆聽變化的需求，因此把歌曲、藝人與專輯排名做成以圖表為核心的 App。我使用 SwiftUI 原生繪圖實作排名趨勢、Spotify API 授權、歷史資料追蹤、CloudKit 跨裝置同步與圖表動畫；專案已上架 App Store，但受 Spotify API 配額政策限制，目前定位為個人使用工具。',
     categories: ['swift'],
     techStack: ['SwiftUI', 'Spotify API', 'OAuth 2.0 PKCE', 'CloudKit', '自主學習'],
     folder: 'SpoStats',
@@ -167,8 +167,8 @@ const projectMeta: Record<string, ProjectMeta> = {
   soulfeed: {
     slug: 'soulfeed',
     title: 'SoulFeed',
-    subtitle: 'AI 角色留言板 MVP',
-    description: '以 Flutter 開發的 AI 角色留言板 MVP，主要開發期約為 2025 年 12 月到 2026 年 1 月；目前為練習專案，尚未上架',
+    subtitle: '個人練習｜Flutter AI 角色留言板 MVP',
+    description: 'SoulFeed 嘗試把 AI 回覆包裝成像社群留言一樣的互動，而不是一般聊天機器人的單一回答。使用者輸入今天做的一件事後，多個 AI 角色會給出評論、分數與後續對話。我用 Flutter 完成介面、角色提示詞、登入、歷史紀錄、Firebase 同步與 Gemini / DeepSeek 串接；目前為練習專案，尚未上架。',
     categories: ['flutter'],
     techStack: ['Flutter', 'Gemini AI', 'DeepSeek', 'Firebase', '第三方登入', '自主學習'],
     folder: 'SoulFeed',

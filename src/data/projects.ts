@@ -19,9 +19,9 @@ export const appProjects: Project[] = [
   {
     slug: 'bus',
     title: '跳蛙公車2.0',
-    description: '完整的跨平台購票與交通管理系統，支援單程票、多日票購買，整合地圖服務、Google登入與Firebase推播通知',
+    description: '公司商業專案中的跨平台交通 App，參與 UI/UX 規劃與 .NET MAUI 開發，負責購票、地圖、登入與推播等功能',
     categories: ['maui'],
-    techStack: ['.NET MAUI', 'Google登入', '地圖整合', 'Firebase推播', 'UI改版'],
+    techStack: ['.NET MAUI', 'Figma', 'Google登入', '地圖整合', 'Firebase推播', 'UI改版'],
     coverImage: `${base}/documents/projects/Bus/cover.png`,
     links: {
       appstore: 'https://apps.apple.com/tw/app/%E8%B7%B3%E8%9B%99%E5%85%AC%E8%BB%8A2-0/id6667097903',
@@ -32,18 +32,18 @@ export const appProjects: Project[] = [
   {
     slug: 'tuan',
     title: '今皓TUAN AI助理APP',
-    description: 'AI 驅動的虛擬 IP 互動應用，整合第三方登入、AI助理聊天控制Google行事曆功能',
+    description: '公司商業專案中的 AI 虛擬 IP 互動 App，參與 .NET MAUI 開發，負責登入、語音互動與 Google 行事曆流程',
     categories: ['maui', 'ai'],
-    techStack: ['.NET MAUI', '第三方登入', 'AI助理', 'Google行事曆'],
+    techStack: ['.NET MAUI', 'AI助理', '語音輸入', '第三方登入', 'Google行事曆'],
     coverImage: `${base}/documents/projects/Tuan/cover.png`,
     links: {}
   },
   {
     slug: 'pos',
     title: '島嶼生吐司 手持POS',
-    description: '商業手持 POS 系統，整合條碼掃描硬體、API串接與特殊機型功能實作',
+    description: '島嶼生吐司內部營運用手持 POS，負責 .NET MAUI App 實作、API 串接與條碼掃描流程',
     categories: ['maui'],
-    techStack: ['.NET MAUI', '硬體整合', '條碼掃描', 'API串接'],
+    techStack: ['.NET MAUI', 'API串接', '硬體整合', '條碼掃描', '內部系統'],
     coverImage: `${base}/documents/projects/POS/cover.png`,
     links: {}
   },
@@ -59,7 +59,7 @@ export const appProjects: Project[] = [
   {
     slug: 'pickup',
     title: 'Pickup 取貨吧',
-    description: '整合多種主流物流的一站式包裹追蹤工具，支援 AI 截圖辨識與即時推播通知',
+    description: '為台灣網購族設計的包裹追蹤 App，用 SwiftUI 串起物流查詢、AI 截圖辨識、推播、小工具與訂閱功能',
     categories: ['swift'],
     techStack: ['SwiftUI', 'Firebase', 'Gemini AI', 'SwiftData', 'WidgetKit', 'StoreKit 2', '自主學習'],
     coverImage: `${base}/documents/projects/Pickup/cover.png`,
@@ -71,7 +71,7 @@ export const appProjects: Project[] = [
   {
     slug: 'mish',
     title: 'Mish 閱讀筆記',
-    description: '以「極簡」為核心的 Flutter 閱讀紀錄 APP，整合 Google Books API、Firebase 雲端同步、閱讀統計與多語言支援，已上架 App Store',
+    description: '以極簡書櫃為概念的 Flutter 閱讀紀錄 App，整合書籍搜尋、閱讀統計、Firebase 同步、多語言與訂閱功能',
     categories: ['flutter'],
     techStack: ['Flutter', 'Firebase', 'Google Books API', 'RevenueCat', '多語言（7種）', '自主學習'],
     coverImage: `${base}/documents/projects/MIsh/cover.png`,
@@ -83,7 +83,7 @@ export const appProjects: Project[] = [
   {
     slug: 'findtoilets',
     title: 'FindToilets 找廁所',
-    description: '專為台灣設計的公廁地圖查詢工具，整合環境部公開資料與社群評分功能',
+    description: '專為外出找廁所情境設計的台灣公廁地圖 App，使用 SwiftUI 整合公開資料、MapKit 與社群評分',
     categories: ['swift'],
     techStack: ['SwiftUI', 'MapKit', 'CloudKit', '自主學習'],
     coverImage: `${base}/documents/projects/FindToilets/cover.png`,
@@ -95,7 +95,7 @@ export const appProjects: Project[] = [
   {
     slug: 'mino',
     title: 'Mino 待辦清單',
-    description: 'SwiftUI開發的待辦清單APP，具備推播提醒、iCloud資料儲存、UI規劃與App Store上架',
+    description: '第一個獨立完成並上架的 SwiftUI App，從 UI 設計、待辦資料、iCloud 同步到推播提醒全程實作',
     categories: ['swift'],
     techStack: ['SwiftUI', 'iCloud', '推播提醒', 'App Store', '自主學習'],
     coverImage: `${base}/documents/projects/Mino/cover.png`,
@@ -106,7 +106,7 @@ export const appProjects: Project[] = [
   {
     slug: 'spostats',
     title: 'spo.stats for Spotify',
-    description: '以圖表視覺化為核心的 Spotify 個人聆聽統計 APP，支援排名趨勢追蹤、多維度聆聽數據分析與 CloudKit 跨裝置同步',
+    description: '把 Spotify 聆聽習慣轉成視覺化圖表的 SwiftUI App，自製排名趨勢圖並整合 CloudKit 同步',
     categories: ['swift'],
     techStack: ['SwiftUI', 'Spotify API', 'OAuth 2.0 PKCE', 'CloudKit', '自主學習'],
     coverImage: `${base}/documents/projects/SpoStats/cover.png`,
@@ -117,7 +117,7 @@ export const appProjects: Project[] = [
   {
     slug: 'soulfeed',
     title: 'SoulFeed',
-    description: '以 Flutter 開發的 AI 角色留言板 MVP，整合 Gemini、DeepSeek、登入與歷史紀錄功能',
+    description: 'Flutter AI 角色留言板 MVP，練習把 AI 回覆設計成像社群留言的互動體驗，整合登入與歷史紀錄',
     categories: ['flutter'],
     techStack: ['Flutter', 'Gemini AI', 'DeepSeek', 'Firebase', '自主學習'],
     coverImage: `${base}/documents/projects/SoulFeed/cover.png`,
@@ -149,7 +149,7 @@ export const systemProjects: Project[] = [
   {
     slug: 'smartdining',
     title: '大南方智慧餐飲',
-    description: '智慧餐飲點餐機UI/UX設計規劃，使用Figma完成介面設計稿，優化用戶點餐體驗與操作流程',
+    description: '智慧餐飲點餐機 UI/UX 設計規劃，使用 Figma 完成介面設計稿，改善用戶點餐體驗與操作流程',
     categories: ['ui-design'],
     techStack: ['Figma設計', 'UI/UX規劃', '用戶體驗'],
     coverImage: '',
