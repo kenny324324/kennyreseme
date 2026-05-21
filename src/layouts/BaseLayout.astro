@@ -78,7 +78,8 @@ const base = import.meta.env.BASE_URL;
 
       navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSection}`) {
+        const linkHash = new URL((link as HTMLAnchorElement).href).hash;
+        if (linkHash === `#${currentSection}`) {
           link.classList.add('active');
         }
       });
@@ -102,13 +103,16 @@ const base = import.meta.env.BASE_URL;
 
     // Smooth scrolling
     function initSmoothScrolling() {
-      document.querySelectorAll('a[href^="#"]').forEach(link => {
+      document.querySelectorAll('a[href*="#"]').forEach(link => {
         link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const targetId = (link as HTMLAnchorElement).getAttribute('href');
+          const linkUrl = new URL((link as HTMLAnchorElement).href);
+          if (linkUrl.pathname !== window.location.pathname) return;
+
+          const targetId = linkUrl.hash;
           if (targetId) {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+              e.preventDefault();
               const offsetTop = (targetElement as HTMLElement).offsetTop - 70;
               window.scrollTo({ top: offsetTop, behavior: 'smooth' });
             }
