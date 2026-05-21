@@ -14,13 +14,13 @@ const images = [
 ];
 ---
 
-<div class="marquee-section overflow-hidden border-y border-[#e8e6dc] py-4 select-none">
+<div class="marquee-section overflow-hidden border-y border-[#e8e6dc] py-3 select-none">
   <div class="marquee-track flex">
     {[...images, ...images].map((img) => (
       <img
         src={img.src}
         alt={img.alt}
-        class="marquee-item h-[50px] w-auto flex-shrink-0"
+        class="marquee-item h-[42px] w-auto flex-shrink-0"
         draggable="false"
       />
     ))}
@@ -30,6 +30,7 @@ const images = [
 <style>
   .marquee-section {
     cursor: grab;
+    background: #f7f5ee;
   }
   .marquee-section.is-grabbing {
     cursor: grabbing;
@@ -41,10 +42,22 @@ const images = [
   }
 
   .marquee-item {
-    margin-right: 80px;
-    filter: grayscale(100%) brightness(1.05) contrast(0.8);
-    opacity: 0.5;
+    margin-right: 72px;
+    filter: grayscale(100%) sepia(12%) saturate(65%) brightness(1.03) contrast(0.78);
+    opacity: 0.36;
     cursor: inherit;
+    transition: opacity 180ms ease, filter 180ms ease;
+  }
+
+  .marquee-section:hover .marquee-item {
+    filter: grayscale(100%) sepia(16%) saturate(80%) brightness(0.98) contrast(0.86);
+    opacity: 0.52;
+  }
+
+  @media (max-width: 768px) {
+    .marquee-item {
+      margin-right: 48px;
+    }
   }
 </style>
 

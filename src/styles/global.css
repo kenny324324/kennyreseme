@@ -181,10 +181,17 @@ h1, h2, h3, h4, h5, h6 {
   left: 0 !important;
 }
 
-/* Nav Link Active State — terracotta */
+/* Nav Link Active State */
+.nav-link:hover {
+  color: rgba(201, 100, 66, 0.68);
+}
+
 .nav-link.active {
   color: #c96442;
-  background: #faebe0;
+}
+
+.nav-link.active:hover {
+  color: #c96442;
 }
 
 /* Project Card Filter Animation */

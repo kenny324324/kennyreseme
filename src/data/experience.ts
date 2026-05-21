@@ -17,9 +17,9 @@ export const experiences: Experience[] = [
       '跳蛙公車 2.0：參與購票、地圖、登入與推播等 App 功能開發，協助產品完成改版並上架 App Store 與 Google Play',
       '今皓 TUAN AI 助理：實作 AI 對話、第三方登入與 Google 行事曆授權等功能，串接語音與影像互動流程',
       '島嶼生吐司手持 POS：開發內部營運用 App，整合條碼掃描、進銷貨與庫存盤點等流程',
-      '依照 Figma 設計稿落實 UI 版面、狀態與互動細節，並與後端 API、推播、地圖與硬體功能整合'
+      '依照 Figma 設計稿或 HTML 靜態原型落實 UI 版面、狀態與互動細節，並與後端 API、推播、地圖與硬體功能整合'
     ],
-    techStack: ['.NET MAUI', 'C#', 'Figma', 'API 整合', 'Firebase 推播', 'Google 地圖', '硬體整合']
+    techStack: ['.NET MAUI', 'C#', 'Figma', 'HTML 原型', 'API 整合', 'Firebase 推播', 'Google 地圖', '硬體整合']
   },
   {
     title: 'PM 與專案協作',

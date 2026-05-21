@@ -1,8 +1,11 @@
 ---
 import { personalInfo, stats } from '../../data/personal';
+import { appProjects } from '../../data/projects';
 import MarqueeSection from '../common/MarqueeSection.astro';
 
 const base = import.meta.env.BASE_URL;
+const appProjectCount = appProjects.length;
+const highlightClass = 'bg-[#faebe0] px-1.5 py-0.5 rounded text-[#b5623d] font-[590]';
 ---
 
 <section id="home" class="min-h-screen bg-[#faf9f5] flex flex-col relative overflow-hidden pt-28 lg:pt-0">
@@ -21,8 +24,8 @@ const base = import.meta.env.BASE_URL;
         </div>
 
         <p class="text-[19px] leading-[1.65] text-[#5e5d59] max-w-[560px]">
-          具備 <span class="bg-[#faebe0] px-1.5 py-0.5 rounded text-[#b5623d] font-[590]">SwiftUI</span>、<span class="bg-[#faebe0] px-1.5 py-0.5 rounded text-[#b5623d] font-[590]">Flutter</span> 跨平台開發經驗，專精 <span class="bg-[#faebe0] px-1.5 py-0.5 rounded text-[#b5623d] font-[590]">.NET MAUI</span> 商業應用開發。
-          善於運用 <span class="bg-[#faebe0] px-1.5 py-0.5 rounded text-[#b5623d] font-[590]">Figma</span> 進行 UI/UX 規劃設計，並整合 <span class="bg-[#faebe0] px-1.5 py-0.5 rounded text-[#b5623d] font-[590]">AI</span> 方案。
+          我主要做 <span class={highlightClass}>App 介面規劃</span> 與 <span class={highlightClass}>跨平台開發</span>，能從需求整理、<span class={highlightClass}>畫面原型</span>、功能實作一路做到上架與後續調整。
+          公司專案以 <span class={highlightClass}>.NET MAUI</span> 為主，個人作品則持續使用 <span class={highlightClass}>SwiftUI</span> 與 <span class={highlightClass}>Flutter</span> 完成 App，並嘗試整合 <span class={highlightClass}>AI</span>、推播、雲端同步與訂閱功能。
         </p>
 
       </div>
@@ -73,7 +76,7 @@ const base = import.meta.env.BASE_URL;
               <p class="text-[9px] text-[#87867f] uppercase tracking-[0.12em] mt-0.5 font-[510]">Years</p>
             </div>
             <div class="text-center border-l border-r border-[#f0eee6]">
-              <div class="text-[20px] font-[600] text-[#141413] tracking-[-0.02em]">{stats.projects}+</div>
+              <div class="text-[20px] font-[600] text-[#141413] tracking-[-0.02em]">{appProjectCount}</div>
               <p class="text-[9px] text-[#87867f] uppercase tracking-[0.12em] mt-0.5 font-[510]">Projects</p>
             </div>
             <div class="text-center">

@@ -21,8 +21,8 @@ export const stats = {
 
 export const aboutParagraphs = {
   zh: [
-    '畢業於長庚大學資訊管理學系，目前在喬思齊科技擔任 UI/UX 工程師，實習與正職共計兩年。主要負責以 Figma 規劃介面設計，並使用 .NET MAUI 進行跨平台行動應用程式開發。我同時主動學習 Swift 與 Flutter，持續追蹤產業趨勢，並積極強化自身跨平台開發實力。',
-    '我對使用者體驗與細節具有高度敏銳度，尤其對於 App 的 UI/UX 與動畫交互設計充滿熱情。希望能持續結合設計思維與程式開發能力，打造兼具美感與功能性的產品，為使用者帶來更流暢與愉快的數位體驗。'
+    '我的工作介於設計、工程與專案協作之間。早期較常使用 Figma 規劃 App 畫面與流程，現在則會搭配 AI 協助產出 HTML 靜態原型，先快速確認畫面、資訊層級與操作流程，再把原型落實成實際功能。參與過 .NET MAUI 商業 App、內部 POS、AI 助理與交通購票等專案。比起只完成單一畫面，我更在意使用者從進入 App、完成任務到收到回饋的整段體驗。',
+    '除了公司專案，我也持續用 SwiftUI 與 Flutter 完成自己的 App，練習從產品想法、UI/UX、功能開發、資料同步、訂閱機制到 App Store 上架的完整流程。近年也參與 PM 協作，協助整理客戶需求、測試回饋、驗收狀態與交付文件，讓設計、工程與客戶溝通能更順利接起來。'
   ],
   en: [
     'Graduated from Chang Gung University with a degree in Information Management. Currently working as a UI/UX Engineer at Josic Technology with 2+ years of combined internship and full-time experience. Responsible for interface design using Figma and cross-platform mobile app development with .NET MAUI. Self-taught Swift and Flutter while staying current with industry trends.',

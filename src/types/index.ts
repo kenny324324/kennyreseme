@@ -70,6 +70,7 @@ export interface Skill {
   icon: string;
   iconColor: string;
   description: string;
+  proof?: string[];
   /** Simple Icons slug (e.g. 'flutter', 'dotnet'). When set, renders brand SVG from cdn.simpleicons.org instead of Font Awesome. */
   brand?: string;
 }
