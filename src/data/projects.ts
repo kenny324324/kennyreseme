@@ -59,7 +59,7 @@ export const appProjects: Project[] = [
   {
     slug: 'pickup',
     title: 'Pickup 取貨吧',
-    description: '整合台灣 21 家物流的一站式包裹追蹤工具，支援 AI 截圖辨識與即時推播通知',
+    description: '整合多種主流物流的一站式包裹追蹤工具，支援 AI 截圖辨識與即時推播通知',
     categories: ['swift'],
     techStack: ['SwiftUI', 'Firebase', 'Gemini AI', 'SwiftData', 'WidgetKit', 'StoreKit 2', '自主學習'],
     coverImage: `${base}/documents/projects/Pickup/cover.png`,
@@ -117,11 +117,13 @@ export const appProjects: Project[] = [
   {
     slug: 'soulfeed',
     title: 'SoulFeed',
-    description: '以 Flutter 開發的個人自主學習專案',
+    description: '以 Flutter 開發的 AI 角色留言板 MVP，整合 Gemini、DeepSeek、登入與歷史紀錄功能',
     categories: ['flutter'],
-    techStack: ['Flutter', '自主學習'],
+    techStack: ['Flutter', 'Gemini AI', 'DeepSeek', 'Firebase', '自主學習'],
     coverImage: `${base}/documents/projects/SoulFeed/cover.png`,
-    links: {}
+    links: {
+      github: 'https://github.com/kenny324324/chat.git'
+    }
   },
 ];
 

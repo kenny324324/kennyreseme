@@ -138,7 +138,7 @@ const projectMeta: Record<string, ProjectMeta> = {
     slug: 'pickup',
     title: 'Pickup 取貨吧',
     subtitle: '包裹追蹤・貨態查詢工具',
-    description: '整合台灣 21 家物流的一站式包裹追蹤工具，支援 AI 截圖辨識與即時推播通知',
+    description: '整合多種主流物流的一站式包裹追蹤工具，支援 AI 截圖辨識與即時推播通知',
     categories: ['swift'],
     techStack: ['SwiftUI', 'Firebase', 'Gemini AI', 'SwiftData', 'WidgetKit', 'StoreKit 2', '自主學習'],
     folder: 'Pickup'
@@ -167,11 +167,14 @@ const projectMeta: Record<string, ProjectMeta> = {
   soulfeed: {
     slug: 'soulfeed',
     title: 'SoulFeed',
-    subtitle: 'Flutter 個人自主學習專案',
-    description: '以 Flutter 開發的個人自主學習專案',
+    subtitle: 'AI 角色留言板 MVP',
+    description: '以 Flutter 開發的 AI 角色留言板 MVP，主要開發期約為 2025 年 12 月到 2026 年 1 月；目前為練習專案，尚未上架',
     categories: ['flutter'],
-    techStack: ['Flutter', '自主學習'],
-    folder: 'SoulFeed'
+    techStack: ['Flutter', 'Gemini AI', 'DeepSeek', 'Firebase', '第三方登入', '自主學習'],
+    folder: 'SoulFeed',
+    defaultLinks: {
+      github: 'https://github.com/kenny324324/chat.git'
+    }
   }
 };
 

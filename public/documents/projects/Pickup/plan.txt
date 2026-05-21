@@ -10,7 +10,7 @@
 
 **技術架構選定：**採用 SwiftUI 搭配 SwiftData 作為客戶端架構，使用 Firebase 生態系（Auth、Firestore、Cloud Functions、FCM、Analytics、Crashlytics）處理後端服務與即時同步。
 
-**物流資料整合：**串接 Track.TW API 作為物流查詢核心，整合全台 21 家物流業者，涵蓋超商取貨、宅配、電商物流與國際快遞四大類別。搭配 Carrier 列舉與 CarrierDetector 正則比對實現智慧物流辨識。
+**物流資料整合：**串接 17track API 作為物流查詢核心，整合多種主流物流業者，涵蓋超商取貨、宅配、電商物流與國際快遞等常見情境。搭配 Carrier 列舉與 CarrierDetector 正則比對實現智慧物流辨識。
 
 **雲端同步架構：**設計 Firestore 雲端與 SwiftData 本地的雙向同步機制，搭配 echo 防迴圈機制確保資料一致性。Apple Sign In 作為唯一登入方式，確保使用者資料安全。
 
