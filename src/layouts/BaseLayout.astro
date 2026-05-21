@@ -35,9 +35,23 @@ const base = import.meta.env.BASE_URL;
       const navLinks = document.querySelectorAll('.nav-link');
 
       if (hamburger && navMenu) {
+        const closeMobileMenu = () => {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+          document.body.classList.remove('menu-open');
+        };
+
         hamburger.addEventListener('click', () => {
           hamburger.classList.toggle('active');
           navMenu.classList.toggle('active');
+          document.body.classList.toggle('menu-open', navMenu.classList.contains('active'));
+          highlightCurrentSection();
+        });
+
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 768) {
+            closeMobileMenu();
+          }
         });
       }
 
@@ -45,6 +59,7 @@ const base = import.meta.env.BASE_URL;
         link.addEventListener('click', () => {
           hamburger?.classList.remove('active');
           navMenu?.classList.remove('active');
+          document.body.classList.remove('menu-open');
         });
       });
 
@@ -58,6 +73,8 @@ const base = import.meta.env.BASE_URL;
         }
         highlightCurrentSection();
       });
+
+      highlightCurrentSection();
     }
 
     // Highlight current section in nav

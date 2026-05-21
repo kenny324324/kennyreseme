@@ -7,7 +7,7 @@ interface Props {
 
 const { showBackButton = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const navLinkClass = 'nav-link no-underline text-[#5e5d59] font-[510] text-[15px] px-3 py-1.5 transition-colors duration-200 relative';
+const navLinkClass = 'nav-link no-underline text-[#5e5d59] font-[510] text-[15px] px-3 py-1.5 transition-colors duration-200 relative max-md:block max-md:w-full max-md:px-0 max-md:py-1.5 max-md:text-[34px] max-md:leading-[1.12] max-md:font-[600] max-md:text-[#30302e]';
 ---
 
 <nav class="navbar fixed top-0 left-0 right-0 w-full bg-[#faf9f5] border-b-[1.5px] border-[#e8e6dc] z-[1000]">
@@ -29,16 +29,16 @@ const navLinkClass = 'nav-link no-underline text-[#5e5d59] font-[510] text-[15px
     </div>
 
     <!-- Nav Menu -->
-    <ul class="nav-menu justify-self-center flex items-center list-none gap-0.5 max-md:fixed max-md:-left-full max-md:top-[56px] max-md:flex-col max-md:bg-[#faf9f5] max-md:w-[calc(100%-20px)] max-md:text-center max-md:transition-all max-md:duration-300 max-md:shadow-[0_8px_24px_rgba(20,20,19,0.08)] max-md:border max-md:border-[#f0eee6] max-md:py-4 max-md:gap-1 max-md:rounded-none max-md:mx-2.5">
-      <li class="flex items-center"><a href={`${base}#home`} class={navLinkClass}>首頁</a></li>
-      <li class="flex items-center"><a href={`${base}#about`} class={navLinkClass}>關於我</a></li>
-      <li class="flex items-center"><a href={`${base}#skills`} class={navLinkClass}>專業技能</a></li>
-      <li class="flex items-center"><a href={`${base}#projects`} class={navLinkClass}>專案作品</a></li>
-      <li class="flex items-center"><a href={`${base}#pm-projects`} class={navLinkClass}>PM 協作</a></li>
-      <li class="flex items-center"><a href={`${base}#experience`} class={navLinkClass}>工作經歷</a></li>
-      <li class="mobile-download-item hidden max-md:block">
-        <a href={personalInfo.resumeUrl} class="download-btn flex items-center gap-2 no-underline text-[#faf9f5] font-[510] text-[15px] leading-none px-4 h-[36px] rounded-md bg-[#141413] hover:bg-[#30302e] transition-all duration-200 max-md:inline-flex max-md:justify-center max-md:px-6 max-md:h-auto max-md:py-2.5 max-md:text-sm max-md:my-2 max-md:mx-auto max-md:w-fit">
-          <i class="fas fa-download text-[10px]"></i>
+    <ul class="nav-menu justify-self-center flex items-center list-none gap-0.5 max-md:fixed max-md:left-0 max-md:top-14 max-md:bottom-0 max-md:z-[999] max-md:h-[calc(100dvh-56px)] max-md:w-screen max-md:flex-col max-md:items-start max-md:gap-4 max-md:bg-[#faf9f5] max-md:px-8 max-md:pt-12 max-md:pb-8 max-md:text-left max-md:border-t max-md:border-[#e8e6dc] max-md:overflow-y-auto">
+      <li class="flex items-center max-md:w-full"><a href={`${base}#home`} class={navLinkClass}>首頁</a></li>
+      <li class="flex items-center max-md:w-full"><a href={`${base}#about`} class={navLinkClass}>關於我</a></li>
+      <li class="flex items-center max-md:w-full"><a href={`${base}#skills`} class={navLinkClass}>專業技能</a></li>
+      <li class="flex items-center max-md:w-full"><a href={`${base}#projects`} class={navLinkClass}>專案作品</a></li>
+      <li class="flex items-center max-md:w-full"><a href={`${base}#pm-projects`} class={navLinkClass}>PM 協作</a></li>
+      <li class="flex items-center max-md:w-full"><a href={`${base}#experience`} class={navLinkClass}>工作經歷</a></li>
+      <li class="mobile-download-item hidden max-md:block max-md:w-full max-md:mt-auto max-md:pt-8 max-md:pb-1">
+        <a href={personalInfo.resumeUrl} class="download-btn flex items-center gap-2 no-underline text-[#faf9f5] font-[510] text-[15px] leading-none px-4 h-[36px] rounded-md bg-[#141413] hover:bg-[#30302e] transition-all duration-200 max-md:flex max-md:w-full max-md:justify-center max-md:px-6 max-md:h-[54px] max-md:text-[17px] max-md:font-[560] max-md:my-0">
+          <i class="fas fa-download text-[10px] max-md:text-[12px]"></i>
           <span>下載履歷</span>
         </a>
       </li>
@@ -52,8 +52,7 @@ const navLinkClass = 'nav-link no-underline text-[#5e5d59] font-[510] text-[15px
       </a>
     </div>
 
-    <div class="hamburger hidden flex-col justify-center items-center w-[30px] h-[30px] cursor-pointer p-[3px] max-md:flex max-md:ml-[15px]">
-      <span class="block w-[22px] h-[2px] bg-[#141413] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative"></span>
+    <div class="hamburger hidden flex-col justify-center items-center w-[32px] h-[32px] cursor-pointer p-0 max-md:flex max-md:ml-[15px]" aria-label="切換選單">
       <span class="block w-[22px] h-[2px] bg-[#141413] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative"></span>
       <span class="block w-[22px] h-[2px] bg-[#141413] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative"></span>
     </div>
