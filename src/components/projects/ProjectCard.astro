@@ -25,15 +25,6 @@ const base = import.meta.env.BASE_URL;
           <i class={icon || 'fas fa-folder'}></i>
         </div>
       )}
-      <!-- 精選 badge -->
-      {project.featured && (
-        <div class="absolute top-3 left-3 z-10">
-          <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#faebe0]/95 backdrop-blur-sm text-[#b5623d] text-[10px] font-[590] tracking-wider rounded-full border border-[#c96442]/20">
-            <i class="fas fa-star text-[#c96442] text-[8px]"></i>
-            精選
-          </span>
-        </div>
-      )}
       <!-- App Store / Google Play overlay -->
       {(project.links.appstore || project.links.googleplay) && (
         <div class="absolute top-3 right-3 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
