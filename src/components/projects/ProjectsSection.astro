@@ -1,26 +1,36 @@
 ---
 import SectionHeader from '../common/SectionHeader.astro';
 import ProjectCard from './ProjectCard.astro';
-import { appProjects, systemProjects, systemProjectIcons } from '../../data/projects';
+import { getAppProjects, getSystemProjects, systemProjectIcons } from '../../data/projects';
+import { ui, type Language } from '../../i18n';
 
-const companyProjects = appProjects.filter(p => !p.techStack.includes('自主學習'));
-const personalProjects = appProjects.filter(p => p.techStack.includes('自主學習'));
+interface Props {
+  lang?: Language;
+}
+
+const { lang = 'zh-TW' } = Astro.props;
+const text = ui[lang].projects;
+const appProjects = getAppProjects(lang);
+const systemProjects = getSystemProjects(lang);
+const personalProjectSlugs = new Set(['pickup', 'mish', 'findtoilets', 'mino', 'spostats', 'soulfeed']);
+const companyProjects = appProjects.filter((p) => !personalProjectSlugs.has(p.slug));
+const personalProjects = appProjects.filter((p) => personalProjectSlugs.has(p.slug));
 const showSystemProjects = false;
 ---
 
 <section id="projects" class="projects py-24 bg-[#faf9f5]">
   <div class="w-full max-w-[1400px] mx-auto px-5">
-    <SectionHeader title="專案作品" eyebrow="Projects" />
+    <SectionHeader title={text.title} eyebrow={text.eyebrow} />
 
     <!-- 商業專案 -->
     <div id="projects-commercial">
       <h3 class="text-[13px] font-[590] text-[#87867f] uppercase tracking-[0.15em] mb-6 flex items-center gap-3">
         <div class="w-5 h-px bg-[#c96442]"></div>
-        商業專案
+        {text.commercial}
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
         {companyProjects.map((project) => (
-          <ProjectCard project={project} />
+          <ProjectCard project={project} lang={lang} />
         ))}
       </div>
     </div>
@@ -29,11 +39,11 @@ const showSystemProjects = false;
     <div id="projects-personal">
       <h3 class="text-[13px] font-[590] text-[#87867f] uppercase tracking-[0.15em] mb-6 flex items-center gap-3">
         <div class="w-5 h-px bg-[#c96442]"></div>
-        自主學習
+        {text.personal}
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {personalProjects.map((project) => (
-          <ProjectCard project={project} />
+          <ProjectCard project={project} lang={lang} />
         ))}
       </div>
     </div>
@@ -44,11 +54,11 @@ const showSystemProjects = false;
     <div id="projects-system" class="w-full max-w-[1400px] mx-auto px-5 mt-20">
       <h3 class="text-[13px] font-[590] text-[#87867f] uppercase tracking-[0.15em] mb-6 flex items-center gap-3">
         <div class="w-5 h-px bg-[#c96442]"></div>
-        其他系統專案
+        {text.system}
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {systemProjects.map((project) => (
-          <ProjectCard project={project} icon={systemProjectIcons[project.slug]} />
+          <ProjectCard project={project} icon={systemProjectIcons[project.slug]} lang={lang} />
         ))}
       </div>
     </div>

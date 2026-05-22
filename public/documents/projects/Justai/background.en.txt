@@ -1,0 +1,1 @@
+JustAI Customer Service System is a technical practice project centered on RAG data processing, OpenAI API integration, and embedding-based retrieval. It connects to internal APIs, processes data through a RAG flow, sends context to OpenAI for text generation, and displays AI replies in the app interface.

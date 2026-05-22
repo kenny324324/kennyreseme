@@ -1,18 +1,21 @@
 ---
 import type { Project } from '../../data/projects';
+import { getProjectPath, type Language } from '../../i18n';
 
 interface Props {
   project: Project;
   icon?: string;
+  lang?: Language;
 }
 
-const { project, icon } = Astro.props;
+const { project, icon, lang = 'zh-TW' } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const projectPath = getProjectPath(project.slug, lang, base);
 ---
 
 <div class="project-card group">
   <!-- 圖片區 -->
-  <a href={`${base}/projects/${project.slug}`} class="block no-underline">
+  <a href={projectPath} class="block no-underline">
     <div class="relative aspect-[4/3] overflow-hidden border border-[#e8e6dc] mb-4 transition-all duration-300 group-hover:shadow-[0_0_0_1px_#d1cfc5,0_4px_24px_rgba(20,20,19,0.05)]">
       {project.coverImage ? (
         <img
@@ -66,13 +69,13 @@ const base = import.meta.env.BASE_URL;
         <span class="text-[10px] text-[#87867f] truncate font-[510]">{project.techStack[0]}</span>
       </div>
       <!-- 標題可點擊 -->
-      <a href={`${base}/projects/${project.slug}`} class="no-underline">
+      <a href={projectPath} class="no-underline">
         <h3 class="text-[25px] font-[600] text-[#141413] mb-1 leading-[1.25] tracking-[-0.02em] transition-colors duration-200 group-hover:text-[#c96442]">{project.title}</h3>
       </a>
       <p class="text-[15px] text-[#87867f] leading-[1.5] line-clamp-2">{project.description}</p>
     </div>
     <a
-      href={`${base}/projects/${project.slug}`}
+      href={projectPath}
       class="flex-shrink-0 w-8 h-8 rounded-md border border-[#e8e6dc] flex items-center justify-center text-[#5e5d59] no-underline transition-all duration-200 hover:bg-[#141413] hover:border-[#141413] hover:text-[#faf9f5] mt-0.5"
     >
       <i class="fas fa-arrow-right text-[13px]"></i>

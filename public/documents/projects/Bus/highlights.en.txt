@@ -1,0 +1,11 @@
+Highlight 1: Dynamic Home Announcements
+
+The home screen uses a carousel to surface important announcements immediately. The warm orange visual theme keeps messages noticeable, while automatic rotation and manual swiping help ensure users do not miss time-sensitive updates.
+
+Highlight 2: Interactive Map Interface
+
+Users can tap directly on the map to choose nearby bus stops. Clear visual markers make the route-planning flow easier to understand and reduce the steps needed to select a pickup point.
+
+Highlight 3: Route List Design
+
+The route list uses a warm primary color, clean white background, and card-based hierarchy so users can quickly scan route information and choose the route they need.

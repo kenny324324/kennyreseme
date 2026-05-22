@@ -1,4 +1,5 @@
 import type { PersonalInfo } from '../types';
+import type { Language } from '../i18n';
 
 export const personalInfo: PersonalInfo = {
   name: {
@@ -25,7 +26,11 @@ export const aboutParagraphs = {
     '除了公司專案，我也持續用 SwiftUI 與 Flutter 完成自己的 App，練習從產品想法、UI/UX、功能開發、資料同步、訂閱機制到 App Store 上架的完整流程。近年也參與 PM 協作，協助整理客戶需求、測試回饋、驗收狀態與交付文件，讓設計、工程與客戶溝通能更順利接起來。'
   ],
   en: [
-    'Graduated from Chang Gung University with a degree in Information Management. Currently working as a UI/UX Engineer at Josic Technology with 2+ years of combined internship and full-time experience. Responsible for interface design using Figma and cross-platform mobile app development with .NET MAUI. Self-taught Swift and Flutter while staying current with industry trends.',
-    'Highly detail-oriented with a strong passion for user experience, especially in app UI/UX and animation design. Committed to combining design thinking with development skills to create products that are both beautiful and functional, delivering smooth and delightful digital experiences.'
+    'My work sits between design, engineering, and project collaboration. I started by planning app screens and flows in Figma, and now also use AI-assisted HTML prototypes to quickly validate layout, information hierarchy, and user flows before turning them into production features. I have worked on .NET MAUI commercial apps, internal POS tools, AI assistants, and transportation ticketing products. Rather than stopping at isolated screens, I care about the full journey from entering an app to completing a task and receiving feedback.',
+    'Alongside company projects, I continue to build my own SwiftUI and Flutter apps, practicing the full product cycle from idea, UI/UX, development, data sync, subscriptions, and App Store release. I also support PM work by organizing client requirements, testing feedback, acceptance status, and delivery documents so design, engineering, and client communication stay connected.'
   ]
 };
+
+export function getAboutParagraphs(lang: Language): string[] {
+  return aboutParagraphs[lang === 'en' ? 'en' : 'zh'];
+}

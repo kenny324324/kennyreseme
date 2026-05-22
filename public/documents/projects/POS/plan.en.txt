@@ -1,0 +1,19 @@
+Design Process|Figma
+
+**Requirement interviews and flow analysis:**I interviewed Island Toast staff to understand receiving, sales, and inventory workflows, then analyzed the needs of drivers, warehouse staff, and store employees.
+
+**Technology direction adjustment:**The early plan used camera scanning, but after the client provided a dedicated scanner, the design shifted to a **hardware integration approach** for better accuracy and efficiency.
+
+**Interface principle:**The UI is function-first, using a gray-blue palette to stay consistent with the backend system and simple flows to reduce training cost.
+
+**Rapid prototype development:**Instead of a traditional Figma phase, the app was built directly in code so core flows could be tested quickly and adjusted from real feedback.
+
+Engineering Process|Technology
+
+**Technology selection:**The app uses **.NET MAUI** as the cross-platform framework, integrating a hardware scanner and backend APIs for smooth handheld-device operation.
+
+**API collaboration:**I worked with the backend engineer to define APIs for receiving, sales, and inventory, including product lookup, stock updates, and document upload.
+
+**Project workflow:**The project follows an agile rhythm, with weekly client reviews and quick adjustments based on operational feedback.
+
+**Timeline:**After about **two months**, receiving and sales features are complete, with inventory-counting features planned next.

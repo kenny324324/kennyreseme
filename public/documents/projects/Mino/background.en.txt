@@ -1,0 +1,5 @@
+Mino is my first independently completed personal side project successfully published on the App Store. I handled the entire process myself, from **UI design** and **implementation** to **release**.
+
+The project began from wanting to learn Apple's native development stack. Since I use Apple devices, I wanted to understand the iOS ecosystem through **SwiftUI**. I chose a to-do list because it covers common app fundamentals such as **data persistence**, **push notifications**, and **iCloud sync**.
+
+The full project took about **two months**, starting from learning SwiftUI from scratch and gradually building a complete iOS development workflow.

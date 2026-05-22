@@ -1,0 +1,9 @@
+Reflection & Takeaways
+
+**Solving a real pain point:**The biggest reward was seeing that the app genuinely helped people with the same need I had. Downloads and feedback made the work feel concrete and useful.
+
+**Practical iOS design experience:**Adapting to iOS 26 Liquid Glass helped me understand Apple's design direction more deeply and prepare for future Swift development.
+
+**Data and map performance experience:**Handling government data issues and map marker performance gave me real map-app development experience that cannot be learned from tutorials alone.
+
+**Iterating from feedback:**After launch, user feedback helped me prioritize improvements based on real needs rather than only my own assumptions.

@@ -1,0 +1,13 @@
+Design Process|Figma
+
+The product was positioned as an "inner feed", so the UI is closer to a social post than a traditional chat app. The home screen focuses on today's input, character avatars, and lightweight tab switching so users understand they are posting a life update.
+
+The character visuals use soft colors and personality-driven presentation to make the app feel lighter than a typical AI tool. The result page uses character cards so each response has its own space.
+
+Engineering Process|Technology
+
+Flutter is used for the main screens and cross-platform app structure. Home, result, history, login, and settings are separated to avoid putting every feature into one file.
+
+The AI layer integrates Gemini and DeepSeek through a shared prompt generator that controls character personality, Taiwanese conversational tone, score range, and response format.
+
+Data storage has two layers: local records for guests, and Firebase login, cloud records, and avatar upload after signing in. This allows users to try first and keep their history after login.

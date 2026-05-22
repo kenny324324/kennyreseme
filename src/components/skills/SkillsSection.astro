@@ -1,5 +1,14 @@
 ---
-import { skillCategories } from '../../data/skills';
+import { getSkillCategories } from '../../data/skills';
+import { ui, type Language } from '../../i18n';
+
+interface Props {
+  lang?: Language;
+}
+
+const { lang = 'zh-TW' } = Astro.props;
+const text = ui[lang].skills;
+const skillCategories = getSkillCategories(lang);
 ---
 
 <section id="skills" class="skills py-24 bg-[#faf9f5] relative border-y border-[#f0eee6]">
@@ -11,10 +20,10 @@ import { skillCategories } from '../../data/skills';
 
       <!-- 左側：Sticky 標題 (1/3) -->
       <div class="w-full md:w-1/3 md:sticky md:top-32 md:self-start">
-        <p class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em] mb-3">Skills</p>
-        <h2 class="text-[48px] md:text-[56px] font-[600] text-[#141413] leading-[1] tracking-display mb-5">專業技能</h2>
+        <p class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em] mb-3">{text.eyebrow}</p>
+        <h2 class="text-[48px] md:text-[56px] font-[600] text-[#141413] leading-[1] tracking-display mb-5">{text.title}</h2>
         <p class="text-[#5e5d59] leading-[1.6] text-[17px]">
-          具備 App 介面規劃、跨平台開發、功能整合與產品上架經驗，也能在專案中協助需求整理、測試回饋與交付溝通。
+          {text.description}
         </p>
       </div>
 
@@ -46,7 +55,7 @@ import { skillCategories } from '../../data/skills';
                   <p class="text-[15px] text-[#87867f] leading-[1.5]">{skill.description}</p>
                   {skill.proof && (
                     <div class="mt-auto pt-4">
-                      <p class="text-[10px] font-[590] text-[#87867f] uppercase tracking-[0.12em] mb-2">應用經驗</p>
+                      <p class="text-[10px] font-[590] text-[#87867f] uppercase tracking-[0.12em] mb-2">{text.proof}</p>
                       <div class="flex flex-wrap gap-1.5">
                         {skill.proof.map((item) => (
                           <span class="text-[12px] font-[510] text-[#5e5d59] border border-[#e8e6dc] bg-[#faf9f5] px-2 py-1 rounded-none leading-none">

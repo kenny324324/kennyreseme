@@ -1,0 +1,10 @@
+Section #1: User Feedback
+Icon: star
+Order: 0
+Style: cards
+
+Great reviews. Finally I do not have to panic when I need a restroom outside.
+
+Finding restrooms is really useful. Have you considered a web version for people who do not want to download an app?
+
+Adding ratings and comments to FindToilets is smart because users can help each other filter for quality.

@@ -1,0 +1,19 @@
+Challenge & Solution #1: Switching the Scanning Technology
+
+**Situation:**The initial plan used the phone camera for barcode scanning.
+
+**Challenge:**Real-world testing showed unstable accuracy and speed, especially in warehouse lighting conditions, which reduced operational efficiency.
+
+**Solution:**After the client provided a dedicated hardware scanner model, I redesigned the integration approach and moved from software scanning to hardware scanner integration through .NET MAUI.
+
+**Result:**Scanning accuracy and speed improved significantly, making the app more suitable for daily on-site operations.
+
+Challenge & Solution #2: Fast Prototype Development Strategy
+
+**Situation:**The project timeline was tight, and the POS workflow needed validation in a real working environment.
+
+**Challenge:**A traditional design-to-development process was too slow for the client's launch needs, and usability could only be verified through actual operation.
+
+**Solution:**I skipped the traditional Figma phase and built a functional prototype directly in code, then adjusted screens and flows through weekly client feedback.
+
+**Result:**The app could evolve quickly based on real operational feedback while staying aligned with the client's workflow.

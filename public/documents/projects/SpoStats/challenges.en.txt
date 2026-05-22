@@ -1,0 +1,19 @@
+Challenge & Solution #1: Spotify Developer Quota Mode Restrictions
+
+**Situation:**After development, the app needed Spotify API access for broader public use.
+
+**Challenge:**Spotify's 2025 developer policy separates Development Mode and Extended Quota Mode. Development Mode only allows a few whitelisted users, while Extended Quota Mode requires a registered business, an already live service, at least 250,000 monthly active users, and operation in Spotify's major markets. This is nearly impossible for an independent developer.
+
+**Solution:**I repositioned the app as a personal-use tool under Development Mode. To pass App Store review, I built Demo Mode with simulated data so reviewers could experience the full app without logging into Spotify.
+
+**Result:**The app was successfully published on the App Store. Although it cannot be broadly opened due to Quota Mode, it fully meets my personal needs and shows how I handled platform policy constraints.
+
+Challenge & Solution #2: Balancing Custom Chart Animation and Performance
+
+**Situation:**To create a differentiated chart-focused experience, I decided not to use a third-party chart library.
+
+**Challenge:**Custom charts required progressive line drawing, opacity switching across multiple lines, dashed segments when songs drop out of the ranking, dynamic Y-axis scaling, and label collision handling. The Top 5 multi-line chart was especially performance-sensitive.
+
+**Solution:**I used SwiftUI `trim(from:to:)` with animation modifiers for progressive drawing and masking for dashed segments. To improve performance, chart recalculation only happens when data or selection state changes.
+
+**Result:**The app delivers smooth chart animations, pulse effects, and interactive selection while maintaining a distinctive visual experience.

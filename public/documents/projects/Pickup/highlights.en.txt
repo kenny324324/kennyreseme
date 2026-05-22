@@ -1,0 +1,23 @@
+Highlight 1: AI Screenshot Recognition for Package Creation
+
+The app integrates **Google Gemini 2.5 Flash** vision recognition. Users can upload an order screenshot, and the app extracts ##tracking number, carrier, pickup location, pickup code, product name, and amount## to reduce manual entry.
+
+Highlight 2: PRO Subscription Features
+
+Using **StoreKit 2**, Pickup supports monthly, yearly, and lifetime purchase options. Pro users unlock ##unlimited package tracking, AI recognition, advanced analytics, theme colors, and medium/large widgets##.
+
+Highlight 3: Personal Analytics Dashboard
+
+The dashboard visualizes shopping behavior through charts for ##spending analysis, delivery speed, shopping platform distribution##, and other data so users can understand their purchasing habits.
+
+Highlight 4: Real-Time Push Notification System
+
+Firebase Cloud Functions run scheduled server-side polling every 15 minutes. When package status changes, FCM push notifications are sent for shipping updates, store arrival, and daily pickup reminders.
+
+Highlight 5: Package Detail Timeline
+
+Package details are displayed as a ##timeline##, showing shipment, transfer, store arrival, and pickup states with clear timestamps and status labels.
+
+Highlight 6: Home Screen Widgets
+
+WidgetKit widgets let users see package status without opening the app. Small, medium, and large widget sizes are supported, with App Groups enabling shared data between the app and widgets.

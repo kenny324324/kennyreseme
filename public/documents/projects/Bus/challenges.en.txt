@@ -1,0 +1,19 @@
+Challenge & Solution #1: Firebase Push Notification Integration
+
+**Situation:**The project introduced Firebase push notifications for the first time, so the client needed to send messages from the admin system to user devices.
+
+**Challenge:**This was a new technical area for me. The work involved saving Firebase push tokens through the API, connecting the admin system with user devices, and making sure notifications were delivered reliably.
+
+**Solution:**I studied Firebase documentation, tested repeatedly, and worked closely with the backend engineer to define how push tokens should be stored for each user account. Through continuous testing and adjustment, we gradually built a stable notification flow.
+
+**Result:**After several months of integration work, the team completed a full push notification system that lets the client send real-time notifications from the backend.
+
+Challenge & Solution #2: Map and Bus Stop Integration
+
+**Situation:**The client wanted map interaction that could show nearby bus stops and let users choose stops directly from the map.
+
+**Challenge:**Displaying a map was straightforward, but connecting backend data with map interactions was more complex. The app needed to handle map taps, nearby stop calculation, and dynamic marker display.
+
+**Solution:**I researched map API implementation patterns, tested different data-linking approaches, and refined the interaction until the display behavior felt smooth.
+
+**Result:**The app successfully supported map-based stop selection, simplifying the route-planning flow for users.

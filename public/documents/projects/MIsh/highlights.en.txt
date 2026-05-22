@@ -1,0 +1,11 @@
+Highlight 1: Google Books API Search and Management
+
+Mish integrates Google Books API and supports searches by ISBN, keyword, author, publisher, and category. It automatically loads covers, descriptions, and book details. Users can add books to their shelf and manage three reading states: ##to read, reading, and completed##.
+
+Highlight 2: Reading Statistics and Pomodoro Timer
+
+The built-in timer records reading sessions and summarizes ##daily, weekly, monthly, and yearly## reading minutes. Reading goal settings help users track habits and build motivation through data.
+
+Highlight 3: Seven Languages and Regional Support
+
+The app supports Traditional Chinese, English, Japanese, Korean, Simplified Chinese, German, and French. It also recommends ##local bookstore purchase links## based on user region, covering Taiwan, the United States, Japan, Korea, Germany, France, and more.

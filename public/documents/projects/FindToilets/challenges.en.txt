@@ -1,0 +1,19 @@
+Challenge & Solution #1: Improving Performance with Many Map Markers
+
+**Situation:**The app needed to show thousands of public restroom points across Taiwan on a map.
+
+**Challenge:**Loading all markers at once caused serious performance issues. Zooming and dragging became laggy, hurting the user experience.
+
+**Solution:**I implemented dynamic marker management based on map zoom level: clustered markers when zoomed out and individual markers when zoomed in. A 0.3-second debounce prevents excessive redraws while users drag the map.
+
+**Result:**The map remains smooth even with large datasets, allowing users to browse and search restrooms comfortably.
+
+Challenge & Solution #2: Cleaning Government Open Data
+
+**Situation:**The app relies on public restroom data from Taiwan's Ministry of Environment.
+
+**Challenge:**The raw data included duplicate records, swapped latitude/longitude values, and coordinates outside Taiwan, causing incorrect or repeated map markers.
+
+**Solution:**I built coordinate validation for Taiwan's geographic range, detected common latitude/longitude swaps, and merged duplicate or nearby records with the place grouping algorithm.
+
+**Result:**Users see cleaner and more accurate restroom locations instead of messy raw data.

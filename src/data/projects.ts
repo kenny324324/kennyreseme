@@ -1,3 +1,5 @@
+import type { Language } from '../i18n';
+
 export interface Project {
   slug: string;
   title: string;
@@ -9,6 +11,7 @@ export interface Project {
     appstore?: string;
     googleplay?: string;
     figma?: string;
+    github?: string;
   };
   featured?: boolean;
 }
@@ -162,3 +165,89 @@ export const systemProjectIcons: Record<string, string> = {
   screenshot: 'fas fa-robot',
   smartdining: 'fas fa-utensils'
 };
+
+const appProjectTranslations: Record<string, Partial<Pick<Project, 'title' | 'description' | 'techStack'>>> = {
+  bus: {
+    title: 'WowBus 2.0',
+    description: 'A commercial cross-platform transit app where I supported UI/UX planning and .NET MAUI development for ticketing, maps, login, and push notifications.',
+    techStack: ['.NET MAUI', 'Figma', 'Google Login', 'Maps', 'Firebase Push', 'UI Redesign']
+  },
+  tuan: {
+    title: 'TUAN AI Assistant App',
+    description: 'A commercial AI virtual-IP interaction app where I worked on .NET MAUI development, login, voice interaction, and Google Calendar flows.',
+    techStack: ['.NET MAUI', 'AI Assistant', 'Voice Input', 'Third-party Login', 'Google Calendar']
+  },
+  pos: {
+    title: 'Island Toast Handheld POS',
+    description: 'An internal handheld POS app for Island Toast, covering .NET MAUI implementation, API integration, and barcode-based operation flows.',
+    techStack: ['.NET MAUI', 'API Integration', 'Hardware Integration', 'Barcode Scanning', 'Internal System']
+  },
+  pickup: {
+    title: 'Pickup',
+    description: 'A SwiftUI package tracking app for online shoppers in Taiwan, combining shipment lookup, AI screenshot recognition, push notifications, widgets, and subscriptions.',
+    techStack: ['SwiftUI', 'Firebase', 'Gemini AI', 'SwiftData', 'WidgetKit', 'StoreKit 2', 'Self-initiated']
+  },
+  mish: {
+    title: 'Mish Reading Notes',
+    description: 'A minimalist Flutter reading tracker that integrates book search, reading stats, Firebase sync, multilingual support, and subscriptions.',
+    techStack: ['Flutter', 'Firebase', 'Google Books API', 'RevenueCat', '7 Languages', 'Self-initiated']
+  },
+  findtoilets: {
+    title: 'FindToilets',
+    description: 'A Taiwan public restroom map app built with SwiftUI, public data, MapKit, dynamic annotations, and community ratings.',
+    techStack: ['SwiftUI', 'MapKit', 'CloudKit', 'Self-initiated']
+  },
+  mino: {
+    title: 'Mino To-Do List',
+    description: 'My first independently shipped SwiftUI app, covering UI design, task data, iCloud sync, local reminders, and App Store release.',
+    techStack: ['SwiftUI', 'iCloud', 'Local Notifications', 'App Store', 'Self-initiated']
+  },
+  spostats: {
+    title: 'spo.stats for Spotify',
+    description: 'A SwiftUI app that turns Spotify listening habits into visual charts, with custom ranking trend charts and CloudKit sync.',
+    techStack: ['SwiftUI', 'Spotify API', 'OAuth 2.0 PKCE', 'CloudKit', 'Self-initiated']
+  },
+  soulfeed: {
+    title: 'SoulFeed',
+    description: 'A Flutter AI character feed MVP that explores AI replies as social-style comments, with login, history, and Firebase sync.',
+    techStack: ['Flutter', 'Gemini AI', 'DeepSeek', 'Firebase', 'Self-initiated']
+  }
+};
+
+const systemProjectTranslations: Record<string, Partial<Pick<Project, 'title' | 'description' | 'techStack'>>> = {
+  voting: {
+    title: 'Yang Sheng Golf Course E-Voting System',
+    description: 'An MVC-based e-voting system for a golf course, including user authentication, vote management, and result statistics.',
+    techStack: ['MVC Architecture', 'System Development', 'Database Design']
+  },
+  screenshot: {
+    title: 'Luxgen Screenshot Recognition',
+    description: 'An automated screenshot recognition workflow using Appium UI testing and Python scripts to parse data and write results back to a database.',
+    techStack: ['Python', 'Appium', 'Automated Testing', 'Database Integration']
+  },
+  smartdining: {
+    title: 'Southern Taiwan Smart Dining',
+    description: 'UI/UX planning for a smart dining kiosk, using Figma to improve ordering flows and user experience.',
+    techStack: ['Figma Design', 'UI/UX Planning', 'User Experience']
+  }
+};
+
+export function getAppProjects(lang: Language): Project[] {
+  return localizeProjects(appProjects, appProjectTranslations, lang);
+}
+
+export function getSystemProjects(lang: Language): Project[] {
+  return localizeProjects(systemProjects, systemProjectTranslations, lang);
+}
+
+function localizeProjects(
+  projects: Project[],
+  translations: Record<string, Partial<Pick<Project, 'title' | 'description' | 'techStack'>>>,
+  lang: Language
+): Project[] {
+  if (lang !== 'en') return projects;
+  return projects.map((project) => ({
+    ...project,
+    ...translations[project.slug]
+  }));
+}

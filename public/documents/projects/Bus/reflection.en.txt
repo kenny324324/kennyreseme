@@ -1,0 +1,9 @@
+Reflection & Takeaways
+
+**Technical growth:**This was my first successful integration of ##Firebase push notifications##, from learning the system from scratch to building a stable connection between the backend and user devices.
+
+**Cross-functional collaboration:**The project covered both **UI/UX planning** and **.NET MAUI implementation**, giving me hands-on experience defining API requirements with backend engineers and communicating requirements through a PM.
+
+**Problem-solving practice:**Map and bus stop integration required continuous research and testing, which helped me build a more systematic approach to solving unfamiliar technical problems.
+
+**Long-running project experience:**Working on a project over more than two years taught me how to respond to changing requirements while keeping the product stable and maintainable.

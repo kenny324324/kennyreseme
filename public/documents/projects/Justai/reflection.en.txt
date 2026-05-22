@@ -1,0 +1,9 @@
+Reflection & Takeaways
+
+**Understanding generative AI:**Building the project helped me understand how generative AI can answer with private data through RAG, and how embeddings support AI data retrieval.
+
+**AI-assisted development workflow:**I built a workflow for using AI tools to learn new technologies and solve implementation problems more quickly.
+
+**Mobile AI development:**This was my first mobile AI app, giving me experience with .NET MAUI basics, AI API integration, real-time chat, and voice features.
+
+**Practical demo experience:**The project taught me how to turn an internal system into a mobile demo app and strengthened my confidence in owning app development tasks independently.

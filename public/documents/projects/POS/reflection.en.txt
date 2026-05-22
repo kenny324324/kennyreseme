@@ -1,0 +1,11 @@
+Reflection & Takeaways
+
+The switch from software scanning to hardware integration taught me .NET MAUI hardware integration APIs and showed how B2B products must choose technology based on the actual operating environment.
+
+In a warehouse with poor lighting, a hardware scanner was far more reliable than a camera-based solution, which made me understand that technical choices cannot be based only on development cost.
+
+Building directly in code instead of starting with a traditional Figma phase taught me how to adjust UI during development and iterate quickly from user feedback.
+
+Weekly demos with on-site staff showed that practical details, such as button size for one-handed operation, can matter more than visual polish in B2B tools.
+
+With limited resources, I learned how to balance development speed and product quality while practicing the core idea of agile iteration.

@@ -1,0 +1,7 @@
+Highlight 1: Dynamic Text Display Effect
+
+To make AI conversations feel more alive, the app uses a progressive text animation where AI replies appear character by character instead of showing instantly.
+
+Highlight 2: Voice Interaction
+
+The app integrates voice input and speech-to-text conversion so users can interact with the AI system in a more natural mobile flow.

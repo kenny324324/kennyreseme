@@ -1,0 +1,11 @@
+Highlight 1: Morandi-Inspired UI Design
+
+The interface uses a ##Morandi color palette## with 11 soft, low-saturation colors to create a warm visual experience. The dashboard uses **stat capsules** for today's tasks, scheduled tasks, and completed counts, plus **progress rings** for list completion. A frosted-glass floating button adds depth to the interface.
+
+Highlight 2: iCloud Sync and Data Migration
+
+The app uses **CloudKit** and **SwiftData** for cross-device sync. After enabling iCloud sync, tasks can be synchronized across Apple devices. A migration flow moves data from the early UserDefaults storage approach into SwiftData without losing existing data.
+
+Highlight 3: Flexible Smart Reminder System
+
+The reminder system supports **10 repeat rules**, including daily, weekly, workdays, biweekly, and quarterly schedules. For unsupported non-standard cycles, the app calculates future trigger dates and creates multiple local notification requests.

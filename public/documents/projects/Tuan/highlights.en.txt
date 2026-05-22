@@ -1,0 +1,11 @@
+Highlight 1: Third-Party Login
+
+The app provides Google, Facebook, and Apple login options so users can quickly sign in with existing accounts. This reduces registration friction and lets users start using the AI assistant immediately.
+
+Highlight 2: Calendar Integration
+
+Users can create Google Calendar events through voice conversation without leaving the assistant interface. For example, after saying a meeting time, the assistant can create the calendar event automatically.
+
+Highlight 3: Intuitive Voice Interaction UI
+
+The interface places the artist portrait at the center and pairs it with a familiar voice input button, making the experience feel closer to a real conversation while allowing users to switch between voice and text input.

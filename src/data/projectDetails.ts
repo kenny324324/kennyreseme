@@ -7,6 +7,7 @@ import {
   parseLinks,
   parseCustomSections
 } from '../utils/contentLoader';
+import type { Language } from '../i18n';
 
 export interface ProjectDetail {
   slug: string;
@@ -178,24 +179,91 @@ const projectMeta: Record<string, ProjectMeta> = {
   }
 };
 
+const projectMetaTranslations: Record<string, Partial<Pick<ProjectMeta, 'title' | 'subtitle' | 'description' | 'techStack'>>> = {
+  bus: {
+    title: 'WowBus 2.0',
+    subtitle: 'Commercial Project | Cross-Platform Transit Ticketing App Redesign',
+    description: 'WowBus 2.0 is a transit ticketing app redesign delivered as a company project. I worked on Figma interface planning and .NET MAUI app development, contributing to ticketing flows, route recruitment maps, Google login, and Firebase push notifications while helping the product ship on the App Store and Google Play.',
+    techStack: ['.NET MAUI', 'Figma', 'Google Login', 'Maps', 'Firebase Push', 'UI Redesign']
+  },
+  tuan: {
+    title: 'TUAN AI Assistant App',
+    subtitle: 'Commercial Project | AI Virtual-IP Interaction App',
+    description: 'The TUAN AI Assistant App is a virtual-IP interaction product built around voice and text conversations with licensed artist personas. I participated in .NET MAUI development, covering third-party login, voice input, AI assistant interaction, Google Calendar flows, and integration support for AI and image-related services.',
+    techStack: ['.NET MAUI', 'AI Assistant', 'Voice Input', 'Third-party Login', 'Google Calendar']
+  },
+  pos: {
+    title: 'Island Toast Handheld POS',
+    subtitle: 'Commercial Project | Internal Operations POS',
+    description: 'Island Toast Handheld POS is an internal operations app for drivers, stores, and warehouse staff to handle purchasing, sales, inventory checks, and document tracking. I implemented the .NET MAUI app frontend, connected backend APIs, and integrated barcode scanning so on-site staff could complete daily operations with scanning and quantity verification.',
+    techStack: ['.NET MAUI', 'API Integration', 'Hardware Integration', 'Barcode Scanning', 'Internal System']
+  },
+  justai: {
+    title: 'JustAI Customer Service System',
+    subtitle: 'AI Chatbot Interface',
+    description: 'A practice project for building an AI chatbot interface, integrating RAG concepts and the OpenAI API while implementing a complete customer-service conversation UI from Figma designs.',
+    techStack: ['RAG', 'OpenAI API', 'AI Chat Interface']
+  },
+  mino: {
+    title: 'Mino To-Do List',
+    subtitle: 'Personal Project | My First Published SwiftUI App',
+    description: 'Mino is the first personal app I took from idea to App Store release. I chose a to-do list as the practice topic because it covers common iOS app flows such as data management, reminders, and sync. I handled UI design, SwiftUI development, task data, iCloud sync, and local notifications, using the project to build a complete iOS development and release workflow.',
+    techStack: ['SwiftUI', 'iCloud', 'Local Notifications', 'App Store', 'Self-initiated']
+  },
+  mish: {
+    title: 'Mish Reading Notes',
+    subtitle: 'Personal Project | Flutter Reading Tracker & Book Management App',
+    description: 'Mish started from the idea of a minimalist bookshelf, aiming to keep reading records, notes, and book discovery lightweight and unobtrusive. I built the cross-platform UI and feature structure with Flutter, integrating Google Books API, Firebase sync, reading statistics, seven languages, and subscriptions. It was also my first Flutter project and gave me hands-on experience with RevenueCat and App Store review.',
+    techStack: ['Flutter', 'Firebase', 'Google Books API', 'RevenueCat', 'Provider', '7 Languages', 'Self-initiated']
+  },
+  pickup: {
+    title: 'Pickup',
+    subtitle: 'Personal Project | SwiftUI Package Tracking App',
+    description: 'Pickup started from the friction of checking multiple logistics websites after online shopping. Built with SwiftUI and Firebase, the app integrates AI screenshot recognition, shipment lookup, push notifications, widgets, analytics dashboards, and StoreKit 2 subscriptions so pending packages can be managed in one place. It is currently published on the App Store.',
+    techStack: ['SwiftUI', 'Firebase', 'Gemini AI', 'SwiftData', 'WidgetKit', 'StoreKit 2', 'Self-initiated']
+  },
+  findtoilets: {
+    title: 'FindToilets',
+    subtitle: 'Personal Project | Taiwan Public Restroom Map App',
+    description: 'FindToilets came from the inconvenience of needing a restroom outdoors and not knowing where to go. I built it as a dedicated Taiwan public restroom map app using SwiftUI, MapKit, and CloudKit, integrating public data, place grouping, floor parsing, dynamic annotation management, and community ratings so users can find nearby usable restrooms faster. It is currently published on the App Store.',
+    techStack: ['SwiftUI', 'MapKit', 'CloudKit', 'CoreLocation']
+  },
+  spostats: {
+    title: 'spo.stats for Spotify',
+    subtitle: 'Personal Project | Spotify Listening Stats & Charts App',
+    description: 'spo.stats came from my desire to track Spotify listening changes more intuitively, turning song, artist, and album rankings into a chart-driven app. I built ranking trend charts with native SwiftUI drawing, Spotify API authorization, history tracking, CloudKit cross-device sync, and chart animation. The project is published on the App Store, though Spotify API quota policy currently positions it as a personal-use tool.',
+    techStack: ['SwiftUI', 'Spotify API', 'OAuth 2.0 PKCE', 'CloudKit', 'Self-initiated']
+  },
+  soulfeed: {
+    title: 'SoulFeed',
+    subtitle: 'Practice Project | Flutter AI Character Feed MVP',
+    description: 'SoulFeed experiments with packaging AI replies as social-style comments instead of a single chatbot answer. After users enter one thing they did today, multiple AI characters respond with comments, scores, and follow-up conversations. I built the interface, character prompts, login, history, Firebase sync, and Gemini / DeepSeek integrations in Flutter. It is currently a practice project and has not been released.',
+    techStack: ['Flutter', 'Gemini AI', 'DeepSeek', 'Firebase', 'Third-party Login', 'Self-initiated']
+  }
+};
+
 /**
  * 根據專案 slug 載入完整的專案詳情
  * 基本資訊從 projectMeta 取得，詳細內容從 txt 檔案動態載入
  */
-function loadProjectDetail(slug: string): ProjectDetail | undefined {
-  const meta = projectMeta[slug];
-  if (!meta) return undefined;
+function loadProjectDetail(slug: string, lang: Language = 'zh-TW'): ProjectDetail | undefined {
+  const baseMeta = projectMeta[slug];
+  if (!baseMeta) return undefined;
+
+  const meta = lang === 'en'
+    ? { ...baseMeta, ...projectMetaTranslations[slug] }
+    : baseMeta;
 
   const folder = meta.folder;
 
   // 從 txt 檔案載入動態內容
-  const background = parseBackground(folder);
-  const highlights = parseHighlights(folder);
-  const challenges = parseChallenges(folder);
-  const process = parseProcess(folder);
-  const reflection = parseReflection(folder);
-  const txtLinks = parseLinks(folder);
-  const customSections = parseCustomSections(folder);
+  const background = parseBackground(folder, lang);
+  const highlights = parseHighlights(folder, lang);
+  const challenges = parseChallenges(folder, lang);
+  const process = parseProcess(folder, lang);
+  const reflection = parseReflection(folder, lang);
+  const txtLinks = parseLinks(folder, lang);
+  const customSections = parseCustomSections(folder, lang);
 
   // 合併連結（txt 檔案的連結優先）
   const links = {
@@ -224,16 +292,26 @@ function loadProjectDetail(slug: string): ProjectDetail | undefined {
 
 // 預先載入所有專案詳情（建置時執行）
 export const projectDetails: Record<string, ProjectDetail> = {};
+export const projectDetailsEn: Record<string, ProjectDetail> = {};
 
 for (const slug of Object.keys(projectMeta)) {
-  const detail = loadProjectDetail(slug);
+  const detail = loadProjectDetail(slug, 'zh-TW');
   if (detail) {
     projectDetails[slug] = detail;
   }
+
+  const enDetail = loadProjectDetail(slug, 'en');
+  if (enDetail) {
+    projectDetailsEn[slug] = enDetail;
+  }
 }
 
-export function getProjectDetail(slug: string): ProjectDetail | undefined {
-  return projectDetails[slug];
+export function getProjectDetails(lang: Language = 'zh-TW'): Record<string, ProjectDetail> {
+  return lang === 'en' ? projectDetailsEn : projectDetails;
+}
+
+export function getProjectDetail(slug: string, lang: Language = 'zh-TW'): ProjectDetail | undefined {
+  return getProjectDetails(lang)[slug];
 }
 
 export function getAllProjectSlugs(): string[] {

@@ -1,0 +1,19 @@
+Design Process|Figma
+
+**Need-driven design:**Instead of drawing Figma wireframes, I designed from my own target-user perspective around fast lookup and intuitive operation.
+
+**Iterative visual tuning:**The UI was adjusted continuously during development based on actual use. The app uses a dark theme and brand colors to create a calm visual style.
+
+**Feature hierarchy and navigation:**The app uses four main tabs: Packages, Analytics, History, and Settings, so users can quickly find the function they need.
+
+Engineering Process|Technology
+
+**Technology selection:**The client uses SwiftUI and SwiftData, while Firebase services including Auth, Firestore, Cloud Functions, FCM, Analytics, and Crashlytics handle backend services and sync.
+
+**Logistics integration:**17track API powers tracking data. Carrier enums and regex-based CarrierDetector logic help identify logistics providers automatically.
+
+**Cloud sync architecture:**Firestore cloud data and SwiftData local data are synchronized bidirectionally, with echo-prevention logic to avoid update loops. Apple Sign In is the only login method.
+
+**AI recognition:**Firebase Cloud Functions provide a Gemini API proxy endpoint. The app uploads screenshots, and the server extracts structured shipment data.
+
+**Automated notifications:**Cloud Scheduler triggers Cloud Functions every 15 minutes to poll all users' package states. Firestore Triggers detect changes and send FCM push notifications.

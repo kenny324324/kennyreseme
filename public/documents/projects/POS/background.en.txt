@@ -1,0 +1,3 @@
+"Island Toast POS" is an internal handheld POS app built to improve the efficiency and accuracy of warehouse receiving, store sales, and inventory checking. Barcode scanning is the core interaction, supporting product identification, quantity verification, sales cancellation and signature confirmation, receiving, and future inventory-counting workflows.
+
+The project has been running for about two months. I am responsible for the app and frontend implementation, working with one backend engineer on API integration. Because the scope is focused and the workflow is clear, the app can be tested in real operations and iterated quickly.

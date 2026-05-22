@@ -1,0 +1,171 @@
+---
+import { getLocalizedPath, languages, ui, type Language } from '../../i18n';
+
+interface Props {
+  currentLang: Language;
+  currentPath: string;
+  variant?: 'dropdown' | 'list';
+  class?: string;
+}
+
+const { currentLang, currentPath, variant = 'dropdown', class: className = '' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const menuTitle = currentLang === 'zh-TW' ? '語言' : 'Language';
+const languageMenuLabels: Record<Language, string> = {
+  'zh-TW': currentLang === 'zh-TW' ? '繁體中文' : 'Traditional Chinese',
+  en: currentLang === 'zh-TW' ? '英文' : 'English',
+};
+const desktopLanguageLabels: Record<Language, string> = {
+  'zh-TW': '繁體中文',
+  en: 'English',
+};
+const currentLanguageLabel = desktopLanguageLabels[currentLang];
+const alternateLanguages = Object.keys(languages).filter((code) => code !== currentLang) as Language[];
+---
+
+<nav class={`language-toggle ${className}`} aria-label={ui[currentLang].language.label}>
+  {variant === 'list' ? (
+    <div class="language-list-menu w-full">
+      <div class="mb-3 flex items-center gap-2 text-[12px] font-[590] uppercase tracking-[0.14em] text-[#87867f]">
+        <i class="fas fa-globe text-[12px] text-[#c96442]"></i>
+        <span>{menuTitle}</span>
+      </div>
+      <div class="grid gap-2">
+        {Object.keys(languages).map((code) => {
+          const lang = code as Language;
+          const isActive = currentLang === lang;
+          return (
+            <a
+              href={getLocalizedPath(currentPath, lang, base)}
+              class={`flex h-12 items-center justify-between rounded-md border px-4 no-underline transition-all duration-200 ${
+                isActive
+                  ? 'border-[#141413] bg-[#141413] text-[#faf9f5] shadow-[0_1px_2px_rgba(20,20,19,0.12)]'
+                  : 'border-[#e8e6dc] bg-black/[0.03] text-[#30302e] hover:border-[#d1cfc5] hover:bg-[#f0eee6]'
+              }`}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              <span class="text-[15px] font-[590] leading-none">{languageMenuLabels[lang]}</span>
+              {isActive ? (
+                <i class="fas fa-check text-[12px]"></i>
+              ) : (
+                <i class="fas fa-arrow-right text-[11px] opacity-50"></i>
+              )}
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  ) : (
+    <div class="language-dropdown relative w-[118px]" data-language-dropdown>
+      <button
+        type="button"
+        class="language-dropdown-trigger flex h-9 w-full cursor-pointer select-none items-center justify-between rounded-md border border-[#e8e6dc] bg-black/[0.03] px-3 text-[13px] font-[590] leading-none text-[#30302e] transition-all duration-200 hover:border-[#d1cfc5] hover:bg-[#f0eee6]"
+        aria-expanded="false"
+        data-language-trigger
+      >
+        <span>{currentLanguageLabel}</span>
+        <span class="language-caret" aria-hidden="true"></span>
+      </button>
+      <div class="language-dropdown-panel absolute left-0 right-0 z-[1100] overflow-hidden rounded-b-md border border-t-0 border-[#e8e6dc] bg-[#faf9f5] shadow-[0_12px_30px_rgba(20,20,19,0.12)]" aria-hidden="true">
+        {alternateLanguages.map((lang) => {
+          return (
+            <a
+              href={getLocalizedPath(currentPath, lang, base)}
+              class="block h-10 px-3 text-[13px] font-[590] leading-10 text-[#30302e] no-underline transition-colors duration-200 hover:bg-[#f0eee6]"
+              data-language-option
+              tabindex="-1"
+            >
+              {desktopLanguageLabels[lang]}
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  )}
+</nav>
+
+<style>
+  .language-dropdown-panel {
+    top: calc(100% - 1px);
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(-8px);
+    transition:
+      clip-path 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+      max-height 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.22s ease,
+      transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .language-dropdown.is-open .language-dropdown-trigger {
+    border-bottom-color: transparent;
+    border-radius: 6px 6px 0 0;
+    background: #faf9f5;
+  }
+
+  .language-dropdown.is-open .language-dropdown-panel {
+    max-height: 40px;
+    opacity: 1;
+    pointer-events: auto;
+    clip-path: inset(0);
+    transform: translateY(0);
+  }
+
+  .language-caret {
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid #87867f;
+    border-bottom: 1.5px solid #87867f;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.2s ease;
+  }
+
+  .language-dropdown.is-open .language-caret {
+    transform: translateY(2px) rotate(225deg);
+  }
+</style>
+
+<script>
+  const closeLanguageDropdowns = (except) => {
+    document.querySelectorAll('[data-language-dropdown].is-open').forEach((dropdown) => {
+      if (dropdown === except) return;
+      dropdown.classList.remove('is-open');
+      dropdown.querySelector('[data-language-trigger]')?.setAttribute('aria-expanded', 'false');
+      dropdown.querySelector('.language-dropdown-panel')?.setAttribute('aria-hidden', 'true');
+      dropdown.querySelectorAll('[data-language-option]').forEach((option) => {
+        option.setAttribute('tabindex', '-1');
+      });
+    });
+  };
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const trigger = target.closest('[data-language-trigger]');
+    if (trigger) {
+      const dropdown = trigger.closest('[data-language-dropdown]');
+      const isOpen = dropdown?.classList.contains('is-open') ?? false;
+      closeLanguageDropdowns(dropdown);
+      dropdown?.classList.toggle('is-open', !isOpen);
+      trigger.setAttribute('aria-expanded', String(!isOpen));
+      dropdown?.querySelector('.language-dropdown-panel')?.setAttribute('aria-hidden', String(isOpen));
+      dropdown?.querySelectorAll('[data-language-option]').forEach((option) => {
+        option.setAttribute('tabindex', isOpen ? '-1' : '0');
+      });
+      return;
+    }
+
+    if (!target.closest('[data-language-dropdown]')) {
+      closeLanguageDropdowns();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeLanguageDropdowns();
+    }
+  });
+</script>

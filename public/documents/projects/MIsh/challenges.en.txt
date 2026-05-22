@@ -1,0 +1,19 @@
+Challenge & Solution #1: Google Play Closed Testing Requirement
+
+**Situation:**After finishing development, I prepared to publish on Google Play, but Google required individual developers to pass closed testing before public release.
+
+**Challenge:**Closed testing requires at least **20 testers** and **14 consecutive days** of testing. As an independent developer, finding enough testers and maintaining the testing cycle was difficult.
+
+**Solution:**I recruited testers through communities and friends, while using the waiting period to collect feedback and improve app quality.
+
+**Result:**Closed testing is still in progress, but tester feedback has already helped improve multiple features and the overall experience.
+
+Challenge & Solution #2: App Store Review for Subscriptions
+
+**Situation:**A Pro subscription feature was added later with RevenueCat, and the app was prepared for App Store release.
+
+**Challenge:**In Flutter, subscription-related **EULA** and privacy policy display are not handled as automatically as in SwiftUI, so I needed to integrate them manually. Missing review requirements caused rejections.
+
+**Solution:**After the first rejection, I added EULA display inside the app. After the second rejection, I added the required terms to the App Store product description.
+
+**Result:**The app passed review after two rounds of fixes and was successfully published, giving me full experience with Flutter subscription review requirements.

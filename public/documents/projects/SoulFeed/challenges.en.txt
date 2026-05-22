@@ -1,0 +1,39 @@
+Challenge & Solution #1: Making AI Replies Feel Like Distinct Characters
+
+**Situation:**SoulFeed is not about getting one answer from AI. Its core experience is different characters reacting to the same event.
+
+**Challenge:**AI replies can become too generic, overly polite, or too similar across characters. The model can also forget the intended score range and speaking style for each character.
+
+**Solution:**I centralized character rules in a prompt generator, specifying tone, personality, score range, reply direction, and Taiwanese conversational style. Character data can also be loaded from the cloud for future adjustment.
+
+**Result:**The five characters produce clearly different angles, from gentle encouragement to rational analysis and sharper commentary, forming the core SoulFeed experience.
+
+Challenge & Solution #2: Handling Unstable AI Return Formats
+
+**Situation:**The app needs to parse AI output into character name, score, comment, and total score, then display it in fixed result cards.
+
+**Challenge:**AI does not always return perfectly formatted content. It may add extra text, repeat names, miss fields, or fail because of network/API issues.
+
+**Solution:**The AI service requests JSON output, then cleans, deduplicates, and fills missing data after receiving the response. If the AI service fails, fallback comments are used.
+
+**Result:**The result page is not completely dependent on perfect AI output, reducing blank pages and broken flows.
+
+Challenge & Solution #3: Connecting Guest Data and Logged-In Data
+
+**Situation:**Users should be able to try SoulFeed without logging in, but their previous records should remain if they log in later.
+
+**Challenge:**Guest records live locally, while logged-in records live in the cloud. Without careful handling, users may think their history disappeared.
+
+**Solution:**I designed separate local and cloud storage paths. Guest mode keeps recent records locally, then moves them under the cloud account after login.
+
+**Result:**Users can try first and log in later without losing their previous content.
+
+Challenge & Solution #4: Making the Result Page More Than a Text List
+
+**Situation:**The result page needs to show five characters, scores, a summary, and follow-up replies.
+
+**Challenge:**AI content length is unpredictable, and the UI can easily become messy with keyboard interactions, transitions, cards, and tabs.
+
+**Solution:**I used character cards, avatars, score colors, and transitions to organize hierarchy, then separated input, result, history, and settings into different screens.
+
+**Result:**The experience forms a complete flow from input to AI waiting state, character comments, and follow-up replies instead of showing only raw AI text.

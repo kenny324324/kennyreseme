@@ -1,3 +1,5 @@
+import type { Language } from '../i18n';
+
 export interface Experience {
   title: string;
   company: string;
@@ -49,3 +51,50 @@ export const experiences: Experience[] = [
     techStack: ['SwiftUI', 'Flutter', 'Firebase', 'CloudKit', 'SwiftData', 'StoreKit 2', 'App Store 上架']
   }
 ];
+
+const experiencesEn: Experience[] = [
+  {
+    title: 'UI/UX & Cross-Platform App Engineer',
+    company: 'Josic Technology',
+    duration: 'Jul 2023 - Present',
+    description: 'Responsible for app interface planning and .NET MAUI feature development in commercial company projects, including transportation ticketing, AI assistant, and handheld POS products. My work spans screen design, API integration, and device feature implementation.',
+    achievements: [
+      'WowBus 2.0: contributed to ticketing, maps, login, and push notification features, helping the redesigned app ship on the App Store and Google Play',
+      'TUAN AI Assistant: implemented AI conversation, third-party login, Google Calendar authorization, and voice/image interaction flows',
+      'Island Toast handheld POS: developed an internal operations app integrating barcode scanning, purchasing, sales, and inventory flows',
+      'Implemented UI layouts, states, and interaction details from Figma designs or HTML prototypes, integrating them with backend APIs, push notifications, maps, and hardware features'
+    ],
+    techStack: ['.NET MAUI', 'C#', 'Figma', 'HTML Prototypes', 'API Integration', 'Firebase Push', 'Google Maps', 'Hardware Integration']
+  },
+  {
+    title: 'PM & Project Collaboration',
+    company: 'NASME / Island Toast / TAICCA Post-Investment System',
+    duration: 'Current responsibilities',
+    description: 'In addition to app development, I support PM work for government and business system projects by turning client requirements, testing feedback, and engineering status into trackable project materials.',
+    achievements: [
+      'NASME matching platform: organized frontstage and backstage scope, test items, email copy, and delivery confirmation flows',
+      'NASME business-service application database: organized PRD materials, survey fields, chart requirements, test lists, and acceptance documents',
+      'Island Toast and TAICCA: acted as the bridge between clients and engineers, collecting requests, converting them into tasks, and tracking completion',
+      'Used Notion to manage requirements, bugs, testing items, acceptance status, and delivery documents so client feedback and engineering progress stayed aligned',
+      'Supported additional project documentation, including test reports, user manuals, final reports, and presentation materials'
+    ],
+    techStack: ['Requirement Organization', 'Client Communication', 'Cross-Team Coordination', 'Progress Tracking', 'Notion', 'User Manuals', 'Acceptance Docs', 'Engineering Handoff']
+  },
+  {
+    title: 'Personal App Product Development',
+    company: 'Personal Projects / Self-Initiated Development',
+    duration: 'Ongoing',
+    description: 'I continue to build SwiftUI and Flutter apps on my own, handling product planning, UI design, data sync, subscriptions, and App Store release end to end.',
+    achievements: [
+      'SwiftUI apps: Mino, Pickup, FindToilets, and spo.stats, covering to-do lists, package tracking, restroom maps, and Spotify statistics',
+      'Flutter apps: Mish is published on the App Store, and SoulFeed is an AI character feed MVP practice project',
+      'Integrated Firebase, CloudKit, SwiftData, WidgetKit, StoreKit 2, Google Books API, Spotify API, and related services',
+      'Built a complete personal product workflow from idea, UI/UX, development, testing, launch, and follow-up iteration'
+    ],
+    techStack: ['SwiftUI', 'Flutter', 'Firebase', 'CloudKit', 'SwiftData', 'StoreKit 2', 'App Store Release']
+  }
+];
+
+export function getExperiences(lang: Language): Experience[] {
+  return lang === 'en' ? experiencesEn : experiences;
+}

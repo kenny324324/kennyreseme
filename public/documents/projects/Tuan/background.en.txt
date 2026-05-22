@@ -1,0 +1,5 @@
+The TUAN AI Assistant App was commissioned by Hafeice as a voice-based interactive application. The goal was to build an AI conversation platform that combined licensed artist portraits with conversational AI.
+
+The technical scope included speech recognition, natural language processing, voice synthesis that could convert AI text replies into a specific artist-like voice, and image processing that made artist photos appear to speak dynamically.
+
+The project lasted four months and required a cross-platform mobile app, multiple API integrations, and an interface designed around voice interaction.

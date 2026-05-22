@@ -1,0 +1,19 @@
+Challenge & Solution #1: Starting Mobile AI App Development
+
+**Situation:**The internal AI system needed to be turned into a mobile app demo, but I had not built AI-related mobile apps before.
+
+**Challenge:**I did not know how to start integrating AI features, APIs, and AI response handling into a mobile app.
+
+**Solution:**I used AI-assisted development tools extensively to learn and build the initial structure step by step, including the chat interface and API connection.
+
+**Result:**I completed my first mobile AI app and understood the basic workflow of mobile AI development.
+
+Challenge & Solution #2: Chat Interface Design
+
+**Situation:**The chat interface needed to feel familiar compared with mainstream AI chat apps.
+
+**Challenge:**The interface had to be built directly in code without a formal design file.
+
+**Solution:**I studied mainstream AI chat apps and recreated common patterns such as message bubbles, input fields, and action buttons through code.
+
+**Result:**The final interface matched common AI chat app expectations and was suitable for demo use.

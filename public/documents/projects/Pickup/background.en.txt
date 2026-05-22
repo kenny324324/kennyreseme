@@ -1,0 +1,5 @@
+Pickup is a one-stop package tracking tool for online shoppers in Taiwan, supporting real-time shipment lookup across multiple major logistics providers.
+
+I built it because I shop online often and found it inconvenient to check package status across many different logistics websites. I wanted one app where users could see all pending packages and shipment updates in one place.
+
+The project began in January 2026 and is still being iterated. I chose Swift because my own devices are in the Apple ecosystem and I like the performance of native Swift development. This was not my first Swift project; I had already built Mino and FindToilets before it.

@@ -1,0 +1,17 @@
+Design Process|Figma
+
+**Designed from my own need:**Instead of drawing Figma screens, I built directly in Xcode as the target user. The core idea was "let charts speak", making visualization central rather than relying on data lists.
+
+**Dark theme and brand consistency:**The interface uses a dark theme with Spotify green (#1DB954) as the main accent, while allowing users to customize theme colors.
+
+**Tab navigation:**The app uses four tabs: Home, Search, Rankings, and Settings. The home tab works as a dashboard, while rankings support 1-month, 6-month, and all-time filters.
+
+Engineering Process|Technology
+
+**Spotify OAuth 2.0 authentication:**The app uses OAuth 2.0 with PKCE through ASWebAuthenticationSession, stores access tokens securely in Keychain, and supports automatic token refresh.
+
+**Three-layer data strategy:**API response cache, UserDefaults local storage, and Spotify API updates balance fast startup with fresh data.
+
+**Ranking history tracking:**RankingHistoryService records Top 50 snapshots at hourly intervals, keeps seven days of history, syncs through CloudKit, and clears expired data automatically.
+
+**Custom chart engine:**SwiftUI Path is used to build line and bar charts from scratch, including drawing animation, interactive selection, dynamic axis scaling, and label collision handling.

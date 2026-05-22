@@ -1,0 +1,19 @@
+Design Process|Figma
+
+**Starting from the user perspective:**Instead of drawing wireframes in Figma, I used myself as the target user and designed the structure around intuitive, smooth operation.
+
+**Minimal design direction:**Following the idea of Mish as "minimal + shelf", the UI uses whitespace and warm neutral colors to reduce visual noise and keep attention on reading records.
+
+**Reference and iteration:**I studied reading app patterns, kept useful ideas, and refined the interface through my own daily use.
+
+Engineering Process|Technology
+
+**Technology selection:**The app uses Flutter as the cross-platform framework, Provider for state management, and Firebase services including Auth, Firestore, Analytics, Crashlytics, and FCM.
+
+**Book data integration:**Google Books API powers book search, with cached results and support for ISBN, keyword, author, category, and other search methods.
+
+**Two-layer storage:**The app uses cloud storage through Firestore and local storage through SharedPreferences, supporting guest mode locally and cloud sync after login.
+
+**Localization and regionalization:**ARB files provide translations for seven languages, while regional bookstore recommendations adapt to the user's location.
+
+**Monetization:**RevenueCat manages Pro subscriptions, with AdMob used as a free-version monetization channel.

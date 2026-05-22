@@ -1,4 +1,5 @@
 import type { SkillCategory } from '../types';
+import type { Language } from '../i18n';
 
 export const skillCategories: SkillCategory[] = [
   {
@@ -136,3 +137,144 @@ export const skillCategories: SkillCategory[] = [
     ]
   }
 ];
+
+const skillCategoriesEn: SkillCategory[] = [
+  {
+    title: 'Mobile App Development',
+    skills: [
+      {
+        name: 'SwiftUI',
+        icon: 'fab fa-swift',
+        iconColor: '#F05138',
+        description: 'Used across multiple personal iOS apps for native UI, state management, persistence, push notifications, widgets, and App Store release workflows.',
+        proof: ['Pickup', 'FindToilets', 'Mino', 'spo.stats']
+      },
+      {
+        name: 'Flutter',
+        icon: 'fas fa-layer-group',
+        brand: 'flutter',
+        iconColor: '#02569B',
+        description: 'Used for cross-platform personal apps covering reading records, AI character interactions, Firebase sync, third-party login, and multilingual features.',
+        proof: ['Mish', 'SoulFeed']
+      },
+      {
+        name: '.NET MAUI',
+        icon: 'fab fa-microsoft',
+        brand: 'dotnet',
+        iconColor: '#512BD4',
+        description: 'Used in commercial company apps for screen implementation, API integration, login flows, push notifications, barcode scanning, and platform feature integration.',
+        proof: ['WowBus 2.0', 'TUAN AI Assistant', 'Island POS']
+      },
+      {
+        name: 'Interface Planning & Prototyping',
+        icon: 'fab fa-figma',
+        iconColor: '#A259FF',
+        description: 'Plans app flows, information hierarchy, and interaction states using Figma or AI-assisted HTML prototypes, then turns prototypes into real app interfaces.',
+        proof: ['Figma', 'HTML Prototypes', 'App Flows', 'UI Redesign']
+      }
+    ]
+  },
+  {
+    title: 'Feature Integration & Data Services',
+    skills: [
+      {
+        name: 'API Integration',
+        icon: 'fas fa-plug',
+        iconColor: '#10B981',
+        description: 'Connects company backends and third-party services, shaping logistics, books, music, POS documents, and other data into usable app flows.',
+        proof: ['Pickup', 'Mish', 'spo.stats', 'POS']
+      },
+      {
+        name: 'AI Feature Integration',
+        icon: 'fas fa-brain',
+        iconColor: '#8B5CF6',
+        description: 'Builds AI features into concrete user scenarios, including package creation from screenshots, character comments, and commercial AI assistant interactions.',
+        proof: ['Pickup', 'SoulFeed', 'TUAN AI Assistant']
+      },
+      {
+        name: 'Map Services',
+        icon: 'fas fa-map-marked-alt',
+        iconColor: '#3B82F6',
+        description: 'Implements map search, nearby places, annotation management, and route-related screens for transportation and daily-life use cases.',
+        proof: ['FindToilets', 'WowBus 2.0']
+      },
+      {
+        name: 'Login & Cloud Sync',
+        icon: 'fas fa-shield-alt',
+        iconColor: '#14B8A6',
+        description: 'Handles third-party login, Firebase, CloudKit, iCloud, and user data synchronization so apps can preserve data across devices.',
+        proof: ['Mish', 'SoulFeed', 'spo.stats', 'Mino']
+      }
+    ]
+  },
+  {
+    title: 'Launch & Product Features',
+    skills: [
+      {
+        name: 'App Store Release Workflow',
+        icon: 'fas fa-store',
+        iconColor: '#C96442',
+        description: 'Prepares store metadata, version submissions, review responses, and releases for personal apps, while also supporting App Store and Google Play launches for commercial projects.',
+        proof: ['App Store', 'Google Play', 'Review Submission']
+      },
+      {
+        name: 'Subscriptions & In-App Purchase',
+        icon: 'fas fa-credit-card',
+        iconColor: '#B45309',
+        description: 'Implements subscription plans, purchase state checks, and entitlement unlocking so personal apps can support a basic business model.',
+        proof: ['StoreKit 2', 'RevenueCat', 'Pickup', 'Mish']
+      },
+      {
+        name: 'System Feature Integration',
+        icon: 'fas fa-mobile-alt',
+        iconColor: '#0F766E',
+        description: 'Integrates push notifications, widgets, local reminders, barcode scanning, and device-specific features to support real usage scenarios.',
+        proof: ['WidgetKit', 'Push Notifications', 'Barcode Scanning']
+      },
+      {
+        name: 'Data Visualization',
+        icon: 'fas fa-chart-line',
+        iconColor: '#2563EB',
+        description: 'Turns rankings, statistics, and status data into charts or dashboards so users can understand listening habits, package status, and usage records faster.',
+        proof: ['spo.stats', 'Pickup', 'Analytics Dashboard']
+      }
+    ]
+  },
+  {
+    title: 'Project Collaboration & Tools',
+    skills: [
+      {
+        name: 'Version Control',
+        icon: 'fab fa-github',
+        iconColor: '#1a1a1a',
+        description: 'Uses Git for company and personal projects, with GitHub as a place to preserve project history, development context, and portfolio records.',
+        proof: ['Git', 'GitHub', 'Personal Projects']
+      },
+      {
+        name: 'Project Management',
+        icon: 'fas fa-tasks',
+        iconColor: '#10B981',
+        description: 'Organizes requirements, bugs, testing items, acceptance status, and delivery documents in Notion to align client feedback and engineering progress.',
+        proof: ['NASME', 'Island Toast', 'TAICCA']
+      },
+      {
+        name: 'Team Collaboration',
+        icon: 'fas fa-users',
+        iconColor: '#6366F1',
+        description: 'Translates information between clients, PMs, designers, and engineers into items that are discussable, executable, and verifiable.',
+        proof: ['Client Communication', 'Engineering Handoff', 'Delivery Confirmation']
+      },
+      {
+        name: 'Language Ability',
+        icon: 'fas fa-language',
+        iconColor: '#EC4899',
+        description: 'Native Chinese speaker with TOEIC 835, able to read English technical documentation, API docs, and App Store or third-party service materials.',
+        proof: ['TOEIC 835', 'Technical Docs', 'API Docs']
+      }
+    ]
+  }
+];
+
+export function getSkillCategories(lang: Language): SkillCategory[] {
+  return lang === 'en' ? skillCategoriesEn : skillCategories;
+}

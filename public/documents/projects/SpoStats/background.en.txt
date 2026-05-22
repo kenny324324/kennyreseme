@@ -1,0 +1,5 @@
+spo.stats is a Spotify personal listening statistics app built natively with **SwiftUI**, allowing users to inspect music listening habits and ranking changes at any time.
+
+I built it because I am a heavy Spotify user and enjoy tracking listening habits. Existing tools usually present data as plain lists, so I wanted to create a chart-first listening stats tool with line charts, bar charts, and visual ranking trends.
+
+The project started in November 2025 and was paused in December 2025 because of Spotify Developer **Quota Mode** restrictions. Although the app was approved and published on the App Store, Development Mode only allows a very small whitelist of users, so I positioned it as a personal-use tool.

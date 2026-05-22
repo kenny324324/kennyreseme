@@ -1,20 +1,28 @@
 ---
 import SectionHeader from '../common/SectionHeader.astro';
-import { aboutParagraphs, stats } from '../../data/personal';
-import { appProjects } from '../../data/projects';
+import { getAboutParagraphs, stats } from '../../data/personal';
+import { getAppProjects } from '../../data/projects';
+import { ui, type Language } from '../../i18n';
 
-const appProjectCount = appProjects.length;
+interface Props {
+  lang?: Language;
+}
+
+const { lang = 'zh-TW' } = Astro.props;
+const text = ui[lang].about;
+const paragraphs = getAboutParagraphs(lang);
+const appProjectCount = getAppProjects(lang).length;
 ---
 
 <section id="about" class="about py-24 bg-[#faf9f5]">
   <div class="w-full max-w-[1400px] mx-auto px-5">
-    <SectionHeader title="關於我" eyebrow="About" />
+    <SectionHeader title={text.title} eyebrow={text.eyebrow} />
 
     <div class="about-content grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 items-center">
       <!-- Personal Intro -->
       <div class="personal-intro">
-        {aboutParagraphs.zh.map((paragraph, index) => (
-          <p class={`text-[19px] leading-[1.7] text-[#5e5d59] ${index < aboutParagraphs.zh.length - 1 ? 'mb-5' : 'mb-0'}`}>
+        {paragraphs.map((paragraph, index) => (
+          <p class={`text-[19px] leading-[1.7] text-[#5e5d59] ${index < paragraphs.length - 1 ? 'mb-5' : 'mb-0'}`}>
             {paragraph}
           </p>
         ))}
@@ -24,11 +32,11 @@ const appProjectCount = appProjects.length;
       <div class="about-stats grid grid-cols-1 gap-4">
         <div class="stat-item p-8 bg-[#faf9f5] rounded-none border border-[#e8e6dc] shadow-[0_1px_2px_rgba(20, 20, 19,0.04)] transition-all duration-200 hover:shadow-[0_0_0_1px_#d1cfc5,0_4px_24px_rgba(20,20,19,0.05)]">
           <div class="stat-number text-[56px] font-[600] text-[#141413] leading-none mb-1 tracking-display" data-stat="projects">{appProjectCount}</div>
-          <div class="stat-label text-[16px] font-[510] text-[#87867f]">App 專案</div>
+          <div class="stat-label text-[16px] font-[510] text-[#87867f]">{text.appProjects}</div>
         </div>
         <div class="stat-item p-8 bg-[#faf9f5] rounded-none border border-[#e8e6dc] shadow-[0_1px_2px_rgba(20, 20, 19,0.04)] transition-all duration-200 hover:shadow-[0_0_0_1px_#d1cfc5,0_4px_24px_rgba(20,20,19,0.05)]">
           <div class="stat-number text-[56px] font-[600] text-[#141413] leading-none mb-1 tracking-display">{stats.years}</div>
-          <div class="stat-label text-[16px] font-[510] text-[#87867f]">工作年資</div>
+          <div class="stat-label text-[16px] font-[510] text-[#87867f]">{text.years}</div>
         </div>
       </div>
     </div>

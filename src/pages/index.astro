@@ -8,17 +8,19 @@ import SkillsSection from '../components/skills/SkillsSection.astro';
 import ProjectsSection from '../components/projects/ProjectsSection.astro';
 import PMProjectSection from '../components/pm/PMProjectSection.astro';
 import ExperienceSection from '../components/experience/ExperienceSection.astro';
+
+const lang = 'zh-TW';
 ---
 
-<BaseLayout title="余亮廷 Kenny Yu - UI/UX 與 App 開發工程師">
-  <Navbar />
+<BaseLayout title="余亮廷 Kenny Yu - UI/UX 與 App 開發工程師" lang={lang}>
+  <Navbar lang={lang} />
   <main>
-    <HeroSection />
-    <AboutSection />
-    <SkillsSection />
-    <ProjectsSection />
-    <PMProjectSection />
-    <ExperienceSection />
+    <HeroSection lang={lang} />
+    <AboutSection lang={lang} />
+    <SkillsSection lang={lang} />
+    <ProjectsSection lang={lang} />
+    <PMProjectSection lang={lang} />
+    <ExperienceSection lang={lang} />
   </main>
-  <Footer />
+  <Footer lang={lang} />
 </BaseLayout>

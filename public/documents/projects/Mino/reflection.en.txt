@@ -1,0 +1,9 @@
+Reflection & Takeaways
+
+**Native development foundation:**Learning ##SwiftUI## from scratch and shipping within two months helped me understand the iOS native ecosystem, including SwiftData persistence and UserNotifications.
+
+**Independent product development:**This was my first time completing every stage of a product alone, from **UI/UX design** and **development** to **testing** and **App Store release**.
+
+**Design practice:**Creating the Morandi-inspired visual system taught me how color and hierarchy shape a comfortable user experience.
+
+**Architecture thinking:**Solving iCloud sync and data migration helped me design a layered storage architecture that balances backward compatibility and future expansion.

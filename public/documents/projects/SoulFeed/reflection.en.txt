@@ -1,0 +1,7 @@
+Reflection & Takeaways
+
+This project taught me that an AI app is not only about connecting an API. The important part is placing AI output inside a meaningful product scenario. SoulFeed replaces "bot answer" with "character comments", making AI replies more emotional and product-specific.
+
+During development, I understood prompt design more deeply. Asking AI to answer is easy, but keeping character personality, conversational tone, scoring logic, and fixed return format stable requires clear rules and fallback handling.
+
+It was also a complete Flutter app practice: screen design, character data, AI replies, login, history, and cloud sync were all covered. Although the MVP is not released and has no real user feedback yet, the core feature set already presents a complete AI interaction concept.

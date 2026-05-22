@@ -1,0 +1,17 @@
+Design Process|Figma
+
+**Designed from my own need:**Instead of drawing Figma screens, I built and adjusted directly in Xcode around the core need of finding a restroom quickly.
+
+**iOS 26 design adaptation:**During development, Apple introduced Liquid Glass, so the UI adopted glass materials and a modern system-aligned visual style.
+
+**Map-first structure:**The main interface is a full-screen map with a bottom sheet for nearby restroom lists and search, allowing most tasks to happen without leaving the map.
+
+Engineering Process|Technology
+
+**Data source validation:**Before development, I confirmed that Taiwan's Ministry of Environment provided a complete public restroom API.
+
+**Three-layer data loading:**The app loads from cache first, then bundled JSON, then updates from the API in the background to balance startup speed and data freshness.
+
+**Map and annotation system:**MapKit powers the interactive map, dynamic annotation clustering, debounce updates, user location, and nearby sorting.
+
+**Community features:**CloudKit public database stores ratings and reviews, while Google Places API enriches detail pages with opening-hour information.

@@ -1,7 +1,9 @@
+import type { Language } from '../i18n';
+
 export interface PMProject {
   title: string;
   role: string;
-  type: '主力 PM' | '窗口協作';
+  type: string;
   description: string;
   responsibilities: string[];
   outputs: string[];
@@ -66,3 +68,70 @@ export const pmProjects: PMProject[] = [
 export const pmSupportProjects = [
   '另於花蓮 AI、花蓮 1999、高球 AI、電子投票等專案中支援主 PM，協助整理測試報告、操作手冊、期末報告與簡報資料。'
 ];
+
+const pmProjectsEn: PMProject[] = [
+  {
+    title: 'NASME Matching Platform',
+    role: 'Lead PM / Requirement Organization',
+    type: 'Lead PM',
+    description: 'Organized platform requirements and feature scope, translated client feedback into executable engineering items, and kept requirements, documents, and deliverables aligned.',
+    responsibilities: [
+      'Consolidated client requirements, open questions, and response materials',
+      'Broke down feature scope and project phases so engineers could understand requirements clearly',
+      'Prepared quotation materials, user manuals, and project delivery documents'
+    ],
+    outputs: ['Requirements', 'Feature Scope', 'Quotation Materials', 'User Manual'],
+    icon: 'fas fa-diagram-project'
+  },
+  {
+    title: 'NASME Business-Service Application Database',
+    role: 'Lead PM / Documentation & Acceptance',
+    type: 'Lead PM',
+    description: 'Organized survey data, field specifications, chart requirements, and acceptance materials so the database and admin features could move from discussion into development and verification.',
+    responsibilities: [
+      'Prepared PRD materials, survey data, field inventories, and data examples',
+      'Planned chart and report presentation to clarify backend requirements',
+      'Prepared user manuals, security self-check materials, and phase acceptance documents'
+    ],
+    outputs: ['PRD', 'Field Inventory', 'Chart Planning', 'Acceptance Materials'],
+    icon: 'fas fa-table-list'
+  },
+  {
+    title: 'Island Toast POS',
+    role: 'Client-Facing PM',
+    type: 'Client Coordination',
+    description: 'Served as the communication bridge between the client and engineering team, receiving requests and issue reports, converting them into actionable tasks, and helping confirm completed features.',
+    responsibilities: [
+      'Collected client requests, operational issues, and adjustment feedback',
+      'Converted feedback into concrete engineering tasks',
+      'Tracked handling status and helped the client confirm results'
+    ],
+    outputs: ['Requirement Handoff', 'Status Tracking', 'Result Confirmation'],
+    icon: 'fas fa-cash-register'
+  },
+  {
+    title: 'TAICCA Post-Investment System',
+    role: 'Client-Facing PM',
+    type: 'Client Coordination',
+    description: 'Collected client adjustment requests and system feedback, handed them to engineers, and tracked completion so client needs and development progress stayed aligned.',
+    responsibilities: [
+      'Organized client adjustment requests and pending items',
+      'Handed tasks to engineers and tracked progress',
+      'Supported response, confirmation, and information sync after completion'
+    ],
+    outputs: ['Requirements', 'Progress Tracking', 'Information Sync'],
+    icon: 'fas fa-building-columns'
+  }
+];
+
+const pmSupportProjectsEn = [
+  'Also supported lead PM work on Hualien AI, Hualien 1999, Golf AI, and e-voting projects by preparing test reports, user manuals, final reports, and presentation materials.'
+];
+
+export function getPMProjects(lang: Language): PMProject[] {
+  return lang === 'en' ? pmProjectsEn : pmProjects;
+}
+
+export function getPMSupportProjects(lang: Language): string[] {
+  return lang === 'en' ? pmSupportProjectsEn : pmSupportProjects;
+}

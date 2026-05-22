@@ -1,0 +1,11 @@
+Reflection & Takeaways
+
+**Technical learning:**This was my first deeper attempt at third-party login integration, helping me build a more effective learning workflow for unfamiliar technologies: research existing examples first, then use AI tools to accelerate development.
+
+**Collaboration skills:**When communicating with backend engineers, I learned that detailed requirement documents can often be more effective than meetings alone. With PMs, I also learned the importance of estimating the time and difficulty of each requirement early.
+
+**Communication tools:**Combining written documentation with screen recordings made issues easier to reproduce and reduced communication time.
+
+**Problem-solving flow:**Under technical pressure, I built a repeatable process: research independently, use AI tools for faster context gathering, and ask teammates for help when truly blocked.
+
+**Project management experience:**The project improved my ability to organize requirements and issues clearly across PM and engineering roles.

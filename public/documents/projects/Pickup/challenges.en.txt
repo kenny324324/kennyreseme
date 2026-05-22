@@ -1,0 +1,19 @@
+Challenge & Solution #1: Choosing and Integrating a Logistics API
+
+**Situation:**The core feature required an API that could cover multiple logistics providers commonly used in Taiwan.
+
+**Challenge:**Well-known international tracking APIs such as AfterShip did not cover many local pickup and delivery scenarios in Taiwan. Some open-source options were unstable or supported too few carriers.
+
+**Solution:**After evaluation, I chose 17track as the main logistics data source. Testing confirmed that it was stable enough and covered many common carriers used in Taiwan.
+
+**Result:**Pickup supports integrated tracking across convenience-store pickup, home delivery, e-commerce logistics, and international express scenarios.
+
+Challenge & Solution #2: Server-Side Push Notification Architecture
+
+**Situation:**Users needed to receive package status updates even when the app was not open.
+
+**Challenge:**iOS does not allow long-running background polling on the client, so polling had to move to the server. This required scheduled jobs, multi-user batch checks, status-change detection, and push triggering.
+
+**Solution:**I used Firebase Cloud Functions with Cloud Scheduler to poll package status every 15 minutes, then used Firestore Triggers to detect updates and send FCM notifications with multilingual templates.
+
+**Result:**Users can receive package status changes, arrival reminders, and daily pickup reminders without opening the app.

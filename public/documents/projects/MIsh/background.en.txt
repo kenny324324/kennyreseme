@@ -1,0 +1,5 @@
+Mish is a reading tracker built for people who love books. The name comes from **minimal + shelf**, which also defines the app's core design idea: a minimalist bookshelf.
+
+I built the app because I wanted a better tool for tracking reading progress, writing notes, and discovering new books. Existing apps either required paid book databases or did not match the lightweight interface I wanted, so I decided to build my own reading record tool.
+
+This was my first Flutter project. I had mainly used Swift before, with .NET MAUI as my only cross-platform experience. Flutter was a good way to explore a more mainstream cross-platform framework while keeping enough UI flexibility for a minimalist design. The project began in August 2025 and has continued through multiple iterations.

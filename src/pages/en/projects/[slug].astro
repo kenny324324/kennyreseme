@@ -1,0 +1,22 @@
+---
+import ProjectPage from '../../projects/[slug].astro';
+import { getAllProjectSlugs, projectDetailsEn, type ProjectDetail } from '../../../data/projectDetails';
+import type { Language } from '../../../i18n';
+
+export function getStaticPaths() {
+  const slugs = getAllProjectSlugs();
+  return slugs.map((slug) => ({
+    params: { slug },
+    props: { project: projectDetailsEn[slug], lang: 'en' }
+  }));
+}
+
+interface Props {
+  project: ProjectDetail;
+  lang: Language;
+}
+
+const { project, lang } = Astro.props;
+---
+
+<ProjectPage project={project} lang={lang} />

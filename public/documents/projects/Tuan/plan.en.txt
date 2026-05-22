@@ -1,0 +1,19 @@
+Design Process|Figma
+
+**Kickoff meeting:**I joined the PM, backend engineer, and CEO at the client's office to discuss requirements and technical feasibility, then organized the requirements afterward.
+
+**Wireframe planning:**I worked with the PM on the first interface structure, focusing on the voice interaction experience and placing the artist portrait at the center to strengthen the conversation feeling.
+
+**Visual direction:**Based on the client's suggestion, the UI used a blue-purple AI technology palette to create a professional visual tone.
+
+**UI pattern selection:**The design referenced common voice assistant app patterns so users could understand the controls quickly.
+
+Engineering Process|Technology
+
+**Technology selection:**The app used .NET MAUI as the cross-platform framework and integrated the client's artist voice conversion technology and internal AI service APIs.
+
+**API requirement organization:**After confirming the full feature set with the PM, I prepared API lists and data formats in Excel for backend development, then continued adding missed requirements during implementation.
+
+**Schedule planning:**The work included user journey confirmation, prototype development, frontend screen implementation, backend integration, testing, bug fixes, and final delivery.
+
+**Project management:**Progress was reported in regular meetings, with coordination handled through Excel documents and screen recordings.

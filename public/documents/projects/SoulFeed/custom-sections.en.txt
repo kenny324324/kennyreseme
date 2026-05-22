@@ -1,0 +1,11 @@
+Section #1: Current Scope
+Icon: check
+Order: 5
+
+This is currently a practice MVP developed mainly from December 2025 to January 2026. It has not been released and has no user feedback data yet, so the case study focuses on feature completeness, AI interaction design, and the learning process.
+
+Completed features include home input, AI result page, five character comments, character replies, history, personal settings, and font-size adjustment.
+
+Completed account and storage flows include guest local storage, cloud records after login, Google login, Apple login, email registration/login, and avatar upload.
+
+Gemini and DeepSeek are integrated with model switching and fallback handling, making it easier to test different AI reply styles later.

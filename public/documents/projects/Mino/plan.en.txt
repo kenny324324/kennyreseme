@@ -1,0 +1,21 @@
+Design Process|Figma
+
+**Requirement planning:**The to-do list topic was used to practice core features including multi-list management, task categories, reminders, and iCloud sync.
+
+**Visual direction:**The app uses a ##Morandi color palette## with 11 soft, low-saturation colors to create a warm and comfortable experience.
+
+**Interface design:**I designed dashboard, list detail, task editing, and settings screens with frosted-glass floating buttons and progress rings to create a consistent visual language.
+
+**Template system:**The app includes 14 preset list templates across six categories: work, personal, shopping, travel, health, and learning.
+
+Engineering Process|Technology
+
+**Technology selection:**The app uses **SwiftUI** for UI, **SwiftData** for persistence, and **CloudKit** for iCloud sync.
+
+**Core feature development:**I implemented task CRUD, multi-list management, color categorization, and stable data models with UI interaction logic.
+
+**Advanced integrations:**I added ##iCloud sync##, a UserDefaults-to-SwiftData migration flow, and a local notification system supporting 10 repeat rules.
+
+**Testing and release:**After feature testing, the app was submitted to App Store review and successfully published.
+
+**Timeline:**The project took about **two months** and became my first independently completed and released personal app.

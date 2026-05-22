@@ -1,0 +1,11 @@
+Highlight 1: Rich Chart-Based Statistics
+
+##Chart visualization## is the app's main differentiator. All charts are drawn manually with SwiftUI Path instead of third-party chart libraries. The home screen shows Top 5 ranking trends over seven days, and detail pages provide ranking line charts and appearance-count bar charts.
+
+Highlight 2: Ranking History Tracking and Cross-Device Sync
+
+The app records Top 50 song ranking snapshots at least once per hour and keeps seven days of history. Each song is marked as rising, falling, new, or unchanged, with CloudKit syncing the history across Apple devices.
+
+Highlight 3: Multi-Dimensional Listening Analysis
+
+Song detail pages include Info and Stats tabs, showing seven-day ranking trends and four statistic cards for 4-week, 6-month, all-time ranking, and recent-play appearance count. Artist and album pages also include interactive statistics.

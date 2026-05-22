@@ -1,0 +1,11 @@
+Highlight 1: Interactive Map and Smart Annotation Management
+
+MapKit powers an interactive restroom map with live location and nearby restroom lookup. To handle thousands of markers, I implemented ##dynamic annotation clustering## that switches between clustered and individual markers based on zoom level, with debounce logic to keep map interaction smooth.
+
+Highlight 2: Smart Place Grouping and Floor Parsing
+
+Government data can contain multiple restroom records for the same place. I built a ##smart grouping algorithm## that first groups by exact address, then merges records within 20 meters to account for GPS error. Floor labels such as B2, B1, 1F, and 2F are parsed automatically.
+
+Highlight 3: Community Ratings and Reviews
+
+CloudKit powers public community features where users can leave ##star ratings, cleanliness ratings, and written reviews##. Public iCloud sync lets users help each other identify better restrooms.

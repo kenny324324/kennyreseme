@@ -1,0 +1,21 @@
+Design Process|Figma
+
+**Requirement collection and competitor review:**The bus authority provided feature requirements and reference bus apps, which we used for competitor analysis and functional comparison.
+
+**Multiple design proposals:**Based on the requirements, I prepared three interface structure options. After client review, the second version was selected as the development baseline.
+
+**Visual direction:**Following the client's preference for a warmer tone, the final direction used a warm orange-brown palette to create a friendly experience.
+
+**Design system setup:**The selected proposal was expanded into reusable UI components to keep screens visually consistent.
+
+Engineering Process|Technology
+
+**Technology selection:**Following the company's development stack, the app used **.NET MAUI** as the cross-platform framework, with Firebase for push notifications and Google Maps API for map features.
+
+**Frontend and API collaboration:**I handled UI/UX planning and app-side development, including API integration and data display logic, while coordinating data formats and API requirements with backend engineers.
+
+**Core technical work:**##Firebase push notification integration## was the most challenging technical area, and the map flow also required significant iteration.
+
+**Project workflow:**Requirements and issues were coordinated through PM communication and handled with an agile development rhythm.
+
+**Timeline:**The project has continued for more than two years and is now in a second phase of maintenance and improvement.

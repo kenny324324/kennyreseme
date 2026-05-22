@@ -1,0 +1,9 @@
+Reflection & Takeaways
+
+**From personal need to shipped product:**The project confirmed the value of building from a real personal need. A desire for better Spotify charts became a complete App Store product.
+
+**Platform policy reality:**Spotify's Quota Mode restriction became the project's biggest turning point. It taught me to study API platform policies early before investing heavily in a product direction.
+
+**Technical depth through custom charts:**Building charts from scratch took more time but deepened my understanding of SwiftUI animation, Path drawing, and state management.
+
+**App Store review preparation:**Because Spotify login access was limited, Demo Mode was necessary for review. This taught me that shipping also means preparing for review scenarios, not only finishing code.

@@ -1,21 +1,34 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import type { Language } from '../i18n';
 
 const PROJECTS_DIR = path.join(process.cwd(), 'public/documents/projects');
 
 /**
  * 讀取專案的 txt 檔案內容
  */
-function readProjectFile(projectFolder: string, filename: string): string | null {
-  const filePath = path.join(PROJECTS_DIR, projectFolder, filename);
-  try {
-    if (fs.existsSync(filePath)) {
-      return fs.readFileSync(filePath, 'utf-8');
+function readProjectFile(projectFolder: string, filename: string, lang: Language = 'zh-TW'): string | null {
+  const candidateFiles = lang === 'en' ? [getLocalizedFilename(filename, lang), filename] : [filename];
+
+  for (const candidate of candidateFiles) {
+    const filePath = path.join(PROJECTS_DIR, projectFolder, candidate);
+    try {
+      if (fs.existsSync(filePath)) {
+        return fs.readFileSync(filePath, 'utf-8');
+      }
+    } catch (error) {
+      console.warn(`無法讀取檔案: ${filePath}`);
     }
-  } catch (error) {
-    console.warn(`無法讀取檔案: ${filePath}`);
   }
+
   return null;
+}
+
+function getLocalizedFilename(filename: string, lang: Language): string {
+  if (lang === 'zh-TW') return filename;
+  const ext = path.extname(filename);
+  const baseName = filename.slice(0, -ext.length);
+  return `${baseName}.${lang}${ext}`;
 }
 
 /**
@@ -32,8 +45,8 @@ function processMarkup(text: string): string {
 /**
  * 解析 background.txt
  */
-export function parseBackground(projectFolder: string): string {
-  const content = readProjectFile(projectFolder, 'background.txt');
+export function parseBackground(projectFolder: string, lang: Language = 'zh-TW'): string {
+  const content = readProjectFile(projectFolder, 'background.txt', lang);
   if (!content) return '';
   return processMarkup(content.trim());
 }
@@ -41,13 +54,13 @@ export function parseBackground(projectFolder: string): string {
 /**
  * 解析 highlights.txt
  */
-export function parseHighlights(projectFolder: string): Array<{
+export function parseHighlights(projectFolder: string, lang: Language = 'zh-TW'): Array<{
   title: string;
   description: string;
   media?: string;
   mediaType?: 'video' | 'image';
 }> {
-  const content = readProjectFile(projectFolder, 'highlights.txt');
+  const content = readProjectFile(projectFolder, 'highlights.txt', lang);
   if (!content) return [];
 
   const highlights: Array<{
@@ -58,7 +71,7 @@ export function parseHighlights(projectFolder: string): Array<{
   }> = [];
 
   // 分割亮點區塊
-  const sections = content.split(/亮點\d+：/).filter(s => s.trim());
+  const sections = content.split(/(?:亮點|Highlight)\s*\d+\s*[：:]/).filter(s => s.trim());
 
   // 取得影片檔案對應
   const videoFiles = getVideoFiles(projectFolder);
@@ -143,14 +156,14 @@ function getVideoFiles(projectFolder: string): Record<number, string> {
 /**
  * 解析 challenges.txt
  */
-export function parseChallenges(projectFolder: string): Array<{
+export function parseChallenges(projectFolder: string, lang: Language = 'zh-TW'): Array<{
   title: string;
   situation: string;
   difficulty: string;
   solution: string;
   result: string;
 }> {
-  const content = readProjectFile(projectFolder, 'challenges.txt');
+  const content = readProjectFile(projectFolder, 'challenges.txt', lang);
   if (!content) return [];
 
   const challenges: Array<{
@@ -162,7 +175,7 @@ export function parseChallenges(projectFolder: string): Array<{
   }> = [];
 
   // 分割挑戰區塊
-  const sections = content.split(/挑戰與解決 #\d+：/).filter(s => s.trim());
+  const sections = content.split(/(?:挑戰與解決|Challenge & Solution)\s*#\d+\s*[：:]/).filter(s => s.trim());
 
   sections.forEach(section => {
     const lines = section.trim().split('\n');
@@ -177,10 +190,10 @@ export function parseChallenges(projectFolder: string): Array<{
     const fullText = lines.slice(2).join('\n');
 
     // 使用正則表達式提取各部分
-    const situationMatch = fullText.match(/\*\*情境[：:]\*\*(.*?)(?=\*\*困難點|$)/s);
-    const difficultyMatch = fullText.match(/\*\*困難點[：:]\*\*(.*?)(?=\*\*解決|$)/s);
-    const solutionMatch = fullText.match(/\*\*解決(?:過程)?[：:]\*\*(.*?)(?=\*\*(?:時程與)?成果|$)/s);
-    const resultMatch = fullText.match(/\*\*(?:時程與)?成果[：:]\*\*(.*?)$/s);
+    const situationMatch = fullText.match(/\*\*(?:情境|Situation)[：:]\*\*(.*?)(?=\*\*(?:困難點|Difficulty|Challenge)|$)/s);
+    const difficultyMatch = fullText.match(/\*\*(?:困難點|Difficulty|Challenge)[：:]\*\*(.*?)(?=\*\*(?:解決|Solution)|$)/s);
+    const solutionMatch = fullText.match(/\*\*(?:解決(?:過程)?|Solution)[：:]\*\*(.*?)(?=\*\*(?:(?:時程與)?成果|Result|Outcome)|$)/s);
+    const resultMatch = fullText.match(/\*\*(?:(?:時程與)?成果|Result|Outcome)[：:]\*\*(.*?)$/s);
 
     if (situationMatch) situation = processMarkup(situationMatch[1].trim());
     if (difficultyMatch) difficulty = processMarkup(difficultyMatch[1].trim());
@@ -211,13 +224,13 @@ function findProjectImage(projectFolder: string, baseName: string): string | und
 /**
  * 解析 plan.txt
  */
-export function parseProcess(projectFolder: string): {
+export function parseProcess(projectFolder: string, lang: Language = 'zh-TW'): {
   design: string[];
   development: string[];
   designImage?: string;
   developmentImage?: string;
 } {
-  const content = readProjectFile(projectFolder, 'plan.txt');
+  const content = readProjectFile(projectFolder, 'plan.txt', lang);
   const design: string[] = [];
   const development: string[] = [];
   
@@ -228,11 +241,11 @@ export function parseProcess(projectFolder: string): {
   if (!content) return { design: [], development: [], designImage, developmentImage };
 
   // 分割設計和開發部分
-  const sections = content.split('開發流程｜技術');
+  const sections = content.split(/(?:開發流程｜技術|Engineering Process\|Technology)/);
 
   if (sections.length >= 1) {
     // 設計流程
-    const designSection = sections[0].replace('設計流程｜Figma', '').trim();
+    const designSection = sections[0].replace(/(?:設計流程｜Figma|Design Process\|Figma)/, '').trim();
     const designParagraphs = designSection.split('\n\n').filter(p => p.trim());
     designParagraphs.forEach(p => {
       const processed = processMarkup(p.trim());
@@ -256,12 +269,12 @@ export function parseProcess(projectFolder: string): {
 /**
  * 解析 reflection.txt
  */
-export function parseReflection(projectFolder: string): string[] {
-  const content = readProjectFile(projectFolder, 'reflection.txt');
+export function parseReflection(projectFolder: string, lang: Language = 'zh-TW'): string[] {
+  const content = readProjectFile(projectFolder, 'reflection.txt', lang);
   if (!content) return [];
 
   // 移除標題
-  const cleanContent = content.replace('反思與收穫', '').trim();
+  const cleanContent = content.replace('反思與收穫', '').replace('Reflection & Takeaways', '').trim();
 
   // 分割段落
   const paragraphs = cleanContent.split('\n\n').filter(p => p.trim());
@@ -272,8 +285,8 @@ export function parseReflection(projectFolder: string): string[] {
 /**
  * 解析 description.txt
  */
-export function parseDescription(projectFolder: string): string {
-  const content = readProjectFile(projectFolder, 'description.txt');
+export function parseDescription(projectFolder: string, lang: Language = 'zh-TW'): string {
+  const content = readProjectFile(projectFolder, 'description.txt', lang);
   if (!content) return '';
   return processMarkup(content.trim());
 }
@@ -281,13 +294,13 @@ export function parseDescription(projectFolder: string): string {
 /**
  * 解析 links.txt
  */
-export function parseLinks(projectFolder: string): {
+export function parseLinks(projectFolder: string, lang: Language = 'zh-TW'): {
   appstore?: string;
   googleplay?: string;
   figma?: string;
   github?: string;
 } {
-  const content = readProjectFile(projectFolder, 'links.txt');
+  const content = readProjectFile(projectFolder, 'links.txt', lang);
   if (!content) return {};
 
   const links: Record<string, string> = {};
@@ -316,14 +329,14 @@ export function parseLinks(projectFolder: string): {
  *
  * 內容項目（以空行分隔）
  */
-export function parseCustomSections(projectFolder: string): Array<{
+export function parseCustomSections(projectFolder: string, lang: Language = 'zh-TW'): Array<{
   title: string;
   icon: string;
   order: number;
   style: 'list' | 'cards';
   items: string[];
 }> {
-  const content = readProjectFile(projectFolder, 'custom-sections.txt');
+  const content = readProjectFile(projectFolder, 'custom-sections.txt', lang);
   if (!content) return [];
 
   const sections: Array<{
@@ -335,7 +348,7 @@ export function parseCustomSections(projectFolder: string): Array<{
   }> = [];
 
   // 分割區塊
-  const blocks = content.split(/區塊 #\d+：/).filter(s => s.trim());
+  const blocks = content.split(/(?:區塊|Section)\s*#\d+\s*[：:]/).filter(s => s.trim());
 
   blocks.forEach(block => {
     const lines = block.trim().split('\n');
@@ -348,13 +361,13 @@ export function parseCustomSections(projectFolder: string): Array<{
     // 解析圖示、順序和樣式
     for (let i = 1; i < lines.length; i++) {
       const line = lines[i].trim();
-      if (line.startsWith('圖示：')) {
-        icon = line.replace('圖示：', '').trim();
-      } else if (line.startsWith('順序：')) {
-        const parsed = parseInt(line.replace('順序：', '').trim());
+      if (/^(圖示|Icon)[：:]/.test(line)) {
+        icon = line.replace(/^(圖示|Icon)[：:]/, '').trim();
+      } else if (/^(順序|Order)[：:]/.test(line)) {
+        const parsed = parseInt(line.replace(/^(順序|Order)[：:]/, '').trim());
         order = isNaN(parsed) ? 99 : parsed;
-      } else if (line.startsWith('樣式：')) {
-        const val = line.replace('樣式：', '').trim();
+      } else if (/^(樣式|Style)[：:]/.test(line)) {
+        const val = line.replace(/^(樣式|Style)[：:]/, '').trim();
         if (val === 'cards') style = 'cards';
       } else if (line === '') {
         // 空行之後是內容項目
@@ -377,14 +390,14 @@ export function parseCustomSections(projectFolder: string): Array<{
 /**
  * 載入完整的專案內容
  */
-export function loadProjectContent(projectFolder: string) {
+export function loadProjectContent(projectFolder: string, lang: Language = 'zh-TW') {
   return {
-    description: parseDescription(projectFolder),
-    background: parseBackground(projectFolder),
-    highlights: parseHighlights(projectFolder),
-    challenges: parseChallenges(projectFolder),
-    process: parseProcess(projectFolder),
-    reflection: parseReflection(projectFolder),
-    links: parseLinks(projectFolder)
+    description: parseDescription(projectFolder, lang),
+    background: parseBackground(projectFolder, lang),
+    highlights: parseHighlights(projectFolder, lang),
+    challenges: parseChallenges(projectFolder, lang),
+    process: parseProcess(projectFolder, lang),
+    reflection: parseReflection(projectFolder, lang),
+    links: parseLinks(projectFolder, lang)
   };
 }

@@ -1,0 +1,5 @@
+WowBus 2.0 was a redesign project commissioned by the bus authority to modernize the existing app with a new visual style and map-based route recruitment features.
+
+During the kickoff, we reviewed the pain points of the old system and proposed improvements: clearer ticket information on the home screen, redesigned route display logic with dynamic loading, better cross-city route recruitment flows, improved booking screens, clearer error messages, and stronger account security through two-factor authentication and biometric login.
+
+The redesign improved system stability and the overall user experience while addressing the core issues of the previous version.

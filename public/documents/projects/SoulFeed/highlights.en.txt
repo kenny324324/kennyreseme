@@ -1,0 +1,19 @@
+Highlight 1: Five AI Character Comment System
+
+After users enter one thing they did today, the app asks five characters to provide comments and scores. Each character has a speaking style, scoring range, and emotional role, so the output feels like a thread of different reactions rather than one generic answer.
+
+Highlight 2: Social-Feed-Like Interaction
+
+The UI uses post cards, character avatars, floating tabs, and result cards, making the flow feel like posting a life update instead of filling out a form. This supports SoulFeed's "inner feed" concept.
+
+Highlight 3: Replying to Characters
+
+Each character can receive follow-up replies. The app preserves the original event, initial comment, and subsequent conversation so replies continue from the previous context.
+
+Highlight 4: Guest Mode and Cloud History After Login
+
+Guest records are saved locally first. After login, records can sync to the user's cloud account, allowing people to try the app before committing to an account.
+
+Highlight 5: Multiple AI Models and Fallbacks
+
+The project integrates Gemini and DeepSeek and keeps model-switching logic. If AI output fails or returns unstable formatting, the app provides fallback comments so users do not hit a broken flow.

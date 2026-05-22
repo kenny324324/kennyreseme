@@ -1,0 +1,15 @@
+Design Process|Figma
+
+**Market research:**I referenced existing AI chat apps to understand common chat interface patterns and user experience flows.
+
+**Direct implementation:**Instead of using a design tool, I built the chat interface directly in code, including message bubbles, input fields, and voice buttons.
+
+**Visual reference:**The interface follows familiar AI assistant patterns so users can operate it intuitively.
+
+Engineering Process|Technology
+
+**Technology selection:**The app uses .NET MAUI for cross-platform development and integrates RAG APIs with OpenAI services.
+
+**API integration:**The app connects to RAG APIs provided by engineers, integrates OpenAI API for embedding-related processing, and builds a data flow for AI responses.
+
+**Feature implementation:**The app includes chat UI, real-time messaging, voice input, and AI-assisted development during implementation.

@@ -1,0 +1,11 @@
+Highlight 1: Clear Inventory Overview
+
+The home screen acts as the inventory dashboard, showing real-time warehouse stock through a "today's warehouse inventory" section. Clear product names and prominent quantity values let managers understand stock status at a glance.
+
+Highlight 2: Intuitive Scanning Interface
+
+The scanning screen uses a full-screen scan area with clear guidance for barcode scanning or manual input. Hardware scanning, manual entry, and preset quick options support different operating needs.
+
+Highlight 3: Complete Transaction Document Tracking
+
+The document detail structure organizes document numbers, customer data, timestamps, totals, and product lines with clear hierarchy and status labels, making complex transaction information easier to inspect.

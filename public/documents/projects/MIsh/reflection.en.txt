@@ -1,0 +1,11 @@
+Reflection & Takeaways
+
+**Cross-framework learning:**Moving from Swift and .NET MAUI to Flutter helped me understand differences in UI construction. Flutter's widget composition and declarative UI made customization flexible.
+
+**From user to developer:**Because I am also the target user, I could judge feature priority and interface direction more accurately. Personal experience helped reveal real pain points.
+
+**Complete launch experience:**The process covered development, testing, review, and App Store release. Handling subscription EULA requirements and Google Play closed testing gave me practical experience beyond pure development.
+
+**Growth as an independent developer:**I had to handle design, development, testing, launch, and user feedback myself, which strengthened my ability to think about the whole product.
+
+**Iterative mindset:**After release, user feedback helped me improve the app with a "ship first, then refine" mindset instead of waiting for perfection.

@@ -1,0 +1,19 @@
+Challenge & Solution #1: Third-Party Login Integration
+
+**Situation:**The app needed Google and Facebook login so users could access the AI assistant with existing accounts.
+
+**Challenge:**Third-party login permission settings were strict. The login screen could open correctly, but authentication often failed. I had previous Google login experience, but Facebook login had to be studied from scratch.
+
+**Solution:**I worked closely with the backend engineer and found the issue in the permission verification flow. We used a backend API and callback mechanism to return verification results to the app, then applied the same solution to Facebook login.
+
+**Result:**The app gained a stable third-party login flow for Google and Facebook, improving sign-in convenience.
+
+Challenge & Solution #2: Voice Input on iOS and Android
+
+**Situation:**The product needed accurate Mandarin speech recognition across both iOS and Android.
+
+**Challenge:**The initial NuGet package performed better in English than Chinese. After switching to native speech modules, iOS and Android required different implementation approaches.
+
+**Solution:**I studied technical videos, official documentation, and AI-assisted examples to build separate native voice input modules for each platform.
+
+**Result:**The app achieved native voice input on both platforms with better Mandarin recognition accuracy and a smoother voice interaction experience.

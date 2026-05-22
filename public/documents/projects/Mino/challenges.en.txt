@@ -1,0 +1,19 @@
+Challenge & Solution #1: iCloud Sync and SwiftData Migration
+
+**Situation:**I wanted tasks to sync across devices, so I introduced iCloud while migrating the storage layer from UserDefaults to SwiftData.
+
+**Challenge:**It was my first time working with ##iCloud sync## and CloudKit private databases. The biggest challenge was migrating from UserDefaults and NSUbiquitousKeyValueStore to SwiftData + CloudKit without losing existing user data.
+
+**Solution:**I designed a layered storage structure, kept UserDefaults as a backward-compatible layer, and built LegacyModels as a bridge between old and new formats. MigrationView detects whether migration is needed at launch and runs the process transparently.
+
+**Result:**The app gained stable cloud sync, and older data can be migrated automatically without manual user action.
+
+Challenge & Solution #2: Scheduling Complex Repeating Reminders
+
+**Situation:**I wanted users to set flexible reminders such as daily, biweekly, and quarterly rules.
+
+**Challenge:**iOS local notifications support simple calendar repeats, but ##biweekly and quarterly## schedules are not directly handled by the native repeat system.
+
+**Solution:**I built separate scheduling logic for different rule types. Simple rules use native calendar triggers, while complex rules calculate future trigger dates and create batches of notification requests with UUID-based identifiers.
+
+**Result:**The app supports 10 repeat reminder rules, covering common daily to yearly task scheduling needs.

@@ -1,0 +1,5 @@
+FindToilets is a public restroom map app designed for Taiwan and built with **SwiftUI**, helping users quickly find nearby public restrooms.
+
+I built it because the most stressful part of being outside can be needing a restroom and not knowing where to go. Google Maps can help, but results are often not specific enough for public restroom needs, so I decided to build a dedicated restroom map tool.
+
+This was my second Swift project. During development, Apple introduced the **Liquid Glass** design language, so I adapted the UI to the latest design style while building the core features. The project began in September 2025 and continues to be updated.

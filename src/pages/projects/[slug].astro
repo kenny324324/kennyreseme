@@ -3,21 +3,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/common/Navbar.astro';
 import Footer from '../../components/common/Footer.astro';
 import { projectDetails, getAllProjectSlugs, type ProjectDetail } from '../../data/projectDetails';
+import { ui, type Language } from '../../i18n';
 
 export function getStaticPaths() {
   const slugs = getAllProjectSlugs();
   return slugs.map(slug => ({
     params: { slug },
-    props: { project: projectDetails[slug] }
+    props: { project: projectDetails[slug], lang: 'zh-TW' }
   }));
 }
 
 interface Props {
   project: ProjectDetail;
+  lang?: Language;
 }
 
-const { project } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const { project, lang = 'zh-TW' } = Astro.props;
+const text = ui[lang].projectDetail;
 
 type SectionEntry = { type: 'process' | 'challenges' | 'highlights' | 'reflection' | 'custom'; order: number; customIndex?: number };
 const allSections: SectionEntry[] = [];
@@ -44,8 +46,8 @@ project.customSections.forEach((cs, idx) => {
 allSections.sort((a, b) => a.order - b.order);
 ---
 
-<BaseLayout title={`${project.title} - 余亮廷 Kenny Yu`} description={project.description}>
-  <Navbar showBackButton={true} />
+<BaseLayout title={`${project.title} - Kenny Yu`} description={project.description} lang={lang}>
+  <Navbar showBackButton={true} lang={lang} />
 
   <main class="project-details pt-[100px] pb-[60px] bg-[#faf9f5] min-h-screen">
     <div class="container max-w-[1400px] mx-auto px-5">
@@ -91,7 +93,7 @@ allSections.sort((a, b) => a.order - b.order);
         )}
         <!-- Tech tags row -->
         <div class="flex flex-wrap items-center gap-1.5 mt-4">
-          <span class="text-[13px] font-[590] text-[#87867f] uppercase tracking-[0.12em] mr-2">Tech Stack</span>
+          <span class="text-[13px] font-[590] text-[#87867f] uppercase tracking-[0.12em] mr-2">{text.techStack}</span>
           {project.techStack.map((tech) => (
             <span class="text-[14px] font-[510] text-[#5e5d59] border border-[#e8e6dc] bg-[#faf9f5] px-2.5 py-1 rounded-none">
               {tech}
@@ -109,7 +111,7 @@ allSections.sort((a, b) => a.order - b.order);
               <img src={project.detailImage} alt={project.title} class="w-full h-full object-cover" />
             ) : (
               <div class="w-full h-full flex items-center justify-center">
-                <span class="text-[#b0aea5] text-[19px] font-[510] tracking-wider">No Image</span>
+                <span class="text-[#b0aea5] text-[19px] font-[510] tracking-wider">{text.noImage}</span>
               </div>
             )}
           </div>
@@ -125,7 +127,7 @@ allSections.sort((a, b) => a.order - b.order);
             <div class="project-background">
               <div class="flex items-center gap-2.5 mb-3">
                 <i class="fas fa-info-circle text-[#c96442] text-[15px]"></i>
-                <h3 class="text-[13px] font-[590] text-[#87867f] uppercase tracking-[0.15em]">專案背景</h3>
+                <h3 class="text-[13px] font-[590] text-[#87867f] uppercase tracking-[0.15em]">{text.background}</h3>
               </div>
               <div class="background-content text-[#5e5d59] leading-[1.7] text-[17px] pl-6" set:html={project.background} />
             </div>
@@ -141,7 +143,7 @@ allSections.sort((a, b) => a.order - b.order);
           <div class="process-section mb-10">
             <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#e8e6dc]">
               <span class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em]">{num}</span>
-              <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">開發流程</h2>
+              <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">{text.process}</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               {project.process.design.length > 0 && (
@@ -151,7 +153,7 @@ allSections.sort((a, b) => a.order - b.order);
                       <span class="w-8 h-8 rounded-none bg-[#f3f4f5] flex items-center justify-center">
                         <i class="fab fa-figma text-[#c96442] text-[15px]"></i>
                       </span>
-                      設計流程
+                      {text.designProcess}
                     </h4>
                     {project.links.figma && (
                       <a href={project.links.figma} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 border border-[#e8e6dc] text-[#5e5d59] px-2.5 py-1 rounded-md text-[14px] font-[510] transition-all duration-200 whitespace-nowrap hover:border-[#c96442]/40 hover:text-[#c96442] hover:bg-[#faebe0] no-underline">
@@ -188,7 +190,7 @@ allSections.sort((a, b) => a.order - b.order);
                     <span class="w-8 h-8 rounded-none bg-[#f3f4f5] flex items-center justify-center">
                       <i class="fas fa-code text-[#c96442] text-[15px]"></i>
                     </span>
-                    開發流程
+                    {text.developmentProcess}
                   </h4>
 
                   {project.process.developmentImage && (
@@ -219,7 +221,7 @@ allSections.sort((a, b) => a.order - b.order);
           <div class="challenges-section mb-10">
             <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#e8e6dc]">
               <span class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em]">{num}</span>
-              <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">技術挑戰與解決方案</h2>
+              <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">{text.challenges}</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
               {project.challenges.map((challenge) => (
@@ -227,19 +229,19 @@ allSections.sort((a, b) => a.order - b.order);
                   <h4 class="text-[25px] font-[600] text-[#141413] mb-5 tracking-[-0.02em]">{challenge.title}</h4>
                   <div class="space-y-4">
                     <div>
-                      <span class="text-[10px] font-[590] text-[#c96442] uppercase tracking-[0.12em]">情境</span>
+                      <span class="text-[10px] font-[590] text-[#c96442] uppercase tracking-[0.12em]">{text.situation}</span>
                       <p class="text-[#5e5d59] mt-1 leading-[1.65] text-[16px]" set:html={challenge.situation} />
                     </div>
                     <div class="pt-3 border-t border-[#f0eee6]">
-                      <span class="text-[10px] font-[590] text-[#87867f] uppercase tracking-[0.12em]">困難點</span>
+                      <span class="text-[10px] font-[590] text-[#87867f] uppercase tracking-[0.12em]">{text.difficulty}</span>
                       <p class="text-[#5e5d59] mt-1 leading-[1.65] text-[16px]" set:html={challenge.difficulty} />
                     </div>
                     <div class="pt-3 border-t border-[#f0eee6]">
-                      <span class="text-[10px] font-[590] text-[#87867f] uppercase tracking-[0.12em]">解決方案</span>
+                      <span class="text-[10px] font-[590] text-[#87867f] uppercase tracking-[0.12em]">{text.solution}</span>
                       <p class="text-[#5e5d59] mt-1 leading-[1.65] text-[16px]" set:html={challenge.solution} />
                     </div>
                     <div class="pt-3 border-t border-[#f0eee6]">
-                      <span class="text-[10px] font-[590] text-[#87867f] uppercase tracking-[0.12em]">結果</span>
+                      <span class="text-[10px] font-[590] text-[#87867f] uppercase tracking-[0.12em]">{text.result}</span>
                       <p class="text-[#5e5d59] mt-1 leading-[1.65] text-[16px]" set:html={challenge.result} />
                     </div>
                   </div>
@@ -253,7 +255,7 @@ allSections.sort((a, b) => a.order - b.order);
           <div class="highlights-section mb-10">
             <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#e8e6dc]">
               <span class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em]">{num}</span>
-              <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">設計與技術亮點</h2>
+              <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">{text.highlights}</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {project.highlights.map((highlight) => (
@@ -262,7 +264,7 @@ allSections.sort((a, b) => a.order - b.order);
                     <div class="highlight-media mb-4 rounded-none overflow-hidden bg-[#f3f4f5]">
                       {highlight.mediaType === 'video' ? (
                         <video src={highlight.media} autoplay muted loop playsinline class="w-full h-auto" preload="metadata">
-                          您的瀏覽器不支援影片播放
+                          {text.videoUnsupported}
                         </video>
                       ) : (
                         <img src={highlight.media} alt={highlight.title} class="w-full h-auto" />
@@ -281,7 +283,7 @@ allSections.sort((a, b) => a.order - b.order);
           <div class="reflection-section mb-10">
             <div class="flex items-baseline gap-3 mb-8 pb-4 border-b border-[#e8e6dc]">
               <span class="text-[13px] font-[590] text-[#c96442] uppercase tracking-[0.15em]">{num}</span>
-              <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">學習與反思</h2>
+              <h2 class="text-[36px] font-[600] text-[#141413] tracking-[-0.02em]">{text.reflection}</h2>
             </div>
             <div class="bg-[#faf9f5] p-8 rounded-none border border-[#e8e6dc] shadow-[0_1px_2px_rgba(20, 20, 19,0.04)]">
               <ul class="space-y-4">
@@ -352,7 +354,7 @@ allSections.sort((a, b) => a.order - b.order);
       <!-- Links -->
       {(project.links.figma || project.links.github) && (
         <div class="project-links mt-4 pt-8 border-t border-[#e8e6dc] flex items-center justify-between flex-wrap gap-4">
-          <p class="text-[16px] text-[#87867f] font-[510]">對這個專案有興趣？</p>
+          <p class="text-[16px] text-[#87867f] font-[510]">{text.interest}</p>
           <div class="flex gap-2 flex-wrap">
             {project.links.figma && (
               <a href={project.links.figma} target="_blank" rel="noopener noreferrer" class="border border-[#e8e6dc] text-[#141413] px-4 py-2 rounded-md text-[15px] font-[590] inline-flex items-center gap-2 transition-all duration-200 no-underline hover:border-[#c96442]/40 hover:text-[#c96442] hover:bg-[#faebe0] bg-[#faf9f5]">
@@ -373,7 +375,7 @@ allSections.sort((a, b) => a.order - b.order);
     </div>
   </main>
 
-  <Footer />
+  <Footer lang={lang} />
 </BaseLayout>
 
 <style>

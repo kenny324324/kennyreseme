@@ -1,0 +1,7 @@
+SoulFeed is a Flutter self-learning MVP centered on **AI character interaction**. Based on Git history, the main development period was from **December 2025 to January 2026**. It is currently a practice project, not yet released, and has no real user feedback data.
+
+Instead of building a normal chatbot, I wanted to turn "something I did today" into a posting-like experience where characters with different personalities reply as comments.
+
+After users enter an event from their day, the app generates comments and scores from five characters with distinct tones. The experience is closer to an "inner social feed", packaging AI replies into something more emotional and character-driven.
+
+The project also practiced the full flow from screen design and AI prompting to login, record storage, and cloud sync. The goal was not only to connect an AI API, but to make the replies feel like different characters reacting to the same event.
