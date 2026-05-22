@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>余亮廷 Kenny Yu Resume</title>
+    <style>
+      @font-face {
+        font-family: "PingFang TC";
+        src: url("../../public/fonts/PingFangTC-Medium.otf") format("opentype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "PingFang TC";
+        src: url("../../public/fonts/PingFangTC-Semibold.otf") format("opentype");
+        font-weight: 600 800;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      :root {
+        --paper: #f8f8f5;
+        --canvas: #deded8;
+        --ink: #141413;
+        --text: #383733;
+        --muted: #61615b;
+        --quiet: #898982;
+        --line: #d9d9d1;
+        --line-soft: #e7e7df;
+        --panel: #eeeeea;
+        --accent: #a95d45;
+        --accent-dark: #7f422f;
+        --accent-soft: #e5d1c8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 297mm;
+        color: var(--ink);
+        background: var(--canvas);
+        font-family:
+          "PingFang TC",
+          "Avenir Next",
+          "Helvetica Neue",
+          Arial,
+          sans-serif;
+        font-feature-settings: "kern" 1, "liga" 1;
+        -webkit-font-smoothing: antialiased;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      body {
+        display: grid;
+        justify-content: center;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      ul {
+        margin: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        position: relative;
+        width: 210mm;
+        height: 297mm;
+        overflow: hidden;
+        padding: 12.5mm 14mm 10.5mm;
+        background: var(--paper);
+        box-shadow: 0 18px 55px rgba(20, 20, 19, 0.16);
+      }
+
+      .topbar {
+        display: grid;
+        grid-template-columns: 22mm 1fr;
+        gap: 5.5mm;
+        align-items: center;
+        padding-bottom: 5.5mm;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .portrait {
+        width: 22mm;
+        height: 22mm;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: #fff;
+        object-fit: cover;
+        object-position: center 40%;
+      }
+
+      .identity h1 {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 2.5mm;
+        color: var(--ink);
+        font-size: 22.8pt;
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .name-en {
+        color: var(--quiet);
+        font-size: 17pt;
+        font-weight: 700;
+      }
+
+      .title {
+        margin-top: 2mm;
+        color: var(--accent);
+        font-size: 9.8pt;
+        font-weight: 800;
+        line-height: 1.35;
+      }
+
+      .thesis {
+        max-width: 130mm;
+        margin-top: 1.3mm;
+        color: var(--muted);
+        font-size: 7.15pt;
+        line-height: 1.45;
+      }
+
+      .contact {
+        display: grid;
+        gap: 1.05mm;
+        color: var(--muted);
+        font-size: 6.65pt;
+        font-style: normal;
+        line-height: 1.32;
+        word-break: break-word;
+      }
+
+      .proof {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.4mm;
+        padding: 3.2mm 0 3.2mm;
+        border-bottom: 1px solid var(--line-soft);
+      }
+
+      .proof-item {
+        min-height: 10mm;
+        padding-left: 2.7mm;
+        border-left: 2px solid var(--accent-soft);
+      }
+
+      .proof-item strong {
+        display: block;
+        color: var(--ink);
+        font-size: 9.35pt;
+        font-weight: 800;
+        line-height: 1.18;
+      }
+
+      .proof-item span {
+        display: block;
+        margin-top: 0.8mm;
+        color: var(--muted);
+        font-size: 6.65pt;
+        line-height: 1.34;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 56mm 1fr;
+        gap: 6.7mm;
+        padding-top: 4.2mm;
+      }
+
+      .section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .section + .section {
+        margin-top: 4.1mm;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 1.9mm;
+        margin-bottom: 2.6mm;
+        color: #6f6e68;
+        font-size: 6.75pt;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        line-height: 1.1;
+        text-transform: uppercase;
+      }
+
+      .section-title::before {
+        content: "";
+        width: 4.6mm;
+        height: 1px;
+        background: var(--accent);
+      }
+
+      .intro-section {
+        padding: 3.2mm 0 3.4mm;
+        border-bottom: 1px solid var(--line-soft);
+      }
+
+      .intro-section .section-title {
+        margin-bottom: 1.7mm;
+      }
+
+      .intro-text {
+        max-width: 166mm;
+        color: var(--text);
+        font-size: 7.65pt;
+        font-weight: 600;
+        line-height: 1.58;
+      }
+
+      .intro-text strong {
+        color: var(--ink);
+        font-weight: 800;
+      }
+
+      .summary-list,
+      .bullets {
+        list-style: none;
+        padding: 0;
+      }
+
+      .summary-list li,
+      .bullets li {
+        position: relative;
+        padding-left: 3.3mm;
+        color: var(--text);
+        line-height: 1.47;
+      }
+
+      .summary-list li {
+        margin-bottom: 1.25mm;
+        font-size: 7.25pt;
+      }
+
+      .bullets li {
+        margin-bottom: 1.28mm;
+        font-size: 7.55pt;
+      }
+
+      .summary-list li::before,
+      .bullets li::before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        top: -0.1mm;
+        color: var(--accent);
+        font-weight: 800;
+      }
+
+      .skill-block {
+        break-inside: avoid;
+      }
+
+      .skill-block + .skill-block {
+        margin-top: 2.35mm;
+      }
+
+      .skill-heading {
+        color: var(--ink);
+        font-size: 7.55pt;
+        font-weight: 800;
+        line-height: 1.3;
+      }
+
+      .skill-text {
+        margin-top: 1mm;
+        color: var(--muted);
+        font-size: 6.9pt;
+        line-height: 1.52;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9mm;
+        margin-top: 1.5mm;
+      }
+
+      .tag {
+        padding: 0.58mm 1mm 0.62mm;
+        border: 1px solid var(--line);
+        background: #fffdf8;
+        color: var(--muted);
+        font-size: 5.75pt;
+        font-weight: 700;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .small-text {
+        color: var(--muted);
+        font-size: 7pt;
+        line-height: 1.52;
+      }
+
+      .small-text strong {
+        color: var(--ink);
+        font-weight: 800;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 0.72mm;
+        color: var(--muted);
+        font-size: 6.75pt;
+        font-style: normal;
+        line-height: 1.34;
+        word-break: break-word;
+      }
+
+      .experience {
+        padding-bottom: 3.9mm;
+        border-bottom: 1px solid var(--line-soft);
+      }
+
+      .work-entry + .work-entry {
+        margin-top: 3.5mm;
+        padding-top: 3.4mm;
+        border-top: 1px solid var(--line-soft);
+      }
+
+      .item-head {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 4mm;
+        align-items: baseline;
+        margin-bottom: 1.2mm;
+      }
+
+      .item-title {
+        color: var(--ink);
+        font-size: 10.4pt;
+        font-weight: 800;
+        line-height: 1.3;
+      }
+
+      .item-meta {
+        color: var(--quiet);
+        font-size: 6.6pt;
+        font-weight: 800;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+
+      .item-subtitle {
+        margin-bottom: 1.65mm;
+        color: var(--accent-dark);
+        font-size: 8pt;
+        font-weight: 800;
+        line-height: 1.42;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.8mm;
+      }
+
+      .project {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 29mm;
+        padding: 3.2mm 3.4mm;
+        border: 1px solid var(--line);
+        border-left: 2px solid var(--accent-soft);
+        background: #fffdf8;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .project h3 {
+        color: var(--ink);
+        font-size: 8.9pt;
+        font-weight: 800;
+        line-height: 1.28;
+      }
+
+      .project p {
+        margin-top: 1.35mm;
+        color: var(--muted);
+        font-size: 7.05pt;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      .project .tag-list {
+        margin-top: 1.75mm;
+      }
+
+      .project .tag {
+        padding: 0.52mm 0.88mm 0.56mm;
+        background: var(--paper);
+        font-size: 5.55pt;
+      }
+
+      .commercial-note {
+        margin-top: 2.8mm;
+        padding: 2.7mm 2.9mm;
+        border-left: 2px solid var(--accent-soft);
+        background: #fffdf8;
+        color: var(--muted);
+        font-size: 6.35pt;
+        line-height: 1.5;
+      }
+
+      .commercial-note strong {
+        color: var(--ink);
+      }
+
+      .footer {
+        display: none;
+      }
+
+      @media print {
+        html,
+        body {
+          width: 210mm;
+          height: 297mm;
+          min-height: 297mm;
+          background: var(--paper);
+        }
+
+        body {
+          display: block;
+        }
+
+        .page {
+          box-shadow: none;
+        }
+      }
+
+      @media screen {
+        body {
+          padding: 10mm 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <img class="portrait" src="../../public/profile.JPG" alt="余亮廷 Kenny Yu" />
+        <div class="identity">
+          <h1><span>余亮廷</span><span class="name-en">Kenny Yu</span></h1>
+          <p class="title">UI/UX 與 App 開發工程師｜UI/UX & App Developer</p>
+          <p class="thesis">以 App 產品交付為主軸，能把需求、介面流程、API 串接、跨平台開發與上架驗證接成可用產品。</p>
+        </div>
+      </header>
+
+      <section class="proof" aria-label="關鍵證明">
+        <div class="proof-item">
+          <strong>2.5+ 年</strong>
+          <span>商業 App 與專案協作經驗</span>
+        </div>
+        <div class="proof-item">
+          <strong>6+ 款</strong>
+          <span>iOS / Flutter 個人 App 作品</span>
+        </div>
+        <div class="proof-item">
+          <strong>上架經驗</strong>
+          <span>App Store、Google Play、IAP / 訂閱</span>
+        </div>
+        <div class="proof-item">
+          <strong>TOEIC 835</strong>
+          <span>可閱讀英文技術與 API 文件</span>
+        </div>
+      </section>
+
+      <section class="intro-section">
+        <h2 class="section-title">About</h2>
+        <p class="intro-text">
+          我的工作介於 <strong>App 介面規劃、跨平台開發與專案交付</strong> 之間。公司專案中負責把 Figma / HTML 原型、API 串接、地圖、推播、登入與上架流程落成可測試的 App 功能；個人作品則持續用 SwiftUI 與 Flutter 完成從想法、UI、資料同步、訂閱到 App Store 上架的完整流程。
+        </p>
+      </section>
+
+      <div class="layout">
+        <aside>
+          <section class="section">
+            <h2 class="section-title">Education</h2>
+            <p class="small-text"><strong>長庚大學</strong><br />資訊管理學系</p>
+            <p class="small-text" style="margin-top: 2.4mm;"><strong>English</strong><br />TOEIC 835｜可閱讀英文技術與 API 文件。</p>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Contact</h2>
+            <address class="contact-list">
+              <span>Taipei, Taiwan</span>
+              <a href="mailto:kenny4work324@gmail.com">kenny4work324@gmail.com</a>
+              <a href="https://github.com/kenny324324">github.com/kenny324324</a>
+              <a href="https://kenny324324.github.io/kennyreseme/">kenny324324.github.io/kennyreseme</a>
+            </address>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Core Stack</h2>
+            <div class="skill-block">
+              <h3 class="skill-heading">Mobile</h3>
+              <p class="skill-text">SwiftUI、Flutter、.NET MAUI、C#、SwiftData、CloudKit、Firebase、iCloud</p>
+              <div class="tag-list">
+                <span class="tag">SwiftUI</span>
+                <span class="tag">Flutter</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">CloudKit</span>
+              </div>
+            </div>
+            <div class="skill-block">
+              <h3 class="skill-heading">Product & UI</h3>
+              <p class="skill-text">App flow、資訊層級、Figma、HTML prototype、互動狀態、錯誤與空狀態整理</p>
+              <div class="tag-list">
+                <span class="tag">Figma</span>
+                <span class="tag">Prototype</span>
+                <span class="tag">UX Flow</span>
+              </div>
+            </div>
+            <div class="skill-block">
+              <h3 class="skill-heading">Integration</h3>
+              <p class="skill-text">REST API、第三方登入、推播、Google Maps / MapKit、WidgetKit、StoreKit 2、RevenueCat、Gemini AI</p>
+              <div class="tag-list">
+                <span class="tag">API</span>
+                <span class="tag">Push</span>
+                <span class="tag">Map</span>
+                <span class="tag">IAP</span>
+                <span class="tag">AI</span>
+              </div>
+            </div>
+            <div class="skill-block">
+              <h3 class="skill-heading">Release & Quality</h3>
+              <p class="skill-text">TestFlight、App Store Connect、Google Play Console、商店資料、送審回覆、版本調整、實機測試、錯誤情境整理</p>
+              <div class="tag-list">
+                <span class="tag">TestFlight</span>
+                <span class="tag">Review</span>
+                <span class="tag">Release</span>
+                <span class="tag">QA</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">AI Workflow</h2>
+            <ul class="summary-list">
+              <li>使用 agent 協助需求拆解、prototype、功能實作、除錯方向與文件整理。</li>
+              <li>由自己負責架構選擇、實機測試、錯誤狀態與上架品質。</li>
+            </ul>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Focus</h2>
+            <ul class="summary-list">
+              <li>投遞主線：iOS / Flutter / Product-minded App Engineer。</li>
+              <li>適合生活服務、地圖工具、消費型 App 與 AI 輔助產品團隊。</li>
+            </ul>
+          </section>
+
+        </aside>
+
+        <div>
+          <section class="section experience">
+            <h2 class="section-title">Work Experience</h2>
+            <article class="work-entry">
+              <div class="item-head">
+                <h3 class="item-title">喬思齊科技｜UI/UX 與跨平台 App 工程師</h3>
+                <span class="item-meta">2023.07 - Present</span>
+              </div>
+              <p class="item-subtitle">商業 App 介面開發、API 整合、版本交付與跨部門協作</p>
+              <ul class="bullets">
+                <li>參與跳蛙公車 2.0、TUAN AI 助理、島嶼生吐司 POS，負責登入、購票、地圖、推播、條碼掃描、語音互動與 API 串接。</li>
+                <li>將 Figma / HTML prototype 落實為 App 介面與互動狀態，整理 loading、empty、error、權限與表單驗證等產品細節。</li>
+                <li>與後端確認 API 欄位、錯誤情境、資料格式與測試案例，協助問題排查、版本調整與功能驗收。</li>
+                <li>支援 App Store / Google Play 上架與商店資料調整；部分專案負責需求、Bug、測試清單、驗收與交付文件。</li>
+              </ul>
+            </article>
+
+            <article class="work-entry">
+              <div class="item-head">
+                <h3 class="item-title">PM 與專案協作｜需求整理 / 客戶窗口</h3>
+                <span class="item-meta">Current</span>
+              </div>
+              <p class="item-subtitle">需求彙整、測試追蹤、驗收文件與交付協作</p>
+              <ul class="bullets">
+                <li>於中小企總媒合平台、商服應用資料庫擔任主力 PM，整理功能範圍、PRD、問卷欄位、圖表需求、測試清單與驗收資料。</li>
+                <li>於島嶼生吐司、文策院投後系統擔任客戶窗口，接收需求與問題回報，轉成工程端可處理項目並追蹤完成狀態。</li>
+                <li>使用 Notion 管理需求、Bug、測試項目、驗收狀態與交付文件，支援操作手冊、期末報告與簡報資料產出。</li>
+              </ul>
+            </article>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Selected Projects</h2>
+            <div class="project-grid">
+              <article class="project">
+                <h3>Pickup 取貨吧</h3>
+                <p>SwiftUI 包裹追蹤 App，整合物流查詢、AI 截圖辨識、推播、小工具與訂閱；上架後累積 700+ 次下載，可展示 0-to-1 產品交付。</p>
+                <div class="tag-list">
+                  <span class="tag">SwiftUI</span>
+                  <span class="tag">Firebase</span>
+                  <span class="tag">Gemini AI</span>
+                  <span class="tag">StoreKit 2</span>
+                </div>
+              </article>
+
+              <article class="project">
+                <h3>FindToilets 找廁所</h3>
+                <p>台灣公廁地圖 App，使用 MapKit、公開資料與 CloudKit 完成定位、地點查詢、社群評分與資料同步，練習生活服務場景設計。</p>
+                <div class="tag-list">
+                  <span class="tag">SwiftUI</span>
+                  <span class="tag">MapKit</span>
+                  <span class="tag">CloudKit</span>
+                  <span class="tag">Open Data</span>
+                </div>
+              </article>
+
+              <article class="project">
+                <h3>Mish 閱讀筆記</h3>
+                <p>Flutter 閱讀紀錄 App，包含書籍搜尋、閱讀統計、Firebase 同步、多語言與 RevenueCat 訂閱，上架 App Store，可對應 cross-platform 職缺。</p>
+                <div class="tag-list">
+                  <span class="tag">Flutter</span>
+                  <span class="tag">Firebase</span>
+                  <span class="tag">Google Books</span>
+                  <span class="tag">RevenueCat</span>
+                </div>
+              </article>
+
+              <article class="project">
+                <h3>跳蛙公車 2.0</h3>
+                <p>商業交通購票 App 改版，參與 UI/UX 與 App 開發，處理購票、地圖、登入、推播與上架版本調整，證明正式商業 App 經驗。</p>
+                <div class="tag-list">
+                  <span class="tag">Commercial App</span>
+                  <span class="tag">Map</span>
+                  <span class="tag">Push</span>
+                  <span class="tag">Release</span>
+                </div>
+              </article>
+            </div>
+
+            <p class="commercial-note">
+              <strong>其他作品與整合經驗：</strong>TUAN AI 助理處理登入、語音互動與 Google 行事曆授權；島嶼生吐司 POS 處理 API、條碼掃描、進銷貨與庫存流程。個人作品另包含 Mino、spo.stats、SoulFeed，涵蓋 iCloud、Spotify API、AI 回覆與互動紀錄。
+            </p>
+          </section>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <span>Mobile Product Engineer / iOS / Flutter / Agent-assisted Development</span>
+        <span>Updated 2026</span>
+      </footer>
+    </main>
+  </body>
+</html>
