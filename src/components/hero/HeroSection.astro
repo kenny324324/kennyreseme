@@ -16,7 +16,7 @@ const primaryName = lang === 'en' ? personalInfo.name.en : personalInfo.name.zh;
 const secondaryName = lang === 'en' ? personalInfo.name.zh : personalInfo.name.en;
 const appProjects = getAppProjects(lang);
 const appProjectCount = appProjects.length;
-const highlightClass = 'bg-[#faebe0] px-1.5 py-0.5 rounded text-[#b5623d] font-[590] whitespace-nowrap';
+const highlightClass = 'bg-[#faebe0] px-1.5 rounded text-[#b5623d] font-[590] whitespace-nowrap';
 const heroDescription = hero.description
   .replaceAll('<mark>', `<span class="${highlightClass}">`)
   .replaceAll('</mark>', '</span>');
