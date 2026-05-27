@@ -62,9 +62,12 @@ const images = [
 </style>
 
 <script>
-  const section = document.querySelector<HTMLDivElement>('.marquee-section');
-  const track = section?.querySelector<HTMLDivElement>('.marquee-track');
-  if (section && track) {
+  function initMarquee() {
+    const section = document.querySelector<HTMLDivElement>('.marquee-section');
+    const track = section?.querySelector<HTMLDivElement>('.marquee-track');
+    if (!section || !track) return;
+    if (section.dataset.marqueeReady === 'true') return;
+    section.dataset.marqueeReady = 'true';
     let oneSetWidth = 0;
     let offset = 0;
     let isDragging = false;
@@ -184,4 +187,7 @@ const images = [
       touchLocked = 'none';
     });
   }
+
+  initMarquee();
+  document.addEventListener('astro:page-load', initMarquee);
 </script>

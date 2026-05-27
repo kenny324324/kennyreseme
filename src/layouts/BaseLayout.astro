@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import { ui, type Language } from '../i18n';
 
 interface Props {
@@ -25,36 +26,210 @@ const base = import.meta.env.BASE_URL;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Sans+TC:wght@300..700&family=Noto+Serif+TC:wght@400..700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href={`${base}/avatar.png`}>
+
+  <!-- PWA -->
+  <link rel="manifest" href={`${base}/manifest.webmanifest`}>
+  <meta name="theme-color" content="#faf9f5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="KennyCV">
+  <link rel="apple-touch-icon" href={`${base}/pwa/apple-touch-icon.png`}>
+  <script is:inline define:vars={{ swPath: `${base}/sw.js`, swScope: `${base}/` }}>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register(swPath, { scope: swScope })
+          .catch(() => { /* sw.js missing in dev — fine */ });
+      });
+    }
+  </script>
+
+  <ClientRouter />
+  <style is:global>
+    /* Disable smooth scroll while a View Transition is in flight, so Astro's
+       scroll-restore on back-nav is instant instead of animating from the top. */
+    html[data-astro-transition] {
+      scroll-behavior: auto !important;
+    }
+
+    /* Desktop: old fades out (180ms) → 220ms of pure background color →
+       new fades in (240ms). Solid bg on the root layer keeps the live DOM
+       from showing through during the gap. Total ~640ms. */
+    ::view-transition {
+      background: #f5f4ed;
+    }
+    ::view-transition-old(root) {
+      animation: 180ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+    }
+    ::view-transition-new(root) {
+      animation: 240ms cubic-bezier(0.22, 1, 0.36, 1) 400ms both fade-in;
+    }
+
+    @keyframes fade-out {
+      from { opacity: 1; }
+      to   { opacity: 0; }
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Site navbar gets its own transition group so it doesn't slide with the
+       page content — back-button vs logo just cross-fades quickly in place. */
+    ::view-transition-old(site-navbar),
+    ::view-transition-new(site-navbar) {
+      animation-duration: 180ms;
+      animation-timing-function: ease-out;
+    }
+
+    @media (max-width: 768px) {
+      /* Mobile: iOS-style horizontal slide. Pure translate3d transforms only —
+         no filters / opacity on the moving snapshot, so the GPU can composite
+         each frame as a flat textured layer with zero per-pixel work. */
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        will-change: transform;
+        backface-visibility: hidden;
+      }
+      ::view-transition-old(root) {
+        animation: 300ms cubic-bezier(0.32, 0.72, 0, 1) both ios-slide-out-left;
+      }
+      ::view-transition-new(root) {
+        animation: 300ms cubic-bezier(0.32, 0.72, 0, 1) both ios-slide-in-right;
+      }
+      html[data-astro-transition='back']::view-transition-old(root) {
+        animation: 300ms cubic-bezier(0.32, 0.72, 0, 1) both ios-slide-out-right;
+      }
+      html[data-astro-transition='back']::view-transition-new(root) {
+        animation: 300ms cubic-bezier(0.32, 0.72, 0, 1) both ios-slide-in-left;
+      }
+    }
+
+    @keyframes ios-slide-out-left {
+      from { transform: translate3d(0, 0, 0); }
+      to   { transform: translate3d(-22%, 0, 0); }
+    }
+    @keyframes ios-slide-in-right {
+      from { transform: translate3d(100%, 0, 0); }
+      to   { transform: translate3d(0, 0, 0); }
+    }
+    @keyframes ios-slide-out-right {
+      from { transform: translate3d(0, 0, 0); }
+      to   { transform: translate3d(100%, 0, 0); }
+    }
+    @keyframes ios-slide-in-left {
+      from { transform: translate3d(-22%, 0, 0); }
+      to   { transform: translate3d(0, 0, 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation-duration: 1ms !important;
+      }
+    }
+  </style>
+  <script is:inline>
+    // Guard against multiple registration when inline scripts re-execute on navigation.
+    if (!window.__cvTransitionHandlersReady) {
+      window.__cvTransitionHandlersReady = true;
+
+      // Preload critical images of the new page BEFORE startViewTransition runs.
+      // Without this, the View Transition snapshot is captured immediately after
+      // the DOM swap — while images are still loading — which causes the browser
+      // to skip the animation or warp its timing curve. We wrap Astro's loader so
+      // image decoding happens during the preparation phase instead.
+      const PRELOAD_BUDGET_MS = 600;
+      const PRELOAD_MAX_IMAGES = 8;
+
+      // Preload critical images of the new page BEFORE startViewTransition runs.
+      // Without this, the View Transition snapshot is captured immediately after
+      // the DOM swap — while images are still loading — which causes the browser
+      // to skip the animation or warp its timing curve. We wrap Astro's loader
+      // so image decoding happens during the preparation phase instead.
+      document.addEventListener('astro:before-preparation', (event) => {
+        const originalLoader = event.loader;
+        event.loader = async function patchedLoader() {
+          try {
+            await originalLoader();
+            const doc = event.newDocument;
+            if (!doc) return;
+            const urls = [];
+            doc.querySelectorAll('img').forEach((img) => {
+              if (urls.length >= PRELOAD_MAX_IMAGES) return;
+              const src = img.currentSrc || img.src || img.getAttribute('src');
+              if (src) urls.push(src);
+            });
+            if (urls.length === 0) return;
+            await Promise.race([
+              Promise.allSettled(urls.map((src) => {
+                const i = new Image();
+                i.src = src;
+                return i.decode ? i.decode() : new Promise((r) => {
+                  i.onload = r;
+                  i.onerror = r;
+                });
+              })),
+              new Promise((r) => setTimeout(r, PRELOAD_BUDGET_MS)),
+            ]);
+          } catch (err) {
+            // Never let preload errors block navigation.
+            console.warn('[view-transition preload]', err);
+          }
+        };
+      });
+
+      // Re-apply scroll restoration after the DOM swap. Astro's scrollTo
+      // inside moveToLocation can be clamped if the just-swapped DOM hasn't
+      // laid out yet. after-swap fires inside the View Transitions callback,
+      // so doing it here ensures the NEW snapshot reflects the correct scroll.
+      document.addEventListener('astro:after-swap', () => {
+        const state = window.history.state;
+        if (!state || typeof state.scrollY !== 'number' || state.scrollY === 0) return;
+        void document.documentElement.scrollHeight; // force layout flush
+        window.scrollTo({
+          left: state.scrollX || 0,
+          top: state.scrollY,
+          behavior: 'instant',
+        });
+      });
+    }
+  </script>
 </head>
 <body class="bg-[#f5f4ed] text-[#141413]" data-lang={lang}>
   <slot />
 
   <script>
-    // Navigation scroll effect
-    function initNavigation() {
+    // Window-level listeners attach once (module top-level) so they don't accumulate
+    // across View Transitions navigations. They re-query DOM each fire.
+    window.addEventListener('scroll', () => {
       const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+      }
+      highlightCurrentSection();
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        document.querySelector('.hamburger')?.classList.remove('active');
+        document.querySelector('.nav-menu')?.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+    });
+
+    // Per-page handlers attached to elements that get replaced on navigation.
+    function initNavigation() {
       const hamburger = document.querySelector('.hamburger');
       const navMenu = document.querySelector('.nav-menu');
       const navLinks = document.querySelectorAll('.nav-link');
 
       if (hamburger && navMenu) {
-        const closeMobileMenu = () => {
-          hamburger.classList.remove('active');
-          navMenu.classList.remove('active');
-          document.body.classList.remove('menu-open');
-        };
-
         hamburger.addEventListener('click', () => {
           hamburger.classList.toggle('active');
           navMenu.classList.toggle('active');
           document.body.classList.toggle('menu-open', navMenu.classList.contains('active'));
           highlightCurrentSection();
-        });
-
-        window.addEventListener('resize', () => {
-          if (window.innerWidth >= 768) {
-            closeMobileMenu();
-          }
         });
       }
 
@@ -66,16 +241,20 @@ const base = import.meta.env.BASE_URL;
         });
       });
 
-      window.addEventListener('scroll', () => {
-        if (navbar) {
-          if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-          } else {
-            navbar.classList.remove('scrolled');
+      // Back link: if we have a prior entry in Astro's history index, use history.back()
+      // so View Transitions treats it as 'traverse' (back direction) and restores scroll.
+      // history.state.index is maintained by Astro's ClientRouter and is more reliable
+      // than document.referrer, which is empty after client-side navigation.
+      const backLink = document.querySelector<HTMLAnchorElement>('.back-link');
+      if (backLink) {
+        backLink.addEventListener('click', (e) => {
+          const state = window.history.state;
+          if (state && typeof state.index === 'number' && state.index > 0) {
+            e.preventDefault();
+            window.history.back();
           }
-        }
-        highlightCurrentSection();
-      });
+        });
+      }
 
       highlightCurrentSection();
     }
@@ -170,12 +349,14 @@ const base = import.meta.env.BASE_URL;
       }
     }
 
-    // Initialize on DOM load
-    document.addEventListener('DOMContentLoaded', () => {
+    // Initialize on DOM load and after every client-side navigation (View Transitions).
+    function initAll() {
       initNavigation();
       initSmoothScrolling();
       initStatsAnimation();
-    });
+    }
+    document.addEventListener('DOMContentLoaded', initAll);
+    document.addEventListener('astro:page-load', initAll);
   </script>
 </body>
 </html>

@@ -15,7 +15,7 @@ const currentPath = Astro.url.pathname;
 const navLinkClass = 'nav-link no-underline text-[#5e5d59] font-[510] text-[15px] px-3 py-1.5 transition-colors duration-200 relative max-md:block max-md:w-full max-md:px-0 max-md:py-1.5 max-md:text-[34px] max-md:leading-[1.12] max-md:font-[600] max-md:text-[#30302e]';
 ---
 
-<nav class="navbar fixed top-0 left-0 right-0 w-full bg-[#faf9f5] border-b-[1.5px] border-[#e8e6dc] z-[1000]">
+<nav transition:name="site-navbar" class="navbar fixed top-0 left-0 right-0 w-full bg-[#faf9f5] border-b-[1.5px] border-[#e8e6dc] z-[1000]">
   <div class="nav-container max-w-[1400px] mx-auto px-6 grid grid-cols-[1fr_auto_1fr] items-center h-14 max-md:flex max-md:justify-between max-md:px-5">
 
     <!-- Logo / Back -->
@@ -52,7 +52,7 @@ const navLinkClass = 'nav-link no-underline text-[#5e5d59] font-[510] text-[15px
     <!-- Download CTA -->
     <div class="nav-actions justify-self-end flex items-center gap-3 max-md:hidden">
       <LanguageToggle currentLang={lang} currentPath={currentPath} />
-      <a href={personalInfo.resumeUrl} class="download-btn flex items-center gap-2 no-underline text-[#faf9f5] font-[510] text-[14px] leading-none px-5 h-[36px] rounded-md bg-[#141413] hover:bg-[#30302e] transition-all duration-200 shadow-[0_1px_2px_rgba(20,20,19,0.15)]">
+      <a href={personalInfo.resumeUrl} class="download-btn flex items-center gap-2 no-underline text-[#faf9f5] font-[510] text-[13px] leading-none px-4 h-8 rounded-md bg-[#141413] hover:bg-[#30302e] transition-all duration-200 shadow-[0_1px_2px_rgba(20,20,19,0.15)]">
         <i class="fas fa-download text-[10px]"></i>
         <span>{text.resume}</span>
       </a>

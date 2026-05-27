@@ -19,5 +19,8 @@
     "react-dom": "^19.2.4",
     "smol-toml": "^1.6.1",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@vite-pwa/astro": "^1.2.0"
   }
 }
