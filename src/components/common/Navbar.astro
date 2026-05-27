@@ -60,10 +60,10 @@ const navLinkClass = 'nav-link no-underline text-[#5e5d59] font-[510] text-[15px
 
     <div class="mobile-nav-actions hidden items-center gap-2 max-md:ml-auto max-md:flex">
       <LanguageToggle currentLang={lang} currentPath={currentPath} />
-      <div class="hamburger flex h-[32px] w-[32px] cursor-pointer flex-col items-center justify-center p-0" aria-label={text.menu}>
-        <span class="block w-[22px] h-[2px] bg-[#141413] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative"></span>
-        <span class="block w-[22px] h-[2px] bg-[#141413] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative"></span>
-      </div>
+      <button type="button" class="hamburger flex h-11 w-11 cursor-pointer flex-col items-center justify-center p-0 bg-transparent border-0" aria-label={text.menu}>
+        <span class="pointer-events-none block w-[22px] h-[2px] bg-[#141413] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative"></span>
+        <span class="pointer-events-none block w-[22px] h-[2px] bg-[#141413] my-[2px] transition-all duration-300 rounded-[1px] origin-center relative"></span>
+      </button>
     </div>
   </div>
 </nav>

@@ -29,11 +29,29 @@ const base = import.meta.env.BASE_URL;
 
   <!-- PWA -->
   <link rel="manifest" href={`${base}/manifest.webmanifest`}>
-  <meta name="theme-color" content="#faf9f5">
+  <meta name="theme-color" content="#faf9f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1814" media="(prefers-color-scheme: dark)">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="KennyCV">
   <link rel="apple-touch-icon" href={`${base}/pwa/apple-touch-icon.png`}>
+
+  <!-- Theme bootstrap — runs before paint to avoid FOUC. Follows the
+       OS `prefers-color-scheme` preference; live-updates when the OS
+       theme changes while the page is open. -->
+  <script is:inline>
+    (function () {
+      var mql = window.matchMedia('(prefers-color-scheme: dark)');
+      var apply = function () {
+        document.documentElement.setAttribute('data-theme', mql.matches ? 'dark' : 'light');
+      };
+      apply();
+      if (!window.__cvThemeOsListenerReady) {
+        window.__cvThemeOsListenerReady = true;
+        (mql.addEventListener ? mql.addEventListener.bind(mql, 'change') : mql.addListener.bind(mql))(apply);
+      }
+    })();
+  </script>
   <script is:inline define:vars={{ swPath: `${base}/sw.js`, swScope: `${base}/` }}>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -56,7 +74,7 @@ const base = import.meta.env.BASE_URL;
        new fades in (240ms). Solid bg on the root layer keeps the live DOM
        from showing through during the gap. Total ~640ms. */
     ::view-transition {
-      background: #f5f4ed;
+      background: var(--color-page-bg);
     }
     ::view-transition-old(root) {
       animation: 180ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
@@ -197,6 +215,18 @@ const base = import.meta.env.BASE_URL;
   </script>
 </head>
 <body class="bg-[#f5f4ed] text-[#141413]" data-lang={lang}>
+  <script is:inline>
+    // Re-apply theme after View Transitions navigations — the data-theme
+    // on <html> persists across swaps, but re-sync defensively in case
+    // the OS preference changed during navigation.
+    if (!window.__cvThemeHandlerReady) {
+      window.__cvThemeHandlerReady = true;
+      document.addEventListener('astro:after-swap', function () {
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      });
+    }
+  </script>
   <slot />
 
   <script>
@@ -219,12 +249,18 @@ const base = import.meta.env.BASE_URL;
     });
 
     // Per-page handlers attached to elements that get replaced on navigation.
+    // Bindings are guarded by a dataset flag so re-entering initAll() for the
+    // SAME DOM (DOMContentLoaded + astro:page-load both firing on the initial
+    // load) doesn't double-bind — which previously made the hamburger toggle
+    // on and immediately off again on the first tap. A View Transitions swap
+    // brings fresh DOM with no flags, so the next initAll() binds correctly.
     function initNavigation() {
-      const hamburger = document.querySelector('.hamburger');
+      const hamburger = document.querySelector<HTMLElement>('.hamburger');
       const navMenu = document.querySelector('.nav-menu');
-      const navLinks = document.querySelectorAll('.nav-link');
+      const navLinks = document.querySelectorAll<HTMLElement>('.nav-link');
 
-      if (hamburger && navMenu) {
+      if (hamburger && navMenu && !hamburger.dataset.bound) {
+        hamburger.dataset.bound = '1';
         hamburger.addEventListener('click', () => {
           hamburger.classList.toggle('active');
           navMenu.classList.toggle('active');
@@ -234,6 +270,8 @@ const base = import.meta.env.BASE_URL;
       }
 
       navLinks.forEach(link => {
+        if (link.dataset.bound) return;
+        link.dataset.bound = '1';
         link.addEventListener('click', () => {
           hamburger?.classList.remove('active');
           navMenu?.classList.remove('active');
@@ -246,7 +284,8 @@ const base = import.meta.env.BASE_URL;
       // history.state.index is maintained by Astro's ClientRouter and is more reliable
       // than document.referrer, which is empty after client-side navigation.
       const backLink = document.querySelector<HTMLAnchorElement>('.back-link');
-      if (backLink) {
+      if (backLink && !backLink.dataset.bound) {
+        backLink.dataset.bound = '1';
         backLink.addEventListener('click', (e) => {
           const state = window.history.state;
           if (state && typeof state.index === 'number' && state.index > 0) {
@@ -286,9 +325,11 @@ const base = import.meta.env.BASE_URL;
 
     // Smooth scrolling
     function initSmoothScrolling() {
-      document.querySelectorAll('a[href*="#"]').forEach(link => {
+      document.querySelectorAll<HTMLAnchorElement>('a[href*="#"]').forEach(link => {
+        if (link.dataset.smoothBound) return;
+        link.dataset.smoothBound = '1';
         link.addEventListener('click', (e) => {
-          const linkUrl = new URL((link as HTMLAnchorElement).href);
+          const linkUrl = new URL(link.href);
           if (linkUrl.pathname !== window.location.pathname) return;
 
           const targetId = linkUrl.hash;
@@ -334,22 +375,25 @@ const base = import.meta.env.BASE_URL;
 
     // Stats observer
     function initStatsAnimation() {
-      const statsSection = document.querySelector('.about-stats');
-      if (statsSection) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              animateNumbers();
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.5 });
+      const statsSection = document.querySelector<HTMLElement>('.about-stats');
+      if (!statsSection || statsSection.dataset.statsObserved) return;
+      statsSection.dataset.statsObserved = '1';
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateNumbers();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
 
-        observer.observe(statsSection);
-      }
+      observer.observe(statsSection);
     }
 
-    // Initialize on DOM load and after every client-side navigation (View Transitions).
+    // Initialize on DOM load and after every client-side navigation (View
+    // Transitions). Both events can fire on the initial load, but each init
+    // function is idempotent (see dataset guards above), so double-firing is
+    // safe and we still get correct behavior on every fresh DOM swap.
     function initAll() {
       initNavigation();
       initSmoothScrolling();
