@@ -121,21 +121,6 @@ const base = import.meta.env.BASE_URL;
       html[data-astro-transition='back']::view-transition-new(root) {
         animation: 300ms cubic-bezier(0.32, 0.72, 0, 1) both ios-slide-in-left;
       }
-
-      /* Language switch on mobile: reuse the desktop fade instead of the
-         iOS slide — set by LanguageToggle's click handler, cleared on
-         astro:page-load. Wins via the [data-i18n-transition] attribute
-         selector adding specificity over the bare ::view-transition rule. */
-      html[data-i18n-transition]::view-transition-old(root),
-      html[data-astro-transition='back'][data-i18n-transition]::view-transition-old(root) {
-        animation: 180ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
-        transform: none;
-      }
-      html[data-i18n-transition]::view-transition-new(root),
-      html[data-astro-transition='back'][data-i18n-transition]::view-transition-new(root) {
-        animation: 240ms cubic-bezier(0.22, 1, 0.36, 1) 400ms both fade-in;
-        transform: none;
-      }
     }
 
     @keyframes ios-slide-out-left {

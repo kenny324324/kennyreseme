@@ -37,7 +37,7 @@ const alternateLanguages = Object.keys(languages).filter((code) => code !== curr
           return (
             <a
               href={getLocalizedPath(currentPath, lang, base)}
-              data-language-link
+              data-astro-reload
               class={`flex h-12 items-center justify-between rounded-md border px-4 no-underline transition-all duration-200 ${
                 isActive
                   ? 'border-[#141413] bg-[#141413] text-[#faf9f5] shadow-[0_1px_2px_rgba(20,20,19,0.12)]'
@@ -72,9 +72,9 @@ const alternateLanguages = Object.keys(languages).filter((code) => code !== curr
           return (
             <a
               href={getLocalizedPath(currentPath, lang, base)}
+              data-astro-reload
               class="block h-10 px-3 text-[13px] font-[590] leading-10 text-[#30302e] no-underline transition-colors duration-200 hover:bg-[#f0eee6]"
               data-language-option
-              data-language-link
               tabindex="-1"
             >
               {desktopLanguageLabels[lang]}
@@ -169,25 +169,5 @@ const alternateLanguages = Object.keys(languages).filter((code) => code !== curr
     if (event.key === 'Escape') {
       closeLanguageDropdowns();
     }
-  });
-
-  // When navigating via the language toggle, force the desktop fade
-  // transition even on mobile — language switching is a content swap,
-  // not a forward/back page navigation, so the iOS-style horizontal
-  // slide reads wrong. The flag is consumed by CSS in BaseLayout.
-  document.addEventListener(
-    'click',
-    (event) => {
-      const target = event.target;
-      if (!(target instanceof Element)) return;
-      if (target.closest('[data-language-link]')) {
-        document.documentElement.setAttribute('data-i18n-transition', '');
-      }
-    },
-    true, // capture so the flag is set before ClientRouter handles the click
-  );
-
-  document.addEventListener('astro:page-load', () => {
-    document.documentElement.removeAttribute('data-i18n-transition');
   });
 </script>
