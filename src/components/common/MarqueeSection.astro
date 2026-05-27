@@ -32,6 +32,9 @@ const images = [
     cursor: grab;
     background: #f7f5ee;
   }
+  :global(html[data-theme='dark']) .marquee-section {
+    background: #1d1b18;
+  }
   .marquee-section.is-grabbing {
     cursor: grabbing;
   }
@@ -49,9 +52,21 @@ const images = [
     transition: opacity 180ms ease, filter 180ms ease;
   }
 
+  :global(html[data-theme='dark']) .marquee-item {
+    /* invert so dark-on-light logos read as light-on-dark, then re-apply
+       the soft monochrome treatment used in light mode */
+    filter: grayscale(100%) brightness(2.4) contrast(0.85) invert(1);
+    opacity: 0.32;
+  }
+
   .marquee-section:hover .marquee-item {
     filter: grayscale(100%) sepia(16%) saturate(80%) brightness(0.98) contrast(0.86);
     opacity: 0.52;
+  }
+
+  :global(html[data-theme='dark']) .marquee-section:hover .marquee-item {
+    filter: grayscale(100%) brightness(2.6) contrast(0.9) invert(1);
+    opacity: 0.5;
   }
 
   @media (max-width: 768px) {

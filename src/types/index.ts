@@ -105,3 +105,15 @@ export interface PersonalInfo {
 // ========== i18n 型別 ==========
 
 export type Language = 'zh-TW' | 'en';
+
+// ========== Window 全域擴充 ==========
+
+declare global {
+  interface Window {
+    __cvTransitionHandlersReady?: boolean;
+    __cvThemeHandlerReady?: boolean;
+    __cvThemeOsListenerReady?: boolean;
+  }
+}
+
+export {};
