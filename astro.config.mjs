@@ -20,7 +20,7 @@ export default defineConfig({
       manifest: {
         name: 'KennyCV',
         short_name: 'KennyCV',
-        description: '余亮廷 Kenny Yu — UI/UX 與 App 開發工程師作品集',
+        description: '余亮廷 Kenny Yu — Mobile App 工程師作品集，聚焦 Flutter、iOS/SwiftUI、App 上架與產品協作',
         start_url: '/kennyreseme/',
         scope: '/kennyreseme/',
         display: 'standalone',

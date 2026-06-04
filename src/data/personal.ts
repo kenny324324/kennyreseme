@@ -7,8 +7,8 @@ export const personalInfo: PersonalInfo = {
     en: 'Kenny Yu'
   },
   title: {
-    zh: 'UI/UX 與 App 開發工程師',
-    en: 'UI/UX & App Developer'
+    zh: 'Mobile App 工程師｜Flutter & iOS/SwiftUI',
+    en: 'Mobile App Engineer | Flutter & iOS/SwiftUI'
   },
   email: 'kenny4work324@gmail.com',
   github: 'https://github.com/kenny324324',

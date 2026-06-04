@@ -11,7 +11,7 @@ export const languages: Record<Language, string> = {
 
 export const ui = {
   'zh-TW': {
-    siteDescription: 'UI/UX 與 App 開發工程師，專精 SwiftUI、Flutter、.NET MAUI 開發，具備 Figma 設計與 AI 整合經驗',
+    siteDescription: 'Mobile App 工程師，聚焦 Flutter、iOS/SwiftUI、App 上架、產品協作與 AI-assisted 開發流程',
     nav: {
       home: '首頁',
       about: '關於我',
@@ -93,7 +93,7 @@ export const ui = {
     }
   },
   en: {
-    siteDescription: 'UI/UX and app developer focused on SwiftUI, Flutter, .NET MAUI, Figma, and AI-integrated product experiences.',
+    siteDescription: 'Mobile App Engineer focused on Flutter, iOS/SwiftUI, app release, product collaboration, and AI-assisted development workflows.',
     nav: {
       home: 'Home',
       about: 'About',
