@@ -14,6 +14,12 @@ export interface Project {
     github?: string;
   };
   featured?: boolean;
+  metrics?: ProjectMetric[];
+}
+
+export interface ProjectMetric {
+  value: string;
+  label: string;
 }
 
 const base = '/kennyreseme';
@@ -69,6 +75,11 @@ export const appProjects: Project[] = [
     links: {
       appstore: 'https://apps.apple.com/tw/app/pickup-%E5%8F%96%E8%B2%A8%E5%90%A7-%E5%8C%85%E8%A3%B9%E8%BF%BD%E8%B9%A4-%E8%B2%A8%E6%85%8B%E6%9F%A5%E8%A9%A2%E5%B7%A5%E5%85%B7/id6758759908'
     },
+    metrics: [
+      { value: '2,000+', label: '首次下載' },
+      { value: '3,000+', label: '使用者' },
+      { value: '4,000+', label: '追蹤包裹' }
+    ],
     featured: true
   },
   {
@@ -166,7 +177,7 @@ export const systemProjectIcons: Record<string, string> = {
   smartdining: 'fas fa-utensils'
 };
 
-const appProjectTranslations: Record<string, Partial<Pick<Project, 'title' | 'description' | 'techStack'>>> = {
+const appProjectTranslations: Record<string, Partial<Pick<Project, 'title' | 'description' | 'techStack' | 'metrics'>>> = {
   bus: {
     title: 'WowBus 2.0',
     description: 'A commercial cross-platform transit app where I supported UI/UX planning and .NET MAUI development for ticketing, maps, login, and push notifications.',
@@ -185,7 +196,12 @@ const appProjectTranslations: Record<string, Partial<Pick<Project, 'title' | 'de
   pickup: {
     title: 'Pickup',
     description: 'A SwiftUI package tracking app for online shoppers in Taiwan, combining shipment lookup, AI screenshot recognition, push notifications, widgets, and subscriptions.',
-    techStack: ['SwiftUI', 'Firebase', 'Gemini AI', 'SwiftData', 'WidgetKit', 'StoreKit 2', 'Self-initiated']
+    techStack: ['SwiftUI', 'Firebase', 'Gemini AI', 'SwiftData', 'WidgetKit', 'StoreKit 2', 'Self-initiated'],
+    metrics: [
+      { value: '2,000+', label: 'First Downloads' },
+      { value: '3,000+', label: 'Users' },
+      { value: '4,000+', label: 'Packages' }
+    ]
   },
   mish: {
     title: 'Mish Reading Notes',
@@ -242,7 +258,7 @@ export function getSystemProjects(lang: Language): Project[] {
 
 function localizeProjects(
   projects: Project[],
-  translations: Record<string, Partial<Pick<Project, 'title' | 'description' | 'techStack'>>>,
+  translations: Record<string, Partial<Pick<Project, 'title' | 'description' | 'techStack' | 'metrics'>>>,
   lang: Language
 ): Project[] {
   if (lang !== 'en') return projects;

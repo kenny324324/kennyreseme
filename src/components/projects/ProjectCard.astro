@@ -11,6 +11,7 @@ interface Props {
 const { project, icon, lang = 'zh-TW' } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const projectPath = getProjectPath(project.slug, lang, base);
+const metrics = project.metrics ?? [];
 ---
 
 <div class="project-card group">
@@ -72,6 +73,16 @@ const projectPath = getProjectPath(project.slug, lang, base);
       <a href={projectPath} class="no-underline">
         <h3 class="text-[25px] font-[600] text-[#141413] mb-1 leading-[1.25] tracking-[-0.02em] transition-colors duration-200 group-hover:text-[#c96442]">{project.title}</h3>
       </a>
+      {metrics.length > 0 && (
+        <div class="grid grid-cols-3 border-y border-[#e8e6dc] my-3 py-2">
+          {metrics.map((metric, index) => (
+            <div class:list={["min-w-0", index > 0 && "border-l border-[#e8e6dc] pl-3", index < metrics.length - 1 && "pr-3"]}>
+              <div class="text-[15px] font-[600] text-[#141413] tracking-[-0.02em] whitespace-nowrap">{metric.value}</div>
+              <div class="text-[9px] font-[510] text-[#87867f] uppercase tracking-[0.08em] mt-0.5 truncate">{metric.label}</div>
+            </div>
+          ))}
+        </div>
+      )}
       <p class="text-[15px] text-[#87867f] leading-[1.5] line-clamp-2">{project.description}</p>
     </div>
     <a

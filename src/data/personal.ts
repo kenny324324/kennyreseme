@@ -17,7 +17,7 @@ export const personalInfo: PersonalInfo = {
 
 export const stats = {
   projects: 6,
-  years: 2.5
+  years: 3
 };
 
 export const aboutParagraphs = {

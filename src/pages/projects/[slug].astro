@@ -20,6 +20,7 @@ interface Props {
 
 const { project, lang = 'zh-TW' } = Astro.props;
 const text = ui[lang].projectDetail;
+const projectMetrics = project.metrics ?? [];
 
 type SectionEntry = { type: 'process' | 'challenges' | 'highlights' | 'reflection' | 'custom'; order: number; customIndex?: number };
 const allSections: SectionEntry[] = [];
@@ -90,6 +91,16 @@ allSections.sort((a, b) => a.order - b.order);
         </h1>
         {project.subtitle && (
           <p class="text-[22px] text-[#5e5d59] font-[510] mb-5 tracking-[-0.01em]">{project.subtitle}</p>
+        )}
+        {projectMetrics.length > 0 && (
+          <div class="grid grid-cols-3 max-w-[560px] border-y border-[#e8e6dc] mb-5 py-3">
+            {projectMetrics.map((metric, index) => (
+              <div class:list={["min-w-0", index > 0 && "border-l border-[#e8e6dc] pl-4", index < projectMetrics.length - 1 && "pr-4"]}>
+                <div class="text-[24px] md:text-[28px] font-[600] text-[#141413] tracking-[-0.03em] whitespace-nowrap">{metric.value}</div>
+                <div class="text-[10px] md:text-[11px] font-[590] text-[#87867f] uppercase tracking-[0.1em] mt-1 truncate">{metric.label}</div>
+              </div>
+            ))}
+          </div>
         )}
         <!-- Tech tags row -->
         <div class="flex flex-wrap items-center gap-1.5 mt-4">

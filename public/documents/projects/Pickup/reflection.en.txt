@@ -2,7 +2,7 @@ Reflection & Takeaways
 
 **New technical territory:**Pickup pushed me into AI vision recognition, StoreKit 2 subscriptions and IAP, Firebase Cloud Functions scheduling, push notifications, and WidgetKit. Each area was learned and implemented from scratch.
 
-**Motivation from user growth:**Pickup has grown the fastest among my personal apps, with hundreds of downloads, active users, and tracked packages. Seeing people use an idea I built has been very motivating.
+**Motivation from user growth:**Pickup has grown the fastest among my personal apps, with 2,000+ first-time downloads, 3,000+ users, and 4,000+ tracked packages. Seeing people use an idea I built has been very motivating.
 
 **Feedback-driven development:**Positive feedback about multi-carrier integration and the clean interface confirmed the product direction, while suggestions from users continued to drive iteration.
 

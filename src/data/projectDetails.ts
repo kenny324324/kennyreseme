@@ -8,6 +8,7 @@ import {
   parseCustomSections
 } from '../utils/contentLoader';
 import type { Language } from '../i18n';
+import type { ProjectMetric } from './projects';
 
 export interface ProjectDetail {
   slug: string;
@@ -52,6 +53,7 @@ export interface ProjectDetail {
     style: 'list' | 'cards';
     items: string[];
   }[];
+  metrics?: ProjectMetric[];
 }
 
 const base = '/kennyreseme';
@@ -65,6 +67,7 @@ interface ProjectMeta {
   categories: string[];
   techStack: string[];
   folder: string; // txt 檔案所在資料夾名稱
+  metrics?: ProjectMetric[];
   defaultLinks?: {
     appstore?: string;
     googleplay?: string;
@@ -139,10 +142,15 @@ const projectMeta: Record<string, ProjectMeta> = {
     slug: 'pickup',
     title: 'Pickup 取貨吧',
     subtitle: '個人作品｜SwiftUI 包裹追蹤與貨態查詢 App',
-    description: 'Pickup 取貨吧的出發點，是解決自己網購時需要在不同物流網站之間來回查詢的麻煩。這款 App 以 SwiftUI 搭配 Firebase 建立完整架構，實作 AI 截圖辨識、物流查詢、即時推播、小工具、統計儀表板與 StoreKit 2 訂閱功能，讓待取包裹可以集中管理；目前已上架 App Store。',
+    description: 'Pickup 取貨吧的出發點，是解決自己網購時需要在不同物流網站之間來回查詢的麻煩。這款 App 以 SwiftUI 搭配 Firebase 建立完整架構，實作 AI 截圖辨識、物流查詢、即時推播、小工具、統計儀表板與 StoreKit 2 訂閱功能，讓待取包裹可以集中管理；目前已累積超過 2,000 次首次下載、3,000 位使用者與 4,000 個追蹤包裹。',
     categories: ['swift'],
     techStack: ['SwiftUI', 'Firebase', 'Gemini AI', 'SwiftData', 'WidgetKit', 'StoreKit 2', '自主學習'],
-    folder: 'Pickup'
+    folder: 'Pickup',
+    metrics: [
+      { value: '2,000+', label: '首次下載' },
+      { value: '3,000+', label: '使用者' },
+      { value: '4,000+', label: '追蹤包裹' }
+    ]
   },
   findtoilets: {
     slug: 'findtoilets',
@@ -179,7 +187,7 @@ const projectMeta: Record<string, ProjectMeta> = {
   }
 };
 
-const projectMetaTranslations: Record<string, Partial<Pick<ProjectMeta, 'title' | 'subtitle' | 'description' | 'techStack'>>> = {
+const projectMetaTranslations: Record<string, Partial<Pick<ProjectMeta, 'title' | 'subtitle' | 'description' | 'techStack' | 'metrics'>>> = {
   bus: {
     title: 'WowBus 2.0',
     subtitle: 'Commercial Project | Cross-Platform Transit Ticketing App Redesign',
@@ -219,8 +227,13 @@ const projectMetaTranslations: Record<string, Partial<Pick<ProjectMeta, 'title' 
   pickup: {
     title: 'Pickup',
     subtitle: 'Personal Project | SwiftUI Package Tracking App',
-    description: 'Pickup started from the friction of checking multiple logistics websites after online shopping. Built with SwiftUI and Firebase, the app integrates AI screenshot recognition, shipment lookup, push notifications, widgets, analytics dashboards, and StoreKit 2 subscriptions so pending packages can be managed in one place. It is currently published on the App Store.',
-    techStack: ['SwiftUI', 'Firebase', 'Gemini AI', 'SwiftData', 'WidgetKit', 'StoreKit 2', 'Self-initiated']
+    description: 'Pickup started from the friction of checking multiple logistics websites after online shopping. Built with SwiftUI and Firebase, the app integrates AI screenshot recognition, shipment lookup, push notifications, widgets, analytics dashboards, and StoreKit 2 subscriptions so pending packages can be managed in one place. It has reached 2,000+ first-time downloads, 3,000+ users, and 4,000+ tracked packages.',
+    techStack: ['SwiftUI', 'Firebase', 'Gemini AI', 'SwiftData', 'WidgetKit', 'StoreKit 2', 'Self-initiated'],
+    metrics: [
+      { value: '2,000+', label: 'First Downloads' },
+      { value: '3,000+', label: 'Users' },
+      { value: '4,000+', label: 'Tracked Packages' }
+    ]
   },
   findtoilets: {
     title: 'FindToilets',
@@ -286,7 +299,8 @@ function loadProjectDetail(slug: string, lang: Language = 'zh-TW'): ProjectDetai
     challenges,
     process,
     reflection,
-    customSections
+    customSections,
+    metrics: meta.metrics
   };
 }
 
